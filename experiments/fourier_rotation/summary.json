@@ -1,0 +1,83 @@
+{
+  "pairs_per_law": 10000,
+  "seed": 20260904,
+  "s": 1.0,
+  "t": 2.0,
+  "Laplace": {
+    "theoretical_slope": [
+      -0.14814814814814814,
+      0.0
+    ],
+    "theoretical_slope_modulus": 0.14814814814814814,
+    "theoretical_slope_phase_degrees": 180.0,
+    "empirical_intercept": [
+      0.0002586088463308233,
+      0.005032249106198121
+    ],
+    "empirical_slope": [
+      -0.17189321093911814,
+      0.009913320867725433
+    ],
+    "empirical_slope_modulus": 0.17217883115408422,
+    "empirical_slope_phase_degrees": 176.69932869339317,
+    "slope_standard_error": [
+      0.019133635209258305,
+      0.01991292454151856
+    ],
+    "empirical_derivative_check_error": 3.6318438230518325e-11,
+    "theoretical_derivative_check_error": 1.7070567182031482e-11,
+    "max_abs_theoretical_mean": 0.04656307732075282
+  },
+  "Gaussian": {
+    "theoretical_slope": [
+      0.0,
+      0.0
+    ],
+    "theoretical_slope_modulus": 0.0,
+    "theoretical_slope_phase_degrees": null,
+    "empirical_intercept": [
+      -0.00252449241178711,
+      -0.0004864359457702449
+    ],
+    "empirical_slope": [
+      -0.02102379090070588,
+      -0.010472998185960657
+    ],
+    "empirical_slope_modulus": 0.02348794318027312,
+    "empirical_slope_phase_degrees": -153.51981641025353,
+    "slope_standard_error": [
+      0.018106965148549845,
+      0.018039048649232888
+    ],
+    "empirical_derivative_check_error": 7.851887381162656e-12,
+    "theoretical_derivative_check_error": 1.3877787807814455e-12,
+    "max_abs_theoretical_mean": 5.551115123125783e-17
+  },
+  "Gamma": {
+    "theoretical_slope": [
+      -0.06706101589516322,
+      0.13210107473762023
+    ],
+    "theoretical_slope_modulus": 0.14814814814814817,
+    "theoretical_slope_phase_degrees": 116.91459463758132,
+    "empirical_intercept": [
+      0.008054296806869497,
+      -0.005537496047623303
+    ],
+    "empirical_slope": [
+      -0.06277328010301335,
+      0.13902375598557082
+    ],
+    "empirical_slope_modulus": 0.15253881284193513,
+    "empirical_slope_phase_degrees": 114.30056394591743,
+    "slope_standard_error": [
+      0.018553702115270566,
+      0.01846508609792869
+    ],
+    "empirical_derivative_check_error": 5.6075390739434085e-11,
+    "theoretical_derivative_check_error": 5.5000645229461196e-11,
+    "max_abs_theoretical_mean": 0.04941366138740331,
+    "shape": 2.0,
+    "standardization": "X = (Y - shape) / sqrt(shape), Y ~ Gamma(shape, 1)"
+  }
+}
