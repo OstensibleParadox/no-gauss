@@ -4,8 +4,8 @@
 We characterize the bounded invertible linear transformations that
 preserve the measure class of a non-Gaussian i.i.d. product.  The
 one-dimensional hypotheses are a centered second moment and finite
-location and scale Fisher information.  No symmetry, pointwise bound on
-a second derivative, or moment of order greater than two is assumed.
+location and scale Fisher information.  No symmetry or moment of order
+greater than two is assumed.
 The proof combines a logarithm-free Fourier characterization of Gaussian
 laws, dimension-independent Hellinger estimates, and a tail-symmetry
 argument.  The transformed coordinates need not be independent.
@@ -585,15 +585,15 @@ $T=(TQ^{-1})Q$ give the stabilizer assertion.
 \label{sec:ng-local-fourier-fisher}
 
 We now assume that $f$ is non-Gaussian in addition to
-\eqref{eq:ng-fisher-regularity}.  A bounded trigonometric polynomial
-means a finite real linear combination of $1$, $\cos(\xi x)$ and
-$\sin(\xi x)$, with real frequencies $\xi$.  Its frequencies may
+\eqref{eq:ng-fisher-regularity}.  We use finite real Fourier sums:
+finite real linear combinations of $1$, $\cos(\xi x)$ and
+$\sin(\xi x)$, with real frequencies $\xi$.  Their frequencies may
 depend on $f$; once chosen, their finite set is independent of the
 matrix dimension.
 
 \begin{lemma}[Bounded Fourier functions with exact dual moments]
 \label{lem:ng-trig-duals}
-There exist centered real trigonometric polynomials $p,q,r$ such that
+There exist centered finite real Fourier sums $p,q,r$ such that
 \begin{equation}
  \begin{array}{c|cc}
        &s&x\\ \hline
@@ -620,7 +620,7 @@ where $C_0$ is independent of $n$.
 \end{lemma}
 
 \begin{proof}
-On the real vector space of centered trigonometric polynomials
+On the real vector space of centered finite real Fourier sums
 consider the two functionals
 \[
  L_1(h)=\mathbb E h'(X)=\mathbb E[h(X)s(X)],
@@ -641,8 +641,8 @@ Here $L_1(e^{i\xi x})=i\xi\varphi(\xi)$ and
 $L_2(e^{i\xi x})=-i\varphi'(\xi)$.  The no-logarithm ODE
 argument in \cref{lem:ng-fourier-ode} would force a centered
 Gaussian law, a contradiction.  The map therefore has rank two.
-Inverting the moment matrix of two of its real trigonometric
-polynomial witnesses supplies $p,q$ with the displayed dual
+Inverting the moment matrix of two real Fourier witnesses
+supplies $p,q$ with the displayed dual
 moments.  This construction fixes finitely many frequencies
 depending only on $f$.
 
@@ -1732,7 +1732,7 @@ Let
   \qquad
   \mu=\bigotimes_{j\geq 1}\mu_j,
 \]
-on the product Borel sigma-field.  Assume that every \(\mu_j\) has an
+on the product Borel sigma-field.  Assume that every \(\mu_j\) has a
 Lebesgue density positive almost everywhere.  For invertible matrices
 \(T_j\in\mathrm{GL}(d_j,\mathbb R)\), the coordinatewise map
 \[
@@ -1900,9 +1900,8 @@ homeomorphism of \(\ell^2\).
 
 The hypotheses in \eqref{eq:ng-iid-assumptions} include centered,
 variance-normalized Laplace densities, despite their cusp at the
-origin.  They also include densities proportional to $e^{-x^4}$,
-after rescaling, although the second derivative of their potential is
-unbounded.  Symmetry is not needed in any step of the proof.
+origin.  They also include variance-normalized densities proportional
+to $e^{-x^4}$.  Symmetry is not needed in any step of the proof.
 
 For a family allowing both asymmetry and heavy tails, take
 \begin{equation}
@@ -1949,14 +1948,12 @@ functions are
 \[
  \exp\left(-c|t|^\alpha\sum_{j\le n}|a_j|^\alpha\right).
 \]
-An arbitrary $\ell^2$ row need not meet that requirement.  Replacing
-polynomials by bounded or fractional Fourier features does not itself
-resolve this domain issue.
+An arbitrary $\ell^2$ row need not meet that requirement.  The
+condition on admissible rows must also be satisfied when using bounded
+or fractional Fourier features.
 
-The proof uses Hellinger distance throughout the likelihood closure
-and local matrix estimates.  It asserts $L^1$ convergence and uniform
-integrability of likelihoods, without adding a claim of finite
-relative entropy.  The finite-frequency functions are bounded in
+The Hellinger path estimates give $L^1$ convergence and uniform
+integrability of likelihoods.  The finite-frequency functions are bounded in
 each coordinate; their dimension-independent bounds are the
 $L^2(\mu_n)$ and generator estimates proved above.  No variance
 bound for their aggregate under an arbitrary mixed output law is
