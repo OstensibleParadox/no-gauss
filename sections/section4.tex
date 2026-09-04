@@ -1,0 +1,637 @@
+\section{Projection increments and class-preserving completion}
+\label{sec:ng-projection-completion}
+
+The preceding product calculation suggests an order of construction that does
+not mention an operator ideal.  One first asks what every finite observation
+can see, then records the information added by refinement, and only afterwards
+completes the finite-dimensional core.  This order is important outside the
+Gaussian chart: an infinite-dimensional norm chosen in advance can confuse a
+feature of one parametrization with an invariant of the underlying laws.
+
+Throughout this section, $(X,\mathcal A)$ is a standard Borel space,
+$\mathcal G$ is a group of bimeasurable automorphisms of $X$, and
+$\mu_0$ is a probability law on $X$.  We write
+\[
+   \mathcal O(\mu_0)
+   :=\{g_\#\mu_0:g\in\mathcal G\}.
+\]
+Linearity of $X$ or of the action will not be used until a Hilbert information
+chart is introduced.  Thus the measure-theoretic construction below applies
+to arbitrary automorphism orbits.
+
+\subsection{Finite tests and joint observations}
+\label{sec:ng-finite-tests}
+
+Let $\mathscr T$ be a family of measurable maps
+$\tau:X\to X_\tau$, where each $X_\tau$ is a finite-dimensional standard
+Borel space.  For a finite set $F\Subset\mathscr T$, put
+\[
+   Q_F:X\longrightarrow\prod_{\tau\in F}X_\tau,
+   \qquad
+   Q_F(x):=(\tau(x))_{\tau\in F},
+   \qquad
+   \mathcal A_F:=\sigma(Q_F).
+\]
+If $F\subset F'$, then $Q_F$ is a measurable factor of $Q_{F'}$ and
+$\mathcal A_F\subset\mathcal A_{F'}$.  We assume that the tests are
+closed under finite joint observations: after replacing $\mathscr T$ by its
+finite-joint closure, each $Q_F$ is itself an allowed test (up to a Borel
+isomorphism of its target).  This replacement does not change the generated
+sigma-field, and it ensures that convergence for all cylinder gauges controls
+the joint laws $(Q_F)_\#\mu$, not merely the separate one-test marginals.  We
+also assume that the tests are generating in the sense that
+\begin{equation}
+   \sigma\!\left(\bigcup_{F\Subset\mathscr T}\mathcal A_F\right)
+   =\mathcal A
+   \quad\text{modulo }\mu+\nu
+   \label{sec:ng-generating-tests}
+\end{equation}
+for every pair of laws under consideration.  A fixed increasing sequence of
+finite tests suffices when $\mathcal A$ is countably generated, but the
+directed formulation avoids choosing coordinates.
+
+For probability laws $a,b$, let
+\[
+  \operatorname{Aff}(a,b)
+  :=\int\sqrt{\frac{da}{d\lambda}\frac{db}{d\lambda}}\,d\lambda,
+  \qquad
+  h(a,b)^2:=2\{1-\operatorname{Aff}(a,b)\},
+  \qquad \lambda:=a+b.
+\]
+The expression is independent of the dominating law.  There are two natural
+finite-test quantities, and they have different jobs.
+
+\begin{definition}[Cylinder gauge]
+For $F\Subset\mathscr T$, define
+\begin{equation}
+ d_F^{\mathrm{cyl}}(\mu,\nu)
+ :=\max_{\tau\in F}h(\tau_\#\mu,\tau_\#\nu).
+ \label{sec:ng-cylinder-gauge}
+\end{equation}
+The family $(d_F^{\mathrm{cyl}})_F$ generates the initial, or cylinder,
+uniformity on probability laws.
+\end{definition}
+
+The gauges are monotone under inclusion:
+\[
+ F\subset F'
+ \quad\Longrightarrow\quad
+ d_F^{\mathrm{cyl}}\le d_{F'}^{\mathrm{cyl}}.
+\]
+Their role is topological.  They say that finitely many prescribed marginals
+are close, and finite maxima allow different menus of tests to be combined.
+
+\begin{definition}[Joint projection energy]
+For $F\Subset\mathscr T$, define
+\begin{equation}
+ E_F(\mu,\nu)
+ :=-2\log\operatorname{Aff}\bigl((Q_F)_\#\mu,(Q_F)_\#\nu\bigr),
+ \label{sec:ng-joint-energy}
+\end{equation}
+with the convention $-\log0=+\infty$.
+\end{definition}
+
+The energy is the order-$1/2$ R\'enyi divergence of the joint observation.
+It is not the maximum of the one-test divergences.  The latter discards
+dependence among the tests and therefore cannot represent information in the
+new shell $\mathcal A_{F'}\ominus\mathcal A_F$.  Nor do we assert that $E_F$
+is a metric: it is a monotone action used to exhaust a measure class.  In
+short,
+\[
+ \boxed{
+ \ d_F^{\mathrm{cyl}}\ \text{generates the finite-test uniformity},
+ \qquad
+ E_F\ \text{measures joint information and its increments}.\ }
+\]
+
+\subsection{Projection limits and singularity explosion}
+\label{sec:ng-projection-limits}
+
+Write $\mu_F=(Q_F)_\#\mu$, $\nu_F=(Q_F)_\#\nu$, and
+$\rho_F=\operatorname{Aff}(\mu_F,\nu_F)$.  Data processing immediately gives
+$\rho_{F'}\le\rho_F$, and hence $E_{F'}\ge E_F$, whenever $F\subset F'$.
+The limit has an exact global meaning.
+
+\begin{theorem}[Projection affinity theorem]
+\label{sec:ng-projection-affinity-theorem}
+Under \eqref{sec:ng-generating-tests}, as a directed net,
+\begin{equation}
+ \rho_F\downarrow\operatorname{Aff}(\mu,\nu),
+ \qquad
+ E_F(\mu,\nu)\uparrow
+ -2\log\operatorname{Aff}(\mu,\nu).
+ \label{sec:ng-affinity-limit}
+\end{equation}
+Consequently,
+\begin{equation}
+ \mu\perp\nu
+ \quad\Longleftrightarrow\quad
+ E_F(\mu,\nu)\longrightarrow+\infty.
+ \label{sec:ng-singularity-explosion}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Set $\lambda=(\mu+\nu)/2$, $p=d\mu/d\lambda$, and
+$q=d\nu/d\lambda$.  Pulling finite-stage densities back to $X$ gives
+\[
+ p_F=\E_\lambda[p\mid\mathcal A_F],
+ \qquad
+ q_F=\E_\lambda[q\mid\mathcal A_F].
+\]
+The generating assumption and martingale approximation imply
+$p_F\to p$ and $q_F\to q$ in $L^1(\lambda)$.  Since
+\[
+ \|\sqrt a-\sqrt b\|_{L^2}^2\le\|a-b\|_{L^1},
+\]
+we obtain
+$\int\sqrt{p_Fq_F}\,d\lambda\to\int\sqrt{pq}\,d\lambda$.
+Monotonicity follows from data processing.  Finally, affinity is zero exactly
+when the two laws are mutually singular.
+\end{proof}
+
+There is also an exact conditional increment.  If $F\subset F'$ and
+$\rho_F>0$, disintegrate the two $F'$-stage laws over the common $F$-stage
+observation.  Let $r_{F'\mid F}(x)$ be the conditional affinity and let
+$\eta_F$ be the normalized Hellinger midpoint law, defined by
+\[
+ \frac{d\eta_F}{d(\mu_F+\nu_F)}
+ =\frac{
+ \sqrt{d\mu_F/d(\mu_F+\nu_F)}
+ \sqrt{d\nu_F/d(\mu_F+\nu_F)}}{\rho_F}.
+\]
+Then
+\begin{equation}
+ \rho_{F'}=\rho_F\int r_{F'\mid F}\,d\eta_F,
+ \qquad
+ E_{F'}-E_F
+ =-2\log\int r_{F'\mid F}\,d\eta_F\ge0.
+ \label{sec:ng-conditional-shell}
+\end{equation}
+For independent product blocks the conditional affinity is independent of
+the old observation, and the energy increment becomes literally additive.
+In a general orbit, \eqref{sec:ng-conditional-shell} is the replacement for
+an orthogonal sum of coordinate energies.
+
+The R\'enyi--$1/2$ energy is preferable to relative entropy as a global class
+detector.  Infinite relative entropy may occur for equivalent measures
+because a log density is not integrable.  By contrast,
+\eqref{sec:ng-singularity-explosion} detects singularity with no integrability
+hypothesis.
+
+\subsection{Equivalence requires two-sided likelihood closure}
+\label{sec:ng-two-sided-ui}
+
+Finite energy says that two laws are not mutually singular; without a
+dichotomy it does not say that they are equivalent.  The missing condition is
+the preservation of likelihood mass in both directions.
+
+Assume that $\mu_F\sim\nu_F$ at every finite stage and lift
+\[
+ Z_F:=\frac{d\mu_F}{d\nu_F}\circ Q_F
+\]
+to $X$.  If $F\subset F'$, then
+\begin{equation}
+ \E_\nu[Z_{F'}\mid\mathcal A_F]=Z_F.
+ \label{sec:ng-likelihood-martingale}
+\end{equation}
+Thus $(Z_F)_F$ is a nonnegative $\nu$-martingale of mean one, while
+$(Z_F^{-1})_F$ is the corresponding $\mu$-martingale.
+
+\begin{theorem}[Two-sided likelihood criterion]
+\label{sec:ng-two-sided-ui-theorem}
+Under \eqref{sec:ng-generating-tests} and finite-stage equivalence,
+\begin{align}
+ \mu\ll\nu
+ &\quad\Longleftrightarrow\quad
+ \{Z_F:F\Subset\mathscr T\}
+ \quad\text{is uniformly integrable in }L^1(\nu),
+ \label{sec:ng-forward-ui}\\
+ \nu\ll\mu
+ &\quad\Longleftrightarrow\quad
+ \{Z_F^{-1}:F\Subset\mathscr T\}
+ \quad\text{is uniformly integrable in }L^1(\mu).
+ \label{sec:ng-reverse-ui}
+\end{align}
+In particular, $\mu\sim\nu$ if and only if both conditions hold.
+\end{theorem}
+
+\begin{proof}
+If $Z=d\mu/d\nu$ exists in $L^1(\nu)$, then
+$Z_F=\E_\nu[Z\mid\mathcal A_F]$; conditional expectations of one
+$L^1$ variable form a uniformly integrable family.  Conversely, uniform
+integrability makes the likelihood martingale relatively weakly compact in
+$L^1(\nu)$.  Select a weakly convergent cofinal subnet
+$Z_{F_\alpha}\rightharpoonup Z$ in $L^1(\nu)$.  Cofinality means that for
+each fixed $F_0$ the indices eventually satisfy $F_\alpha\supset F_0$.
+Consequently, if $A\in\mathcal A_{F_0}$, then eventually
+\[
+ \int_A Z_{F_\alpha}\,d\nu
+ =\int_A Z_{F_0}\,d\nu
+ =\mu(A)
+\]
+by \eqref{sec:ng-likelihood-martingale}; weak convergence against
+$\mathbf 1_A\in L^\infty(\nu)$ gives
+$\int_A Z\,d\nu=\mu(A)$.  The directedness of the finite test sets implies
+that $\bigcup_F\mathcal A_F$ is an algebra: if
+$A\in\mathcal A_F$ and $B\in\mathcal A_{F'}$, then both sets belong to
+$\mathcal A_{F\cup F'}$, which is closed under complements and finite unions.
+By \eqref{sec:ng-generating-tests}, this algebra generates $\mathcal A$
+modulo $\mu+\nu$.  The monotone-class theorem therefore extends the identity
+to every $A\in\mathcal A$, so $d\mu=Z\,d\nu$.  Interchanging the laws proves
+the reverse assertion.
+\end{proof}
+
+The reverse condition is genuinely a lower-tail condition for the forward
+likelihood:
+\begin{equation}
+ \E_\mu\!\left[Z_F^{-1}\mathbf 1_{\{Z_F^{-1}>M\}}\right]
+ =\nu\{Z_F<M^{-1}\}.
+ \label{sec:ng-lower-tail-ui}
+\end{equation}
+It cannot be recovered from an upper-tail estimate on $Z_F$.  A convenient
+quantitative version uses convex superlinear functions $\Phi,\Psi$:
+\begin{equation}
+ \sup_F\E_\nu\Phi(Z_F)<\infty,
+ \qquad
+ \sup_F\E_\mu\Psi(Z_F^{-1})<\infty.
+ \label{sec:ng-dvp-block}
+\end{equation}
+Together with compatible finite-stage limits and an honest realization, fixed
+de la Vall\'ee--Poussin bounds give the two-sided uniform integrability needed
+to close both Radon--Nikodym directions.  They do not by themselves supply the
+countably additive realization.
+
+\begin{lemma}[Hellinger lower semicontinuity of the Orlicz bounds]
+\label{sec:ng-orlicz-hellinger-lsc}
+Let $\nu$ be a probability law, let $\lambda_i=z_i\nu$ be a net of
+probability laws with $z_i>0$ $\nu$-almost everywhere, and suppose that
+$\lambda_i\to\lambda$ in Hellinger distance.  Then $\lambda=z\nu$ for some
+$z\geq0$,
+\[
+ \sqrt{z_i}\longrightarrow\sqrt z\quad\text{in }L^2(\nu),
+ \qquad
+ z_i\longrightarrow z\quad\text{in }L^1(\nu).
+\]
+Let $\Phi,\Psi:[0,\infty)\to[0,\infty)$ be lower-semicontinuous convex
+functions, both superlinear at infinity.
+Define the lower-semicontinuous perspective
+\begin{equation}
+ \Psi^\leftarrow(r):=
+ \begin{cases}
+   r\Psi(r^{-1}),&r>0,\\
+   +\infty,&r=0.
+ \end{cases}
+ \qquad
+ \Psi^\leftarrow(0)
+ =\lim_{r\downarrow0}r\Psi(r^{-1})
+ =\lim_{u\to\infty}\frac{\Psi(u)}u=+\infty.
+ \label{sec:ng-reverse-orlicz-perspective}
+\end{equation}
+Then
+\begin{align}
+ \int\Phi(z)\,d\nu
+ &\leq\liminf_i\int\Phi(z_i)\,d\nu,
+ \label{sec:ng-forward-orlicz-lsc}\\
+ \int\Psi^\leftarrow(z)\,d\nu
+ &\leq\liminf_i\int\Psi^\leftarrow(z_i)\,d\nu
+ =\liminf_i\int\Psi(z_i^{-1})\,d\lambda_i.
+ \label{sec:ng-reverse-orlicz-lsc}
+\end{align}
+In particular, a finite uniform bound on the second functional forces
+$z>0$ $\nu$-almost everywhere and passes the reverse Orlicz bound to the
+limit.
+\end{lemma}
+
+\begin{proof}
+Hellinger convergence implies convergence in total variation.  Since every
+$\lambda_i$ is absolutely continuous with respect to $\nu$, so is $\lambda$.
+The Hellinger identity gives the asserted $L^2$ convergence of the square
+roots, and Cauchy--Schwarz then gives the $L^1$ convergence of the densities.
+The function $\Psi^\leftarrow$ is convex by the perspective construction and
+is lower-semicontinuous at zero by superlinearity.  The integral of a
+nonnegative lower-semicontinuous convex function is lower-semicontinuous for
+$L^1$ convergence.  This proves both inequalities.  The equality in
+\eqref{sec:ng-reverse-orlicz-lsc} is change of measure, and the value
+$\Psi^\leftarrow(0)=+\infty$ proves the final assertion.
+\end{proof}
+
+\subsection{Why the bare projective uniformity is too weak}
+\label{sec:ng-cylinder-counterexample}
+
+Let $\ell(dx)=\frac12e^{-|x|}\,dx$ and
+$\mu_0=\bigotimes_{j\ge1}\ell$ on $\mathbb R^{\mathbb N}$.  Fix
+$c>0$, $c\ne1$, and define
+\[
+ T_n=\operatorname{diag}(\underbrace{c,\ldots,c}_{n},1,1,\ldots).
+\]
+Put $\mu_n=(T_n)_\#\mu_0$ and $\mu_\infty=(cI)_\#\mu_0$.  Every $\mu_n$ is
+equivalent to $\mu_0$, because only finitely many coordinates have changed.
+For each fixed finite coordinate set $F$, however,
+\[
+ (Q_F)_\#\mu_n=(Q_F)_\#\mu_\infty
+ \quad\text{for all sufficiently large }n.
+\]
+Thus $(\mu_n)$ is Cauchy, and in fact convergent to $\mu_\infty$, for the
+bare cylinder uniformity.  The one-coordinate affinity
+$\rho=2\sqrt c/(1+c)$ is strictly less than one, so
+\begin{equation}
+ E_{\{1,\ldots,n\}}(\mu_n,\mu_0)
+ =-2n\log\rho
+ =2n\log\frac{1+c}{2\sqrt c}\longrightarrow\infty.
+ \label{sec:ng-laplace-energy}
+\end{equation}
+Kakutani's theorem gives $\mu_\infty\perp\mu_0$.  Moreover, if $m>n$, then
+$\operatorname{Aff}(\mu_m,\mu_n)=\rho^{m-n}$; in particular, consecutive
+terms remain a fixed positive Hellinger distance apart.  Hence the sequence
+is not Cauchy for the admissible metric defined below.  There is no conflict:
+the completion of the bare cylinder uniformity contains the singular law
+$\mu_\infty$, whereas the stronger Cauchy structure below deliberately puts
+that boundary at nonzero distance.
+
+\subsection{The admissible metric completion}
+\label{sec:ng-admissible-completion}
+
+The example shows that selecting some cylinder-Cauchy threads after the fact
+would not produce a completion of the cylinder uniformity.  We instead define
+a stronger, class-preserving Cauchy structure before taking a completion.
+Let
+\[
+ \mathcal P_{\mu_0}:=\{\mu:\mu\text{ is a probability law and }\mu\sim\mu_0\}.
+\]
+For $\mu\in\mathcal P_{\mu_0}$, write
+\[
+ Z_\mu:=\frac{d\mu}{d\mu_0},
+ \qquad L_\mu:=\log Z_\mu,
+\]
+as equivalence classes modulo $\mu_0$-null sets.  On $L^0(\mu_0)$ use the
+complete metric
+\[
+ \delta_0(f,g):=\int_X\min\{1,|f-g|\}\,d\mu_0,
+\]
+which induces convergence in $\mu_0$-measure.
+
+\begin{definition}[Admissible Cauchy structure]
+\label{sec:ng-class-preserving-definition}
+Define the likelihood-graph metric on $\mathcal P_{\mu_0}$ by
+\begin{equation}
+ d_{\mathrm{LG},\mu_0}(\mu,\nu)
+ :=\delta_0(L_\mu,L_\nu)
+   +\|Z_\mu-Z_\nu\|_{L^1(\mu_0)}.
+ \label{sec:ng-likelihood-graph-metric}
+\end{equation}
+If $H=\operatorname{Stab}_{\mathcal G}(\mu_0)$, the injective orbit map
+$\mathcal G/H\to\mathcal P_{\mu_0}$, $gH\mapsto g_\#\mu_0$, pulls
+\eqref{sec:ng-likelihood-graph-metric} back to a Hausdorff metric and hence a
+specified uniformity on the orbit quotient.
+Fix a core $\mathcal O_{\mathrm{fin}}\subset\mathcal P_{\mu_0}$.  A net in
+the core is \emph{admissibly Cauchy} when it is Cauchy for
+$d_{\mathrm{LG},\mu_0}$.  Two admissibly Cauchy nets $(\mu_i)_i$ and
+$(\nu_k)_k$ are equivalent when
+\begin{equation}
+ \lim_{(i,k)}d_{\mathrm{LG},\mu_0}(\mu_i,\nu_k)=0
+ \label{sec:ng-admissible-net-equivalence}
+\end{equation}
+on the product directed set.  Denote the set of equivalence classes by
+$\widehat{\mathcal O}_{\mathrm{fin}}^{\,\mathrm{LG}}$ and put
+\begin{equation}
+ \widehat d_{\mathrm{LG},\mu_0}
+   \bigl([\mu_i],[\nu_k]\bigr)
+ :=\lim_{(i,k)}d_{\mathrm{LG},\mu_0}(\mu_i,\nu_k).
+ \label{sec:ng-completed-likelihood-graph-metric}
+\end{equation}
+The double limit exists because both nets are Cauchy.
+\end{definition}
+
+\begin{theorem}[Completeness of the admissible Cauchy structure]
+\label{sec:ng-admissible-completeness-theorem}
+The metric space
+$(\mathcal P_{\mu_0},d_{\mathrm{LG},\mu_0})$ is complete.  The formula
+\eqref{sec:ng-completed-likelihood-graph-metric} is therefore a well-defined
+complete metric, and the endpoint map identifies
+$\widehat{\mathcal O}_{\mathrm{fin}}^{\,\mathrm{LG}}$ isometrically with
+\begin{equation}
+ \overline{\mathcal O_{\mathrm{fin}}}^{\,d_{\mathrm{LG},\mu_0}}
+ \subset\mathcal P_{\mu_0}.
+ \label{sec:ng-admissible-closure}
+\end{equation}
+Under this identification, the constant-net map is the inclusion of the core.
+In particular, the core is dense in its completion and every completion point
+is an honest countably additive probability law equivalent to $\mu_0$.
+Moreover, every admissibly Cauchy net is Cauchy for each cylinder gauge
+$d_F^{\mathrm{cyl}}$.
+\end{theorem}
+
+\begin{proof}
+The map
+\[
+ \mathcal J:\mathcal P_{\mu_0}
+ \longrightarrow L^0(\mu_0)\times L^1(\mu_0),
+ \qquad \mathcal J(\mu)=(L_\mu,Z_\mu),
+\]
+is an isometry when the product is given the sum of $\delta_0$ and the
+$L^1$ metric.  Its image is closed.  Indeed, suppose
+$L_{\mu_n}\to L$ in measure and $Z_{\mu_n}\to Z$ in $L^1$.  A common
+subsequence converges almost everywhere in both coordinates, and
+$Z_{\mu_n}=e^{L_{\mu_n}}$ yields $Z=e^L>0$ almost everywhere.  Also
+$\int Z\,d\mu_0=1$.  Hence $\mu:=Z\mu_0$ belongs to
+$\mathcal P_{\mu_0}$ and $\mathcal J(\mu)=(L,Z)$.  Completeness of
+$L^0(\mu_0)$ for $\delta_0$ and of $L^1(\mu_0)$ now proves completeness of
+$\mathcal P_{\mu_0}$.
+
+The quotient of Cauchy nets by
+\eqref{sec:ng-admissible-net-equivalence}, equipped with the double-limit
+metric, is the standard metric completion.  The endpoint map sends a class
+$[\mu_i]$ to the $d_{\mathrm{LG},\mu_0}$-limit of $(\mu_i)$ in
+$\mathcal P_{\mu_0}$; it is a well-defined isometry onto the closed set
+\eqref{sec:ng-admissible-closure}.  This proves the completion assertions.
+
+Finally, data processing and
+$h(a,b)^2\leq\|da/d\lambda-db/d\lambda\|_{L^1(\lambda)}$ give
+\[
+ d_F^{\mathrm{cyl}}(\mu,\nu)^2
+ \leq \|Z_\mu-Z_\nu\|_{L^1(\mu_0)}
+ \leq d_{\mathrm{LG},\mu_0}(\mu,\nu).
+\]
+Thus admissible Cauchy nets are cylinder-Cauchy.  Their finite-stage limits
+are compatible and are the projections of their unique global endpoint; by
+the generating assumption, equality of all those limits is equivalent to
+equality in the completed metric quotient.
+\end{proof}
+
+The Cauchy structure depends only on the reference measure class.  Indeed, if
+$\nu_0\sim\mu_0$, then changing reference subtracts the same fixed
+$\log(d\nu_0/d\mu_0)$ from every log-likelihood difference, the two $L^1$
+terms agree by change of measure, and equivalent probability laws induce the
+same convergence-in-measure uniformity on $L^0$.
+
+Projection energy and two-sided Orlicz bounds remain useful endpoint
+criteria, but they do not themselves define this completion.  On an orbit
+with pairwise equivalence--singularity dichotomy, a uniform bound
+$\sup_F E_F(\mu,\mu_0)<\infty$ forces an already realized law $\mu$ into the
+class of $\mu_0$.  Without the dichotomy, the two-sided conditions
+\eqref{sec:ng-forward-ui}--\eqref{sec:ng-reverse-ui} do the same, while
+\cref{sec:ng-orlicz-hellinger-lsc} passes fixed Orlicz bounds through
+finite-stage Hellinger limits.  None of these criteria, without a Cauchy
+metric and a closed realization space, justifies calling a selected quotient
+of cylinder threads a completion.
+
+\subsection{An abstract projective Feldman--H\'ajek theorem}
+\label{sec:ng-abstract-projective-fh}
+
+\begin{theorem}[Conditional projective Feldman--H\'ajek principle]
+\label{sec:ng-projective-fh-theorem}
+Suppose that every finite joint projection of every pair in
+$\mathcal O(\mu_0)$ is equivalent, the tests generate $\mathcal A$, and the
+orbit has the pairwise dichotomy
+\[
+ \mu_g\sim\mu_k\quad\text{or}\quad\mu_g\perp\mu_k,
+ \qquad \mu_g:=g_\#\mu_0.
+\]
+Then
+\begin{equation}
+ \mu_g\sim\mu_k
+ \quad\Longleftrightarrow\quad
+ \sup_F E_F(\mu_g,\mu_k)<\infty,
+ \qquad
+ \mu_g\perp\mu_k
+ \quad\Longleftrightarrow\quad
+ E_F(\mu_g,\mu_k)\uparrow\infty.
+ \label{sec:ng-abstract-fh-dichotomy}
+\end{equation}
+If the dichotomy is absent, the first equivalence must be replaced by the
+two-sided UI conditions \eqref{sec:ng-forward-ui}--\eqref{sec:ng-reverse-ui}.
+\end{theorem}
+
+\begin{proof}
+The projection affinity theorem identifies bounded energy with positive
+global affinity.  Under the dichotomy, positive affinity rules out the
+singular branch and therefore forces equivalence.  Divergence of the energy
+is exactly \eqref{sec:ng-singularity-explosion}.  The final statement is the
+two-sided likelihood criterion.
+\end{proof}
+
+The theorem is deliberately stated on the law side.  It produces a finite
+energy component before any coordinates on $\mathcal G$ are chosen.  An
+operator ideal can appear only after the energy has been calculated in a
+particular chart.
+
+\subsection{Hilbert information charts as a consequence}
+\label{sec:ng-hilbert-chart}
+
+Suppose now that finite stages admit Hilbert coordinates.  Let
+$(\mathsf H_F)_F$ be a directed system with isometric inclusions
+\[
+ \iota_{FF'}:\mathsf H_F\longrightarrow\mathsf H_{F'},
+ \qquad F\subset F',
+\]
+and orthogonal bonding projections
+$\pi_{F'F}=\iota_{FF'}^*:\mathsf H_{F'}\to\mathsf H_F$, and let
+$\Gamma_F(g,k)\in\mathsf H_F$ be compatible pair coordinates.  Assume
+\[
+ \pi_{F'F}\Gamma_{F'}(g,k)=\Gamma_F(g,k),
+ \qquad F\subset F'.
+\]
+
+\begin{theorem}[Information-chart completion]
+\label{sec:ng-information-chart-theorem}
+Assume the hypotheses of the conditional projective theorem.  If, on the
+orbit region under consideration, constants $0<c\le C<\infty$ satisfy
+\begin{equation}
+ c\|\Gamma_F(g,k)\|_{\mathsf H_F}^2
+ \le E_F(\mu_g,\mu_k)
+ \le C\|\Gamma_F(g,k)\|_{\mathsf H_F}^2
+ \label{sec:ng-chart-energy-comparison}
+\end{equation}
+uniformly in $F$, then
+\begin{equation}
+ \mu_g\sim\mu_k
+ \quad\Longleftrightarrow\quad
+ \sup_F\|\Gamma_F(g,k)\|_{\mathsf H_F}<\infty.
+ \label{sec:ng-chart-finite-length}
+\end{equation}
+Whenever these equivalent conditions hold, the compatible net converges in
+the Hilbert direct-limit completion $\mathsf H_{\mathrm{info}}$.  Indeed,
+suppressing $(g,k)$, compatibility and orthogonality give
+\begin{equation}
+ \|\Gamma_{F'}-\iota_{FF'}\Gamma_F\|_{\mathsf H_{F'}}^2
+ =\|\Gamma_{F'}\|_{\mathsf H_{F'}}^2
+  -\|\Gamma_F\|_{\mathsf H_F}^2,
+ \qquad F\subset F'.
+ \label{sec:ng-chart-pythagoras}
+\end{equation}
+Thus the squared norms form a bounded increasing net with limit
+$L:=\sup_F\|\Gamma_F\|_{\mathsf H_F}^2$.  If $F_0\subset F$, $F_0\subset G$,
+and $H\supset F\cup G$, then
+\[
+ \|\iota_{FH}\Gamma_F-\iota_{GH}\Gamma_G\|_{\mathsf H_H}
+ \leq
+ \sqrt{\|\Gamma_H\|_{\mathsf H_H}^2-\|\Gamma_F\|_{\mathsf H_F}^2}
+ +\sqrt{\|\Gamma_H\|_{\mathsf H_H}^2-\|\Gamma_G\|_{\mathsf H_G}^2}
+ \leq 2\sqrt{L-\|\Gamma_{F_0}\|_{\mathsf H_{F_0}}^2},
+\]
+which tends to zero as $F_0$ increases.  Hence the net is Cauchy and converges
+in $\mathsf H_{\mathrm{info}}$.  If, more strongly,
+\begin{equation}
+ c\|\Gamma_{F'}-\iota_{FF'}\Gamma_F\|_{\mathsf H_{F'}}^2
+ \le E_{F'}-E_F
+ \le C\|\Gamma_{F'}-\iota_{FF'}\Gamma_F\|_{\mathsf H_{F'}}^2,
+ \qquad F\subset F',
+ \label{sec:ng-shell-comparison}
+\end{equation}
+then projection energy and Hilbert shell energy define the same Cauchy
+structure on the finite-stage core.
+\end{theorem}
+
+The Gaussian Hilbert--Schmidt space and the weighted $\ell^2$ spaces of
+product models are instances of $\mathsf H_{\mathrm{info}}$; they are not
+inputs to the theorem.  In a non-Gaussian matrix chart, the corresponding
+completion is determined by the Fisher operator computed in the preceding
+section.
+
+One standard route to \eqref{sec:ng-shell-comparison} is quadratic-mean
+differentiability.  For a differentiable path $t\mapsto\mu_t$ with score
+$S_t\in L^2_0(\mu_t)$, the score visible to $\mathcal A_F$ is
+\[
+ S_{t,F}=\E_{\mu_t}[S_t\mid\mathcal A_F].
+\]
+Orthogonal projection in $L^2(\mu_t)$ gives
+\begin{equation}
+ \|S_{t,F'}\|_2^2-\|S_{t,F}\|_2^2
+ =\|S_{t,F'}-S_{t,F}\|_2^2,
+ \qquad F\subset F'.
+ \label{sec:ng-fisher-pythagoras}
+\end{equation}
+This identifies the infinitesimal information shell.  Uniform DQM remainder
+bounds are still required to pass from
+\eqref{sec:ng-fisher-pythagoras} to the finite Hellinger comparison
+\eqref{sec:ng-shell-comparison}; local Fisher calculus by itself does not
+close a global measure class.
+
+\subsection{Changing the finite test system}
+\label{sec:ng-changing-tests}
+
+The cylinder uniformity is intrinsic provided two generating test systems
+compare cofinally.  If $p_F$ and $q_G$ are their finite-stage gauges, assume that for
+every finite $F$ and every $\varepsilon>0$ there are a finite $G$ and
+$\delta>0$ such that
+\[
+ q_G(\mu,\nu)<\delta
+ \quad\Longrightarrow\quad
+ p_F(\mu,\nu)<\varepsilon,
+\]
+and assume the converse implication with $p$ and $q$ interchanged.  Then the
+two families generate the same projective uniformity.  The admissible metric
+\eqref{sec:ng-likelihood-graph-metric} depends only on the reference law and
+the global Radon--Nikodym graph, not on the generating test system.  Thus, for
+the same core, both test systems have exactly the same admissibly Cauchy nets
+and the same completion.  If energy or two-sided UI blocks are used to verify
+endpoint equivalence, cofinality of those blocks transfers that verification
+between the two systems as well.
+
+This is the nonstatistical content of finite-experiment comparison.  A finite
+net reduces a compact menu of tests to finitely many representatives; a
+pullback compares those representatives; and the triangle inequality returns
+to the full menu.  Uniform integrability supplies the closed realization of
+the limiting likelihoods.  No Markov-kernel quotient is needed, and the null
+ideal of the original sample space is retained.

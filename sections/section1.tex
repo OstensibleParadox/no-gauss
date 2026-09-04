@@ -1,0 +1,166 @@
+\section{The Hilbert--Schmidt paradox beyond Gaussian symmetry}
+\label{sec:ng-introduction}
+
+The Feldman--H\'ajek theorem assigns a remarkably rigid boundary to a
+Gaussian perturbation.  After the Cameron--Martin spaces have been
+identified, equivalence of two Gaussian laws is decided by a
+Hilbert--Schmidt condition on their relative covariance; mean displacement
+is decided by the Cameron--Martin norm
+\cite{feldman1958equivalence,hajek1958property,bogachev1998gaussian}.
+In a whitened chart this takes the familiar form
+\[
+  P\in\mathcal S_2(H),
+  \qquad
+  h\in H.
+\]
+At first sight, the class \(\mathcal S_2\) appears to be a specifically
+Gaussian accident.  For a non-Gaussian product law there is no covariance
+operator from which the same ideal can simply be read off, and an arbitrary
+linear change of coordinates destroys the product decomposition on which
+Kakutani's theorem acts.
+
+The wrong response is to guess a replacement ideal.  The more invariant
+question is instead:
+\[
+ \textit{which topology on a transformation orbit keeps measure class
+ stable under completion?}
+\]
+The operator ideal, when one exists, should be the expression of that
+topology in a particular local chart.  From this point of view the Gaussian
+\(\mathcal S_2\) condition is an answer in coordinates, not the definition
+of the problem.
+
+\subsection{The symmetry hidden by covariance notation}
+
+Let a group \(G\) act measurably on a standard Borel space \(X\), and fix a
+probability measure \(\mu\).  Two subgroups have different roles:
+\[
+ \operatorname{Stab}(\mu)
+ :=\{g\in G:g_\#\mu=\mu\},
+ \qquad
+ \operatorname{QStab}(\mu)
+ :=\{g\in G:g_\#\mu\sim\mu\}.
+\]
+The orbit map \(g\mapsto g_\#\mu\) is constant on the right cosets of
+\(\operatorname{Stab}(\mu)\), since
+\[
+ (gh)_\#\mu=g_\#(h_\#\mu)=g_\#\mu
+ \quad\text{for }h\in\operatorname{Stab}(\mu).
+\]
+Thus the law orbit is naturally parametrized by
+\(G/\operatorname{Stab}(\mu)\), whereas the finite-distance branch sought
+in a Feldman--H\'ajek-type theorem is
+\(\operatorname{QStab}(\mu)/\operatorname{Stab}(\mu)\).
+Confusing \(G\) with this quotient creates spurious directions and leads to
+false necessity statements.
+
+For the standard Gaussian law in \(\mathbb R^d\), the linear stabilizer is
+the full orthogonal group.  Its Lie algebra consists of all skew-symmetric
+matrices, so infinitesimal rotations are invisible to likelihood.  The
+observable covariance direction is the quotient
+\[
+ \mathfrak{gl}_d/\mathfrak o_d\simeq\operatorname{Sym}_d.
+\]
+In fixed dimension this quotient is already complete.  On a separable
+Hilbert space, however, the directed union over finite coordinate subspaces
+completes in the Gaussian Fisher norm to the self-adjoint Hilbert--Schmidt
+class.  This is the symmetry mechanism behind the classical coordinate
+\(\mathcal S_2\).
+
+For a generic non-Gaussian i.i.d. law, it is inaccurate to say that the
+stabilizer disappears.  Coordinate permutations remain exact symmetries,
+and an even one-dimensional density also permits sign changes.  What
+typically disappears is the connected, or Lie, part of the stabilizer.
+The remaining symmetry group is often discrete; hence its Lie algebra is
+zero.  Infinitesimal rotations that were null directions in the Gaussian
+model then acquire positive Fisher cost.  The finite-dimensional Fisher
+operator computed below makes this collapse quantitative: its
+skew-symmetric eigenvalue is zero at the Gaussian density and positive away
+from it under the stated regularity assumptions.
+
+This symmetry calculation explains a \emph{local} change of geometry.  It
+does not by itself establish a global quasi-invariance theorem.  In
+particular, even a coercive Fisher form at the identity does not imply
+\[
+ T_\#\mu\sim\mu
+ \quad\Longleftrightarrow\quad
+ T-I\in\mathcal S_2.
+\]
+The displayed equivalence is already false without taking the exact
+stabilizer into account: an infinite coordinate permutation can preserve an
+i.i.d. law although its difference from the identity is not
+Hilbert--Schmidt.  The invariant candidate, if valid for a specified model,
+must have the form
+\[
+ T_\#\mu\sim\mu
+ \quad\Longleftrightarrow\quad
+ \text{the coset }T\operatorname{Stab}(\mu)
+ \text{ has finite information length}.
+\]
+Only after that length has been computed in a uniformly regular chart may it
+reduce to a condition such as
+\[
+ \text{there exists }Q\in\operatorname{Stab}(\mu)
+ \text{ such that }TQ-I\in\mathcal S_2.
+\]
+Even then this is a description of one finite-distance component, not a
+globally finite metric on all of \(G\).
+
+\subsection{Why the endpoint problem is harder than the tangent problem}
+
+Four logically separate issues intervene between a Fisher calculation and
+an endpoint equivalence statement.
+
+\begin{enumerate}[label=(\roman*)]
+\item An infinite matrix must define a measurable transformation on the
+  space carrying the product law, and its inverse must be meaningful on the
+  same measurable model.
+
+\item General linear mixing destroys independent blocks.  Consequently the
+  exact product dichotomy is no longer available merely because the
+  reference coordinates were initially independent.
+
+\item A quadratic expansion of finite-dimensional Hellinger affinity must
+  be uniform as the projection rank grows.  Pointwise differentiability in
+  each dimension does not prevent information from escaping through the
+  tail.
+
+\item Projected likelihood ratios form martingales, but convergence of
+  their finite-dimensional laws does not by itself preserve a global
+  Radon--Nikod\'ym derivative.  One needs an equivalence--singularity
+  dichotomy or two-sided uniform integrability to close the likelihood and
+  reciprocal-likelihood graphs.
+\end{enumerate}
+
+These are global completion questions.  For the regular even i.i.d.
+density class specified in \cref{eq:ng-iid-assumptions}, this paper resolves
+all four and proves the arbitrary-mixing criterion
+\cref{thm:ng-iid-endpoint}.  The density assumptions are explicit; the
+result does not assert the same criterion for every non-Gaussian law.
+
+\subsection{Organization and scope}
+
+The argument proceeds in five stages.  The present section formulates the
+apparent conflict between the universal Gaussian threshold and the
+law-dependent non-Gaussian geometry.  The next section reconstructs the
+Gaussian theorem backwards: first as an affine orbit modulo its orthogonal
+stabilizer, then as a Fisher completion, and finally as the classical
+Feldman--H\'ajek endpoint statement.
+
+The third section studies a fixed i.i.d. density.  After the exact block
+criteria and the full finite-matrix Fisher spectrum, it proves a
+dimension-free nonlinear Hellinger comparison.  Tail cumulant rigidity,
+a signed-permutation matching argument, and two-sided likelihood closure
+then give the arbitrary-mixing endpoint theorem under
+\cref{eq:ng-iid-assumptions}.
+
+The fourth section removes the statistical coordinates from the argument.
+It builds a projective uniformity from finite tests and separates it from a
+complete likelihood-graph metric on each reference measure class.  The
+finite tests identify points, the Hellinger-energy net diagnoses the global
+class relation, and the likelihood graph supplies the class-preserving
+completion.  The fifth section returns to geometry and identifies the
+kernel of the Fisher form with the Lie algebra of the exact stabilizer.
+Gaussian covariance geometry then appears as the maximally symmetric case,
+not as the template from which every non-Gaussian model must inherit an
+operator ideal.

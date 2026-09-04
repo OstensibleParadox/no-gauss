@@ -1,0 +1,339 @@
+\section{The quotient geometry of visible perturbations}
+\label{sec:ng-quotient-geometry}
+
+The projection construction has a geometric interpretation.  A probability
+law does not remember the automorphism used to produce it; it remembers only
+the automorphism modulo the exact symmetries of the reference law.  The
+Fisher form is the infinitesimal metric of this quotient, while the
+projection energy determines which finite-length directions actually close
+to equivalent laws.  These statements separate a local symmetry calculation
+from the global measure-class problem.
+
+\subsection{The right quotient by the exact stabilizer}
+\label{sec:ng-right-quotient}
+
+Let $\mathcal G$ act on $(X,\mathcal A)$ by bimeasurable automorphisms, and
+fix a probability law $\mu$.  Its exact stabilizer is
+\begin{equation}
+ H_\mu:=\operatorname{Stab}_{\mathcal G}(\mu)
+ :=\{h\in\mathcal G:h_\#\mu=\mu\}.
+ \label{sec:ng-exact-stabilizer}
+\end{equation}
+The orbit map $\pi_\mu(g)=g_\#\mu$ satisfies
+$\pi_\mu(gh)=\pi_\mu(g)$ for $h\in H_\mu$.  Conversely,
+$g_1{}_{\#}\mu=g_2{}_{\#}\mu$ implies
+$g_2^{-1}g_1\in H_\mu$.  Therefore
+\begin{equation}
+ \mathcal G/H_\mu\longrightarrow\mathcal O(\mu),
+ \qquad
+ gH_\mu\longmapsto g_\#\mu,
+ \label{sec:ng-orbit-identification}
+\end{equation}
+is a bijection onto the orbit.  It is a right quotient, not a left quotient:
+precomposition by a symmetry of the source law leaves the pushforward
+unchanged.
+
+The exact stabilizer should not be confused with the measure-class
+stabilizer
+\[
+ \mathcal G_{\mathrm{qi}}(\mu)
+ :=\{g\in\mathcal G:g_\#\mu\sim\mu\}.
+\]
+The former identifies parameters that produce the same law.  The latter is
+the finite-information component to be characterized.  A Feldman--H\'ajek
+theorem computes $\mathcal G_{\mathrm{qi}}(\mu)/H_\mu$ inside
+$\mathcal G/H_\mu$; it must not erase $H_\mu$ by demanding proximity to the
+identity before passing to the quotient.
+
+\subsection{The root-likelihood orbit}
+\label{sec:ng-root-likelihood-orbit}
+
+For $g\in\mathcal G_{\mathrm{qi}}(\mu)$ define
+\begin{equation}
+ \mathcal R_\mu(gH_\mu)
+ :=\sqrt{\frac{d(g_\#\mu)}{d\mu}}
+ \in L^2(\mu).
+ \label{sec:ng-root-map}
+\end{equation}
+This map is well defined and takes values in the positive part of the unit
+sphere.  It is injective because equality of the square-root densities is
+equality of laws, hence equality of right cosets.  Moreover,
+\begin{equation}
+ \|\mathcal R_\mu(gH_\mu)-\mathcal R_\mu(kH_\mu)\|_{L^2(\mu)}^2
+ =2\{1-\operatorname{Aff}(g_\#\mu,k_\#\mu)\}.
+ \label{sec:ng-root-hellinger}
+\end{equation}
+Thus the Hellinger geometry is an ordinary Hilbert geometry after embedding
+the quasi-invariant quotient orbit by square-root likelihoods.  The projection
+energies of the preceding section are finite-observation exhaustions of this
+orbit.
+
+The image of \eqref{sec:ng-root-map} need not be closed in the unit sphere.
+A strong $L^2(\mu)$ limit $r$ of nonnegative unit roots still defines the
+honest probability law $r^2\mu$, so countable additivity is not lost at this
+stage.  It can nevertheless lose the reverse Radon--Nikodym direction when
+$r$ vanishes on a set of positive $\mu$-measure, and the resulting law need
+not be produced by an automorphism.  Failure of countable-additive
+realization is a separate danger for a merely projective marginal thread,
+before it has been embedded in this $L^2$ space.  Orbit closedness and
+two-sided likelihood uniform integrability are therefore global hypotheses,
+not consequences of the quotient notation.
+
+\subsection{Fisher information and the tangent stabilizer}
+\label{sec:ng-fisher-kernel}
+
+Assume now that the quasi-invariant subgroup
+$\mathcal G_{\mathrm{qi}}(\mu)$ carries a Lie structure near $H_\mu$, or that
+we have chosen a restricted Lie subgroup of it on which the following
+derivatives are defined, and assume that $H_\mu$ is a (split, in the
+infinite-dimensional case) Lie subgroup.  Let $\mathfrak g_{\mathrm{qi}}$
+denote the resulting Lie algebra.  Suppose that the root-likelihood orbit map
+is differentiable in quadratic mean at the identity: for
+$A\in\mathfrak g_{\mathrm{qi}}$, the path
+$t\mapsto\exp(tA)_\#\mu$ has score $S_A\in L^2_0(\mu)$, and
+$A\mapsto S_A$ is the resulting linear differential.  Define
+\begin{equation}
+ \mathcal I_\mu(A,B):=\E_\mu[S_AS_B].
+ \label{sec:ng-fisher-bilinear}
+\end{equation}
+Differentiating the root likelihood gives
+\begin{equation}
+ D\mathcal R_\mu(eH_\mu)[A]
+ =\frac12S_A,
+ \qquad
+ \|D\mathcal R_\mu(eH_\mu)[A]\|_2^2
+ =\frac14\mathcal I_\mu(A,A).
+ \label{sec:ng-root-derivative}
+\end{equation}
+
+\begin{proposition}[Fisher kernel and exact symmetries]
+\label{sec:ng-fisher-kernel-proposition}
+Whenever the above DQM derivatives exist,
+\begin{equation}
+ \operatorname{Lie}(H_\mu)\subseteq\ker\mathcal I_\mu.
+ \label{sec:ng-stabilizer-kernel-inclusion}
+\end{equation}
+If the induced root-likelihood map
+$\mathcal G_{\mathrm{qi}}(\mu)/H_\mu\to L^2(\mu)$ is an immersion at the
+identity coset---the differential form of local identifiability---then
+equality holds:
+\begin{equation}
+ \ker\mathcal I_\mu=\operatorname{Lie}(H_\mu).
+ \label{sec:ng-stabilizer-kernel-equality}
+\end{equation}
+In that case $\mathcal I_\mu$ descends to a positive definite quadratic form
+on $\mathfrak g_{\mathrm{qi}}/\operatorname{Lie}(H_\mu)$.
+\end{proposition}
+
+\begin{proof}
+If $A\in\operatorname{Lie}(H_\mu)$, the path
+$\exp(tA)_\#\mu$ is constant, so its score is zero.  This proves the
+inclusion.  If the quotient orbit map is an immersion, a zero score means
+that the tangent class of $A$ in
+$\mathfrak g_{\mathrm{qi}}/\operatorname{Lie}(H_\mu)$ is zero, proving the reverse
+inclusion.
+\end{proof}
+
+The inclusion is automatic; equality is not.  A parametrization can be
+locally identifiable while having a singular differential, and a DQM score
+can vanish along a higher-order but nonconstant path.  The immersion
+assumption rules out precisely these pathologies.
+
+\subsection{Gaussian symmetry after whitening}
+\label{sec:ng-gaussian-symmetry}
+
+For the standard Gaussian law in $\mathbb R^n$, the exact linear stabilizer
+is $O(n)$ and the law orbit is
+\[
+ \mathrm{GL}(n)/O(n).
+\]
+If $T_t=I+tA$, direct differentiation gives
+\[
+ S_A(x)=x^\top\operatorname{Sym}(A)x-\operatorname{tr}A,
+ \qquad
+ \mathcal I_\gamma(A,A)=2\|\operatorname{Sym}(A)\|_F^2.
+\]
+Hence
+\[
+ \ker\mathcal I_\gamma=\mathfrak{so}(n)
+ =\operatorname{Lie}(O(n)),
+ \qquad
+ \mathfrak{gl}(n)/\mathfrak{so}(n)\simeq\operatorname{Sym}(n).
+\]
+The skew directions are invisible because they are tangent to an exact
+symmetry orbit, not because their Hilbert--Schmidt norm vanishes.
+
+For a positive injective Gaussian covariance $C$, the unwhitened invisible
+condition for a transformation tangent $A$ is
+\begin{equation}
+ AC+CA^*=0.
+ \label{sec:ng-c-skew-condition}
+\end{equation}
+In finite dimensions, whitening gives $B=C^{-1/2}AC^{1/2}$, and
+\eqref{sec:ng-c-skew-condition} becomes $B+B^*=0$.  The same statement holds
+in infinite dimensions for admissible tangents satisfying
+$A\operatorname{Ran}(C^{1/2})\subseteq\operatorname{Ran}(C^{1/2})$ for which
+$C^{-1/2}AC^{1/2}$ extends to a bounded operator on the whitened
+Cameron--Martin source.  Thus ``skew'' means skew in the whitened information
+metric; ordinary skew-adjointness in ambient coordinates is generally wrong.
+
+In the restricted infinite-dimensional Gaussian group, the same quotient
+calculation leaves the symmetric Hilbert--Schmidt tangent directions (and
+the Cameron--Martin directions when translations are included).  The global
+Gaussian equivalence theorem is stronger: determinant identities and the
+Gaussian dichotomy integrate this local quotient metric all the way to an
+endpoint criterion.  That integration is additional structure, not a formal
+consequence of $O(H)$ being infinite dimensional.
+
+\subsection{Generic product laws recover the skew directions}
+\label{sec:ng-nongaussian-symmetry}
+
+Let $\mu_n=f^{\otimes n}$, where $f(x)=Z^{-1}e^{-V(x)}$ is even, centered,
+has variance one, and satisfies the integration-by-parts and moment
+assumptions of the preceding section.  Put
+\[
+ s=V',
+ \qquad
+ J=\E[s(X)^2],
+ \qquad
+ \kappa=\E[(s(X)X-1)^2].
+\]
+For the path $I+tA$, decompose
+\[
+ A=D+S_0+K,
+ \quad
+ D=\operatorname{diag}A,
+ \quad
+ S_0=\frac{A+A^*}{2}-D,
+ \quad
+ K=\frac{A-A^*}{2}.
+\]
+The Fisher form is represented by an operator diagonal on the orthogonal
+decomposition
+$\mathfrak d_n\oplus\operatorname{Sym}_{0,n}\oplus\mathfrak{so}(n)$:
+\begin{equation}
+ \mathscr I_f
+ =\kappa P_{\mathfrak d_n}
+ +(J+1)P_{\operatorname{Sym}_{0,n}}
+ +(J-1)P_{\mathfrak{so}(n)}.
+ \label{sec:ng-fisher-spectrum-geometry}
+\end{equation}
+Equivalently,
+\[
+ \mathcal I_f(A,A)
+ =\kappa\|D\|_F^2+(J+1)\|S_0\|_F^2+(J-1)\|K\|_F^2.
+\]
+The three eigenvalues have multiplicities
+$n$, $n(n-1)/2$, and $n(n-1)/2$, respectively.
+
+The information inequality gives $J\ge1$, with equality, under the stated
+regularity, only for the Gaussian density.  Thus the Gaussian point is the
+spectral degeneracy $J-1=0$.  For a genuinely non-Gaussian density with
+$J>1$ and $\kappa>0$, the Fisher form sees the entire matrix tangent space and
+is dimension-free equivalent to the Frobenius norm:
+\begin{equation}
+ \min\{\kappa,J-1\}\|A\|_F^2
+ \le\mathcal I_f(A,A)
+ \le\max\{\kappa,J+1\}\|A\|_F^2.
+ \label{sec:ng-full-fisher-ellipticity}
+\end{equation}
+
+This does not mean that the exact stabilizer is trivial.  An i.i.d.\ product
+law is unchanged by coordinate permutations; if $f$ is even, it is also
+unchanged by coordinatewise sign changes.  In each fixed finite-dimensional
+block, the generic non-Gaussian linear stabilizer is a finite
+signed-permutation group and hence has zero Lie algebra, consistently with
+\eqref{sec:ng-full-fisher-ellipticity}.  The full infinite permutation group
+need not be discrete in every operator topology, but it supplies no smooth
+mixing direction in the restricted Lie chart used here.  It remains essential
+globally: an infinite permutation can preserve the law exactly while $Q-I$
+is not Hilbert--Schmidt.  Any endpoint criterion written as
+$T-I\in\mathcal S_2$ before quotienting by $H_\mu$ is therefore false even in
+the i.i.d.\ setting.
+
+\subsection{An exact block-rotation model}
+\label{sec:ng-block-rotations}
+
+The distinction between tangent visibility and global quotient geometry is
+already exact for independent two-dimensional blocks.  Let
+$p=f\otimes f$ and let $R_\theta$ be planar rotation by angle $\theta$.
+Define the rotation stabilizer and one-block energy by
+\[
+ H_{\mathrm{rot}}
+ :=\{\theta\in\mathbb R/2\pi\mathbb Z:(R_\theta)_\#p=p\},
+ \qquad
+ e(\theta):=-2\log\operatorname{Aff}((R_\theta)_\#p,p).
+\]
+For a generic even non-Gaussian $f$, $H_{\mathrm{rot}}$ is the four-element
+subgroup generated by $\pi/2$; special densities may have a larger
+stabilizer.  On
+$X=(\mathbb R^2)^{\mathbb N}$ consider
+\[
+ \mu=p^{\otimes\mathbb N},
+ \qquad
+ T_\theta=\bigoplus_{j\ge1}R_{\theta_j}.
+\]
+Independence and the product dichotomy give the exact endpoint statement
+\begin{equation}
+ (T_\theta)_\#\mu\sim\mu
+ \quad\Longleftrightarrow\quad
+ \sum_{j\ge1}e(\theta_j)<\infty.
+ \label{sec:ng-block-rotation-endpoint}
+\end{equation}
+Near the identity coset, DQM and
+\eqref{sec:ng-fisher-spectrum-geometry} yield
+\begin{equation}
+ e(\theta)=\frac{J-1}{2}\theta^2+o(\theta^2).
+ \label{sec:ng-block-rotation-expansion}
+\end{equation}
+If the zeros of $e$ are exactly $H_{\mathrm{rot}}$ and the orbit is proper
+away from those zeros, then \eqref{sec:ng-block-rotation-endpoint} is
+equivalent to
+\begin{equation}
+ \bigl(\operatorname{dist}(\theta_j,H_{\mathrm{rot}})\bigr)_{j\ge1}
+ \in\ell^2.
+ \label{sec:ng-block-rotation-quotient-l2}
+\end{equation}
+This is a complete non-Gaussian Feldman--H\'ajek criterion for the block
+model.  It is an $\ell^2$ condition on the quotient coordinates, not on the
+chosen representatives.  For Gaussian $f$, every rotation belongs to the
+stabilizer, $e\equiv0$, and all these directions disappear from the quotient.
+
+\subsection{What symmetry does and does not explain}
+\label{sec:ng-symmetry-conclusion}
+
+Gaussian measure is therefore a high-symmetry, spectrally degenerate member
+of the general picture.  Its infinite-dimensional orthogonal stabilizer
+removes every whitened skew direction, whereas a generic non-Gaussian product
+law has only signed-permutation symmetries in each finite linear block and
+assigns positive Fisher cost to infinitesimal rotations.  This explains why
+the Gaussian coordinate expression uses only the symmetric
+Hilbert--Schmidt class and why the non-Gaussian tangent completion can involve
+the full Hilbert--Schmidt class.
+
+Stabilizer dimension alone does not prove a global equivalence theorem.  It
+determines the kernel of the local Fisher form under an immersion hypothesis,
+but it does not provide uniform nonlinear Hellinger estimates, projective
+realization, two-sided likelihood uniform integrability, orbit closedness, or
+an equivalence--singularity dichotomy.  Those are exactly the additional
+ingredients isolated by the projection-increment construction.  The robust
+statement is therefore hierarchical:
+\[
+ \boxed{\begin{gathered}
+ \text{exact stabilizer}
+ \ \longrightarrow\
+ \text{quotient Fisher geometry}\\
+ \text{quotient Fisher geometry}
+ \ \longrightarrow\
+ \text{projection-energy completion}
+ \ \longrightarrow\
+ \text{global measure-class criterion}
+ \end{gathered}}
+\]
+The Gaussian theorem realizes every arrow.  For the even i.i.d. density
+class in \cref{eq:ng-iid-assumptions}, \cref{thm:ng-iid-endpoint} realizes
+them for arbitrary bounded invertible linear mixing: dimension-free
+Hellinger coercivity and tail cumulant rigidity give necessity, while
+finite-dimensional entropy estimates and measurable Radon--Nikodym closure
+give sufficiency.  The Fisher spectrum describes the local geometry;
+these separate arguments establish the endpoint.

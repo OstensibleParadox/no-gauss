@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}   % provides \mathscr
+\usepackage{aliascnt}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\setlength{\emergencystretch}{2em}
+\numberwithin{equation}{section}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\newaliascnt{convention}{theorem}
+\newtheorem{convention}[convention]{Convention}
+\aliascntresetthe{convention}
+\newaliascnt{hypothesis}{theorem}
+\newtheorem{hypothesis}[hypothesis]{Hypothesis}
+\aliascntresetthe{hypothesis}
+\crefname{hypothesis}{hypothesis}{hypotheses}
+\Crefname{hypothesis}{Hypothesis}{Hypotheses}
+\theoremstyle{remark}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+% --- paper macros ----------------------------------------------------
+\newcommand{\E}{\mathbb{E}}          % expectation operator
+% Wick-centered Gaussian quadratic form \GaussianQuad{W}{S}, rendered as
+% the second Wiener integral I_2(S) of the isonormal process W.
+% First argument W is suppressed in this rendering; keep it in case the
+% notation is later changed to carry a W-dependence.
+\newcommand{\GaussianQuad}[2]{I_2(#2)}
+% ---------------------------------------------------------------------
+
+\title{placeholder}
+\author{}
+\date{}
+\hypersetup{
+  pdftitle={placeholder},
+  pdfauthor={placeholder}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+placeholder
+\end{abstract}
+
+\input{section1.tex}
+\input{section2.tex}
+\input{section3.tex}
+\input{section4.tex}
+\input{section5.tex}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
