@@ -1,18 +1,20 @@
 \section{Finite-Dimensional Nonlinear Hellinger Coercivity}
 \label{sec:finite-coercivity}
 
-We next convert the one-dimensional Fourier obstruction into a matrix norm.
-The argument has two layers.  The Fisher operator identifies the infinitesimal
-geometry, while finite Fourier sums provide bounded dual witnesses with norms
-that do not grow with the ambient dimension.  The resulting local estimate is
-then globalized modulo the discrete stabilizer in
+We now convert the one-dimensional Fourier obstruction into a matrix norm.
+The argument has two layers.
+The Fisher operator identifies the infinitesimal geometry.
+Finite Fourier sums provide bounded dual witnesses.
+Those norms do not grow with the ambient dimension.
+The resulting local estimate is then globalized modulo the discrete
+stabilizer in
 \cref{thm:ng-global-coercivity}.
 
 \subsection{Fourier-to-Frobenius control and the matrix Fisher operator}
 \label{sec:ng-fisher-operator}
 
-Let $f$ be a probability density and write $g=\sqrt f$.  In this
-subsection we assume
+Let $f$ be a probability density and write $g=\sqrt f$.
+In this subsection we assume
 \begin{equation}
  \begin{gathered}
  f>0\quad\text{Lebesgue-almost everywhere},\qquad
@@ -22,7 +24,8 @@ subsection we assume
  \end{gathered}
  \label{eq:ng-fisher-regularity}
 \end{equation}
-The derivatives in these assumptions are weak derivatives.  Define the
+The derivatives in these assumptions are weak derivatives.
+Define the
 location score $s=-f'/f=-2g'/g$ almost everywhere, and put
 \begin{equation}
  \mathbb E s(X)=0,\qquad \mathbb E[Xs(X)]=1,\qquad
@@ -36,7 +39,8 @@ and
  \label{eq:ng-kappa}
 \end{equation}
 The two integration-by-parts identities in
-\eqref{eq:ng-score-moments} follow from these assumptions.  Indeed,
+\eqref{eq:ng-score-moments} follow from these assumptions.
+Indeed,
 $f'=2gg'$ belongs to $L^1$, and $xf'$ belongs to $L^1$ by
 Cauchy--Schwarz and the finite second moment.  Applying integration by
 parts first to a compactly supported cutoff and then to
@@ -73,12 +77,13 @@ $K=(A-A^{\mathsf T})/2$, then
  =\kappa\|D\|_F^2+(J+1)\|S_0\|_F^2+(J-1)\|K\|_F^2.
  \label{eq:ng-fisher-decomposition}
 \end{equation}
-The multiplicities are respectively
+Their multiplicities are respectively
 \begin{equation}
  n,\qquad n(n-1)/2,\qquad n(n-1)/2.
  \label{eq:ng-fisher-multiplicities}
 \end{equation}
-Moreover, $\kappa>0$ and $J\ge1$, with $J=1$ precisely for the
+Moreover, $\kappa>0$ and $J\ge1$.
+Here $J=1$ holds precisely for the
 standard Gaussian density.  Thus, for a non-Gaussian $f$,
 \begin{equation}
  \lambda_f\|A\|_F^2\le\mathcal I_f^{(n)}(A)
@@ -91,10 +96,11 @@ standard Gaussian density.  Thus, for a non-Gaussian $f$,
 \end{theorem}
 
 \begin{proof}
-The diagonal variables $d(X_i)$ are independent and centered.  Their
-covariances with every off-diagonal term $s(X_j)X_k$, $j\ne k$,
-vanish: after any shared coordinate is integrated out, the remaining
-factor has expectation $\mathbb E X$ or $\mathbb E s(X)$.
+The diagonal variables $d(X_i)$ are independent and centered.
+Their covariances with every off-diagonal term $s(X_j)X_k$, $j\ne k$,
+vanish.
+After any shared coordinate is integrated out, the remaining factor has
+expectation \(\mathbb E X\) or \(\mathbb E s(X)\).
 Two off-diagonal terms can have a nonzero covariance only when their
 ordered index pairs coincide or are reversed.  Those covariances are,
 respectively, $J$ and $(\mathbb E Xs(X))^2=1$.  Consequently
@@ -145,8 +151,8 @@ For a fixed real matrix $A$, the generator of $U_{\exp(tA)}$ is
  \qquad G_A\Omega_n=\tfrac12S_A\Omega_n.
  \label{eq:ng-half-density-generator}
 \end{equation}
-These identities hold in $L^2$.  To justify them under
-\eqref{eq:ng-fisher-regularity}, observe that
+These identities hold in $L^2$.
+To justify them under \eqref{eq:ng-fisher-regularity}, observe that
 $x_j\partial_i\Omega_n\in L^2$ for all $i,j$: the diagonal case
 uses $xg'\in L^2$, and the off-diagonal case uses $g'\in L^2$
 and $\mathbb E X^2=1$.  Cutoff and mollification approximate
@@ -191,11 +197,12 @@ $\|A_t^{-1}\|_{\mathrm{op}}\le(1-r)^{-1}$.
 \label{sec:ng-local-fourier-fisher}
 
 We now assume that $f$ is non-Gaussian in addition to
-\eqref{eq:ng-fisher-regularity}.  We use finite real Fourier sums:
-finite real linear combinations of $1$, $\cos(\xi x)$ and
-$\sin(\xi x)$, with real frequencies $\xi$.  Their frequencies may
-depend on $f$; once chosen, their finite set is independent of the
-matrix dimension.
+\eqref{eq:ng-fisher-regularity}.
+We use finite real Fourier sums.
+These are finite real linear combinations of $1$, $\cos(\xi x)$ and
+$\sin(\xi x)$ with real frequencies $\xi$.
+Their frequencies may depend on $f$.
+Once chosen, their finite set is independent of the matrix dimension.
 
 \begin{lemma}[Bounded Fourier functions with exact dual moments]
 \label{lem:ng-trig-duals}
@@ -268,8 +275,9 @@ $\mathbb E[r(X)d(X)]=\mathbb E[Xr'(X)]=1$.
 
 All diagonal/off-diagonal cross terms in $\mathbb E H_AS_B$ vanish
 by centering.  Coincident ordered off-diagonal pairs contribute
-$\mathbb E[ps]\mathbb E[qX]=1$; reversed pairs contribute
-$\mathbb E[pX]\mathbb E[qs]=0$.  This proves the pairing.
+$\mathbb E[ps]\mathbb E[qX]=1$.
+Reversed pairs contribute $\mathbb E[pX]\mathbb E[qs]=0$.
+This proves the pairing.
 For any centered $a,b\in L^2(f)$, independence gives
 \begin{equation}
  \left\|\sum_{i\ne j}A_{ij}a(X_i)b(X_j)\right\|_2
@@ -281,9 +289,10 @@ assertion.
 \end{proof}
 
 The next lemma records the uniform estimate needed to use these
-detectors along a matrix path.  Its proof gives the index contractions
-explicitly; in particular, it uses no fourth moment of $X$ or higher
-moment of the score.
+detectors along a matrix path.
+Its proof gives the index contractions explicitly.
+In particular, it uses no fourth moment of $X$ or higher moment of
+the score.
 
 \begin{lemma}[Generator bound for bounded coordinate detectors]
 \label{lem:ng-trig-generator-bound}
@@ -332,9 +341,13 @@ and a coefficient tensor $C$ is indexed by ordered tuples of
  \label{eq:ng-canonical-chaos-bound}
 \end{equation}
 In the square of this norm, a mixed term vanishes unless the two
-tuples have the same index set.  There are at most $m!$ matching
-permutations; Cauchy--Schwarz for the local moments and then for
-the coefficient arrays proves the bound.  We use it only for
+tuples have the same index set.
+There are at most $m!$ matching permutations.
+Cauchy--Schwarz for the local moments gives a bound on each index
+pattern.
+A second Cauchy--Schwarz step for the coefficient arrays proves the
+full bound.
+We use it only for
 $m\le4$.
 
 First consider $H_AS_B$.  For a vector $a$ and a zero-diagonal

@@ -2,9 +2,9 @@
 \label{sec:scope-and-sharpness}
 
 The hypotheses in \eqref{eq:ng-iid-assumptions} include centered,
-variance-normalized Laplace densities, despite their cusp at the
-origin.  They also include variance-normalized densities proportional
-to $e^{-x^4}$.  Symmetry is not needed in any step of the proof.
+variance-normalized Laplace densities, despite their cusp at the origin.
+They also include variance-normalized densities proportional to $e^{-x^4}$.
+Symmetry is not needed in any step of the proof.
 
 For a family allowing both asymmetry and heavy tails, take
 \begin{equation}
@@ -14,50 +14,57 @@ For a family allowing both asymmetry and heavy tails, take
  \qquad \nu>2,\quad \beta\in\mathbb R,
  \label{eq:ng-asymmetric-heavy-tail-example}
 \end{equation}
-and center and rescale to variance one.  The unstandardized location
-score is
+and center and rescale to variance one.
+The unstandardized location score is
 \[
  \widetilde s(y)=\frac{(\nu+1)y-\beta}{1+y^2}.
 \]
-Both $\widetilde s$ and $y\widetilde s$ are bounded.  The density
-is positive and smooth and has a finite second moment.  Centering and
-rescaling preserve finiteness of the location and scale information,
-so the standardized density satisfies \eqref{eq:ng-iid-assumptions}.
-For $2<\nu\le4$ its fourth moment is infinite.  When $\beta\ne0$,
-the two tails have unequal leading constants, so centering does not
-make the density even.  The case $\beta=0$ is a rescaled Student
-family.  These examples show that neither evenness nor a fourth
-moment is implicit in the theorem.
+Both \(\widetilde s\) and \(y\widetilde s\) are bounded.
+The density is positive and smooth.
+It has a finite second moment.
+Centering and rescaling preserve finiteness of the location and scale
+information.
+So the standardized density satisfies \eqref{eq:ng-iid-assumptions}.
+For \(2<\nu\le4\), its fourth moment is infinite.
+When \(\beta\ne0\), the two tails have unequal leading constants.
+So centering does not make the density even.
+The case \(\beta=0\) is a rescaled Student family.
+These examples show that neither evenness nor a fourth moment is implicit in
+the theorem.
 
 The Gamma examples used to illustrate the Fourier response belong to
-\cref{lem:ng-fourier-ode}; their centered densities still vanish on
-a half-line and therefore do not satisfy the full-support hypothesis
-of \cref{thm:ng-iid-endpoint}.  A nonzero Fourier response establishes
-local detection, and alone does not establish the general
-measure-equivalence theorem for a density with restricted support.
+\cref{lem:ng-fourier-ode}.
+Their centered densities still vanish on a half-line.
+So they do not satisfy the full-support hypothesis of
+\cref{thm:ng-iid-endpoint}.
+A nonzero Fourier response establishes local detection.
+Alone, this does not establish the general measure-equivalence theorem for a
+density with restricted support.
 
-The second moment has a specific role beyond differentiating one
-Fourier feature.  It makes every $\ell^2$ row into a convergent
-random series, supplies uniform integrability of squares of linear
-forms, and gives the Gaussian-residual compactness argument.  Thus
-the first-moment ODE result is stronger in its moment scope than the
-arbitrary-operator equivalence theorem.  Extending the latter to
-infinite-variance coordinates requires a different domain of
-admissible rows and a corresponding operator criterion.  For example,
-for symmetric nondegenerate $\alpha$-stable coordinates, $0<\alpha<2$,
-convergence of a row series requires
+The second moment has a specific role beyond differentiating one Fourier
+feature.
+It makes every \(\ell^2\) row into a convergent random series.
+It supplies uniform integrability of squares of linear forms.
+It gives the Gaussian-residual compactness argument.
+So the first-moment ODE result is stronger in its moment scope than the
+arbitrary-operator equivalence theorem.
+Extending the latter to infinite-variance coordinates requires a different
+domain of admissible rows and a corresponding operator criterion.
+For example, for symmetric nondegenerate \(\alpha\)-stable coordinates,
+\(0<\alpha<2\), convergence of a row series requires
 $\sum_j|a_j|^\alpha<\infty$: its partial-sum characteristic
 functions are
 \[
  \exp\left(-c|t|^\alpha\sum_{j\le n}|a_j|^\alpha\right).
 \]
-An arbitrary $\ell^2$ row need not meet that requirement.  The
-condition on admissible rows must also be satisfied when using bounded
+An arbitrary \(\ell^2\) row need not meet that requirement.
+The condition on admissible rows must also be satisfied when using bounded
 or fractional Fourier features.
 
 The Hellinger path estimates give $L^1$ convergence and uniform
-integrability of likelihoods.  The finite-frequency functions are bounded in
-each coordinate; their dimension-independent bounds are the
-$L^2(\mu_n)$ and generator estimates proved above.  No variance
-bound for their aggregate under an arbitrary mixed output law is
+integrability of likelihoods.
+The finite-frequency functions are bounded in each coordinate.
+Their dimension-independent bounds are the $L^2(\mu_n)$ and generator
+estimates proved above.
+No variance bound for their aggregate under an arbitrary mixed output law is
 needed in the tail-symmetry argument.

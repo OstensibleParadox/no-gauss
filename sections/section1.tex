@@ -5,40 +5,47 @@
 \label{sec:history}
 
 Kakutani's theorem turns equivalence of infinite products into a scalar
-summability problem: the product of the one-coordinate Hellinger affinities
-is positive exactly on the equivalence branch, and vanishes exactly on the
-singular branch~\cite{kakutani1948equivalence}.  This is one of the cleanest
-forms of an infinite-dimensional zero--one phenomenon.  Its direct scope,
-however, is coordinatewise.  Sharp criteria for sequences of Euclidean and,
-more generally, Lie-group perturbations retain this product structure and
-identify Fisher information as the local Hellinger metric
+summability problem.
+The test is the product of one-coordinate Hellinger affinities.
+This product is positive exactly on the equivalence branch,
+and zero exactly on the singular branch~\cite{kakutani1948equivalence}.
+This is one of the cleanest infinite-dimensional zero--one phenomena.
+
+Its direct scope is coordinatewise.
+Sharp criteria for sequences of Euclidean and, more generally, Lie-group
+perturbations retain this product structure.
+These criteria identify Fisher information as the local Hellinger metric
 \cite{steele1986fisher,marques1992quasi}.  If a bounded operator mixes every output
 coordinate with infinitely many inputs, the transformed coordinates cease
 to be independent and the affinity no longer tensorizes.
 
-The Gaussian law conceals this obstruction.  For the standard Gaussian
-product, every orthogonal operator on \(\ell^2\) has a measurable row-series
-realization and preserves the product law.  Translation and linear
-measure-class changes are governed by the Cameron--Martin and
-Feldman--H\'ajek theories, with explicit Gaussian density criteria developed
-by Shepp; Ramer's theorem gives a nonlinear extension
+The Gaussian law conceals this obstruction.
+For the standard Gaussian product, every orthogonal operator on \(\ell^2\) has
+a measurable row-series realization and preserves the product law.
+Translation and linear measure-class changes are governed by the Cameron--Martin
+and Feldman--H\'ajek theories.
+Explicit Gaussian density criteria were developed by Shepp.
+Ramer's theorem gives a nonlinear extension
 \cite{cameron1944transformations,feldman1958equivalence,hajek1958property,
 shepp1966radon,ramer1974nonlinear,bogachev1998gaussian}.  A non-Gaussian
-product behaves differently: exact
-independence rigidifies the orthogonal group to coordinate permutations and
+product behaves differently.
+Exact independence rigidifies the orthogonal group to coordinate permutations and
 to those coordinate signs already preserving the one-dimensional law.
 The present paper identifies the corresponding measure-class enlargement of
-that discrete stabilizer.  Non-Gaussian quasi-invariant measures on Hilbert
-and linear topological spaces have long been known
+that discrete stabilizer.
+Non-Gaussian quasi-invariant measures on Hilbert and linear topological
+spaces have long been known
 \cite{feldman1961examples,takahashi1975quasi}; the issue here is instead a
 complete classification for dense linear mixing of one fixed i.i.d. product
 law.
 
-There is a second obstacle.  Every fixed finite output marginal can have a
-strictly positive density even when the full transformed law is singular to
-the reference product.  Thus neither convergence on cylinder functions nor
-any fixed-dimensional calculation detects the boundary.  The correct
-completion must retain the entire directed family of projected likelihoods.
+There is a second obstacle.
+Every fixed finite output marginal can have a strictly positive density even
+when the full transformed law is singular to the reference product.
+Hence neither convergence on cylinder functions nor fixed-dimensional
+calculations detect the boundary.
+The correct completion must retain the entire directed family of projected
+likelihoods.
 Our Hellinger energy does precisely this: bounded projected energy is
 equivalent to positive global affinity, and a translation-ergodic zero--one
 law then upgrades positive affinity to equivalence.
@@ -59,18 +66,21 @@ a planar rotation.  The correct geometric curve is the weighted Fourier jet
  \label{eq:weighted-fourier-jet}
 \end{equation}
 Up to sign, \(R_\mu(s,t)\) is the wedge product of
-\(\Gamma_\mu(s)\) and \(\Gamma_\mu(t)\).  Hence zero defect means that
-the weighted jet lies in one fixed complex line through the origin.  The
-resulting global linear ODE has only Gaussian characteristic functions as
-solutions.  This formulation is important: the unweighted curve
-\(u\mapsto(\phi(u),\phi'(u))\) is not a straight line even in the Gaussian
-case.
+\(\Gamma_\mu(s)\) and \(\Gamma_\mu(t)\).
+Hence zero defect means that the weighted jet lies in one fixed complex line
+through the origin.
+The resulting global linear ODE has only Gaussian characteristic functions
+as solutions.
+This formulation is important.
+The unweighted curve \(u\mapsto(\phi(u),\phi'(u))\) is not a straight line
+even in the Gaussian case.
 
 For a non-Gaussian coordinate law, a finite set of frequencies therefore
-detects every infinitesimal matrix direction.  The corresponding Hellinger
-orbit is uniformly coercive in Frobenius norm near the discrete stabilizer,
-independently of dimension.  In infinite dimensions the surviving continuous
-thickness is exactly Hilbert--Schmidt:
+detects every infinitesimal matrix direction.
+The corresponding Hellinger orbit is uniformly coercive in Frobenius norm
+near the discrete stabilizer, independently of dimension.
+In infinite dimensions the surviving continuous thickness is exactly
+Hilbert--Schmidt:
 \[
  \text{exact stabilizer }\mathcal P_f
  \quad\leadsto\quad
@@ -94,14 +104,16 @@ assume
  \end{gathered}
  \label{eq:ng-iid-assumptions}
 \end{equation}
-All derivatives are weak derivatives.  Cusps are allowed, and no moment of
-order greater than two is assumed.  The two Sobolev conditions are finite
-location and scale Fisher information, respectively.
+All derivatives are weak derivatives.
+Cusps are allowed.
+No moment of order greater than two is assumed.
+The two Sobolev conditions are finite location and scale Fisher information.
 
 Put \(H=\ell^2(\N;\R)\) and
 \(\mu=f^{\otimes\N}\) on the product Borel space \(\R^{\N}\).  The
-space \(H\) indexes coefficients; a sample from \(\mu\) is not asserted to
-belong to \(H\).  Define
+space \(H\) indexes coefficients.
+A sample from \(\mu\) is not asserted to belong to \(H\).
+Define
 \begin{equation}
  \begin{aligned}
  \Sigma_f&=\{\varepsilon\in\{-1,1\}:\Law(\varepsilon X)=\Law(X)\},\\
@@ -111,10 +123,11 @@ belong to \(H\).  Define
  \label{eq:allowed-permutations}
 \end{equation}
 Thus \(\mathcal P_f\) is the full signed-permutation group when \(f\) is
-even and the ordinary permutation group when it is not.  For
-\(T\in\GL(H)\), let \(\Phi_T\) be the measurable row-series realization
-constructed in \cref{lem:ng-measurable-action}, and write
-\(\nu_T=(\Phi_T)_\#\mu\).
+even.
+It is the ordinary permutation group when \(f\) is not.
+For \(T\in\GL(H)\), let \(\Phi_T\) be the measurable row-series realization
+constructed in \cref{lem:ng-measurable-action}.
+Write \(\nu_T=(\Phi_T)_\#\mu\).
 
 For probability measures \(\lambda,\nu\), set
 \begin{equation}
@@ -130,8 +143,8 @@ where \(m\) dominates both measures.  Let \(P_n\) select the first
  E_n(T)=-2\log\Aff\bigl((P_n)_\#\mu,(P_n)_\#\nu_T\bigr).
  \label{eq:intro-projected-energy}
 \end{equation}
-These are actual output marginals, not laws obtained from principal matrix
-corners.
+These are actual output marginals.
+They are not laws obtained from principal matrix corners.
 
 \begin{theorem}[Complete criterion for arbitrary coordinate mixing]
 \label{thm:ng-iid-endpoint}
@@ -167,11 +180,12 @@ Since \(Q_\#\mu=\mu\), the limiting law is also \(\nu_T\).
 \end{theorem}
 
 The theorem contains the global energy formulation through
-\(\sup_nE_n(T)\).  The Fourier defect is not an additional scalar
-condition on \(T\): it is the calibration mechanism that turns small
-Hellinger displacement into squared Frobenius displacement.  This distinction
-keeps the one-dimensional Gaussian characterization separate from the
-operator-valued equivalence criterion.
+\(\sup_nE_n(T)\).
+The Fourier defect is not an additional scalar condition on \(T\).
+It is the calibration mechanism.
+It turns small Hellinger displacement into squared Frobenius displacement.
+This distinction keeps the one-dimensional Gaussian characterization separate
+from the operator-valued equivalence criterion.
 
 Two endpoint refinements separate the minimal assumptions cleanly.
 
