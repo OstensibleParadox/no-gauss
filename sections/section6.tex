@@ -1,0 +1,352 @@
+\section{Applications and Outlook}
+\label{sec:applications}
+
+The theorem is fundamentally a statement about measure classes.  The
+applications below are therefore phrased at exactly that level.  Additional
+claims about statistical rates, posterior contraction, or optimization
+dynamics require hypotheses external to the present paper.
+
+\subsection{Identifiability in functional independent component analysis}
+\label{sec:application-ica}
+
+Let \(B,C\in\GL(H)\) be two mixing operators acting on the same latent
+product law \(\mu\).  Equality and equivalence of their observation laws have
+different ambiguity groups.
+
+\begin{corollary}[Exact and measure-class ICA ambiguity]
+\label{cor:functional-ica}
+Under \eqref{eq:ng-iid-assumptions},
+\begin{align}
+ B_\#\mu=C_\#\mu
+ &\quad\Longleftrightarrow\quad B^{-1}C\in\mathcal P_f,
+ \label{eq:ica-exact}\\
+ B_\#\mu\sim C_\#\mu
+ &\quad\Longleftrightarrow\quad
+ \exists Q\in\mathcal P_f:\ B^{-1}CQ^{-1}-I\in\mathcal S_2.
+ \label{eq:ica-class}
+\end{align}
+\end{corollary}
+
+\begin{proof}
+Push both measures forward by \(B^{-1}\).  Equation
+\eqref{eq:ica-exact} is \cref{prop:ng-iid-stabilizer}, and
+\eqref{eq:ica-class} is \cref{thm:ng-iid-endpoint} applied to
+\(B^{-1}C\).
+\end{proof}
+
+Thus distributional functional ICA is identifiable up to the allowed
+coordinate signs and permutations, as in the classical finite-dimensional
+picture~\cite{comon1994ica,hyvarinen2001ica}, while functional-data versions
+have been developed under finite-dimensional dependence reductions
+\cite{virta2020functionalica}.  At the coarser level of null sets, the ambiguity
+is the Hilbert--Schmidt thickening of that discrete group.  In particular,
+Hilbert--Schmidt proximity is not the condition for exact identifiability; it
+is the exact boundary for equivalence of observation measure classes.
+
+\subsection{Mesh-independent reparameterization in Bayesian inverse problems}
+\label{sec:application-bip}
+
+Consider a posterior \(\pi\) with a strictly positive finite likelihood
+relative to \(\mu\), and a reparameterized posterior \(\pi_T\) with a strictly
+positive finite likelihood relative to \(\nu_T=T_\#\mu\).  Whenever the two
+normalizing constants are finite and nonzero,
+\[
+ \pi\sim\mu,
+ \qquad
+ \pi_T\sim\nu_T.
+\]
+Consequently the following criterion is immediate.
+
+\begin{corollary}[Posterior measure-class stability]
+\label{cor:bip-measure-class}
+Under \eqref{eq:ng-iid-assumptions},
+\[
+ \pi_T\sim\pi
+ \quad\Longleftrightarrow\quad
+ \exists Q\in\mathcal P_f:\ TQ^{-1}-I\in\mathcal S_2.
+\]
+If the condition fails, then \(\pi_T\perp\pi\).
+\end{corollary}
+
+This isolates the prior-geometric condition required before a discretization
+or proposal can be called mesh-independent in measure class; it is analogous
+to the absolute-continuity requirement used in function-space Bayesian
+methods~\cite{stuart2010inverse,cotter2013mcmc}.  The statement does not by
+itself assert posterior contraction or convergence of a numerical scheme,
+which also depend on the forward map and likelihood.  For blockwise meshes,
+discretization-invariant Besov priors and dimension-independent algorithms
+for non-Gaussian priors provide the closest computational context
+\cite{lassas2009discretization,vollmer2015dimension,
+hosseini2019metropolis}.  The exact measure-class bookkeeping is the
+following form of Kakutani's theorem.
+
+\subsubsection{The exact block-product theorem}
+\label{sec:ng-block-product}
+
+Let
+\[
+  X=\prod_{j\geq 1}\mathbb R^{d_j},
+  \qquad
+  \mu=\bigotimes_{j\geq 1}\mu_j,
+\]
+on the product Borel sigma-field.  Assume that every \(\mu_j\) has a
+Lebesgue density positive almost everywhere.  For invertible matrices
+\(T_j\in\mathrm{GL}(d_j,\mathbb R)\), the coordinatewise map
+\[
+  T=\bigoplus_{j\geq 1}T_j
+\]
+is measurable on \(X\), and
+\[
+  T_\#\mu=\bigotimes_{j\geq 1}(T_j)_\#\mu_j.
+\]
+Using \eqref{eq:ng-affinity-convention}, define the one-block affinity and
+action by
+\begin{equation}
+  \rho_j(T_j)
+  :=\mathsf A\bigl(\mu_j,(T_j)_\#\mu_j\bigr),
+  \qquad
+  e_j(T_j):=-2\log\rho_j(T_j).
+  \label{eq:ng-block-action}
+\end{equation}
+The strict positivity of the block densities implies \(0<\rho_j(T_j)\leq 1\).
+
+\begin{theorem}[Exact block-product criterion]
+\label{thm:ng-block-kakutani}
+For every block-diagonal invertible \(T\) as above,
+\begin{equation}
+  T_\#\mu\sim\mu
+  \quad\Longleftrightarrow\quad
+  \sum_{j=1}^{\infty}e_j(T_j)<\infty.
+  \label{eq:ng-block-criterion}
+\end{equation}
+If the series diverges, then \(T_\#\mu\perp\mu\).  More precisely, for every
+finite set \(F\Subset\mathbb N\),
+\begin{align}
+  \mathsf A_F(T)
+    &=\prod_{j\in F}\rho_j(T_j),
+  &
+  E_F(T)
+    &:=-2\log\mathsf A_F(T)
+      =\sum_{j\in F}e_j(T_j),
+  \label{eq:ng-block-tensorization}
+\end{align}
+and, whenever \(F\subset G\),
+\begin{equation}
+  E_G(T)-E_F(T)=\sum_{j\in G\setminus F}e_j(T_j).
+  \label{eq:ng-block-increment}
+\end{equation}
+Thus singularity is exactly the escape \(E_F(T)\uparrow\infty\) along the
+directed family of finite coordinate sets.
+\end{theorem}
+
+\begin{proof}
+Both formulas in \eqref{eq:ng-block-tensorization} follow from tensorization of
+Hellinger affinity.  Kakutani's theorem~\cite{kakutani1948equivalence}
+says that two products of pairwise
+equivalent probability measures are equivalent precisely when their infinite
+product affinity is positive, and otherwise they are mutually singular.  In
+the present notation,
+\[
+  \prod_j\rho_j(T_j)>0
+  \quad\Longleftrightarrow\quad
+  -\sum_j\log\rho_j(T_j)<\infty,
+\]
+which is \eqref{eq:ng-block-criterion}.  The increment identity is immediate
+from additivity.
+\end{proof}
+
+\subsubsection{An exact affine-coordinate theorem}
+\label{sec:ng-affine-coordinate}
+
+Let \(f>0\) almost everywhere be a nondegenerate density on \(\mathbb R\), put
+\(g=\sqrt f\), and assume
+\begin{equation}
+  g\in W^{1,2}(\mathbb R),
+  \qquad xg'\in L^2(\mathbb R).
+  \label{eq:ng-affine-sobolev}
+\end{equation}
+For \((u,v)\in\mathbb R^2\), let \(q_{u,v}\) be the density of
+\(e^uX+v\) when \(X\) has density \(f\):
+\begin{equation}
+  q_{u,v}(y)=e^{-u}f\bigl(e^{-u}(y-v)\bigr).
+  \label{eq:ng-affine-density}
+\end{equation}
+If \(\psi=-f'/f\) denotes the location score, differentiation of the square
+root at the identity gives
+\begin{equation}
+  D\sqrt q_{0,0}(u,v)
+   =u\left(-\tfrac12g-xg'\right)-vg',
+  \qquad
+  S_u(x)=x\psi(x)-1,
+  \quad S_v(x)=\psi(x).
+  \label{eq:ng-affine-scores}
+\end{equation}
+Define
+\begin{equation}
+  I_{\mathrm{aff}}
+  :=\E_f
+  \begin{bmatrix}S_u\\S_v\end{bmatrix}
+  \begin{bmatrix}S_u&S_v\end{bmatrix},
+  \qquad
+  \delta(u,v):=-2\log\mathsf A(f,q_{u,v}).
+  \label{eq:ng-affine-information}
+\end{equation}
+
+\begin{theorem}[Diagonal dilation and translation]
+\label{thm:ng-diagonal-affine}
+Assume \eqref{eq:ng-affine-sobolev}, assume that
+\(I_{\mathrm{aff}}\) is positive definite, and assume that the affine
+root-density orbit is proper, in the concrete sense that
+\begin{equation}
+  \mathsf A(f,q_{u_n,v_n})\longrightarrow1
+  \quad\Longrightarrow\quad
+  (u_n,v_n)\longrightarrow(0,0).
+  \label{eq:ng-affine-properness}
+\end{equation}
+For \(\mu=f^{\otimes\mathbb N}\) and the coordinatewise affine map
+\[
+  T_{u,v}(x)_j=e^{u_j}x_j+v_j,
+\]
+one has
+\begin{equation}
+  (T_{u,v})_\#\mu\sim\mu
+  \quad\Longleftrightarrow\quad
+  u\in\ell^2\ \text{and}\ v\in\ell^2.
+  \label{eq:ng-affine-l2-criterion}
+\end{equation}
+Otherwise the two product measures are mutually singular.  In particular,
+for positive diagonal dilations,
+\begin{equation}
+  \operatorname{diag}(a_j)_\#\mu\sim\mu
+  \quad\Longleftrightarrow\quad
+  (\log a_j)_j\in\ell^2.
+  \label{eq:ng-diagonal-dilation}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Quadratic-mean differentiability and
+\eqref{eq:ng-affine-scores} give
+\begin{equation}
+  \delta(u,v)
+  =\frac14 (u,v)I_{\mathrm{aff}}(u,v)^{\mathsf T}
+   +o(u^2+v^2).
+  \label{eq:ng-affine-quadratic}
+\end{equation}
+Positive definiteness supplies two-sided quadratic bounds near the origin.
+Condition \eqref{eq:ng-affine-properness} supplies a positive lower bound for
+\(\delta\) outside every neighborhood of the origin.  Hence
+\[
+  \sum_j\delta(u_j,v_j)<\infty
+  \quad\Longleftrightarrow\quad
+  \sum_j(u_j^2+v_j^2)<\infty.
+\]
+The result follows from \cref{thm:ng-block-kakutani}, with one-dimensional
+blocks.  Setting \(v=0\) and \(a_j=e^{u_j}\) gives
+\eqref{eq:ng-diagonal-dilation}.
+\end{proof}
+
+For an \(\ell^2\)-valued realization, take
+\(\operatorname{Law}((\sigma_jX_j)_j)\) with \(\sigma\in\ell^2\) and
+\(\E X_1^2<\infty\), and use \(x_j\mapsto e^{u_j}x_j+\sigma_jv_j\).
+Condition \eqref{eq:ng-affine-l2-criterion} then defines an affine
+homeomorphism of \(\ell^2\).
+
+\subsection{Infinite-dimensional flow matching and singularity boundaries}
+\label{sec:application-flow}
+
+Let \((T_t)_{t\in[0,1]}\subset\GL(H)\) be a deterministic linear flow and
+write \(\mu_t=(T_t)_\#\mu\).  At every fixed time the endpoint theorem gives
+the exact alternative
+\begin{equation}
+ \mu_t\sim\mu
+ \quad\Longleftrightarrow\quad
+ \exists Q_t\in\mathcal P_f:\ T_tQ_t^{-1}-I\in\mathcal S_2;
+ \qquad
+ \text{otherwise }\mu_t\perp\mu.
+ \label{eq:flow-fixed-time-boundary}
+\end{equation}
+This is a resolution-independent singularity boundary for the linear part of
+a flow-matching or transport model~\cite{lipman2023flow}.  Recent diffusion
+and flow models posed directly on function spaces make such a boundary
+operationally relevant
+\cite{kerrigan2023diffusion,pidstrigach2024diffusion,
+kerrigan2024functionalflow}.  If a bounded
+generator \(A\) is Hilbert--Schmidt, then
+\[
+ e^{tA}-I=\int_0^t Ae^{sA}\,ds\in\mathcal S_2
+\]
+for every finite \(t\), so the linear flow remains in the reference measure
+class.  Conversely, any endpoint outside the union of the
+Hilbert--Schmidt neighborhoods of \(\mathcal P_f\) is singular, even when all
+of its finite-dimensional projections possess smooth positive densities.
+
+Equation \eqref{eq:flow-fixed-time-boundary} is a statement about absolute
+continuity, not by itself a theorem about optimization-induced mode collapse
+or about stochastic diffusion bridges.  It supplies the operator diagnostic
+that such analyses must satisfy before finite-resolution losses can represent
+an infinite-dimensional density ratio.
+
+\subsection{Scope, examples, and open directions}
+\label{sec:ng-moment-scope}
+
+The hypotheses in \eqref{eq:ng-iid-assumptions} include centered,
+variance-normalized Laplace densities, despite their cusp at the
+origin.  They also include variance-normalized densities proportional
+to $e^{-x^4}$.  Symmetry is not needed in any step of the proof.
+
+For a family allowing both asymmetry and heavy tails, take
+\begin{equation}
+ \widetilde f_{\nu,\beta}(y)
+   =c_{\nu,\beta}(1+y^2)^{-(\nu+1)/2}
+                           e^{\beta\arctan y},
+ \qquad \nu>2,\quad \beta\in\mathbb R,
+ \label{eq:ng-asymmetric-heavy-tail-example}
+\end{equation}
+and center and rescale to variance one.  The unstandardized location
+score is
+\[
+ \widetilde s(y)=\frac{(\nu+1)y-\beta}{1+y^2}.
+\]
+Both $\widetilde s$ and $y\widetilde s$ are bounded.  The density
+is positive and smooth and has a finite second moment.  Centering and
+rescaling preserve finiteness of the location and scale information,
+so the standardized density satisfies \eqref{eq:ng-iid-assumptions}.
+For $2<\nu\le4$ its fourth moment is infinite.  When $\beta\ne0$,
+the two tails have unequal leading constants, so centering does not
+make the density even.  The case $\beta=0$ is a rescaled Student
+family.  These examples show that neither evenness nor a fourth
+moment is implicit in the theorem.
+
+The Gamma examples used to illustrate the Fourier response belong to
+\cref{lem:ng-fourier-ode}; their centered densities still vanish on
+a half-line and therefore do not satisfy the full-support hypothesis
+of \cref{thm:ng-iid-endpoint}.  A nonzero Fourier response establishes
+local detection, and alone does not establish the general
+measure-equivalence theorem for a density with restricted support.
+
+The second moment has a specific role beyond differentiating one
+Fourier feature.  It makes every $\ell^2$ row into a convergent
+random series, supplies uniform integrability of squares of linear
+forms, and gives the Gaussian-residual compactness argument.  Thus
+the first-moment ODE result is stronger in its moment scope than the
+arbitrary-operator equivalence theorem.  Extending the latter to
+infinite-variance coordinates requires a different domain of
+admissible rows and a corresponding operator criterion.  For example,
+for symmetric nondegenerate $\alpha$-stable coordinates, $0<\alpha<2$,
+convergence of a row series requires
+$\sum_j|a_j|^\alpha<\infty$: its partial-sum characteristic
+functions are
+\[
+ \exp\left(-c|t|^\alpha\sum_{j\le n}|a_j|^\alpha\right).
+\]
+An arbitrary $\ell^2$ row need not meet that requirement.  The
+condition on admissible rows must also be satisfied when using bounded
+or fractional Fourier features.
+
+The Hellinger path estimates give $L^1$ convergence and uniform
+integrability of likelihoods.  The finite-frequency functions are bounded in
+each coordinate; their dimension-independent bounds are the
+$L^2(\mu_n)$ and generator estimates proved above.  No variance
+bound for their aggregate under an arbitrary mixed output law is
+needed in the tail-symmetry argument.

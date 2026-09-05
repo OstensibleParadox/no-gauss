@@ -1,0 +1,869 @@
+\section{Proof of the Measure Equivalence Theorem}
+\label{sec:proof-main}
+
+We now assemble the finite-dimensional coercivity and the measurable
+zero--one machinery.  Only the local coercivity theorem from
+\cref{sec:finite-coercivity} is used in the necessity argument; the global
+finite-dimensional estimate is proved afterward.
+
+\subsection{Sufficiency of Hilbert--Schmidt perturbations}
+\label{sec:ng-sufficiency}
+
+\begin{proposition}[Hilbert--Schmidt sufficiency and RN closure]
+\label{prop:ng-hs-sufficiency}
+Assume \eqref{eq:ng-fisher-regularity}, let
+$\mu=f^{\otimes\mathbb N}$, and let
+$T=I+K\in\mathrm{GL}(\ell^2)$ with $K\in\mathcal S_2$.
+Then $\nu_T\sim\mu$.  For the eventually invertible operators
+$T_n=I+P_nKP_n$, their likelihoods
+$Z_n=d\nu_{T_n}/d\mu$ converge in $L^1(\mu)$ to the strictly
+positive likelihood $Z_T=d\nu_T/d\mu$, and
+$\sqrt{Z_n}\to\sqrt{Z_T}$ in $L^2(\mu)$.
+The inverse approximants satisfy the same conclusion:
+\[
+ \frac{d\nu_{T_n^{-1}}}{d\mu}
+ \longrightarrow\frac{d\nu_{T^{-1}}}{d\mu}
+ \quad\text{in }L^1(\mu).
+\]
+On the common measurable carrier of the relevant countable operator
+group, the likelihoods obey
+\begin{align}
+ Z_{ST}(y)&=Z_S(y)Z_T(\Phi_{S^{-1}}y),
+   \label{eq:ng-rn-cocycle}\\
+ Z_T(y)Z_{T^{-1}}(\Phi_{T^{-1}}y)&=1.
+   \label{eq:ng-rn-inverse}
+\end{align}
+If $Q$ is an exact linear stabilizer of $\mu$, the same equivalence
+holds whenever $TQ^{-1}-I\in\mathcal S_2$ and $T$ is invertible.
+\end{proposition}
+
+\begin{proof}
+Since $P_nKP_n\to K$ in Hilbert--Schmidt norm, $T_n\to T$ in
+operator norm.  The approximants are therefore eventually invertible,
+with uniformly bounded inverse norms.  If $A_n$ is the first
+$n$-coordinate block of $T_n$, then
+\begin{equation}
+ Z_n(x)=|\det A_n|^{-1}
+     \prod_{i=1}^n\frac{f((A_n^{-1}x_{1:n})_i)}{f(x_i)}.
+ \label{eq:ng-finite-approximant-density}
+\end{equation}
+These densities are positive almost everywhere.  For all sufficiently
+large $m,n$, put $B_{nm}=T_n^{-1}T_m-I$; it acts in a finite
+coordinate block and has operator norm at most $1/2$.  Hellinger
+invariance under the finite invertible map $T_n^{-1}$ and
+\eqref{eq:ng-finite-hellinger-upper} give
+\begin{equation}
+ \|\sqrt{Z_m}-\sqrt{Z_n}\|_2
+ \le\sqrt{C_f}\,\|T_n^{-1}\|_{\mathrm{op}}
+                    \|T_m-T_n\|_{\mathcal S_2}.
+ \label{eq:ng-approximant-hellinger-cauchy}
+\end{equation}
+Thus the square roots are Cauchy in $L^2(\mu)$, with a nonnegative
+limit $r$ of norm one.  Cauchy--Schwarz also gives
+\begin{equation}
+ \|Z_m-Z_n\|_1\le2\|\sqrt{Z_m}-\sqrt{Z_n}\|_2,
+ \qquad Z_n\longrightarrow r^2\quad\text{in }L^1(\mu).
+ \label{eq:ng-approximant-l1-cauchy}
+\end{equation}
+For each fixed finite set of output coordinates, the row-series
+realizations $\Phi_{T_n}X$ converge to $\Phi_TX$ in $L^2$.
+Bounded continuous cylinder tests consequently identify $r^2\mu$
+with $\nu_T$.
+
+The inverse approximants converge in Hilbert--Schmidt norm because
+\[
+ \|T_n^{-1}-T^{-1}\|_{\mathcal S_2}
+ \le\|T_n^{-1}\|_{\mathrm{op}}
+       \|T_n-T\|_{\mathcal S_2}\|T^{-1}\|_{\mathrm{op}}.
+\]
+Apply the same argument to these finite-block operators to obtain
+$\nu_{T^{-1}}\ll\mu$.  The measurable row-series construction in
+\cref{lem:ng-measurable-action} requires only the centered finite
+second moment; on its countable-group carrier it gives
+\[
+ \mu=(\Phi_T)_\#\nu_{T^{-1}}
+       \ll(\Phi_T)_\#\mu=\nu_T.
+\]
+This proves equivalence and strict positivity of $r^2$.  Change of
+variables on the same carrier proves the cocycle and inverse
+identities.  Finally, $\nu_Q=\mu$ and
+$T=(TQ^{-1})Q$ give the stabilizer assertion.
+\end{proof}
+
+\subsubsection{The orthogonal case requires only location Fisher information}
+\label{sec:ng-orthogonal-location-fisher}
+
+For orthogonal transformations the assumptions can be reduced to
+\begin{equation}
+ f>0\ \text{almost everywhere},\qquad
+ g=\sqrt f\in W^{1,2}(\mathbb R),\qquad
+ \mathbb E X=0,\qquad\mathbb E X^2=1.
+ \label{eq:ng-orthogonal-fisher-regularity}
+\end{equation}
+In particular, $xg'\in L^2$ is not required.  The cutoff
+identities $\mathbb E s=0$ and $\mathbb E Xs=1$ still follow
+from $J<\infty$ and the second moment.  For a skew-symmetric
+matrix $A$, the score has only off-diagonal terms and
+\begin{equation}
+ \mathbb E S_A^2=(J-1)\|A\|_F^2.
+ \label{eq:ng-orthogonal-fisher}
+\end{equation}
+The generator formula remains valid: only
+$x_j\partial_i\Omega_n$, $i\ne j$, occur.  One can justify
+it by radial cutoff and radial mollification, which commute
+with the orthogonal one-parameter group.
+
+\begin{proposition}[Orthogonal local bounds and HS sufficiency]
+\label{prop:ng-orthogonal-fisher-hs}
+Under \eqref{eq:ng-orthogonal-fisher-regularity}, every
+orthogonal $U$ on $\ell^2$ with $U-I\in\mathcal S_2$ satisfies
+$\nu_U\sim\mu$.  Its likelihoods have the same $L^1$ and
+square-root $L^2$ closure along finite-coordinate orthogonal
+approximants, as do the inverse likelihoods.
+If $f$ is non-Gaussian, there also exist dimension-independent
+$c,C,\delta>0$ such that
+\begin{equation}
+ c\|Q-I\|_F\le h(Q_\#\mu_n,\mu_n)
+                   \le C\|Q-I\|_F
+ \quad(Q\in O(n),\ \|Q-I\|_F\le\delta).
+ \label{eq:ng-orthogonal-local-hellinger}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For a skew-symmetric $A$, integration along $\exp(tA)$ gives
+\begin{equation}
+ h((\exp A)_\#\mu_n,\mu_n)
+ \le\tfrac12\sqrt{J-1}\,\|A\|_F.
+ \label{eq:ng-orthogonal-path-upper}
+\end{equation}
+If $f$ is non-Gaussian, the construction of the two dual
+functions $p,q$ in \cref{lem:ng-trig-duals} uses only $s,X\in L^2$
+and $J-1>0$.  On skew-symmetric matrices use
+$H_A=\sum_{i\ne j}A_{ij}p(X_i)q(X_j)$, with no diagonal
+function.  The score $S_B$ likewise has no diagonal term.
+Consequently the proof of
+\cref{lem:ng-trig-generator-bound} contains only bounded
+functions times $s$ or $X$, and proves the same estimate under
+\eqref{eq:ng-orthogonal-fisher-regularity}.  The half-density
+pairing argument gives the local lower bound in exponential
+coordinates.  For an orthogonal $Q$ sufficiently close to $I$,
+its power-series logarithm is real and skew-symmetric, with
+$\|\log Q\|_F$ comparable to $\|Q-I\|_F$.  This proves
+\eqref{eq:ng-orthogonal-local-hellinger}.
+
+For completeness, finite-coordinate orthogonal approximants
+can be constructed without applying a nonorthogonal path
+estimate.  Set $T_n=I+P_n(U-I)P_n$ and, for large $n$, take its
+polar factor
+\[
+ Q_n=T_n(T_n^{\mathsf T}T_n)^{-1/2}.
+\]
+It is orthogonal and acts identically outside the first $n$
+coordinates.  Since $T_n\to U$ in Hilbert--Schmidt norm,
+\[
+ \|T_n^{\mathsf T}T_n-I\|_{\mathcal S_2}
+ \le(\|T_n\|_{\mathrm{op}}+1)
+                         \|T_n-U\|_{\mathcal S_2}\longrightarrow0.
+\]
+The smallest singular values of $T_n$ are bounded below by
+some $m>0$.  Functional calculus for $|T_n|$ then gives
+\[
+ \|Q_n-T_n\|_{\mathcal S_2}
+ =\|I-|T_n|\|_{\mathcal S_2}
+ \le\frac{\|T_n^{\mathsf T}T_n-I\|_{\mathcal S_2}}{1+m}.
+\]
+Thus $Q_n\to U$ in Hilbert--Schmidt norm.  For sufficiently
+large $n,m$, $Q_n^{\mathsf T}Q_m$ is close to the identity
+and has a small skew-symmetric logarithm.  Applying
+\eqref{eq:ng-orthogonal-path-upper} to this logarithm proves
+that the likelihood square roots are Cauchy.  Their $L^1$
+limits are identified by the same cylinder tests as in
+\cref{prop:ng-hs-sufficiency}.  Apply the argument also to
+$Q_n^{-1}\to U^{-1}$; the measurable inverse action then
+proves equivalence and the asserted closure.
+\end{proof}
+
+\subsection{Necessity: tail rigidity and global Hilbert--Schmidt collapse}
+\label{sec:ng-necessity}
+
+The next lemma transports finite-dimensional local coercivity to genuine
+Hilbert--Schmidt perturbations, including finite-rank maps with infinitely
+supported rows.  It is the quantitative input to the tail-commutator
+argument.
+
+\begin{lemma}[The local bound for Hilbert--Schmidt operators]
+\label{lem:ng-local-hs-coercivity}
+Let $f$ be non-Gaussian and satisfy
+\eqref{eq:ng-fisher-regularity}.  There are constants
+$c,C,\delta>0$ such that every $K\in\mathcal S_2(\ell^2)$ with
+$\|K\|_{\mathcal S_2}\le\delta$ satisfies
+\begin{equation}
+ c\|K\|_{\mathcal S_2}
+ \le h(\nu_{I+K},\mu)
+ \le C\|K\|_{\mathcal S_2}.
+ \label{eq:ng-local-hs-hellinger}
+\end{equation}
+The constants can be chosen with $\delta<1$, so $I+K$ is
+automatically invertible.  Under the weaker assumptions
+\eqref{eq:ng-orthogonal-fisher-regularity}, the same conclusion
+holds for orthogonal $I+K$ whenever $f$ is non-Gaussian.
+This includes finite-rank perturbations whose ranges have
+infinite coordinate support.
+\end{lemma}
+
+\begin{proof}
+In the general linear case, take $K_n=P_nKP_n$ and apply
+\eqref{eq:ng-local-matrix-hellinger} to its finite coordinate
+block.  Its untouched tail factors contribute affinity one,
+so the finite-dimensional Hellinger distance is also
+$h(\nu_{I+K_n},\mu)$.  The likelihood closure in
+\cref{prop:ng-hs-sufficiency} gives
+\[
+ h(\nu_{I+K_n},\mu)
+ =\left\|\sqrt{\frac{d\nu_{I+K_n}}{d\mu}}-1\right\|_2
+ \longrightarrow
+ \left\|\sqrt{\frac{d\nu_{I+K}}{d\mu}}-1\right\|_2
+ =h(\nu_{I+K},\mu).
+\]
+Also $\|K_n\|_{\mathcal S_2}\to\|K\|_{\mathcal S_2}$.
+Passing to the limit proves both bounds.
+
+In the orthogonal case, use the finite-coordinate polar
+approximants $Q_n$ and their likelihood closure from
+\cref{prop:ng-orthogonal-fisher-hs}.  They satisfy
+$Q_n\to I+K$ in Hilbert--Schmidt norm.  Choose the radius in
+this assertion to be half the finite-dimensional radius in
+\eqref{eq:ng-orthogonal-local-hellinger}.  Then all sufficiently
+large $Q_n$ lie in that finite-dimensional chart, and
+\[
+ h(\nu_{Q_n},\mu)\longrightarrow h(\nu_{I+K},\mu),
+ \qquad
+ \|Q_n-I\|_{\mathcal S_2}\longrightarrow\|K\|_{\mathcal S_2}.
+\]
+Pass to the limit in \eqref{eq:ng-orthogonal-local-hellinger}.
+\end{proof}
+
+\subsubsection{Characteristic-function rigidity and arbitrary mixing}
+\label{sec:ng-characteristic-mixing-rigidity}
+
+Throughout this subsection, $X_j$ are independent copies of a real random
+variable $X$ with
+\[
+  \E X=0,\qquad \E X^2=1,
+\]
+and the law of $X$ is not Gaussian.  The characteristic-function arguments
+below require no moments of order greater than two.  Write
+\[
+  \phi(t)=\E e^{itX},\qquad
+  \Sigma_f:=\{\varepsilon\in\{-1,1\}:
+                  \operatorname{Law}(\varepsilon X)=\operatorname{Law}(X)\}.
+\]
+Let $\mathcal P_f$ be the group of coordinate permutations with row
+signs in $\Sigma_f$.  When the common law has density $f$, this is
+$\mathcal P_\pm$ if $f$ is even, and the ordinary permutation group
+if $f$ is not even.
+
+\begin{lemma}[A product approximation for small coefficients]
+\label{lem:ng-characteristic-product-tail}
+There is a nonnegative function $\eta$, with $\eta(\delta)\to0$ as
+$\delta\downarrow0$, such that, for every finite or countable real family
+$(b_j)$ with $\sum_j b_j^2<\infty$,
+\begin{equation}
+ \left|\prod_j\phi(tb_j)
+       -\exp\!\left(-\frac{t^2}{2}\sum_jb_j^2\right)\right|
+ \leq \eta(\delta)t^2\sum_jb_j^2
+ \quad\text{if}\quad \sup_j|tb_j|\leq\delta.
+ \label{eq:ng-characteristic-product-tail}
+\end{equation}
+For a countable family, the product denotes the characteristic function
+of the $L^2$ sum $\sum_jb_jX_j$.
+\end{lemma}
+\begin{proof}
+The centered second-moment assumption gives
+\[
+ \phi(u)=1-\frac{u^2}{2}+o(u^2).
+\]
+Consequently
+\[
+ \eta(\delta):=
+ \sup_{0<|u|\leq\delta}
+ \frac{|\phi(u)-e^{-u^2/2}|}{u^2}
+ \longrightarrow0.
+\]
+Both $\phi(u)$ and $e^{-u^2/2}$ have modulus at most one.  Telescoping
+the difference of their finite products therefore bounds it by the sum
+of the differences of the factors, proving
+\eqref{eq:ng-characteristic-product-tail} for a finite family.
+For a countable family, pass to the limit through finite partial sums in
+$L^2$ and hence in distribution.  This argument does not take a logarithm
+of the characteristic function.
+\end{proof}
+
+\begin{lemma}[Qualitative rigidity of a unit row]
+\label{lem:ng-unit-row-rigidity}
+Let $a^{(n)}\in\ell^2$ satisfy $\|a^{(n)}\|_2=1$.  If
+\[
+ \operatorname{Law}\!\left(\sum_j a_j^{(n)}X_j\right)
+       \Longrightarrow\operatorname{Law}(X),
+\]
+then
+\begin{equation}
+ \inf_{j\geq1,\ \varepsilon\in\Sigma_f}
+       \|a^{(n)}-\varepsilon e_j\|_2\longrightarrow0.
+ \label{eq:ng-unit-row-qualitative}
+\end{equation}
+\end{lemma}
+\begin{proof}
+We first describe the limits of such coefficient arrays.  Permuting
+coefficients does not change the law of their sum.  Arrange each row in
+nonincreasing order of absolute value, retaining its signs and padding
+with zeros if necessary.  Its $j$th coefficient then has modulus at most
+$j^{-1/2}$.  From any subsequence we may extract a further subsequence
+on which each coefficient converges, say $a_j^{(n)}\to a_j$.
+Fatou's lemma gives
+\[
+ q:=\sum_j a_j^2\leq1.
+\]
+For a fixed $m$, apply
+\cref{lem:ng-characteristic-product-tail} to the coefficients with
+$j>m$.  For every fixed $t$, the error in replacing their characteristic
+function by
+\[
+ \exp\!\left[-\frac{t^2}{2}
+        \left(1-\sum_{j\leq m}(a_j^{(n)})^2\right)\right]
+\]
+is at most
+$t^2\eta(|t|/\sqrt{m+1})$, uniformly in $n$.  First let $n\to\infty$
+and then let $m\to\infty$.  The limiting characteristic function is
+\begin{equation}
+ e^{-(1-q)t^2/2}\prod_j\phi(a_jt).
+ \label{eq:ng-unit-row-gaussian-residual}
+\end{equation}
+Equivalently, the limiting law is that of
+\[
+ \sum_j a_jX_j+\sqrt{1-q}\,Z,
+\]
+where $Z$ is standard Gaussian and independent of the $X_j$.
+
+Under the convergence hypothesis this limiting law is the law of $X$.
+Suppose that no $|a_j|$ is one.  If all $a_j$ vanish,
+\eqref{eq:ng-unit-row-gaussian-residual} already makes $X$ Gaussian.
+Otherwise the maximum
+$\rho:=\max_j|a_j|$ exists, since $(a_j)\in\ell^2$, and satisfies
+$0<\rho<1$.  Iterating the characteristic-function identity
+\eqref{eq:ng-unit-row-gaussian-residual} $k$ times gives
+\begin{equation}
+ \phi(t)=e^{-(1-q^k)t^2/2}
+       \prod_{\alpha\in\mathbb N^k}\phi(tb_\alpha),
+ \qquad
+ b_\alpha=a_{\alpha_1}\cdots a_{\alpha_k}.
+ \label{eq:ng-smoothing-iteration}
+\end{equation}
+Here
+\[
+ \sum_\alpha b_\alpha^2=q^k,
+ \qquad \sup_\alpha|b_\alpha|\leq\rho^k.
+\]
+The identity may be obtained by substituting independent copies into
+the $L^2$ series; at each finite depth all series have summable
+coefficient squares.  Applying
+\cref{lem:ng-characteristic-product-tail} to the last product in
+\eqref{eq:ng-smoothing-iteration} yields
+\[
+ |\phi(t)-e^{-t^2/2}|
+ \leq t^2q^k\eta(|t|\rho^k)\longrightarrow0.
+\]
+This again makes $X$ Gaussian, a contradiction.  Thus some
+$a_j=\varepsilon\in\{-1,1\}$; all the remaining coefficients and
+the Gaussian residual vanish.  The limiting identity then says
+$\operatorname{Law}(\varepsilon X)=\operatorname{Law}(X)$, so
+$\varepsilon\in\Sigma_f$.
+
+To conclude, if \eqref{eq:ng-unit-row-qualitative} failed, take a
+subsequence whose distance from all the indicated unit vectors is
+bounded below.  The preceding extraction produces a coefficient
+converging to an allowed sign of modulus one.  Since the row norms are
+one, its squared distance from that signed unit vector tends to zero:
+\[
+ \|a^{(n)}-\varepsilon e_j\|_2^2
+       =2-2\varepsilon a_j^{(n)}\longrightarrow0.
+\]
+Undoing the coefficient permutations gives the required contradiction.
+\end{proof}
+
+\begin{lemma}[Uniform invariance under tail symmetries]
+\label{lem:ng-tail-symmetry-uniform}
+Let $\mu$ be the i.i.d. product law and let $\nu\ll\mu$.  Let
+$\mathcal S_N$ be the finite coordinate permutations, with allowed
+coordinate signs, that act identically on coordinates $1,\ldots,N$.
+Then
+\begin{equation}
+ \sup_{S\in\mathcal S_N}h(\nu,S_\#\nu)\longrightarrow0.
+ \label{eq:ng-tail-symmetry-uniform}
+\end{equation}
+Also, the one-coordinate marginals of $\nu$ converge to the common
+coordinate law of $\mu$, uniformly over coordinates greater than $N$.
+\end{lemma}
+\begin{proof}
+Put $p=d\nu/d\mu$ and
+$p_N=\E_\mu[p\mid\sigma(x_1,\ldots,x_N)]$.  The martingale
+convergence theorem gives $\|p-p_N\|_{L^1(\mu)}\to0$.
+Every $S\in\mathcal S_N$ preserves $\mu$ and satisfies
+$p_N\circ S^{-1}=p_N$.  Thus
+\[
+ h(\nu,S_\#\nu)^2
+ \leq\|p-p\circ S^{-1}\|_{L^1(\mu)}
+ \leq2\|p-p_N\|_{L^1(\mu)},
+\]
+which proves \eqref{eq:ng-tail-symmetry-uniform}.
+For $i>N$, the marginal density is
+$\E_\mu[p\mid x_i]$.  Independence and $\E_\mu p_N=1$ imply
+$\E_\mu[p_N\mid x_i]=1$, so
+\[
+ \left\|\E_\mu[p\mid x_i]-1\right\|_{L^1(\mu)}
+ \leq\|p-p_N\|_{L^1(\mu)}.
+\]
+This proves the uniform marginal assertion.
+\end{proof}
+
+\begin{lemma}[Compact covariance rigidity from a second moment]
+\label{lem:ng-compact-covariance-rigidity}
+Let $T$ be bounded on $\ell^2$.  If $T_\#\mu\ll\mu$, then
+\[
+ TT^*-I\quad\text{is compact}.
+\]
+If $T$ is boundedly invertible, $T^*T-I$ is compact as well.
+\end{lemma}
+\begin{proof}
+We first record uniform integrability of the squares of the linear sums
+\begin{equation}
+ Z_b:=\sum_jb_jX_j,\qquad \|b\|_2\leq B,
+ \label{eq:ng-uniform-linear-square-family}
+\end{equation}
+for each fixed $B<\infty$.  Let
+\[
+ X^{(M)}=X\mathbf1_{\{|X|\leq M\}}
+           -\E[X\mathbf1_{\{|X|\leq M\}}],
+ \qquad Z_b^{(M)}=\sum_jb_jX_j^{(M)}.
+\]
+The variables $X^{(M)}$ are bounded and centered, and converge to $X$
+in $L^2$.  Independence gives
+\[
+ \sup_{\|b\|_2\leq B}\|Z_b-Z_b^{(M)}\|_2
+ \leq B\|X-X^{(M)}\|_2\longrightarrow0.
+\]
+For fixed $M$, expanding the fourth moment of a sum of independent
+centered bounded variables gives
+\[
+ \sup_{\|b\|_2\leq B}\E|Z_b^{(M)}|^4\leq C_M B^4<\infty.
+\]
+The bound first holds for finite sums; it also makes their truncations
+Cauchy in $L^4$, proving the countable version.  Moreover,
+\[
+ \sup_{\|b\|_2\leq B}
+ \bigl\|Z_b^2-(Z_b^{(M)})^2\bigr\|_1
+ \leq B^2\|X-X^{(M)}\|_2
+                  (\|X\|_2+\|X^{(M)}\|_2)
+ \longrightarrow0.
+\]
+Thus the squares in \eqref{eq:ng-uniform-linear-square-family}
+are uniformly approximated in $L^1$ by uniformly integrable families,
+and are themselves uniformly integrable.  This uses fourth moments of
+bounded truncations, not a fourth-moment assumption on $X$.
+
+Write $\nu=T_\#\mu$, $p=d\nu/d\mu$, and
+$p_N=\E_\mu[p\mid\sigma(x_1,\ldots,x_N)]$.  For a finitely supported
+unit vector $a$ supported on coordinates greater than $N$, put
+$F_a(x)=(\sum_i a_ix_i)^2$.  Under $\mu$, these are squares from
+\eqref{eq:ng-uniform-linear-square-family} with $B=1$; under $\nu$,
+they are squares of $Z_{T^*a}$ under $\mu$, with
+$\|T^*a\|_2\leq\|T\|$.  They are therefore uniformly integrable
+under both laws.  The truncated statistic $F_a\wedge R$ depends only
+on tail coordinates.  Independence yields
+\[
+ \left|\E_\nu(F_a\wedge R)-\E_\mu(F_a\wedge R)\right|
+ \leq R\|p-p_N\|_1.
+\]
+First let $N\to\infty$ at fixed $R$, and then let $R\to\infty$.
+Uniform integrability gives
+\[
+ \sup_{\substack{\|a\|_2=1,\ a\text{ finitely supported}\\
+                  \operatorname{supp}a\subset\{N+1,N+2,\ldots\}}}
+ \left|\langle(TT^*-I)a,a\rangle\right|\longrightarrow0.
+\]
+Since $TT^*-I$ is self-adjoint and bounded, density of finite vectors
+in the tail subspace implies
+\[
+ \|(I-P_N)(TT^*-I)(I-P_N)\|_{\mathrm{op}}\longrightarrow0.
+\]
+The complementary rows and columns form a finite-rank operator.  Hence
+$TT^*-I$ is a norm limit of finite-rank operators and is compact.
+For invertible $T$, use
+$T^*T-I=T^{-1}(TT^*-I)T$.
+\end{proof}
+
+\begin{lemma}[Tail rigidity without higher moments]
+\label{lem:ng-tail-ica}
+Assume that the common law has a positive density $f$, that
+$g=\sqrt f\in W^{1,2}(\mathbb R)$, and that $xg'\in L^2(\mathbb R)$.
+If $T\in\mathrm{GL}(\ell^2)$ and $T_\#\mu\sim\mu$, then
+\begin{equation}
+ T-Q\in\mathcal S_2
+ \qquad\text{for some }Q\in\mathcal P_f.
+ \label{eq:ng-tail-ica-conclusion}
+\end{equation}
+When $T$ is orthogonal, the condition $xg'\in L^2$ can be omitted.
+\end{lemma}
+\begin{proof}
+Write $r_i=T^*e_i$.  By
+\cref{lem:ng-compact-covariance-rigidity}, $\|r_i\|_2\to1$.
+The law of $\sum_j(r_i)_jX_j$ converges to the common coordinate law
+by \cref{lem:ng-tail-symmetry-uniform}.  Normalizing $r_i$ to a unit
+vector changes this sum by a quantity tending to zero in $L^2$.
+Thus \cref{lem:ng-unit-row-rigidity} gives indices $\pi(i)$ and
+signs $\varepsilon_i\in\Sigma_f$, outside a finite initial set, with
+\begin{equation}
+ s_i:=\varepsilon_i e_{\pi(i)},\qquad
+ \eta_i:=\|T^*e_i-s_i\|_2^2\longrightarrow0.
+ \label{eq:ng-qualitative-tail-matching}
+\end{equation}
+The indices $\pi(i)$ are distinct sufficiently far out.  Indeed, if
+$\pi(i)=\pi(j)$ for two such rows, then
+$\varepsilon_iT^*e_i-\varepsilon_jT^*e_j$ has arbitrarily small norm
+by \eqref{eq:ng-qualitative-tail-matching}, whereas bounded
+invertibility gives the lower bound
+$\sqrt2/\|T^{-1}\|$.  Fix a cutoff after which $\pi$ is injective.
+
+There is also column approximation along this matching.  Compactness
+of $T^*T-I$ and the fact that $\pi(i)$ leaves every finite set imply
+\[
+ \|Ts_i\|_2^2\longrightarrow1.
+\]
+Since $\langle Ts_i,e_i\rangle=\langle s_i,r_i\rangle\to1$,
+we obtain
+\begin{equation}
+ \zeta_i:=\|Ts_i-e_i\|_2^2\longrightarrow0,
+ \qquad \rho_i:=\eta_i+\zeta_i\longrightarrow0.
+ \label{eq:ng-row-column-tail-errors}
+\end{equation}
+
+We prove that $\sum_i\rho_i<\infty$ on this tail.  By
+\cref{lem:ng-local-hs-coercivity}, there are $c_0,\delta_0>0$ such
+that
+\begin{equation}
+ h(\mu,W_\#\mu)\geq c_0\|W-I\|_{\mathcal S_2}
+ \quad\text{when }W\in\mathrm{GL}(\ell^2),\quad
+ \|W-I\|_{\mathcal S_2}\leq\delta_0.
+ \label{eq:ng-local-lower-used}
+\end{equation}
+Suppose instead that $\sum_i\rho_i=\infty$.
+Fix $\delta>0$ small enough that
+$3\|T^{-1}\|\delta<\delta_0$.  In any sufficiently remote tail,
+where $\rho_i\leq\delta^2$, choose a finite set $E$ satisfying
+\begin{equation}
+ \delta^2\leq\sum_{i\in E}\rho_i\leq2\delta^2.
+ \label{eq:ng-active-tail-error}
+\end{equation}
+Let $q=|E|$.  Pair each $i\in E$ with a distinct auxiliary index
+$k_i$ beyond $E$, and set $G=\{k_i:i\in E\}$.
+Since $\rho_i\to0$, these auxiliary indices may be chosen with
+$\sum_{k\in G}\rho_k$ arbitrarily small, while $E$ remains fixed.
+
+Let $S$ exchange each output pair $(e_i,e_{k_i})$, and let $P$ exchange
+the aligned signed input pairs $(s_i,s_{k_i})$, acting identically on
+their orthogonal complements.  Both are involutions in
+$\mathcal P_f$, so they preserve $\mu$.  Define
+\[
+ W=P T^{-1} S T.
+\]
+Then
+\begin{equation}
+ W-I=P T^{-1}(ST-TP),\qquad
+ \frac{\|ST-TP\|_{\mathcal S_2}}{\|T\|}
+ \leq\|W-I\|_{\mathcal S_2}
+ \leq\|T^{-1}\|\,\|ST-TP\|_{\mathcal S_2}.
+ \label{eq:ng-swap-relative-norm}
+\end{equation}
+These are finite-rank differences, since $S-I$ and $P-I$ have finite
+rank.  Hellinger invariance and $P_\#\mu=\mu$ give
+\begin{equation}
+ h(\mu,W_\#\mu)=h(T_\#\mu,S_\#T_\#\mu).
+ \label{eq:ng-swap-hellinger-identity}
+\end{equation}
+All maps in use lie in a countable operator group, so
+\cref{lem:ng-measurable-action} justifies this identity on a common
+carrier.
+
+We next estimate the commutator in
+\eqref{eq:ng-swap-relative-norm}.  Let $R_G$ denote projection onto
+the output vectors $(e_k)_{k\in G}$, let $C_G$ denote projection onto
+the input vectors $(s_k)_{k\in G}$, and let
+\[
+ J_Gx=\sum_{k\in G}\langle x,s_k\rangle e_k,\qquad
+ T_0=(I-R_G)T(I-C_G)+J_G.
+\]
+Thus $T_0$ has exact matched rows and columns at all the auxiliary
+coordinates.  Orthogonal block decomposition gives
+\begin{equation}
+ \|T-T_0\|_{\mathcal S_2}^2
+ \leq\sum_{k\in G}
+       \bigl(\|T^*e_k-s_k\|_2^2+\|Ts_k-e_k\|_2^2\bigr)
+ =\sum_{k\in G}\rho_k.
+ \label{eq:ng-exact-dummy-approximation}
+\end{equation}
+For completeness, the left side counts the squared entries of the
+auxiliary row and column errors once, while their intersection is
+counted twice on the right.
+
+Order the output subspaces as $E$, its complement outside $E\cup G$,
+and $G$; order the input subspaces as the aligned signed coordinates
+for $E$, their complement outside the aligned $E\cup G$, and the
+aligned coordinates for $G$.  In these orthonormal decompositions,
+\[
+ T_0=\begin{pmatrix}A&B&0\\ C&D&0\\0&0&I_q\end{pmatrix},
+ \qquad
+ ST_0-T_0P=
+ \begin{pmatrix}
+ 0&-B&I_q-A\\
+ C&0&-C\\
+ A-I_q&B&0
+ \end{pmatrix}.
+\]
+The blocks $B,C$ have finite-dimensional range or domain and are
+Hilbert--Schmidt.  Put
+\[
+ \rho_E(T_0):=\sum_{i\in E}
+ \bigl(\|T_0^*e_i-s_i\|_2^2+\|T_0s_i-e_i\|_2^2\bigr)
+ =2\|A-I_q\|_F^2+\|B\|_{\mathcal S_2}^2+\|C\|_{\mathcal S_2}^2.
+\]
+The displayed commutator gives the exact identity
+\[
+ \|ST_0-T_0P\|_{\mathcal S_2}^2
+ =2\bigl(\|A-I_q\|_F^2+\|B\|_{\mathcal S_2}^2
+                         +\|C\|_{\mathcal S_2}^2\bigr),
+\]
+and therefore
+\begin{equation}
+ \rho_E(T_0)\leq\|ST_0-T_0P\|_{\mathcal S_2}^2
+                         \leq2\rho_E(T_0).
+ \label{eq:ng-swap-block-energy}
+\end{equation}
+As the auxiliary error in
+\eqref{eq:ng-exact-dummy-approximation} tends to zero,
+$\rho_E(T_0)\to\sum_{i\in E}\rho_i$.  Also,
+\[
+ \|(ST-TP)-(ST_0-T_0P)\|_{\mathcal S_2}
+ \leq2\|T-T_0\|_{\mathcal S_2}\longrightarrow0.
+\]
+By \eqref{eq:ng-active-tail-error} and
+\eqref{eq:ng-swap-block-energy}, actual finite auxiliary indices can
+thus be chosen so that
+\[
+ \frac{\delta}{2}\leq\|ST-TP\|_{\mathcal S_2}\leq3\delta.
+\]
+It follows from \eqref{eq:ng-swap-relative-norm} that
+\[
+ \frac{\delta}{2\|T\|}
+ \leq\|W-I\|_{\mathcal S_2}
+ \leq3\|T^{-1}\|\delta<\delta_0.
+\]
+The local bound \eqref{eq:ng-local-lower-used} now forces
+$h(\mu,W_\#\mu)\geq c_0\delta/(2\|T\|)$.
+On the other hand, $S$ is supported in the original remote tail, and
+\cref{lem:ng-tail-symmetry-uniform} makes the right side of
+\eqref{eq:ng-swap-hellinger-identity} uniformly smaller than this
+positive number when that tail is far enough out.  This contradiction
+proves $\sum_i\rho_i<\infty$.
+
+Define $Q_0$ by the matched rows $s_i$ after the fixed initial cutoff
+$N_0$, and by zero rows for $i\leq N_0$.  The summability just proved
+implies
+\[
+ \|T-Q_0\|_{\mathcal S_2}^2
+ =\sum_{i\leq N_0}\|T^*e_i\|_2^2
+                      +\sum_{i>N_0}\eta_i<\infty.
+\]
+Thus $Q_0$ is a compact perturbation of an invertible operator and is
+Fredholm of index zero.  Its cokernel consists precisely of the first
+$N_0$ output coordinates, while its kernel is spanned by the unused
+input coordinates.  There are exactly $N_0$ unused columns.  Match
+them to the first $N_0$ rows with sign $+1$.  This completes $Q_0$ to
+a single $Q\in\mathcal P_f$ and proves
+\eqref{eq:ng-tail-ica-conclusion}.
+
+If $T$ is orthogonal, both covariance defects vanish, and every
+relative commutator $W=P T^*ST$ constructed above is orthogonal.
+Consequently only the orthogonal part of
+\cref{lem:ng-local-hs-coercivity} is needed.  That part uses location
+Fisher information alone, so the condition $xg'\in L^2$ may be
+omitted in this case.
+\end{proof}
+
+\subsection{Exact identification of the linear stabilizer}
+\label{sec:ng-exact-stabilizer}
+
+The equivalence theorem needs the Sobolev assumptions because it constructs
+and controls likelihoods.  Exact invariance is more rigid and requires only
+the second moment.
+
+\begin{proposition}[Exact linear stabilizer under a second-moment hypothesis]
+\label{prop:ng-iid-stabilizer}
+For a centered, variance-one, non-Gaussian i.i.d. product law,
+the bounded invertible linear stabilizer is exactly $\mathcal P_f$.
+This assertion requires neither a density nor Fisher information.
+\end{proposition}
+\begin{proof}
+Every member of $\mathcal P_f$ preserves the product law.
+Conversely, if $T_\#\mu=\mu$, covariance gives $TT^*=I$.
+Since $T$ is boundedly invertible, it is orthogonal.  Each of its unit
+rows gives a linear combination with the same law as $X$.
+Applying \cref{lem:ng-unit-row-rigidity} to the constant sequence
+consisting of this row shows that the row is an allowed signed unit
+vector.  Orthogonality makes the selected coordinates a bijection.
+Thus $T\in\mathcal P_f$.
+\end{proof}
+\subsection{Two-sided uniform integrability and completion of the proof}
+\label{sec:ng-two-sided-ui}
+
+There are two likelihood limits in the argument.  The finite-corner
+approximants in \cref{prop:ng-hs-sufficiency} converge in \(L^1(\mu)\) and
+their square roots converge in \(L^2(\mu)\).  Independently, once equivalence
+is known, the actual projected likelihoods and their reciprocals are the two
+conditional-expectation martingales in
+\eqref{eq:ng-forward-likelihood-ui}--\eqref{eq:ng-reverse-likelihood-ui}.
+This gives uniform integrability in both directions and rules out loss of
+mass at the projective limit.
+
+\begin{proof}[Proof of \cref{thm:ng-iid-endpoint}]
+Necessity follows from \cref{lem:ng-tail-ica}.  If
+$T-Q\in\mathcal S_2$ for $Q\in\mathcal P_f$, then
+$TQ^{-1}=I+(T-Q)Q^{-1}$ is invertible and differs from the identity
+by a Hilbert--Schmidt operator.  By \cref{prop:ng-hs-sufficiency},
+$\nu_{TQ^{-1}}\sim\mu$.  Since $Q_\#\mu=\mu$, this is
+$\nu_T\sim\mu$.  The same proposition gives the finite-corner
+likelihood and square-root limits stated in the theorem.
+The exact stabilizer is identified in \cref{prop:ng-iid-stabilizer}.
+Finally, \cref{lem:ng-orbit-dichotomy,lem:ng-projected-likelihoods}
+give the projected-affinity characterization, the singular alternative,
+and both uniform-integrability statements.
+\end{proof}
+\begin{theorem}[Complete orthogonal criterion with only location Fisher information]
+\label{thm:ng-orthogonal-endpoint}
+Let $f>0$ almost everywhere be a centered, variance-one, non-Gaussian
+density, and assume only $\sqrt f\in W^{1,2}(\mathbb R)$ in addition
+to its second moment.  For every orthogonal $U$ on $\ell^2$,
+\[
+ U_\#\mu\sim\mu
+ \quad\Longleftrightarrow\quad
+ U-Q\in\mathcal S_2
+ \quad\text{for some }Q\in\mathcal P_f.
+\]
+If this condition fails, $U_\#\mu\perp\mu$.
+\end{theorem}
+\begin{proof}
+Necessity is \cref{lem:ng-tail-ica}.  For sufficiency, write
+$UQ^{-1}=I+(U-Q)Q^{-1}$.  This is orthogonal and differs from the
+identity by a Hilbert--Schmidt operator.  Apply
+\cref{prop:ng-orthogonal-fisher-hs}, and then use
+$Q_\#\mu=\mu$.  The alternative follows from
+\cref{lem:ng-orbit-dichotomy}.
+\end{proof}
+
+\subsection{Globalization of finite-dimensional coercivity}
+\label{sec:globalization-proof}
+
+We finish the proof deferred in \cref{sec:ng-global-coercivity}.  The key
+point is that failure of a dimension-free separation estimate would create a
+single forbidden infinite-dimensional equivalence.
+
+\begin{proof}[Proof of \cref{thm:ng-global-coercivity}]
+Fix \(0<a\le b<\infty\).  We first prove uniform separation away from
+the stabilizer: for every \(\varepsilon>0\),
+\begin{equation}
+ \alpha_{\varepsilon,a,b}:=
+ \inf\left\{
+ h(\mu_n,A_\#\mu_n)^2:
+ \begin{array}{l}
+ n\ge1,\ A\in\GL(n,\mathbb R),\\[-2pt]
+ s_{\min}(A)\ge a,\ s_{\max}(A)\le b,\\[-2pt]
+ d_{n,f}(A)\ge\varepsilon
+ \end{array}\right\}>0.
+ \label{eq:ng-uniform-separation}
+\end{equation}
+Suppose otherwise.  There are dimensions \(n_k\) and matrices \(A_k\)
+in the displayed class with
+\(h(\mu_{n_k},(A_k)_\#\mu_{n_k})\to0\).  Since
+\[
+ -2\log\Aff(\mu_{n_k},(A_k)_\#\mu_{n_k})
+ =-2\log\left(1-\tfrac12
+ h(\mu_{n_k},(A_k)_\#\mu_{n_k})^2\right),
+\]
+we may pass to a subsequence, without changing notation, for which the sum
+of these block energies is finite.
+
+Decompose \(H=\bigoplus_{k\ge1}\mathbb R^{n_k}\) into consecutive
+coordinate blocks and define
+\(A=\bigoplus_{k\ge1}A_k\).  The common singular-value bounds imply
+\(A\in\GL(H)\).  Hellinger affinity tensorizes across the blocks, so the
+exact block-product criterion \cref{thm:ng-block-kakutani} gives
+\(A_\#\mu\sim\mu\).  The already proved
+\cref{thm:ng-iid-endpoint} therefore supplies \(Q\in\mathcal P_f\) such that
+\begin{equation}
+ D:=A-Q\in\mathcal S_2(H).
+ \label{eq:ng-globalization-D}
+\end{equation}
+
+Let \(R_k\) be the orthogonal projection onto the \(k\)-th output block.
+The orthogonality of these blocks gives
+\[
+ \sum_k\|R_kD\|_{\mathcal S_2}^2=\|D\|_{\mathcal S_2}^2<\infty,
+ \qquad\text{hence}\qquad
+ \|R_kD\|_{\mathcal S_2}\longrightarrow0.
+\]
+If, for some output basis vector \(e_i\) in the \(k\)-th block, the signed
+basis vector \(Q^*e_i\) lay outside the corresponding input block, then
+\(A^*e_i\) and \(Q^*e_i\) would have disjoint supports.  The lower singular
+value bound would yield
+\begin{equation}
+ \|A^*e_i-Q^*e_i\|_2^2
+ =\|A_k^*e_i\|_2^2+1\ge a^2+1.
+ \label{eq:ng-row-escape-cost}
+\end{equation}
+For all sufficiently large \(k\), this contradicts
+\(\|R_kD\|_{\mathcal S_2}^2<a^2+1\).  Thus \(Q^*\) maps every output
+coordinate of each sufficiently large block into that same input block.
+Its restriction is injective between two sets of cardinality \(n_k\), hence
+is a bijection; denote the resulting member of \(\mathcal P_f(n_k)\) by
+\(Q_k\).  It follows that
+\[
+ d_{n_k,f}(A_k)
+ \le\|A_k-Q_k\|_F
+ =\|R_kD\|_{\mathcal S_2}\longrightarrow0,
+\]
+contradicting \(d_{n_k,f}(A_k)\ge\varepsilon\).  This proves
+\eqref{eq:ng-uniform-separation}.
+
+Let \(c_0,C_0,\delta_0\) be the constants in
+\cref{prop:ng-local-fisher-hellinger}, decreasing \(\delta_0\) so that
+\(0<\delta_0<1\).  Given \(T\), choose a minimizer
+\(Q\in\mathcal P_f(n)\) in \eqref{eq:ng-distance-stabilizer}.  Since
+\(Q_\#\mu_n=\mu_n\),
+\[
+ h(\mu_n,T_\#\mu_n)
+ =h(\mu_n,(TQ^{-1})_\#\mu_n),
+ \qquad
+ \|TQ^{-1}-I\|_F=d_{n,f}(T).
+\]
+When \(d_{n,f}(T)\le\delta_0\), the local theorem supplies the two-sided
+linear bounds for \(h\).  When \(d_{n,f}(T)>\delta_0\),
+\eqref{eq:ng-uniform-separation} with
+\(\varepsilon=\delta_0\) supplies the lower bound, while \(h^2\le2\)
+supplies the upper bound.  More explicitly, one may take
+\[
+ c=\min\{c_0^2,\alpha_{\delta_0,a,b}\},
+ \qquad
+ C=\max\{C_0^2,2\delta_0^{-2}\}.
+\]
+These constants give \eqref{eq:ng-global-coercivity} in all regimes.
+\end{proof}

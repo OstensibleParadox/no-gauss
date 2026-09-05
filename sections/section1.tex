@@ -1,0 +1,246 @@
+\section{Introduction and Main Results}
+\label{sec:introduction}
+
+\subsection{Historical context: from Kakutani to dense linear mixing}
+\label{sec:history}
+
+Kakutani's theorem turns equivalence of infinite products into a scalar
+summability problem: the product of the one-coordinate Hellinger affinities
+is positive exactly on the equivalence branch, and vanishes exactly on the
+singular branch~\cite{kakutani1948equivalence}.  This is one of the cleanest
+forms of an infinite-dimensional zero--one phenomenon.  Its direct scope,
+however, is coordinatewise.  Sharp criteria for sequences of Euclidean and,
+more generally, Lie-group perturbations retain this product structure and
+identify Fisher information as the local Hellinger metric
+\cite{steele1986fisher,marques1992quasi}.  If a bounded operator mixes every output
+coordinate with infinitely many inputs, the transformed coordinates cease
+to be independent and the affinity no longer tensorizes.
+
+The Gaussian law conceals this obstruction.  For the standard Gaussian
+product, every orthogonal operator on \(\ell^2\) has a measurable row-series
+realization and preserves the product law.  Translation and linear
+measure-class changes are governed by the Cameron--Martin and
+Feldman--H\'ajek theories, with explicit Gaussian density criteria developed
+by Shepp; Ramer's theorem gives a nonlinear extension
+\cite{cameron1944transformations,feldman1958equivalence,hajek1958property,
+shepp1966radon,ramer1974nonlinear,bogachev1998gaussian}.  A non-Gaussian
+product behaves differently: exact
+independence rigidifies the orthogonal group to coordinate permutations and
+to those coordinate signs already preserving the one-dimensional law.
+The present paper identifies the corresponding measure-class enlargement of
+that discrete stabilizer.  Non-Gaussian quasi-invariant measures on Hilbert
+and linear topological spaces have long been known
+\cite{feldman1961examples,takahashi1975quasi}; the issue here is instead a
+complete classification for dense linear mixing of one fixed i.i.d. product
+law.
+
+There is a second obstacle.  Every fixed finite output marginal can have a
+strictly positive density even when the full transformed law is singular to
+the reference product.  Thus neither convergence on cylinder functions nor
+any fixed-dimensional calculation detects the boundary.  The correct
+completion must retain the entire directed family of projected likelihoods.
+Our Hellinger energy does precisely this: bounded projected energy is
+equivalent to positive global affinity, and a translation-ergodic zero--one
+law then upgrades positive affinity to equivalence.
+
+\subsection{The phase transition: continuous Gaussian symmetry and discrete rigidity}
+\label{sec:phase-transition}
+
+Let \(X\) be centered with finite first moment and characteristic function
+\(\phi(u)=\E e^{iuX}\).  The fundamental detector is
+\begin{equation}
+ R_\mu(s,t)=t\phi'(s)\phi(t)-s\phi(s)\phi'(t).
+ \label{eq:intro-fourier-defect}
+\end{equation}
+It is the first variation of a bounded, centered two-frequency feature under
+a planar rotation.  The correct geometric curve is the weighted Fourier jet
+\begin{equation}
+ \Gamma_\mu(u)=\bigl(u\phi(u),\phi'(u)\bigr)\in\mathbb C^2.
+ \label{eq:weighted-fourier-jet}
+\end{equation}
+Up to sign, \(R_\mu(s,t)\) is the wedge product of
+\(\Gamma_\mu(s)\) and \(\Gamma_\mu(t)\).  Hence zero defect means that
+the weighted jet lies in one fixed complex line through the origin.  The
+resulting global linear ODE has only Gaussian characteristic functions as
+solutions.  This formulation is important: the unweighted curve
+\(u\mapsto(\phi(u),\phi'(u))\) is not a straight line even in the Gaussian
+case.
+
+For a non-Gaussian coordinate law, a finite set of frequencies therefore
+detects every infinitesimal matrix direction.  The corresponding Hellinger
+orbit is uniformly coercive in Frobenius norm near the discrete stabilizer,
+independently of dimension.  In infinite dimensions the surviving continuous
+thickness is exactly Hilbert--Schmidt:
+\[
+ \text{exact stabilizer }\mathcal P_f
+ \quad\leadsto\quad
+ \text{measure-class stabilizer }
+ \{T:\ TQ^{-1}-I\in\mathcal S_2\text{ for some }Q\in\mathcal P_f\}.
+\]
+This is the non-Gaussian phase transition studied below.
+
+\subsection{Main theorem: equivalence, energy, and the stabilizer}
+\label{sec:main-results}
+
+We now state the assumptions used for the full arbitrary-mixing theorem.
+Let \(f\) be a probability density on \(\R\), put \(g=\sqrt f\), and
+assume
+\begin{equation}
+ \begin{gathered}
+ f>0\quad\text{Lebesgue-almost everywhere},\qquad
+ g\in W^{1,2}(\mathbb R),\qquad xg'\in L^2(\mathbb R),\\
+ \E_fX=0,\qquad \E_fX^2=1,\qquad
+ f\ne(2\pi)^{-1/2}e^{-x^2/2}.
+ \end{gathered}
+ \label{eq:ng-iid-assumptions}
+\end{equation}
+All derivatives are weak derivatives.  Cusps are allowed, and no moment of
+order greater than two is assumed.  The two Sobolev conditions are finite
+location and scale Fisher information, respectively.
+
+Put \(H=\ell^2(\N;\R)\) and
+\(\mu=f^{\otimes\N}\) on the product Borel space \(\R^{\N}\).  The
+space \(H\) indexes coefficients; a sample from \(\mu\) is not asserted to
+belong to \(H\).  Define
+\begin{equation}
+ \begin{aligned}
+ \Sigma_f&=\{\varepsilon\in\{-1,1\}:\Law(\varepsilon X)=\Law(X)\},\\
+ \mathcal P_f&=\{Q:Q\text{ is a coordinate permutation with signs in }
+ \Sigma_f\}.
+ \end{aligned}
+ \label{eq:allowed-permutations}
+\end{equation}
+Thus \(\mathcal P_f\) is the full signed-permutation group when \(f\) is
+even and the ordinary permutation group when it is not.  For
+\(T\in\GL(H)\), let \(\Phi_T\) be the measurable row-series realization
+constructed in \cref{lem:ng-measurable-action}, and write
+\(\nu_T=(\Phi_T)_\#\mu\).
+
+For probability measures \(\lambda,\nu\), set
+\begin{equation}
+ \Aff(\lambda,\nu)
+ =\int\sqrt{\frac{d\lambda}{dm}\frac{d\nu}{dm}}\,dm,
+ \qquad
+ h(\lambda,\nu)^2=2-2\Aff(\lambda,\nu),
+ \label{eq:ng-affinity-convention}
+\end{equation}
+where \(m\) dominates both measures.  Let \(P_n\) select the first
+\(n\) coordinates and define the projected Hellinger energy
+\begin{equation}
+ E_n(T)=-2\log\Aff\bigl((P_n)_\#\mu,(P_n)_\#\nu_T\bigr).
+ \label{eq:intro-projected-energy}
+\end{equation}
+These are actual output marginals, not laws obtained from principal matrix
+corners.
+
+\begin{theorem}[Complete criterion for arbitrary coordinate mixing]
+\label{thm:ng-iid-endpoint}
+Under \eqref{eq:ng-iid-assumptions}, for every \(T\in\GL(H)\),
+\begin{equation}
+ \boxed{\begin{aligned}
+ \nu_T\sim\mu
+ &\quad\Longleftrightarrow\quad
+ \exists Q\in\mathcal P_f:\ TQ^{-1}-I\in\mathcal S_2(H)\\
+ &\quad\Longleftrightarrow\quad \sup_nE_n(T)<\infty.
+ \end{aligned}}
+ \label{eq:ng-global-candidate}
+\end{equation}
+If these conditions fail, then \(\nu_T\perp\mu\) and
+\(E_n(T)\uparrow\infty\).  The exact bounded invertible linear stabilizer
+is \(\Stab(\mu)=\mathcal P_f\).  On the equivalence branch, the projected
+likelihoods and reciprocal likelihoods are uniformly integrable in their
+respective reference measures.
+
+For any admissible \(Q\), put \(K=TQ^{-1}-I\) and
+\(T_n=I+P_nKP_n\).  Then \(T_n\) is eventually invertible and
+\begin{equation}
+ \frac{d\nu_{T_n}}{d\mu}\longrightarrow\frac{d\nu_{TQ^{-1}}}{d\mu}
+       \quad\text{in }L^1(\mu),
+ \qquad
+ \sqrt{\frac{d\nu_{T_n}}{d\mu}}
+       \longrightarrow
+ \sqrt{\frac{d\nu_{TQ^{-1}}}{d\mu}}
+       \quad\text{in }L^2(\mu).
+ \label{eq:intro-likelihood-closure}
+\end{equation}
+Since \(Q_\#\mu=\mu\), the limiting law is also \(\nu_T\).
+\end{theorem}
+
+The theorem contains the global energy formulation through
+\(\sup_nE_n(T)\).  The Fourier defect is not an additional scalar
+condition on \(T\): it is the calibration mechanism that turns small
+Hellinger displacement into squared Frobenius displacement.  This distinction
+keeps the one-dimensional Gaussian characterization separate from the
+operator-valued equivalence criterion.
+
+Two endpoint refinements separate the minimal assumptions cleanly.
+
+\begin{corollary}[Moment-only stabilizer]
+\label{cor:moment-only-stabilizer}
+If the common coordinate law is centered, variance one, and non-Gaussian,
+then its bounded invertible linear stabilizer is \(\mathcal P_f\).  No density
+or Fisher-information assumption is needed.
+\end{corollary}
+
+\begin{corollary}[Orthogonal endpoint]
+\label{cor:intro-orthogonal-endpoint}
+If \(f>0\) almost everywhere, \(\sqrt f\in W^{1,2}(\R)\), and \(f\) is
+centered, variance one, and non-Gaussian, then every orthogonal \(U\) obeys
+\[
+ U_\#\mu\sim\mu
+ \quad\Longleftrightarrow\quad
+ U-Q\in\mathcal S_2\quad\text{for some }Q\in\mathcal P_f.
+\]
+Thus scale Fisher information is needed for general linear mixing but not for
+the orthogonal subproblem.
+\end{corollary}
+
+\subsection{Downstream implications: ICA, inverse problems, and flows}
+\label{sec:downstream-preview}
+
+The classification has three immediate operator-level consequences.
+First, for two functional ICA mixing operators \(B,C\in\GL(H)\), equality
+of the observation laws forces \(B^{-1}C\in\mathcal P_f\), whereas equivalence
+of their measure classes permits exactly a Hilbert--Schmidt perturbation of
+that ambiguity.  Second, a non-Gaussian product prior is stable under a
+linear reparameterization precisely on the same Hilbert--Schmidt class; this
+is the measure-theoretic prerequisite behind any mesh-independent posterior
+or MCMC comparison based on such a reparameterization.  Third, a deterministic
+linear flow whose endpoint leaves this class crosses an actual singularity
+boundary, not merely a large finite-dimensional divergence.  These statements
+are formulated precisely, with their necessary limitations, in
+\cref{sec:applications}.
+
+\subsection{Organization and notation}
+\label{sec:organization}
+
+\Cref{sec:fourier-defect} proves the global Fourier ODE theorem and explains
+the weighted-jet geometry.  \Cref{sec:finite-coercivity} constructs finite
+Fourier duals and establishes dimension-free local Hellinger coercivity; it
+also states the global coercivity theorem.  \Cref{sec:measurable-dichotomy}
+constructs the measurable action and proves the likelihood and zero--one
+machinery.  \Cref{sec:proof-main} proves the Hilbert--Schmidt criterion, then
+uses a block-sum argument to complete the deferred globalization step.
+\Cref{sec:applications} gives exact operator-level applications and records
+the block and affine product criteria.  Numerical illustrations are deferred
+to separate supplementary material.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{>{$}l<{$} p{0.69\textwidth}}
+\toprule
+\text{Symbol} & \text{Meaning}\\
+\midrule
+\phi & characteristic function \(u\mapsto\E e^{iuX}\)\\
+R_\mu & rotational Fourier defect in \eqref{eq:intro-fourier-defect}\\
+\Gamma_\mu & weighted Fourier jet \(u\mapsto(u\phi(u),\phi'(u))\)\\
+\Aff,\ h & Hellinger affinity and Hellinger distance\\
+P_n,\ P_F & projections onto the first \(n\) coordinates and a finite set \(F\)\\
+E_n(T) & projected Hellinger energy in \eqref{eq:intro-projected-energy}\\
+\mathcal S_2 & Hilbert--Schmidt ideal; \(\|\cdot\|_{\mathcal S_2}=\|\cdot\|_F\) in finite dimensions\\
+\Sigma_f & coordinate signs preserving the one-dimensional law\\
+\mathcal P_f & coordinate permutations with signs in \(\Sigma_f\)\\
+\Phi_T,\nu_T & measurable row-series action and its pushforward of \(\mu\)\\
+\bottomrule
+\end{tabular}
+\end{center}
