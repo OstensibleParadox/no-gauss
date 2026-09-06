@@ -31,6 +31,7 @@ Semantic definition-expansion checks
 16. r_k is a block affinity and L is its negative logarithmic sum. a_k and b_k are common-support masses with different orientations: product b_k is the mass of the part of nu absolutely continuous with respect to mu, and product a_k is the reverse mass. The new corollary exposes these masses in a substantive result statement.
 17. D_n(M) includes both finite-marginal density-ratio tails and hence detects finite marginal singular parts as well as lack of uniform integrability. A bounded affinity energy in the general-measure proposition means positive overlap, whereas vanishing uniform two-sided ratio tails means equivalence. The two criteria are not treated as synonyms.
 18. Section07's generic block-product and arbitrary-marginal statements explicitly rebind mu, nu and their marginal densities. mu_n continues to mean the first n marginal of the current mu; it equals rho^(tensor n) in the i.i.d. setting. The local p_k,q_k or p_n,q_n densities do not redefine the Fourier functions p,q used in the earlier construction.
+19. The resumed collision review replaced centered Fourier feature by product of centered complex exponentials, with W unchanged. The introduction and scope discussion explicitly differentiate its expectation. Gaussian residual and Gaussian remainder both meant the same independent Gaussian summand and now use that description. Result titles state Hilbert-Schmidt necessity, linear equivalence for bounded/half-line laws, and block products without equivalence of the factors. The finite-marginal criterion and zero set of the density have explicit descriptive wording; G_rho is the linear equivalence group of mu. These are semantic disambiguations, not changes to the classification formulas.
 
 First-use and naming review
 - Coordinate law, products, Hilbert space, operator spaces, coordinate basis, allowed permutation group, measurable realization, affinity, distance, the two projections, and projected energy are bound in the introduction before their theorem uses.
@@ -64,13 +65,13 @@ Reproducibility
 The counter script used for this snapshot is scripts/audit_notation.py. It regenerates only audit/notation-review.tsv and audit/source-review.txt from the seven section sources. Manual additions to source-review.txt should be appended after the final regeneration. The TSV exposes each regex and count scope; a source hash change requires regeneration before presenting the counts as current.
 
 Snapshot time (UTC)
-2026-09-06T16:14:49.808248+00:00
+2026-09-06T16:41:06.222884+00:00
 
 SHA-256 source fingerprints
-sections/01-introduction-and-main-results.tex  f5a11cfffced1c96dc022f211bf7355cb851b2a7c605e37b1898a9be7ed1b12c
-sections/02-rotational-fourier-defect-and-gaussian-characterization.tex  5ef35117e48c6b446ab813a06d708c40d7cf69939d2cf1408cb48dd7cd7afb9d
+sections/01-introduction-and-main-results.tex  0c9db32b3524aea52a3eeb957336f8382063f5fc70646ac54068c967c9e08704
+sections/02-rotational-fourier-defect-and-gaussian-characterization.tex  da194c8fedf99cc464681180dfdf2a1c3629b2ae0c2a22dc7aac30a28379b6fa
 sections/03-finite-dimensional-hellinger-coercivity.tex  33bf12dbc1280afbe205789b1ae31bc7fe82276370c19f847f49c528e764e4ff
 sections/04-measurable-realization-and-dichotomy.tex  12e7e7950496c85a7c8a5c931e13eb534d6c8fb0475f8a4507476b25e8a64074
-sections/05-proof-of-the-measure-equivalence-theorem.tex  3413dfcf0dd4f304e52d027d43bfedd14e1bba855349b291b6f9f3f5bf04d9d4
-sections/06-scope-and-sharpness-of-the-hypotheses.tex  809914de398a103b08ab06159ed7ff8c931ec8035c4ad06dfe20177f7c1a9036
-sections/07-density-zeros-and-the-linear-equivalence-group.tex  0523201258bf5ee072df1a2a5c3a0c512c41f7bf95461e81042249eed018150d
+sections/05-proof-of-the-measure-equivalence-theorem.tex  8e45ecc0a0f9ac19ad26d99a5cbd00086f912c32e753d8fee571820c0ab81a9d
+sections/06-scope-and-sharpness-of-the-hypotheses.tex  2d5dc623dd646ff38456a9d1947e1ee75c93ec88ed0237a5816c7f4fc5fbdd2d
+sections/07-density-zeros-and-the-linear-equivalence-group.tex  e57b17abe11aa0e10a5b8ccd4ffccb24c0fa87843b93e26e9f554320613827a2

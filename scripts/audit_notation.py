@@ -143,7 +143,7 @@ add(r'\Pi_k','notation','proof-local output-block projection',r'\\Pi_k(?![A-Za-z
 
 terms=[
  ('rotational Fourier defect','manuscript','R, explicitly defined by the two-frequency derivative identity'),
- ('centered Fourier feature','manuscript','the explicit bounded function W_{xi,eta}'),
+ ('product of centered complex exponentials','descriptive formula only','W_{xi,eta}=(exp(i xi x)-phi(xi))(exp(i eta y)-phi(eta))'),
  ('weighted Fourier jet','descriptive curve only','explicit curve u -> (u phi(u),phi_prime(u)); no Gamma symbol retained'),
  ('matrix Fisher operator','manuscript','the operator mathcal I defined by the score covariance pairing'),
  ('finite real Fourier sums','manuscript','finite real linear combinations of 1, cos(xi x), sin(xi x)'),
@@ -182,6 +182,11 @@ for symbol,pattern,reason in [
  (r'\Sigma_f',r'\\Sigma_f','allowed coordinate signs displayed directly in group definition'),
  (r'\mathcal P_f',r'\\mathcal P_f','rho fixed in scope; canonical group mathcal P'),
  ('d_{n,f}',r'd_\{n,f\}','fixed-law index removed; canonical distance d_n'),
+ ('centered Fourier feature',r'centered\s+Fourier\s+feature','replaced by the explicit description product of centered complex exponentials'),
+ ('Gaussian residual/remainder',r'Gaussian\s+(?:residual|remainder)','unified as independent Gaussian summand'),
+ ('projective criterion',r'projective\s+criterion','replaced by criterion in terms of finite marginals to avoid the established invariance-principle usage'),
+ ('density zero set',r'density\s+zero\s+sets?','reordered to zero set of the density to distinguish asymptotic density zero'),
+ ('scalar reflection class',r'scalar\s+reflection\s+class','the table describes the relation between rho^- and rho directly'),
 ]:
     add(symbol,'removed','removed',pattern,reason,'removed in this edit',decision='replaced by explicit description or canonical notation',math_only=False,flags=re.I if 'alias' in symbol or 'curvature' in symbol else 0)
 
@@ -209,7 +214,7 @@ for row in ROWS:
 out=ROOT/'audit'
 out.mkdir(exist_ok=True)
 with (out/'notation-review.tsv').open('w',newline='') as f:
-    writer=csv.writer(f,delimiter='\t')
+    writer=csv.writer(f,delimiter='\t',lineterminator='\n')
     writer.writerow(['object_or_phrase','kind','scope','python_regex','total_lexical_occurrences_in_count_scope','direct_result_occurrences','additional_occurrences_in_result_referenced_equations','first_counted_occurrence','definition_or_binding','semantic_expansion','burden_assessment','decision','limits_or_notes','direct_result_locations','counted_sections'])
     writer.writerows(ROWS)
 
@@ -248,6 +253,7 @@ Semantic definition-expansion checks
 16. r_k is a block affinity and L is its negative logarithmic sum. a_k and b_k are common-support masses with different orientations: product b_k is the mass of the part of nu absolutely continuous with respect to mu, and product a_k is the reverse mass. The new corollary exposes these masses in a substantive result statement.
 17. D_n(M) includes both finite-marginal density-ratio tails and hence detects finite marginal singular parts as well as lack of uniform integrability. A bounded affinity energy in the general-measure proposition means positive overlap, whereas vanishing uniform two-sided ratio tails means equivalence. The two criteria are not treated as synonyms.
 18. Section07's generic block-product and arbitrary-marginal statements explicitly rebind mu, nu and their marginal densities. mu_n continues to mean the first n marginal of the current mu; it equals rho^(tensor n) in the i.i.d. setting. The local p_k,q_k or p_n,q_n densities do not redefine the Fourier functions p,q used in the earlier construction.
+19. The resumed collision review replaced centered Fourier feature by product of centered complex exponentials, with W unchanged. The introduction and scope discussion explicitly differentiate its expectation. Gaussian residual and Gaussian remainder both meant the same independent Gaussian summand and now use that description. Result titles state Hilbert-Schmidt necessity, linear equivalence for bounded/half-line laws, and block products without equivalence of the factors. The finite-marginal criterion and zero set of the density have explicit descriptive wording; G_rho is the linear equivalence group of mu. These are semantic disambiguations, not changes to the classification formulas.
 
 First-use and naming review
 - Coordinate law, products, Hilbert space, operator spaces, coordinate basis, allowed permutation group, measurable realization, affinity, distance, the two projections, and projected energy are bound in the introduction before their theorem uses.

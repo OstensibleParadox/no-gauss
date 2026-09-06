@@ -1,9 +1,9 @@
 \section{Rotational Fourier Defect and Gaussian Characterization}
 \label{sec:rotational-fourier-defect-and-gaussian-characterization}
 
-This section characterizes Gaussian coordinate laws by the rotational
+This section characterizes Gaussian coordinate laws by the
 rotational Fourier defect.
-The centered Fourier feature defining this defect is bounded.
+The product of centered complex exponentials defining this defect is bounded.
 Its definition uses no logarithm of the characteristic function and remains
 valid when the characteristic function has zeros.
 The conclusion belongs to the same broad lineage as the Kac--Bernstein
@@ -13,8 +13,8 @@ Its hypothesis is different.
 The rotational Fourier defect vanishes at every frequency pair.
 This leads directly to a global linear ODE.
 
-\subsection{The centered Fourier feature}
-\label{sec:centered-fourier-feature}
+\subsection{A product of centered complex exponentials}
+\label{sec:product-of-centered-exponentials}
 
 This subsection requires only $\E X=0$ and $\E|X|<\infty$.
 Neither a density nor a second moment is needed.
@@ -36,7 +36,7 @@ In particular,
  \qquad
  \E|W_{\xi,\eta}(X_1,X_2)|^2
  =(1-|\phi(\xi)|^2)(1-|\phi(\eta)|^2)\le1.
- \label{eq:feature-product-variance}
+ \label{eq:centered-exponential-product-variance}
 \end{equation}
 Pointwise, $|W_{\xi,\eta}|\le4$, so its variance under an arbitrary
 comparison law is at most $16$.  Both bounds are dimension-free and require
@@ -47,7 +47,7 @@ no tail assumption.
 
 \begin{lemma}[Gaussian characterization by the rotational Fourier defect]
 \label{lem:fourier-ode}
-For the centered Fourier feature defined above,
+For the product of centered complex exponentials defined above,
 \begin{equation}
  R(\xi,\eta)
  =\left.\frac{d}{d\theta}
@@ -140,7 +140,8 @@ Indeed, \(|R(\xi,\eta)|\le\E|X|(|\xi|+|\eta|)\).
 Hence this integral is finite and is zero exactly for centered Gaussian laws.
 Integrability of $w$ alone need not make the integral finite.
 
-The same feature gives a local Hellinger lower bound for one rotation.
+The same product of centered complex exponentials gives a local Hellinger
+lower bound for one rotation.
 Choose a phase $\alpha$ with
 $\operatorname{Re}(e^{-i\alpha}R(\xi,\eta))>0$ and apply
 \[
@@ -160,14 +161,14 @@ second-moment and Sobolev hypotheses.
 \subsection{Dimension-free variance and affine normalization}
 \label{sec:variance-and-affine-normalization}
 
-Equation \eqref{eq:feature-product-variance} is the variance estimate used
-for empirical or finite-frequency detection.
+Equation \eqref{eq:centered-exponential-product-variance} is the variance
+estimate used for empirical or finite-frequency detection.
 Averaging \(N\) independent pairs gives standard error at most \(N^{-1/2}\)
 under the reference product.
 The rough bound \(16/N\) remains available under an arbitrary
 comparison distribution.
-In particular, the centered Fourier feature does not require a fourth moment,
-symmetry, or a density.
+In particular, the product of centered complex exponentials does not require
+a fourth moment, symmetry, or a density.
 
 \paragraph{Centering, scaling, and phase.}
 Let $Y$ have mean \(m\) and characteristic function \(\phi_Y\), and put
@@ -184,7 +185,8 @@ of $X$ satisfies
  \label{eq:centering-phase}
 \end{equation}
 The expression in brackets is the derivative at zero of the expectation of
-the centered Fourier feature after rotating two independent copies of $Y$.
+the product of centered complex exponentials after rotating two independent
+copies of $Y$.
 Its last term comes from differentiating the marginal terms.
 Thus centering rotates this mean-corrected expression by
 \(-(m/\sigma)(\xi+\eta)\).

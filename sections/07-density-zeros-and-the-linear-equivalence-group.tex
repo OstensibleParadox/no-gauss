@@ -128,8 +128,9 @@ For orthogonal operators, use the finite-coordinate polar
 approximants and skew-generator bound from
 \cref{prop:orthogonal-sufficiency} in the same way.
 
-Finally, the proof of \cref{lem:tail-rigidity} uses absolute continuity
-only through \cref{lem:tail-symmetry-uniform,lem:compact-covariance-rigidity},
+Finally, the proof of \cref{lem:hilbert-schmidt-necessity} uses absolute
+continuity only through
+\cref{lem:tail-symmetry-uniform,lem:compact-covariance-rigidity},
 which assume \(\nu_T\ll\mu\).
 Its other inputs are the moment-only characteristic-function rigidity,
 the measurable inverse action, and the local estimate for the
@@ -151,12 +152,12 @@ interior power derivative is not an exception.
 The support classifications below require none of this regularity
 and include every positive Gamma or Beta shape.
 
-\subsection{The linear equivalence group for arbitrary density zero sets}
+\subsection{The linear equivalence group for arbitrary zero sets of the density}
 \label{sec:linear-equivalence-group}
 
-The Hilbert--Schmidt condition and the scalar positivity set together give
-an exact operator criterion, including for densities with gaps and with
-both tails unbounded.  The required condition on the rows concerns the
+The Hilbert--Schmidt condition and the set where \(f\) is positive together
+give an exact operator criterion, including for densities with gaps and
+with both tails unbounded.  The required condition on the rows concerns the
 actual zero set of the density, rather than its closed support.
 
 \begin{theorem}[The linear equivalence group with density zeros]
@@ -174,7 +175,7 @@ $\mathcal U=\{x\in\R:f(x)>0\}$.  For every $T\in\GL(H)$,
  \end{cases}
  \label{eq:absolute-continuity-operator-criterion}
 \end{equation}
-Consequently the linear equivalence group is
+Consequently the linear equivalence group of $\mu$ is
 \begin{equation}
  \begin{aligned}
  \mathcal G_\rho
@@ -281,7 +282,7 @@ Throughout this subsection \(X\) is centered with variance one.
 The operator action is the row-series action of
 \cref{lem:measurable-action}.
 
-\begin{theorem}[Support rigidity for arbitrary bounded invertible mixing]
+\begin{theorem}[Linear equivalence for bounded and half-line coordinate laws]
 \label{thm:restricted-support-rigidity}
 Let \(T\in\GL(H)\).
 \begin{enumerate}
@@ -291,7 +292,7 @@ Let \(T\in\GL(H)\).
  The complete equivalence group is as follows:
  \[
  \begin{array}{c|l}
- \text{scalar reflection class}&\text{allowed signed permutations}\\ \hline
+ \text{relation between }\rho^-\text{ and }\rho&\text{allowed signed permutations}\\ \hline
  \rho^-=\rho&\text{all signs}\\
  \rho^-\sim\rho,\ \rho^-\ne\rho&
                   \text{only finitely many negative signs}\\
@@ -418,10 +419,10 @@ so it permits only permutations.
 \subsection{Exact block criteria without equivalence of the factors}
 \label{sec:restricted-blocks}
 
-The distinction between finite boundary loss and accumulated
-infinite-dimensional loss can be stated exactly for blocks.
+For block products, the following criterion separates conditions for absolute
+continuity within each pair of factors from accumulation of Hellinger loss.
 
-\begin{theorem}[Block products with possible support mismatch]
+\begin{theorem}[Block products without equivalence of the factors]
 \label{thm:block-kakutani}
 Let \(\mu=\bigotimes_{k\geq1}\lambda_k\) and
 \(\nu=\bigotimes_{k\geq1}\eta_k\) be probability products over
@@ -567,15 +568,16 @@ Equivalence and the lower support bound show, by conditioning
 finite row sums as before, that both linear parts have nonnegative
 entries: a negative coefficient would produce an unbounded lower
 tail, which no finite shift can repair.
-Nonnegative inverse operators are weighted permutations, by the
-off-diagonal inverse identities used above.
+Since \(T\) and \(T^{-1}\) have nonnegative matrix entries, the
+off-diagonal inverse identities used above show that \(T\) is a
+weighted permutation operator.
 Equality of the scalar lower endpoints forces
 \(-\sqrt\alpha c_i+b_i=-\sqrt\alpha\).
 The product criterion \eqref{eq:restricted-gamma-scale-product}
 then proves necessity and sufficiency.
 \end{proof}
 
-\subsection{Boundary regularity changes the singularity threshold}
+\subsection{Boundary behavior of the density and summability criteria}
 \label{sec:restricted-threshold}
 
 Let \(\rho\) be uniform on \([-\sqrt3,\sqrt3]\), let
@@ -642,8 +644,8 @@ separately controls absolute continuity.
 
 For arbitrary zero sets of an unbounded density, the preceding support
 theorems need not apply.
-There is nevertheless a complete projective criterion which requires
-no dichotomy.
+There is nevertheless a complete criterion in terms of finite marginals
+which requires no dichotomy.
 For densities satisfying \eqref{eq:restricted-sobolev},
 \cref{thm:linear-equivalence-group} gives the corresponding operator
 classification.  The following measure-theoretic criterion also applies

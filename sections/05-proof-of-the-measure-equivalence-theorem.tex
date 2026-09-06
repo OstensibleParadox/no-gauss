@@ -346,7 +346,7 @@ First let $n\to\infty$, and then let $m\to\infty$.
 The limiting characteristic function is
 \begin{equation}
  e^{-(1-q)t^2/2}\prod_j\phi(a_jt).
- \label{eq:unit-row-gaussian-residual}
+ \label{eq:unit-row-gaussian-summand}
 \end{equation}
 Equivalently, the limiting law is that of
 \[
@@ -356,11 +356,11 @@ where $Z$ is standard Gaussian and independent of the $X_j$.
 
 Under the convergence hypothesis this limiting law is the law of $X$.
 Suppose that no $|a_j|$ is one.  If all $a_j$ vanish,
-\eqref{eq:unit-row-gaussian-residual} already makes $X$ Gaussian.
+\eqref{eq:unit-row-gaussian-summand} already makes $X$ Gaussian.
 Otherwise the maximum
 $\theta:=\max_j|a_j|$ exists, since $(a_j)\in\ell^2$, and satisfies
 $0<\theta<1$.  Iterating the characteristic-function identity
-\eqref{eq:unit-row-gaussian-residual} $k$ times gives
+\eqref{eq:unit-row-gaussian-summand} $k$ times gives
 \begin{equation}
  \phi(t)=e^{-(1-q^k)t^2/2}
        \prod_{\alpha\in\N^k}\phi(tb_\alpha),
@@ -386,7 +386,7 @@ This again makes $X$ Gaussian.
 This is a contradiction.
 Thus some
 $a_j=\varepsilon\in\{-1,1\}$; all the remaining coefficients and
-the Gaussian residual vanish.  The limiting identity then says
+the independent Gaussian summand vanish.  The limiting identity then says
 $\Law(\varepsilon X)=\rho$, so the sign preserves $\rho$.
 
 To conclude, suppose \eqref{eq:unit-row-qualitative} failed.
@@ -516,15 +516,15 @@ For invertible $T$, use
 $T^*T-I=T^{-1}(TT^*-I)T$.
 \end{proof}
 
-\begin{lemma}[Tail rigidity under a second-moment hypothesis]
-\label{lem:tail-rigidity}
+\begin{lemma}[Hilbert--Schmidt necessity under a second-moment hypothesis]
+\label{lem:hilbert-schmidt-necessity}
 Assume that the common law has a positive density $f$, that
 $g=\sqrt f\in W^{1,2}(\R)$, and that $xg'\in L^2(\R)$.
 If $T\in\GL(H)$ and $\nu_T\sim\mu$, then
 \begin{equation}
  T-Q\in\mathcal S_2
  \qquad\text{for some }Q\in\mathcal P.
- \label{eq:tail-rigidity}
+ \label{eq:hilbert-schmidt-necessity}
 \end{equation}
 When $T$ is orthogonal, the condition $xg'\in L^2$ can be omitted.
 \end{lemma}
@@ -717,7 +717,7 @@ Its kernel is spanned by the unused input coordinates.
 There are exactly $N_0$ unused columns.
 Match them to the first $N_0$ rows with sign $+1$.
 This completes $Q_0$ to a single $Q\in\mathcal P$ and proves
-\eqref{eq:tail-rigidity}.
+\eqref{eq:hilbert-schmidt-necessity}.
 
 If $T$ is orthogonal, both covariance defects vanish, and every
 operator $W=P T^*ST$ constructed above is orthogonal.
@@ -765,7 +765,7 @@ This gives uniform integrability in both directions.
 It also rules out loss of mass at the projective limit.
 
 \begin{proof}[Proof of \cref{thm:measure-equivalence}]
-Necessity follows from \cref{lem:tail-rigidity}.  If
+Necessity follows from \cref{lem:hilbert-schmidt-necessity}.  If
 $T-Q\in\mathcal S_2$ for $Q\in\mathcal P$, then
 $TQ^{-1}=I+(T-Q)Q^{-1}$ is invertible and differs from the identity
 by a Hilbert--Schmidt operator.  By \cref{prop:hilbert-schmidt-sufficiency},
@@ -791,7 +791,7 @@ to its second moment.  For every orthogonal $U$ on $\ell^2$,
 If this condition fails, $\nu_U\perp\mu$.
 \end{theorem}
 \begin{proof}
-Necessity is \cref{lem:tail-rigidity}.  For sufficiency, write
+Necessity is \cref{lem:hilbert-schmidt-necessity}.  For sufficiency, write
 $UQ^{-1}=I+(U-Q)Q^{-1}$.  This is orthogonal and differs from the
 identity by a Hilbert--Schmidt operator.  Apply
 \cref{prop:orthogonal-sufficiency}, and then use

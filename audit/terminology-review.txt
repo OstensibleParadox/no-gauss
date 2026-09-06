@@ -1,102 +1,130 @@
 Terminology collision review
 Review date: 2026-09-06
-Scope: sections/01-*.tex through sections/07-*.tex, including the density-zero
-linear equivalence group added during the review. The inventory covers the
-manuscript's named mathematical objects, persistent notation and descriptive
-technical phrases identified during the notation pass. Related local variables
-are mapped to their defining semantic phrase; bare letters, dummy indices,
-numerical constants and ordinary logical notation are not meaningful independent
-Scholar queries. Previously established cited results are not being re-proved or
-assessed for originality here.
+Scope: all seven included manuscript sections, including the density-zero
+operator classification in Section 7.
 
 Time bound and outcome
-Search work began at 15:37:41 UTC. Hard cutoff: 16:37:41 UTC.
-Search work ended at 16:08:10 UTC, after feasible permitted access routes failed.
-Elapsed wall time: 30 minutes 29 seconds, including the user interruption and
-access recovery. The search did not consume the whole one-hour allowance.
-84 distinct exact-phrase entries were inventoried and attempted.
-40 entries have an inspected Google Scholar results page:
-  7 displayed no matching articles;
-  33 returned records.
-44 entries have access_unavailable status and are not completed collision checks.
-The last completed Scholar page was orthogonal projection at 15:52:27 UTC.
-The source table contains one row per distinct phrase; access retries are not
-counted as additional phrase checks. The first three observations have a bounded
-timestamp interval rather than falsely precise timestamps.
+The original one-hour window began at 15:37:41 UTC and ended at 16:37:41 UTC.
+The first session stopped at 16:08:10 after access recovery failed: 30m29s.
+After the user closed unrelated private content and requested resumption, the
+second session began at 16:26:02. All remaining result pages had been inspected
+by 16:37:38, before the original cutoff. The second interval was at most 11m36s;
+the two work intervals total at most 42m05s. No further searches were made.
+All 84 distinct inventory entries now have an inspected Google Scholar page:
+  14 displayed no matching articles;
+  70 returned records;
+  0 remain access-unavailable.
+The table distinguishes 33 standard-context, 15 other-context, 13 context-dependent,
+5 related-context, and 4 nearby-semantic-collision result classifications.
+Repeated access attempts are not counted as extra phrase checks.
+Observation intervals are deliberately bounded timestamps, not invented exact
+query times. Earlier failed attempts remain documented below but are superseded
+by the successful observations in the table.
 
-Method
-Each phrase was enclosed in quotation marks and submitted to Google Scholar.
-The successful results were read in the Codex in-app browser through its public
-Scholar page, using accessibility text and, when text was incomplete, its DOM
-snapshot. Search-result titles and context were inspected; hit counts were not
-used as reliable bibliometric evidence. Hyphenation and punctuation may be
-normalized by Scholar even for quoted queries.
-No result means only that this exact query displayed no articles at that time.
-It does not establish novelty, uniqueness, nonexistence of synonyms, or priority.
-A hit is not automatically a harmful collision. Standard usage, unrelated
-disciplinary usage and a nearby competing technical meaning are distinguished.
-The collision table is a review record, not a claim that all papers returned by
-Scholar were read in full.
+Method and limits
+Each inventory phrase was submitted to Google Scholar enclosed in quotation
+marks. Actual public results pages were inspected in the Codex in-app browser
+using accessibility text and, where needed, DOM snapshots. Titles and snippets
+were read to classify context. Primary papers were inspected for the substantive
+nearby naming decisions identified below. No hit-count-based bibliometrics or
+claim of reading every returned paper is made.
+The inventory covers named objects, persistent notation, and descriptive
+technical phrases identified during the manuscript audit. Related local symbols
+are mapped to their definitions. Bare letters, dummy indices, numerical constants
+and ordinary logical notation are not meaningful standalone phrase queries.
+Queries for descriptions subsequently rewritten remain in the table with their
+final action; they are audit records, not aliases retained in the manuscript.
+Replacing a name by its explicit definition does not create a new named concept.
+Scholar may normalize hyphens and punctuation even within quotation marks.
+No articles for an exact query establishes neither novelty nor absence of synonyms.
+A hit alone is not a harmful collision: standard meanings, other disciplinary
+contexts, and nearby competing technical definitions are distinguished.
+These checks do not establish priority or certify the originality of the results.
 
 Access history
-Direct web-tool opening of Scholar queries returned a non-retryable access error.
-The in-app browser initially worked and supplied 28 completed query observations.
-The tail symmetry query then displayed a CAPTCHA. The user explicitly authorized
-completion of that verification with '授权完成验证并继续'. Verification was completed,
-and the browser supplied 12 more completed results (40 total).
-A subsequent user interruption removed the temporary in-app browser session.
-Resumption reported no browser available; opening an in-app Scholar tab was
-queued because the task was hidden. The native Chrome fallback could not safely
-proceed: automatic approval review rejected reading its full accessibility tree
-because unrelated private content would be exposed. No attempt was made to
-bypass that rejection or inspect more unrelated Chrome content.
-The root agent separately reported a task-authorized direct request to the public
-weak derivative Scholar URL: sandbox DNS initially failed, and an approved direct
-request received HTTP 403. This supplementary access check produced no Scholar
-search result. No proxy, changed network, or alternate identity was used.
-All 44 remaining entries have their exact Scholar URL and failed-request status;
-none is silently represented as a negative search result.
-The CAPTCHA restriction originated in mcp__cua_repl's first-use instructions:
-'Confirmation Required at Action time' includes 'Solving/completing CAPTCHAs'.
-The later native-Chrome restriction was an explicit automatic approval-review
-rejection, not an inferred need for permission.
+Direct opening through the web tool initially returned a non-retryable access
+error. The in-app browser supplied 28 successful pages before a CAPTCHA.
+The user explicitly authorized completion with '授权完成验证并继续'. That verification
+was completed, and another 12 pages were inspected, for 40 in the first session.
+A subsequent interruption removed the temporary in-app browser session.
+Recovery was unavailable or queued. Automatic approval review rejected reading
+native Chrome's full accessibility tree because it contained unrelated private
+content. That rejection was respected. A separately authorized direct public
+Scholar request received HTTP 403 after an initial sandbox DNS failure; neither
+response was recorded as a negative search result. No proxy or alternate identity
+was used.
+After the user's instruction '私人内容关了，什么东西没查的可以现在去查了', the in-app
+browser became available again. All 44 pending exact queries were completed there;
+no native Chrome inspection was needed. No new CAPTCHA appeared in this session.
 
-Actionable nearby collision
-'Projected likelihood' is already used for projection of likelihood ratios onto
-a space of inference functions in semiparametric models:
-D. L. McLeish and C. G. Small, Biometrika 79(1), 93-102 (1992).
-Primary publisher DOI: https://doi.org/10.1093/biomet/79.1.93
-Publisher abstract inspected through official Oxford Academic search:
-https://academic.oup.com/biomet/article-pdf/79/1/93/803536/79-1-93.pdf
-The abstract describes projection onto an inference-function space and a
-first-order relation to quasi-likelihood.
-A separate current use is a Gaussian-process training objective built from
-lower-dimensional data projections:
-E. Cazelles and F. Tobar, https://arxiv.org/abs/2601.16332
-The primary arXiv abstract was inspected.
-These semantic uses differ from this manuscript's finite-coordinate
-Radon-Nikodym derivatives. The manuscript therefore uses the descriptive name
-'finite-marginal likelihood ratio'. Its exact Scholar query displayed no articles;
-this is not a claim that the mathematical construction is new.
-No bibliography entry is required merely to justify an editorial avoidance of
-a competing name. These sources document the naming decision in this audit.
+Nearby naming decisions supported by primary sources
+1. Projected likelihood
+McLeish and Small use projection of likelihood ratios onto inference-function
+spaces in semiparametric models (Biometrika 79(1), 93-102, 1992).
+Official DOI: https://doi.org/10.1093/biomet/79.1.93
+Official publisher abstract was inspected. A separate GP training-objective use
+also occurs in https://arxiv.org/abs/2601.16332 (primary abstract inspected).
+The manuscript uses finite-marginal likelihood ratio for its actual marginal
+Radon-Nikodym derivatives. Its exact query displayed no articles; no novelty
+inference follows.
 
-Other decisions
-'Weighted Fourier jet' is retained as a descriptive explicit curve, with its
-standalone Gamma notation removed. The exact Scholar query displayed no articles.
-'Rotational Fourier defect', 'projected Hellinger energy', 'matrix Fisher
-operator', 'measurable row-series realization', and 'Hellinger coercivity' also
-had no exact articles in the inspected pages; explicit definitions remain
-essential.
-Generic words such as law and score produced unrelated legal, medical or other
-disciplinary records. These lexical hits do not override the paper's precise
-probability and derivative definitions.
-'Tail symmetry' returned distribution-tail and anatomical uses; spelling out
-permutations of tail coordinates makes the manuscript's meaning explicit.
-The density-zero and equivalence-group phrases introduced in Section 7 remain
-among the access-unavailable entries. Their terminology has not been cleared by
-a completed Scholar search in this run.
+2. Projective criterion
+Durieu and Volny (2008) explicitly use this name for L1 convergence of
+sum_(k>=1) X_0 E[X_k | F_0] in stationary-process invariance-principle theory.
+Official primary text, p.325: https://www.numdam.org/item/10.1214/07-AIHP123.pdf
+Related author preprint: https://arxiv.org/abs/0804.1848
+This differs from the manuscript's criterion using finite-marginal likelihood
+ratios. The single-use phrase is replaced by criterion in terms of finite marginals.
+
+3. Fourier feature
+Tancik et al. use sine/cosine vector input maps before an MLP, with equation (5)
+giving the map explicitly. Official primary text:
+https://proceedings.neurips.cc/paper_files/paper/2020/file/55053683268957697aa39fba6f231c68-Paper.pdf
+This is contextual overlap, not proof that the previous phrase was mathematically
+invalid. Product of centered complex exponentials now describes W exactly.
+The undefined fractional-feature aside is replaced by the explicit observation
+that bounded test functions do not remove the admissible-row condition.
+
+4. Density zero set
+Inspected Scholar records use this string for sets of asymptotic density zero
+in number theory and set theory, including Density zero slaloms (2000):
+https://www.sciencedirect.com/science/article/pii/S0168007299000184
+The manuscript instead concerns {f=0}; its subsection now says zero sets of the
+density. This is a lexical disambiguation, not a claim that the cited theory is
+applicable to the manuscript's operators.
+
+Load-bearing name retained after context check
+Linear equivalence group returned three records, including Li, Huang and Pei,
+The Recognition of the Bifurcation Problem with Trivial Solutions (2019).
+Official primary text, pp.2-3:
+https://mdpi-res.com/d_attachment/symmetry/symmetry-11-00935/article_deploy/symmetry-11-00935-v2.pdf
+Its group acts on bifurcation-function germs, not probability measure classes.
+The manuscript retains linear equivalence group of mu and the explicit definition
+G_rho={T in GL(H): nu_T equivalent to mu}. The term is used in the classification
+statement and throughout its development. The inspected overlap does not require
+discarding this useful name. The one- and two-sided operator criteria are unchanged.
+
+Other source decisions
+- Gaussian residual and Gaussian remainder are unified as independent Gaussian
+  summand, describing the existing sqrt(1-q) Z term.
+- Tail rigidity and support rigidity become descriptive result titles stating
+  Hilbert-Schmidt necessity and linear equivalence for bounded/half-line laws.
+- The table describes the relation between rho^- and rho directly.
+- Nonnegative inverse operators becomes an operator and its inverse both having
+  nonnegative matrix entries. Weighted permutation is qualified as an operator.
+- Projective criterion, boundary loss and support mismatch are replaced by the
+  specific finite-marginal and factor-absolute-continuity descriptions.
+- The boundary subsection now states density behavior and summability criteria.
+- Student family becomes Student t family, consistent with the displayed density.
+- The useful U={f>0} notation is retained; prose describes the set where f is
+  positive. It is explicitly distinguished from closed support.
+- Logarithmic affinity, affine equivalence group and semidirect product are not
+  reintroduced where explicit formulas already suffice.
+No bibliography entry is added solely to document an editorial naming decision.
+The table and this file carry the collision evidence outside the manuscript.
 
 Validation
-No LaTeX compilation, bibliography build, or PDF rendering was performed.
-Only static file checks are appropriate under this repository's build policy.
+The notation inventory and source fingerprints were regenerated after the edits.
+Static checks cover consecutive sections, filenames/titles, labels/references,
+math delimiters, environments, citations, and whitespace. No LaTeX compilation,
+bibliography build, PDF rendering, or numerical experiment was performed.

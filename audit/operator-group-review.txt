@@ -89,4 +89,4 @@ Verification boundary
 No TeX compilation, bibliography build, PDF rendering, or numerical experiment
 was performed. scripts/check_manuscript.py and git diff --check check source
 structure and whitespace. The separate Scholar log records completed searches
-and access failures; it does not certify novelty of the new theorem.
+for all 84 inventoried phrases; it does not certify novelty of the new theorem.

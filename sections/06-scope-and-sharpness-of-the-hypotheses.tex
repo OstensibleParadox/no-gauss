@@ -28,7 +28,7 @@ So the standardized density satisfies \eqref{eq:main-assumptions}.
 For \(2<\tau\le4\), its fourth moment is infinite.
 When \(\beta\ne0\), the two tails have unequal leading constants.
 So centering does not make the density even.
-The case \(\beta=0\) is a rescaled Student family.
+The case \(\beta=0\) is a rescaled Student $t$ family.
 These examples show that neither evenness nor a fourth moment is implicit in
 the theorem.
 
@@ -48,12 +48,12 @@ disconnected supports and laws without densities.
 \Cref{cor:restricted-gamma-affine} treats the distinct affine Gamma
 problem, where support-preserving scales do allow equivalence.
 
-The second moment has a specific role beyond differentiating the centered
-Fourier feature.
+The second moment has a specific role beyond differentiating the expectation
+of the product of centered complex exponentials.
 It makes every \(\ell^2\) row into a convergent random series.
 It supplies uniform integrability of squares of linear forms.
 It gives the coefficient-subsequence argument with an independent Gaussian
-remainder in \cref{lem:unit-row-rigidity}.
+summand in \cref{lem:unit-row-rigidity}.
 So the first-moment ODE result is stronger in its moment scope than the
 arbitrary-operator equivalence theorem.
 Extending the latter to infinite-variance coordinates requires a different
@@ -66,8 +66,7 @@ functions are
  \exp\left(-c|t|^\alpha\sum_{j\le n}|a_j|^\alpha\right).
 \]
 An arbitrary \(\ell^2\) row need not meet that requirement.
-The condition on admissible rows must also be satisfied when using bounded
-or fractional Fourier features.
+Using bounded test functions does not remove this condition on admissible rows.
 
 Under the density positivity hypothesis, the Hellinger path estimates give $L^1$ convergence and uniform
 integrability of likelihood ratios.
