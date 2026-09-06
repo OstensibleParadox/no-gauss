@@ -14,6 +14,9 @@ Throughout this subsection, only \(\E X=0\) and \(\E X^2=1\) for \(X\sim\rho\) a
 Recall \(\mu=\rho^{\otimes\N}\) and \(\mu_n=\rho^{\otimes n}\).
 The sample sequence is not an \(\ell^2\)-valued random variable.
 So we first specify how an operator on \(\ell^2\) acts on its law.
+The point is not formalism: the inverse action, tail exchanges, and
+likelihood cocycles used later must all hold on compatible measurable
+versions.
 
 \begin{lemma}[Measurable realization on each countable operator orbit]
 \label{lem:measurable-action}
@@ -100,10 +103,12 @@ Every orbit law satisfies the same second-moment condition, so
 \end{proof}
 
 Write \(\nu_T=(\Phi_T)_\#\mu\).
-The preceding lemma makes assertions about a common carrier only for a
-fixed countable subgroup.
-No single pointwise action of all of \(\GL(H)\) on a common
-conull set is required.
+For every finite or countable list of operators used in the proof, the
+preceding lemma supplies a common carrier on which the required action and
+inverse identities hold.
+This is all the later Hellinger identities need.
+No single pointwise action of all of \(\GL(H)\) on one universal conull set
+is required.
 The subsequences in its proof are also essential.
 A covariance bound gives convergence of arbitrary row sums in \(L^2\).
 That is not enough for almost-sure convergence of all ordinary partial sums
@@ -113,6 +118,15 @@ almost-sure row sums.
 
 \subsection{Rational translation invariance and the zero--one dichotomy}
 \label{sec:translation-dichotomy}
+
+The main theorem will decide equivalence by proving either absolute
+continuity or its failure.
+The next lemma removes any intermediate case: once finite-dimensional
+densities are positive and \(\ell^2\)-translations are quasi-invariant,
+every bounded invertible orbit is either equivalent to \(\mu\) or singular
+to it.
+This lets later arguments prove one-sided statements and then upgrade them
+to the full alternative.
 
 \begin{lemma}[Dichotomy for every bounded invertible orbit]
 \label{lem:orbit-dichotomy}
@@ -176,7 +190,14 @@ ergodicity of \(\mu\) makes that measure one.  This gives equivalence.
 \subsection{Finite-marginal likelihood ratios and Hellinger energy}
 \label{sec:finite-marginal-likelihood-ratios}
 
-\begin{lemma}[Finite-marginal likelihood ratios and two-sided uniform integrability]
+The classification is proved through finite-dimensional shadows.
+This lemma records how those shadows converge back to the infinite product
+measure: their likelihood ratios form martingales, and their Hellinger
+affinities decrease to the full affinity.
+Thus bounded projected energy is exactly the projective signal of
+equivalence, not merely a finite-dimensional necessary condition.
+
+\begin{lemma}[Projected Hellinger energy and finite-marginal likelihood ratios]
 \label{lem:finite-marginal-likelihood-ratios}
 Assume \(f>0\) almost everywhere, \(\sqrt f\in W^{1,2}(\R)\),
 and \(\E X=0\), \(\E X^2=1\).

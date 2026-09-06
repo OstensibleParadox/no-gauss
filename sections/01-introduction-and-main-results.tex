@@ -1,59 +1,67 @@
 \section{Introduction and Main Results}
 \label{sec:introduction-and-main-results}
 
+\subsection{The question and answer}
+\label{sec:question-answer}
+
+Fix one centered non-Gaussian coordinate law \(\rho\) and the i.i.d.
+product \(\mu=\rho^{\otimes\N}\).
+For which bounded invertible linear maps \(T\) on \(\ell^2\) is the
+row-series image law \(\nu_T\) equivalent to \(\mu\)?
+Kakutani's product criterion answers coordinatewise perturbations, but it
+does not survive dense mixing: the transformed coordinates cease to be
+independent and the Hellinger affinity no longer tensorizes.
+The obstruction is not visible from any fixed finite window, since every
+fixed finite output marginal can have a strictly positive density even when
+the full transformed law is singular.
+The answer is that the continuous Gaussian symmetry collapses to the
+discrete stabilizer \(\mathcal P\), and the only continuous thickness left
+around it is Hilbert--Schmidt.
+Equivalently, the projected Hellinger energies \(E_n(T)\), which retain the
+whole directed family of output marginals, are bounded exactly on the
+equivalence branch.
+When the density has zeros, this metric condition must be supplemented by a
+support gate: the rows of both \(T\) and \(T^{-1}\) must avoid the zero set
+of the one-dimensional density.
+
 \subsection{Historical context: from Kakutani to dense linear mixing}
 \label{sec:history}
 
 Kakutani's theorem turns equivalence of infinite products into a scalar
 summability problem.
-The test is the product of one-coordinate Hellinger affinities.
-This product is positive exactly on the equivalence branch,
-and zero exactly on the singular branch~\cite{kakutani1948equivalence}.
-This is one of the cleanest infinite-dimensional zero--one phenomena.
-
-Its direct scope is coordinatewise.
+The test is the product of one-coordinate Hellinger affinities, positive
+exactly on the equivalence branch and zero exactly on the singular
+branch~\cite{kakutani1948equivalence}.
 Sharp criteria for sequences of Euclidean and, more generally, Lie-group
-perturbations retain this product structure.
-These criteria identify Fisher information as the local Hellinger metric
-\cite{steele1986fisher,marques1992quasi}.  If a bounded operator mixes every output
-coordinate with infinitely many inputs, the transformed coordinates cease
-to be independent and the affinity no longer tensorizes.
+perturbations retain this product structure and identify Fisher information
+as the local Hellinger metric
+\cite{steele1986fisher,marques1992quasi}.
 
-The Gaussian law conceals this obstruction.
-For the standard Gaussian product, every orthogonal operator on \(\ell^2\) has
-a measurable row-series realization and preserves the product law.
-Translation and linear measure-class changes are governed by the Cameron--Martin
-and Feldman--H\'ajek theories.
-Explicit Gaussian density criteria were developed by Shepp.
-Ramer's theorem gives a nonlinear extension
+The Gaussian law conceals the dense-mixing obstruction.
+For the standard Gaussian product, every orthogonal operator on \(\ell^2\)
+has a measurable row-series realization and preserves the product law.
+Translation and linear measure-class changes are governed by the
+Cameron--Martin and Feldman--H\'ajek theories, with explicit Gaussian
+density criteria developed by Shepp and nonlinear extensions by Ramer
 \cite{cameron1944transformations,feldman1958equivalence,hajek1958property,
-shepp1966radon,ramer1974nonlinear,bogachev1998gaussian}.  A non-Gaussian
-product behaves differently.
-Exact independence rigidifies the orthogonal group to coordinate permutations and
-to those coordinate signs already preserving the one-dimensional law.
-The present paper identifies the corresponding measure-class enlargement of
-that exact linear stabilizer.
+shepp1966radon,ramer1974nonlinear,bogachev1998gaussian}.
+A non-Gaussian product behaves differently: exact independence rigidifies
+the orthogonal group to coordinate permutations and to those coordinate
+signs already preserving the one-dimensional law.
 Non-Gaussian quasi-invariant measures on Hilbert and linear topological
 spaces have long been known
-\cite{feldman1961examples,takahashi1975quasi}; the issue here is instead a
-complete classification for dense linear mixing of one fixed i.i.d. product
-law.
-
-There is a second obstacle.
-Every fixed finite output marginal can have a strictly positive density even
-when the full transformed law is singular to the reference product.
-Hence neither convergence on cylinder functions nor fixed-dimensional
-calculations detect the boundary.
-The correct completion must retain the entire directed family of finite-marginal likelihood ratios.
-Our Hellinger energy does precisely this: bounded projected energy is
-equivalent to positive global affinity, and a translation-ergodic zero--one
-law then upgrades positive affinity to equivalence.
+\cite{feldman1961examples,takahashi1975quasi}; the problem here is the
+complete measure-class classification for dense linear mixing of one fixed
+i.i.d. product law.
 
 \subsection{The phase transition: continuous Gaussian symmetry and discrete rigidity}
 \label{sec:phase-transition}
 
 Let \(X\) have a centered probability law \(\rho\) with finite first moment
 and characteristic function \(\phi(u)=\E e^{iuX}\).
+The Fourier statistic used below has a specific job: it turns the
+dependence created by a small non-Gaussian rotation into a bounded
+observable whose strength does not deteriorate with the ambient dimension.
 Define the rotational Fourier defect by
 \begin{equation}
  R(\xi,\eta)=\eta\phi'(\xi)\phi(\eta)-\xi\phi(\xi)\phi'(\eta).
@@ -72,9 +80,6 @@ Hence zero rotational Fourier defect means that the curve lies in one fixed comp
 through the origin.
 The resulting global linear ODE has only Gaussian characteristic functions
 as solutions.
-This formulation is important.
-For a nondegenerate Gaussian law, the unweighted curve
-\(u\mapsto(\phi(u),\phi'(u))\) is not contained in a straight line.
 
 Under the moment and Sobolev assumptions below, a finite set of frequencies
 detects every infinitesimal matrix direction for a non-Gaussian coordinate law.
@@ -87,6 +92,13 @@ This is the non-Gaussian phase transition studied below.
 
 \subsection{Main theorem: equivalence, energy, and the stabilizer}
 \label{sec:main-results}
+
+The main theorem has a simple nontechnical content.
+For positive densities, dense mixing preserves the product measure class
+exactly when it differs by Hilbert--Schmidt size from an exact coordinate
+symmetry.
+The finite-marginal energy \(E_n(T)\) is not a heuristic proxy for this
+condition; it is an equivalent diagnostic.
 
 We now state the assumptions used for the full arbitrary-mixing theorem.
 Suppose \(\rho(dx)=f(x)\,dx\), put \(g=\sqrt f\), and
@@ -147,8 +159,10 @@ projected Hellinger energy by
  E_n(T)=-2\log\Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr).
  \label{eq:projected-hellinger-energy}
 \end{equation}
-These are actual output marginals.
-They are not laws obtained from principal matrix corners.
+These are actual output marginals, not laws obtained from principal matrix
+corners.  Thus \(E_n\) keeps the finite evidence produced by the true
+dense output rows and asks whether that evidence remains uniformly bounded
+as the window grows.
 
 \begin{theorem}[Complete criterion for arbitrary coordinate mixing]
 \label{thm:measure-equivalence}
@@ -165,9 +179,12 @@ Under \eqref{eq:main-assumptions}, for every \(T\in\GL(H)\),
 If these conditions fail, then \(\nu_T\perp\mu\) and
 \(E_n(T)\uparrow\infty\).  The exact bounded invertible linear stabilizer
 is \(\mathcal P\): \(\nu_T=\mu\) if and only if \(T\in\mathcal P\).
-On the equivalence branch, the finite-marginal likelihood ratios and their reciprocals are uniformly integrable in their
-respective reference measures.
+\end{theorem}
 
+\begin{proposition}[Finite-coordinate likelihood approximation]
+\label{prop:finite-coordinate-likelihood-approximation}
+Under the assumptions of \cref{thm:measure-equivalence}, suppose
+\(\nu_T\sim\mu\).
 For any admissible \(Q\), put \(K=TQ^{-1}-I\) and
 \(T_n=I+P_nKP_n\).  Then \(T_n\) is eventually invertible and
 \begin{equation}
@@ -181,7 +198,14 @@ For any admissible \(Q\), put \(K=TQ^{-1}-I\) and
  \label{eq:likelihood-convergence}
 \end{equation}
 Since \(\nu_Q=\mu\), the limiting law is also \(\nu_T\).
-\end{theorem}
+Moreover, the finite-marginal likelihood ratios and their reciprocals are
+uniformly integrable in their respective reference measures.
+\end{proposition}
+
+\Cref{prop:finite-coordinate-likelihood-approximation} is the analytic bookkeeping
+behind the criterion: finite-dimensional likelihood computations do not
+merely approximate cylinder probabilities, but converge to the actual
+infinite-dimensional likelihood on the equivalence branch.
 
 The theorem contains the global energy formulation through
 \(\sup_nE_n(T)\).
@@ -215,24 +239,78 @@ Thus scale Fisher information is needed for general linear mixing but not for
 the orthogonal subproblem.
 \end{corollary}
 
+\subsection{Result map}
+\label{sec:result-map}
+
+The classification separates metric accumulation from support compatibility.
+The following map records the strongest conclusion in each regime and the
+reason that conclusion matters.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabular}{p{0.24\textwidth} p{0.31\textwidth} p{0.34\textwidth}}
+\toprule
+\textbf{Condition} & \textbf{Strongest conclusion} & \textbf{Value}\\
+\midrule
+Positive density, arbitrary bounded invertible mixing
+&
+\(\nu_T\sim\mu\Longleftrightarrow
+\exists Q\in\mathcal P:\ TQ^{-1}-I\in\mathcal S_2
+\Longleftrightarrow \sup_nE_n(T)<\infty\)
+&
+A complete and checkable measure-class boundary for dense mixing.\\
+Positive density, orthogonal mixing
+&
+The same Hilbert--Schmidt criterion, assuming only location Fisher
+information.
+&
+The important rotation regime needs weaker regularity.\\
+Density with zeros
+&
+Hilbert--Schmidt proximity plus row-wise avoidance of the zero set by
+\(T\) and \(T^{-1}\).
+&
+Positive affinity is separated from true two-sided absolute continuity.\\
+Half-line or bounded support
+&
+The equivalence group collapses to explicit permutation or
+signed-permutation classes.
+&
+Support boundaries can eliminate nontrivial dense mixing altogether.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The first row is the main theorem.
+The second isolates the common situation in which the operator is already
+orthogonal, so the scale score never enters.
+The third is the support-aware replacement for positivity; it says exactly
+what null-set obstruction must be checked in addition to Hilbert--Schmidt
+size.
+The fourth shows that in one-sided and bounded geometries the support gate
+can be so rigid that the continuous Hilbert--Schmidt neighborhood
+disappears.
+
 \subsection{Organization and notation}
 \label{sec:organization}
 
-\Cref{sec:rotational-fourier-defect-and-gaussian-characterization} proves the Gaussian characterization by
-rotational Fourier defect and explains its determinant representation.
-\Cref{sec:finite-dimensional-hellinger-coercivity} constructs finite real Fourier sums with
-dual moments and establishes dimension-free local Hellinger coercivity; it
-also states the global coercivity theorem.  \Cref{sec:measurable-realization-and-dichotomy}
-constructs the measurable action and proves the likelihood and zero--one
-machinery.  \Cref{sec:proof-of-the-measure-equivalence-theorem} proves the Hilbert--Schmidt criterion, then
-uses a block-sum argument to complete the deferred globalization step.
-\Cref{sec:scope-and-sharpness-of-the-hypotheses} gives examples satisfying the hypotheses
-and explains the roles of support, moments, and Fisher information.
-\Cref{sec:density-zeros-and-the-linear-equivalence-group}
-classifies the linear equivalence group for densities with arbitrary
-zero sets under the Sobolev assumptions, reduces bounded and half-line
-laws to explicit permutation classes, and gives block and marginal
-criteria separating absolute continuity from positive affinity.
+\Cref{sec:rotational-fourier-defect-and-gaussian-characterization} rules out
+continuous non-Gaussian rotation blind spots.
+\Cref{sec:finite-dimensional-hellinger-coercivity} turns that Fourier witness
+into dimension-free local Hellinger coercivity and then states the finite-dimensional global form.
+\Cref{sec:measurable-realization-and-dichotomy} builds the measurable
+row-series action and shows that the projected Hellinger energy is an exact
+equivalence diagnostic.
+\Cref{sec:proof-of-the-measure-equivalence-theorem} proves sufficiency by
+constructing stable likelihood ratios and proves necessity by showing that
+non-Hilbert--Schmidt tail errors cannot be hidden from local coercivity and
+tail symmetry.
+\Cref{sec:density-zeros-and-the-linear-equivalence-group} gives the
+support-aware replacement for density positivity, including the row
+zero-set criterion, boundary contrasts, and the bounded-support and
+half-line classifications.
+\Cref{sec:scope-and-sharpness-of-the-hypotheses} then separates the remaining
+regularity assumptions and examples from the support geometry.
 
 We write \(A^*\) for the adjoint, including the transpose of a real
 matrix, and \(\|\cdot\|_{\mathrm{op}}\) for the operator norm.

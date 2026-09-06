@@ -46,21 +46,23 @@ Geometry of the Weighted Fourier Jet}
 \maketitle
 
 \begin{abstract}
-For a non-Gaussian i.i.d. product with a positive density, finite second
-moment, and finite location and scale Fisher information, we classify
-measure equivalence under arbitrary bounded invertible linear mixing.
-The equivalence group consists of Hilbert--Schmidt perturbations of the
-signed permutations preserving the coordinate law.
-A weighted Fourier jet supplies the local coercivity behind this result.
-When the density has zeros, the same Sobolev assumptions give an exact
-criterion: Hilbert--Schmidt proximity and avoidance of the zero set by
-every row of the operator and its inverse.  Boundary geometry simplifies
-this classification:
-centered half-line laws permit only permutations, and bounded laws permit
-only signed permutations satisfying a scalar reflection criterion.
-These support classifications require no Fisher information.
-Block examples distinguish equivalence from positive Hellinger affinity
-and exhibit both linear and quadratic boundary-loss thresholds.
+Kakutani's theorem tensorizes equivalence of product measures, but dense
+bounded linear mixing destroys the independence on which that test rests.
+The resulting difficulty is genuinely infinite-dimensional: every fixed
+finite output marginal may look regular while the full transformed law is
+singular.  We resolve this problem for a non-Gaussian i.i.d. product with
+a positive density, finite second moment, and finite location and scale
+Fisher information.  The weighted Fourier jet supplies finite-frequency,
+dimension-free Hellinger witnesses for the non-Gaussian directions, turning
+local mixing into Frobenius cost.  The global answer is that the Gaussian
+continuous symmetry collapses to the discrete stabilizer \(\mathcal P\),
+and the only continuous thickness that preserves the measure class is
+Hilbert--Schmidt: for every bounded invertible \(T\), equivalence,
+Hilbert--Schmidt proximity to \(\mathcal P\), and bounded projected
+Hellinger energy are equivalent.  When the density has zeros, this metric
+criterion has an exact support-aware extension: the rows of both \(T\)
+and \(T^{-1}\) must avoid the zero set.  Half-line and bounded supports
+then reduce the equivalence group to explicit permutation classes.
 \end{abstract}
 
 \tableofcontents
@@ -70,8 +72,8 @@ and exhibit both linear and quadratic boundary-loss thresholds.
 \input{03-finite-dimensional-hellinger-coercivity}
 \input{04-measurable-realization-and-dichotomy}
 \input{05-proof-of-the-measure-equivalence-theorem}
-\input{06-scope-and-sharpness-of-the-hypotheses}
-\input{07-density-zeros-and-the-linear-equivalence-group}
+\input{06-density-zeros-and-the-linear-equivalence-group}
+\input{07-scope-and-sharpness-of-the-hypotheses}
 
 \bibliographystyle{plainnat}
 \bibliography{references}

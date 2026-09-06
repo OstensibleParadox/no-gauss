@@ -1,52 +1,31 @@
 \section{Density Zeros and the Linear Equivalence Group}
 \label{sec:density-zeros-and-the-linear-equivalence-group}
 
-The assumption \(f>0\) Lebesgue-almost everywhere has a different role
-from the moment and Sobolev assumptions.
-It makes finite changes of coordinates equivalent and supplies the
-translation quasi-invariance used in the zero--one argument.
-Removing it changes the classification itself.
-In this section the hypotheses are stated separately for each result;
+The positivity assumption in the main theorem has one precise job: it makes
+finite-coordinate likelihood ratios blind to support.
+Once the density has zeros, the Hilbert--Schmidt condition remains the right
+metric accumulation condition, but it is no longer the whole story.
+The missing datum is row-wise support compatibility.
+Each row of the operator, and for equivalence each row of the inverse, must
+land in the positivity set of the one-dimensional density almost surely.
+
+This section gives that support-aware replacement first.
+Arbitrary zero sets lead to an exact zero-set row criterion; bounded
+coordinate laws force signed permutations with only the scalar reflection
+freedom allowed by the one-dimensional measure class; centered half-line laws
+force ordinary permutations.
+We then return to examples showing why the old positive-density dichotomy
+fails and how boundary behavior changes the summability threshold.
+The hypotheses are stated separately for each result;
 \eqref{eq:main-assumptions} is not a standing assumption.
-The rotational Fourier defect still detects non-Gaussian mixing, but a finite
-Hellinger cost need not represent a change within the same measure class.
 
-\subsection{Failure of dichotomy without density positivity}
-\label{sec:restricted-counterexample}
-
-Let \(f\) be the variance-one rescaling of
-\(C(1-x^2)^2\mathbf 1_{\{|x|<1\}}\), and write its support as
-\([-a,a]\).
-Set \(\rho(dx)=f(x)\,dx\).
-Its zero-extended square root belongs to \(W^{1,2}(\R)\), and
-\(x(\sqrt f)'\in L^2(\R)\).
-For \(0<c<1\), set
-\[
- T=c\oplus I,\qquad
- f_c(y)=c^{-1}f(y/c),\qquad \mu=\rho^{\otimes\N}.
-\]
-Then \(T-I\) has rank one and
-\[
- \nu_T=(f_c(y)\,dy)\otimes\rho^{\otimes\{2,3,\ldots\}}\ll\mu,
- \qquad \mu\not\ll\nu_T.
-\]
-Indeed, \(f_c\) is positive on \((-ca,ca)\) and zero on the rest
-of \((-a,a)\).
-Nevertheless,
-\[
- \Aff(\mu,\nu_T)=\int\sqrt{f(y)f_c(y)}\,dy>0,
- \qquad \sup_n E_n(T)<\infty.
-\]
-Thus neither Hilbert--Schmidt proximity nor bounded projected energy
-implies equivalence without an additional condition on null sets.
-The failure occurs with finite location and scale Fisher information.
-
-\subsection{What survives of the Fourier and Fisher argument}
+\subsection{The metric input when the density has zeros}
 \label{sec:restricted-local}
 
-The logarithm-free Fourier characterization in
-\cref{lem:fourier-ode}, and its one-rotation Hellinger lower bound,
-already require no density.
+The support-aware theorem still uses the same Fourier/Fisher mechanism for
+the metric part of the classification.
+The logarithm-free Fourier characterization in \cref{lem:fourier-ode}, and
+its one-rotation Hellinger lower bound, already require no density.
 For the stronger matrix estimates, the appropriate regularity condition is
 \begin{equation}
  \begin{gathered}
@@ -155,10 +134,14 @@ and include every positive Gamma or Beta shape.
 \subsection{The linear equivalence group for arbitrary zero sets of the density}
 \label{sec:linear-equivalence-group}
 
-The Hilbert--Schmidt condition and the set where \(f\) is positive together
-give an exact operator criterion, including for densities with gaps and
-with both tails unbounded.  The required condition on the rows concerns the
-actual zero set of the density, rather than its closed support.
+The first replacement theorem is the main support-aware form of the
+classification.
+The Hilbert--Schmidt alternative remains the metric part of the answer.
+The new condition is purely about null sets: no output coordinate may place
+positive probability in the zero set of the original density, and mutual
+equivalence requires the same condition after applying the inverse operator.
+The condition concerns the actual zero set of the density, rather than its
+closed support.
 
 \begin{theorem}[The linear equivalence group with density zeros]
 \label{thm:linear-equivalence-group}
@@ -261,17 +244,103 @@ the finite-coordinate orthogonal approximants from
 only location Fisher information.
 \end{proof}
 
+Thus density zeros do not introduce an additional global likelihood-ratio
+limit beyond the operator criterion.
+They introduce a row-by-row boundary test.
 Every nonzero row sum has an absolutely continuous scalar law: condition
 on all but one input with a nonzero coefficient.  Thus the row conditions
 are unchanged if $f$ is modified on a Lebesgue-null set.
 If $f>0$ almost everywhere, all these conditions are automatic and
 \eqref{eq:linear-equivalence-group} reduces to
 \cref{thm:measure-equivalence}.
-For a density with gaps, they test whether each row of $T$ and of its
-inverse puts any mass in those gaps.  No likelihood-ratio limit is
-required in addition to these operator conditions.  The contraction in
-\cref{sec:restricted-counterexample} satisfies the forward row condition
-and fails the inverse row condition, giving strict absolute continuity.
+For a density with gaps, the rows of $T$ and $T^{-1}$ must avoid those
+gaps almost surely.  The contraction in
+\cref{sec:restricted-counterexample} below satisfies the forward row
+condition but fails the inverse row condition, which is exactly why it gives
+strict absolute continuity rather than equivalence.
+
+\subsection{Boundary behavior of the density and summability criteria}
+\label{sec:restricted-threshold}
+
+The row test and the Hellinger energy measure different phenomena.
+Boundary compatibility decides whether the transformed law is absolutely
+continuous in either direction; Hellinger loss decides whether overlap
+accumulates to zero.
+The two block-rotation examples below separate these effects.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{0.28\textwidth} p{0.27\textwidth} p{0.32\textwidth}}
+\toprule
+\textbf{Boundary type} & \textbf{One-block loss} & \textbf{What it controls}\\
+\midrule
+Hard boundary, uniform square & linear in \(|\theta|\) & accumulated
+Hellinger loss; absolute continuity still fails for every nonzero
+boundary-crossing block\\
+Smooth vanishing boundary & quadratic in \(\theta\) & the Fourier/Fisher
+metric threshold; support compatibility remains a separate row condition\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Let \(\rho\) be uniform on \([-\sqrt3,\sqrt3]\), let
+\(\mu_2=\rho^{\otimes2}\), and consider \(T=\bigoplus_kO_{\theta_k}\).
+Write
+\(\delta_k=\min_{m\in\mathbb Z}|\theta_k-m\pi/2|\in[0,\pi/4]\).
+For one block the affinity is the relative area of intersection
+of a square and its rotation.
+Removing the four corner triangles gives, for \(0<\delta\leq\pi/4\),
+\begin{equation}
+ \begin{aligned}
+ \Aff(\mu_2,(O_\delta)_\#\mu_2)
+ &=1-\frac{(\cos\delta+\sin\delta-1)^2}
+                {2\sin\delta\cos\delta},\\
+ 1-\Aff(\mu_2,(O_\delta)_\#\mu_2)
+ &=\frac{\delta}{2}+O(\delta^2).
+ \end{aligned}
+ \label{eq:restricted-uniform-rotation}
+\end{equation}
+At \(\delta=0\), the affinity is one.  Each nonzero \(\delta\) leaves
+positive area on both sides of the support difference.
+Consequently \cref{thm:block-kakutani} gives the complete trichotomy
+\begin{equation}
+ \begin{array}{c|l}
+  \delta_k=0\text{ for every }k&\nu_T=\mu\\
+  0<\sum_k\delta_k<\infty&
+      \nu_T\not\perp\mu,\quad \nu_T\not\ll\mu,\quad\mu\not\ll\nu_T\\
+  \sum_k\delta_k=\infty&\nu_T\perp\mu.
+ \end{array}
+ \label{eq:restricted-uniform-classification}
+\end{equation}
+In particular, \(\theta_k=1/k\) gives \(T-I\in\mathcal S_2\) but
+\(\nu_T\perp\mu\).
+With \(\theta_k=1/k^2\), the laws instead have positive affinity
+and neither is absolutely continuous with respect to the other.
+
+For comparison, use the variance-one rescaling of a density proportional
+to \((1-x^2)^r\mathbf1_{\{|x|<1\}}\), \(r>1\).
+Its zero-extended square root satisfies the Sobolev hypotheses.
+Let \(f\) be this density, \(\rho(dx)=f(x)\,dx\),
+\(\mu_2=\rho^{\otimes2}\), and \(g=\sqrt f\).
+Writing \(J=4\|g'\|_2^2>1\), the skew-generator formula gives
+\begin{equation}
+ 1-\Aff(\mu_2,(O_\theta)_\#\mu_2)=\frac{J-1}{4}\theta^2+o(\theta^2).
+ \label{eq:restricted-smooth-rotation}
+\end{equation}
+Indeed, the planar skew generator has Frobenius norm squared two,
+and \(h^2=\theta^2\langle A,\mathcal I A\rangle_F/4+o(\theta^2)\).
+The only rotations preserving the square support are its signed
+permutation symmetries.
+Every rotated square shares a neighborhood of the origin with the
+original square, on which both densities are positive; hence
+\(\Aff(\mu_2,(O_\theta)_\#\mu_2)>0\) for every angle.
+Affinity is continuous and strictly below one away from them,
+so the three cases in \eqref{eq:restricted-uniform-classification}
+now use \(\sum_k\delta_k^2\) in place of \(\sum_k\delta_k\).
+Equivalence still requires every \(\delta_k=0\).
+Thus the quadratic metric supplied by the Fourier/Fisher method controls
+accumulation of Hellinger loss, while boundary compatibility separately
+controls absolute continuity.
 
 \subsection{Complete linear classification for bounded and half-line laws}
 \label{sec:restricted-support-rigidity}
@@ -281,6 +350,14 @@ Write \(\rho=\Law(X)\), \(\rho^-=\Law(-X)\), and
 Throughout this subsection \(X\) is centered with variance one.
 The operator action is the row-series action of
 \cref{lem:measurable-action}.
+
+For bounded and one-sided supports, the row condition has much stronger
+consequences than it first suggests.
+Conditional expectations of finite row sums see the boundary of the support.
+This turns support compatibility into an \(\ell^1\)-type row constraint, and
+the inverse relations then force the operator to be monomial.
+The classification below therefore needs no density and no Fisher
+information.
 
 \begin{theorem}[Linear equivalence for bounded and half-line coordinate laws]
 \label{thm:restricted-support-rigidity}
@@ -399,6 +476,7 @@ converse.
 Reflection proves the upper-bounded case.
 \end{proof}
 
+This is the main bounded-support and half-line payoff.
 For \(Y\sim\operatorname{Gamma}(\alpha,\theta)\), where \(\theta\)
 is the scale, put
 \[
@@ -406,21 +484,64 @@ is the scale, put
 \]
 Its essential endpoints are \(-\sqrt{\alpha}\) and \(+\infty\).
 Thus \eqref{eq:restricted-halfline-classification} gives the complete
-linear equivalence classification for every \(\alpha,\theta>0\),
-including the shape-two Fourier example in
-\cref{sec:variance-and-affine-normalization}.
+homogeneous linear equivalence classification for every
+\(\alpha,\theta>0\), including the shape-two Fourier example in
+\cref{sec:variance-and-affine-normalization}: only ordinary coordinate
+permutations are allowed.
+Compact support permits signs only to the extent allowed by the scalar
+reflected law.
 For compactly supported densities positive almost everywhere inside
-\((-a,a)\), reflection equivalence is automatic.
-An asymmetric such density permits finitely many sign changes,
-although they do not preserve the measure exactly.
-A standardized asymmetric Beta law has unequal endpoint magnitudes,
-so it permits only permutations.
+\((-a,a)\), reflection equivalence is automatic, so an asymmetric such
+density permits finitely many sign changes although they do not preserve the
+measure exactly.
+A standardized asymmetric Beta law has unequal endpoint magnitudes, so it
+permits only permutations.
+These conclusions come from support geometry rather than from the
+Fourier/Fisher estimates.
+
+\subsection{Why the support test is indispensable}
+\label{sec:restricted-counterexample}
+
+The zero-set row condition is not a cosmetic addition to the
+Hilbert--Schmidt criterion.
+It separates positive Hellinger overlap from genuine two-sided absolute
+continuity even for a rank-one perturbation.
+
+Let \(f\) be the variance-one rescaling of
+\(C(1-x^2)^2\mathbf 1_{\{|x|<1\}}\), and write its support as
+\([-a,a]\).
+Set \(\rho(dx)=f(x)\,dx\).
+Its zero-extended square root belongs to \(W^{1,2}(\R)\), and
+\(x(\sqrt f)'\in L^2(\R)\).
+For \(0<c<1\), set
+\[
+ T=c\oplus I,\qquad
+ f_c(y)=c^{-1}f(y/c),\qquad \mu=\rho^{\otimes\N}.
+\]
+Then \(T-I\) has rank one and
+\[
+ \nu_T=(f_c(y)\,dy)\otimes\rho^{\otimes\{2,3,\ldots\}}\ll\mu,
+ \qquad \mu\not\ll\nu_T.
+\]
+Indeed, \(f_c\) is positive on \((-ca,ca)\) and zero on the rest
+of \((-a,a)\).
+Nevertheless,
+\[
+ \Aff(\mu,\nu_T)=\int\sqrt{f(y)f_c(y)}\,dy>0,
+ \qquad \sup_n E_n(T)<\infty.
+\]
+Thus neither Hilbert--Schmidt proximity nor bounded projected energy
+implies equivalence without the inverse row condition.
+The failure occurs with finite location and scale Fisher information.
 
 \subsection{Exact block criteria without equivalence of the factors}
 \label{sec:restricted-blocks}
 
-For block products, the following criterion separates conditions for absolute
-continuity within each pair of factors from accumulation of Hellinger loss.
+For reference, the boundary examples above use the following product
+criterion.
+It separates absolute continuity within each pair of factors from
+accumulation of Hellinger loss, and is not part of the linear i.i.d.
+classification itself.
 
 \begin{theorem}[Block products without equivalence of the factors]
 \label{thm:block-kakutani}
@@ -577,79 +698,15 @@ The product criterion \eqref{eq:restricted-gamma-scale-product}
 then proves necessity and sufficiency.
 \end{proof}
 
-\subsection{Boundary behavior of the density and summability criteria}
-\label{sec:restricted-threshold}
-
-Let \(\rho\) be uniform on \([-\sqrt3,\sqrt3]\), let
-\(\mu_2=\rho^{\otimes2}\), and consider \(T=\bigoplus_kO_{\theta_k}\).
-Write
-\(\delta_k=\min_{m\in\mathbb Z}|\theta_k-m\pi/2|\in[0,\pi/4]\).
-For one block the affinity is the relative area of intersection
-of a square and its rotation.
-Removing the four corner triangles gives, for \(0<\delta\leq\pi/4\),
-\begin{equation}
- \begin{aligned}
- \Aff(\mu_2,(O_\delta)_\#\mu_2)
- &=1-\frac{(\cos\delta+\sin\delta-1)^2}
-                {2\sin\delta\cos\delta},\\
- 1-\Aff(\mu_2,(O_\delta)_\#\mu_2)
- &=\frac{\delta}{2}+O(\delta^2).
- \end{aligned}
- \label{eq:restricted-uniform-rotation}
-\end{equation}
-At \(\delta=0\), the affinity is one.  Each nonzero \(\delta\) leaves positive area on both sides of the
-support difference.
-Consequently \cref{thm:block-kakutani} gives the complete trichotomy
-\begin{equation}
- \begin{array}{c|l}
-  \delta_k=0\text{ for every }k&\nu_T=\mu\\
-  0<\sum_k\delta_k<\infty&
-      \nu_T\not\perp\mu,\quad \nu_T\not\ll\mu,\quad\mu\not\ll\nu_T\\
-  \sum_k\delta_k=\infty&\nu_T\perp\mu.
- \end{array}
- \label{eq:restricted-uniform-classification}
-\end{equation}
-In particular, \(\theta_k=1/k\) gives \(T-I\in\mathcal S_2\) but
-\(\nu_T\perp\mu\).
-With \(\theta_k=1/k^2\), the laws instead have positive affinity
-and neither is absolutely continuous with respect to the other.
-
-For comparison, use the variance-one rescaling of a density proportional
-to \((1-x^2)^r\mathbf1_{\{|x|<1\}}\), \(r>1\).
-Its zero-extended square root satisfies the Sobolev hypotheses.
-Let \(f\) be this density, \(\rho(dx)=f(x)\,dx\),
-\(\mu_2=\rho^{\otimes2}\), and \(g=\sqrt f\).
-Writing \(J=4\|g'\|_2^2>1\), the skew-generator formula gives
-\begin{equation}
- 1-\Aff(\mu_2,(O_\theta)_\#\mu_2)=\frac{J-1}{4}\theta^2+o(\theta^2).
- \label{eq:restricted-smooth-rotation}
-\end{equation}
-Indeed, the planar skew generator has Frobenius norm squared two,
-and \(h^2=\theta^2\langle A,\mathcal I A\rangle_F/4+o(\theta^2)\).
-The only rotations preserving the square support are its signed
-permutation symmetries.
-Every rotated square shares a neighborhood of the origin with the
-original square, on which both densities are positive; hence
-\(\Aff(\mu_2,(O_\theta)_\#\mu_2)>0\) for every angle.
-Affinity is continuous and strictly below one away from them,
-so the three cases in \eqref{eq:restricted-uniform-classification}
-now use \(\sum_k\delta_k^2\) in place of \(\sum_k\delta_k\).
-Equivalence still requires every \(\delta_k=0\).
-Thus the quadratic metric supplied by the Fourier/Fisher method
-controls accumulation of Hellinger loss, while boundary compatibility
-separately controls absolute continuity.
-
 \subsection{An exact replacement for projected-energy equivalence}
 \label{sec:restricted-projections}
 
-For arbitrary zero sets of an unbounded density, the preceding support
-theorems need not apply.
-There is nevertheless a complete criterion in terms of finite marginals
-which requires no dichotomy.
+For reference, there is also a purely measure-theoretic fallback when one
+does not want to use the operator classification.
 For densities satisfying \eqref{eq:restricted-sobolev},
-\cref{thm:linear-equivalence-group} gives the corresponding operator
-classification.  The following measure-theoretic criterion also applies
-without Sobolev assumptions.
+\cref{thm:linear-equivalence-group} gives the sharper linear answer.
+The following finite-marginal criterion applies without Sobolev assumptions
+and without any dichotomy.
 
 \begin{proposition}[Two-sided finite-marginal likelihood ratio tails]
 \label{prop:restricted-projected-criterion}

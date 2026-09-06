@@ -1,14 +1,22 @@
 \section{Proof of the Measure Equivalence Theorem}
 \label{sec:proof-of-the-measure-equivalence-theorem}
 
-We now assemble the finite-dimensional coercivity and the measurable
-zero--one law.
-Only the local coercivity theorem from \cref{sec:finite-dimensional-hellinger-coercivity} is used
-in the necessity argument.
-The global finite-dimensional estimate is proved afterward.
+We now prove the measure-class classification.
+Sufficiency constructs a stable infinite-dimensional likelihood ratio from
+finite-coordinate Hilbert--Schmidt approximants.
+Necessity proves that any non-Hilbert--Schmidt tail deviation leaves a
+Hellinger trace that cannot be hidden by dense mixing.
+The global finite-dimensional coercivity theorem is proved at the end,
+after the classification supplies the required compactness principle.
 
 \subsection{Sufficiency of Hilbert--Schmidt perturbations}
 \label{sec:sufficiency}
+
+We first prove the constructive direction of the classification.
+A Hilbert--Schmidt perturbation can be approximated by finite-coordinate
+changes whose Hellinger increments are summable.
+The proposition turns this finite-dimensional Cauchy property into an actual
+infinite-dimensional likelihood ratio.
 
 \begin{proposition}[Hilbert--Schmidt sufficiency and likelihood ratio convergence]
 \label{prop:hilbert-schmidt-sufficiency}
@@ -195,10 +203,12 @@ proves equivalence and the asserted convergence.
 \subsection{Necessity of Hilbert--Schmidt perturbations}
 \label{sec:necessity}
 
-The next lemma transports finite-dimensional local coercivity to
-Hilbert--Schmidt perturbations, including finite-rank maps with infinitely
-supported rows.  It is the quantitative input to the argument with swaps of tail
-coordinates.
+The finite-dimensional lower bound must also apply to perturbations whose
+rows are not finitely supported.
+The next lemma transfers local coercivity from coordinate blocks to genuine
+Hilbert--Schmidt operators by approximation and likelihood-ratio convergence.
+It is the quantitative tool used later to turn many small tail mismatches
+into a contradiction.
 
 \begin{lemma}[The local bound for Hilbert--Schmidt operators]
 \label{lem:local-hs-coercivity}
@@ -254,6 +264,13 @@ Pass to the limit in \eqref{eq:orthogonal-local-hellinger}.
 
 \subsubsection{Characteristic-function rigidity and arbitrary mixing}
 \label{sec:characteristic-function-rigidity}
+
+Necessity begins by identifying what a single output row can look like if
+its law is close to the original coordinate law.
+This is a one-dimensional rigidity problem for linear combinations of
+independent copies of \(X\).
+The characteristic-function argument below says that, for a non-Gaussian
+coordinate law, such a row must asymptotically be one signed coordinate.
 
 Throughout this subsection, $X_j$ are independent copies of a real random
 variable $X$ with law $\rho$ and
@@ -516,6 +533,15 @@ For invertible $T$, use
 $T^*T-I=T^{-1}(TT^*-I)T$.
 \end{proof}
 
+We now assemble the necessity argument.
+The preceding row rigidity gives only qualitative matching of far-out rows
+with signed coordinates.
+To obtain a Hilbert--Schmidt conclusion, those row errors must be summable.
+The proof forces summability by swapping carefully chosen tail coordinates:
+if the errors were not summable, the swaps would create a small finite-rank
+perturbation that local coercivity can detect, while tail invariance makes
+it asymptotically invisible.
+
 \begin{lemma}[Hilbert--Schmidt necessity under a second-moment hypothesis]
 \label{lem:hilbert-schmidt-necessity}
 Assume that the common law has a positive density $f$, that
@@ -764,18 +790,21 @@ their reciprocals are the two conditional-expectation martingales in
 This gives uniform integrability in both directions.
 It also rules out loss of mass at the projective limit.
 
-\begin{proof}[Proof of \cref{thm:measure-equivalence}]
+\begin{proof}[Proof of \cref{thm:measure-equivalence} and \cref{prop:finite-coordinate-likelihood-approximation}]
 Necessity follows from \cref{lem:hilbert-schmidt-necessity}.  If
 $T-Q\in\mathcal S_2$ for $Q\in\mathcal P$, then
 $TQ^{-1}=I+(T-Q)Q^{-1}$ is invertible and differs from the identity
 by a Hilbert--Schmidt operator.  By \cref{prop:hilbert-schmidt-sufficiency},
 $\nu_{TQ^{-1}}\sim\mu$.  Since $Q_\#\mu=\mu$, this is
 $\nu_T\sim\mu$.  The same proposition gives the finite-coordinate
-likelihood ratio and square-root limits stated in the theorem.
+likelihood ratio and square-root limits stated in
+\cref{prop:finite-coordinate-likelihood-approximation}.
 The exact stabilizer is identified in \cref{prop:exact-linear-stabilizer}.
 Finally, \cref{lem:orbit-dichotomy,lem:finite-marginal-likelihood-ratios}
-give the finite-marginal affinity characterization, the singular alternative,
-and both uniform-integrability statements.
+give the finite-marginal affinity characterization and the singular
+alternative in \cref{thm:measure-equivalence}, and both
+uniform-integrability statements in
+\cref{prop:finite-coordinate-likelihood-approximation}.
 \end{proof}
 \begin{theorem}[Complete orthogonal criterion with only location Fisher information]
 \label{thm:orthogonal-equivalence}
@@ -802,10 +831,14 @@ $Q_\#\mu=\mu$.  The alternative follows from
 \subsection{Globalization of finite-dimensional coercivity}
 \label{sec:globalization-proof}
 
-We finish the proof deferred in \cref{sec:global-coercivity}.
-The key point is this.
-Failure of a dimension-free separation estimate would create a single
-forbidden infinite-dimensional equivalence.
+We now prove the global finite-dimensional statement announced in
+\cref{sec:global-coercivity}.
+This final argument is deliberately placed after the main theorem.
+It uses the infinite-dimensional classification to rule out a sequence of
+finite-dimensional almost-symmetries that stay a fixed distance from the
+finite stabilizer.
+In this way the Hilbert--Schmidt theorem supplies the compactness missing
+from a purely finite-dimensional proof.
 
 \begin{proof}[Proof of \cref{thm:global-coercivity}]
 Fix \(0<a\le b<\infty\).  We first prove uniform separation away from

@@ -1,9 +1,20 @@
 \section{Scope and Sharpness of the Hypotheses}
 \label{sec:scope-and-sharpness-of-the-hypotheses}
 
-The hypotheses in \eqref{eq:main-assumptions} include centered,
-variance-normalized Laplace densities, despite their cusp at the origin.
-They also include variance-normalized densities proportional to $e^{-x^4}$.
+We now return to the hypotheses of the positive-density theorem and separate
+their roles.
+The support-aware classification of
+\cref{sec:density-zeros-and-the-linear-equivalence-group} shows that
+positivity is not merely a regularity convenience: without it,
+Hilbert--Schmidt proximity must be paired with the zero-set row condition,
+and boundary geometry may collapse the equivalence group to permutations.
+The remaining assumptions control the arbitrary-mixing Fourier/Fisher
+mechanism.
+
+The positive-density theorem is broad in regularity and tail behavior.
+It includes centered, variance-normalized Laplace densities despite their
+cusp at the origin, as well as variance-normalized densities proportional to
+\(e^{-x^4}\).
 Symmetry is not needed in any step of the proof.
 
 For examples allowing both asymmetry and heavy tails, take a density
@@ -33,23 +44,23 @@ These examples show that neither evenness nor a fourth moment is implicit in
 the theorem.
 
 The Gamma example used to illustrate the rotational Fourier defect in
-\cref{sec:variance-and-affine-normalization} has a centered density that vanishes on
-a half-line.
-Thus it does not satisfy the positivity hypothesis of
-\cref{thm:measure-equivalence}.
-A nonzero rotational Fourier defect establishes a local Hellinger lower bound.
-Alone, this does not establish the general measure-equivalence theorem for a
-density with restricted support.
-\Cref{thm:restricted-support-rigidity} supplies the missing classification:
-for every standardized Gamma shape, only coordinate permutations give
-equivalence under homogeneous bounded invertible linear mixing.
-The same theorem classifies all bounded coordinate laws, including
+\cref{sec:variance-and-affine-normalization} should therefore be read
+through the support-aware theorem, not through the positive-density theorem.
+Its centered density vanishes on a half-line.
+The Fourier defect still gives a local Hellinger obstruction to rotations,
+but equivalence is decided by the half-line support classification:
+homogeneous linear equivalence permits only coordinate permutations.
+The same support theorem classifies all bounded coordinate laws, including
 disconnected supports and laws without densities.
-\Cref{cor:restricted-gamma-affine} treats the distinct affine Gamma
-problem, where support-preserving scales do allow equivalence.
+\Cref{cor:restricted-gamma-affine} treats the distinct affine Gamma problem,
+where support-preserving scales do allow equivalence.
 
-The second moment has a specific role beyond differentiating the expectation
-of the product of centered complex exponentials.
+The moment assumptions play a different role from the boundary assumptions.
+Support controls which rows are admissible from the viewpoint of null sets;
+the second moment controls whether arbitrary \(\ell^2\) rows define the
+measurable linear action used throughout the operator theorem.
+It also has a specific role beyond differentiating the expectation of the
+product of centered complex exponentials.
 It makes every \(\ell^2\) row into a convergent random series.
 It supplies uniform integrability of squares of linear forms.
 It gives the coefficient-subsequence argument with an independent Gaussian

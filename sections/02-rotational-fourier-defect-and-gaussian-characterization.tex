@@ -1,8 +1,12 @@
 \section{Rotational Fourier Defect and Gaussian Characterization}
 \label{sec:rotational-fourier-defect-and-gaussian-characterization}
 
-This section characterizes Gaussian coordinate laws by the
-rotational Fourier defect.
+This section rules out the only way a non-Gaussian law could imitate the
+Gaussian rotation symmetry at first order.
+If every infinitesimal two-coordinate rotation were invisible to bounded
+Fourier statistics, the coordinate law would have to be Gaussian.
+This is the identification input later used by the dimension-free
+coercivity argument.
 The product of centered complex exponentials defining this defect is bounded.
 Its definition uses no logarithm of the characteristic function and remains
 valid when the characteristic function has zeros.
@@ -44,6 +48,14 @@ no tail assumption.
 
 \subsection{Gaussian characterization by a global linear ODE}
 \label{sec:fourier-ode}
+
+The following lemma is the point at which the Fourier statistic becomes a
+rigidity tool.
+Later arguments use its contrapositive: if the coordinate law is not
+Gaussian, then some rotational direction has a nonzero first-order response.
+The formulation stays at the level of characteristic functions, so it avoids
+choosing a branch of \(\log\phi\) and remains valid even when \(\phi\) has
+zeros.
 
 \begin{lemma}[Gaussian characterization by the rotational Fourier defect]
 \label{lem:fourier-ode}
@@ -101,6 +113,11 @@ Substitution proves the converse.
 \subsection{The determinant representation and frequency integrals}
 \label{sec:fourier-determinant}
 
+This reformulation is included because the finite-dimensional proof needs a
+finite set of test frequencies, not merely an abstract nonvanishing defect.
+The determinant viewpoint identifies the rank-two obstruction used to build
+the dual moments in \cref{sec:fourier-dual-moments}.
+
 Consider the curve
 \[
  u\longmapsto\bigl(u\phi(u),\phi'(u)\bigr)\in\mathbb C^2,
@@ -120,6 +137,9 @@ In the Gaussian case \(\phi'(u)=-\sigma^2u\phi(u)\).
 So the curve lies in the fixed line spanned by \((1,-\sigma^2)\).
 Conversely, vanishing of every such determinant forces precisely the ODE
 used above.
+The weighting by \(u\) is essential: for a nondegenerate Gaussian law, the
+unweighted curve \(u\mapsto(\phi(u),\phi'(u))\) is not contained in a fixed
+line.
 
 For a non-Gaussian law, some two distinct frequencies have nonzero
 defect.
@@ -162,7 +182,7 @@ second-moment and Sobolev hypotheses.
 \label{sec:variance-and-affine-normalization}
 
 Equation \eqref{eq:centered-exponential-product-variance} is the variance
-estimate used for empirical or finite-frequency detection.
+estimate behind the finite-frequency tests used below.
 Averaging \(N\) independent pairs gives standard error at most \(N^{-1/2}\)
 under the reference product.
 The rough bound \(16/N\) remains available under an arbitrary

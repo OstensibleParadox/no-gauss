@@ -13,6 +13,13 @@ stabilizer in
 \subsection{The matrix Fisher operator}
 \label{sec:fisher-operator}
 
+The Fisher operator supplies the infinitesimal metric that all later
+Hellinger bounds linearize around.
+Its eigenspaces separate diagonal scale directions, symmetric off-diagonal
+covariance directions, and skew-symmetric rotational directions.
+The rotational eigenvalue is \(J-1\), so Gaussianity is exactly the case in
+which rotations lose their local cost.
+
 Let $f$ be a probability density and write $g=\sqrt f$.
 In this subsection we assume
 \begin{equation}
@@ -215,6 +222,13 @@ $\sin(\xi x)$ with real frequencies $\xi$.
 Their frequencies may depend on $f$.
 Once chosen, their finite set is independent of the matrix dimension.
 
+The Fisher operator gives the correct quadratic form, but the lower bound
+must be witnessed by bounded coordinate functions whose variance does not
+grow with the dimension.
+The next lemma builds such witnesses from finitely many Fourier modes.
+The non-Gaussian Fourier defect from \cref{lem:fourier-ode} is used exactly
+to make the off-diagonal moment map rank two.
+
 \begin{lemma}[Finite real Fourier sums with dual moments]
 \label{lem:fourier-dual-moments}
 There exist centered finite real Fourier sums $p,q,r$ such that
@@ -299,11 +313,14 @@ Together with the independent diagonal terms, this proves the last
 assertion.
 \end{proof}
 
-The next lemma records the uniform estimate needed to use the functions
-$H_A$ along a matrix path.
-Its proof gives the index contractions explicitly.
-In particular, it uses no fourth moment of $X$ or higher moment of
-the score.
+The functions \(H_A\) will be paired with the Hellinger tangent along a
+matrix path.
+To make that pairing stable after moving away from the identity, we need one
+uniform derivative bound for \(H_A\Omega_n\).
+The next lemma is the technical price of keeping the test functions
+finite-frequency and dimension-free.
+Its proof gives the index contractions explicitly and uses no fourth moment
+of \(X\) or higher moment of the score.
 
 \begin{lemma}[Generator bound for the functions $H_A$]
 \label{lem:fourier-generator-bound}
@@ -494,6 +511,13 @@ Together with \eqref{eq:coordinate-function-score-bound} and
 \eqref{eq:coordinate-function-generator-product}, this proves the lemma.
 \end{proof}
 
+We can now close the local argument.
+The dual Fourier functions give a linear functional that sees the
+first-order displacement, while the generator bound controls the error made
+along the exponential path.
+This turns the nonzero Fourier defect into a uniform Hellinger lower bound
+for every small matrix perturbation.
+
 \begin{proposition}[Uniform local Hellinger coercivity]
 \label{prop:local-fisher-hellinger}
 For every non-Gaussian density satisfying
@@ -549,16 +573,24 @@ the upper bound follows from
 \cref{lem:finite-hellinger-upper}.
 \end{proof}
 
-The preceding pairing is a half-density pairing: it is
+The preceding pairing is a half-density pairing:
 $\int H_A\sqrt{d\mu_n\,d((\exp A)_\#\mu_n)}-
-\int H_A\,d\mu_n$.  It provides a uniform local lower bound
-without asserting a dimension-free variance bound for
-$H_A$ under every arbitrarily mixed output law.  Such a bound,
-or an independent tail argument, is a separate requirement
-when passing to necessity for arbitrary output marginals.
+\int H_A\,d\mu_n$.
+It provides the uniform local certificate used below.
+The tail-symmetry argument in \cref{sec:necessity} is what lets this local
+certificate be applied to arbitrary output marginals without requiring a
+separate variance bound for \(H_A\) under every mixed output law.
 
 \subsection{Uniform coercivity modulo the exact linear stabilizer}
 \label{sec:global-coercivity}
+
+The local estimate is the only part of this section needed for the
+infinite-dimensional classification.
+We state the global finite-dimensional form here because it is the natural
+finite-dimensional conclusion, but its proof is postponed until after the
+main theorem.
+The reason is that the global separation argument uses the
+infinite-dimensional classification as a compactness principle.
 
 \begin{theorem}[Dimension-free global Hellinger coercivity]
 \label{thm:global-coercivity}
