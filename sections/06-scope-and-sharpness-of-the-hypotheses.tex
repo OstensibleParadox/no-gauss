@@ -1,0 +1,78 @@
+\section{Scope and Sharpness of the Hypotheses}
+\label{sec:scope-and-sharpness-of-the-hypotheses}
+
+The hypotheses in \eqref{eq:main-assumptions} include centered,
+variance-normalized Laplace densities, despite their cusp at the origin.
+They also include variance-normalized densities proportional to $e^{-x^4}$.
+Symmetry is not needed in any step of the proof.
+
+For examples allowing both asymmetry and heavy tails, take a density
+proportional to
+\begin{equation}
+ (1+y^2)^{-(\tau+1)/2}
+                           e^{\beta\arctan y},
+ \qquad \tau>2,\quad \beta\in\R,
+ \label{eq:asymmetric-heavy-tail-example}
+\end{equation}
+and center and rescale to variance one.
+Its location score before centering and rescaling is
+\[
+ \frac{(\tau+1)y-\beta}{1+y^2}.
+\]
+Both this score and its product with $y$ are bounded.
+The density is positive and smooth.
+It has a finite second moment.
+Centering and rescaling preserve finiteness of the location and scale
+Fisher information.
+So the standardized density satisfies \eqref{eq:main-assumptions}.
+For \(2<\tau\le4\), its fourth moment is infinite.
+When \(\beta\ne0\), the two tails have unequal leading constants.
+So centering does not make the density even.
+The case \(\beta=0\) is a rescaled Student family.
+These examples show that neither evenness nor a fourth moment is implicit in
+the theorem.
+
+The Gamma example used to illustrate the rotational Fourier defect in
+\cref{sec:variance-and-affine-normalization} has a centered density that vanishes on
+a half-line.
+Thus it does not satisfy the positivity hypothesis of
+\cref{thm:measure-equivalence}.
+A nonzero rotational Fourier defect establishes a local Hellinger lower bound.
+Alone, this does not establish the general measure-equivalence theorem for a
+density with restricted support.
+\Cref{thm:restricted-support-rigidity} supplies the missing classification:
+for every standardized Gamma shape, only coordinate permutations give
+equivalence under homogeneous bounded invertible linear mixing.
+The same theorem classifies all bounded coordinate laws, including
+disconnected supports and laws without densities.
+\Cref{cor:restricted-gamma-affine} treats the distinct affine Gamma
+problem, where support-preserving scales do allow equivalence.
+
+The second moment has a specific role beyond differentiating the centered
+Fourier feature.
+It makes every \(\ell^2\) row into a convergent random series.
+It supplies uniform integrability of squares of linear forms.
+It gives the coefficient-subsequence argument with an independent Gaussian
+remainder in \cref{lem:unit-row-rigidity}.
+So the first-moment ODE result is stronger in its moment scope than the
+arbitrary-operator equivalence theorem.
+Extending the latter to infinite-variance coordinates requires a different
+domain of admissible rows and a corresponding operator criterion.
+For example, for symmetric nondegenerate \(\alpha\)-stable coordinates,
+\(0<\alpha<2\), convergence of a row series requires
+$\sum_j|a_j|^\alpha<\infty$: its partial-sum characteristic
+functions are
+\[
+ \exp\left(-c|t|^\alpha\sum_{j\le n}|a_j|^\alpha\right).
+\]
+An arbitrary \(\ell^2\) row need not meet that requirement.
+The condition on admissible rows must also be satisfied when using bounded
+or fractional Fourier features.
+
+Under the density positivity hypothesis, the Hellinger path estimates give $L^1$ convergence and uniform
+integrability of likelihood ratios.
+The finite real Fourier sums are bounded in each coordinate.
+Their dimension-free bounds are the $L^2(\mu_n)$ and generator
+estimates proved above.
+No variance bound for their aggregate under an arbitrary mixed output law is
+needed in the tail-symmetry argument.

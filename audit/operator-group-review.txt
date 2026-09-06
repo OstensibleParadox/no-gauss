@@ -1,0 +1,92 @@
+SEVENTH-SECTION OPERATOR GROUP AND NOTATION REVIEW
+
+Reviewed source
+sections/07-density-zeros-and-the-linear-equivalence-group.tex
+This supplements the lexical inventory and the review of Sections 1--6.
+The theorem was checked independently by the root and a second reviewer.
+These are mathematical source reviews, not formal proof certificates.
+
+Scope of the new classification
+The common law rho has a non-Gaussian density f, mean zero, variance one,
+sqrt(f) in W^{1,2}(R), and x(sqrt(f))' in L2(R). The density need not be
+positive almost everywhere. T is a bounded invertible operator on H.
+For orthogonal T, the scale condition can be omitted as stated in the theorem.
+The result does not assert the same classification for arbitrary irregular
+densities without these hypotheses.
+
+Definitions and substitution checks
+- U is exactly {f>0}, not the topological support of the coordinate law.
+- mu(U^N)=1. U^N introduces no second sample space or square-root density.
+- nu_T always denotes the law of the measurable row-series realization.
+- G_rho consists of all bounded invertible T with nu_T equivalent to mu.
+  Its displayed classification contains Hilbert--Schmidt proximity and only
+  one-dimensional row zero-set probabilities for T and its inverse.
+- The one-sided theorem uses only the forward row condition. Replacing it
+  by the two-sided condition would incorrectly remove strict absolute continuity.
+- All row sums have their L2(mu) and almost-sure meanings from the earlier
+  realization lemma; the result does not require samples to belong to H.
+
+Proof verification
+1. If T-Q is Hilbert--Schmidt with Q in the exact stabilizer P, then
+   K=TQ^{-1}-I is Hilbert--Schmidt and nu_T=nu_{I+K}.
+2. The eventually invertible finite-coordinate approximants I+P_n K P_n
+   converge in Hellinger distance, hence total variation, to nu_T. This
+   follows from the restricted-density local estimate and its proof.
+3. Each approximant changes only its first n coordinates. Its law has a
+   Lebesgue density there and leaves an independent reference product tail.
+   On U^n the reference density is positive, so Fubini shows that the
+   approximant restricted to U^N is absolutely continuous relative to mu.
+   No absolute continuity of the unrestricted approximant is assumed.
+4. For every mu-null B, all approximants give B intersect U^N mass zero.
+   Total variation convergence gives the same assertion for nu_T.
+   Thus its restriction to U^N is its absolutely continuous part; its
+   restriction to the complement is singular.
+5. Therefore nu_T is absolutely continuous exactly when every forward row
+   lies in U almost surely, once Hilbert--Schmidt proximity is known.
+   The previously proved necessity supplies the reverse operator implication.
+6. The inverse identity T^{-1}-Q^{-1}=-T^{-1}(T-Q)Q^{-1} preserves the
+   Hilbert--Schmidt condition. Applying the one-sided criterion to both
+   operators and using the measurable inverse action proves equivalence.
+7. Measurable composition gives nu_{ST}=(Phi_S)_#nu_T, so equivalences are
+   closed under products. The inverse argument gives closure under inverses.
+8. Every row of an invertible T is nonzero. Conditioning on all but one
+   nonzero coefficient gives an absolutely continuous scalar row law. Thus
+   modifying f on a Lebesgue-null set does not change either row condition.
+
+Consistency with the other seventh-section results
+- Under positivity almost everywhere, the row conditions are automatic,
+  recovering the earlier Hilbert--Schmidt equivalence theorem.
+- A finite contraction of a bounded-support coordinate satisfies the forward
+  row condition and fails the inverse condition: strict absolute continuity.
+- The bounded-law proof bounds both inverse matrices' absolute row sums by
+  one and hence forces signed permutations; reflection equivalence determines
+  whether all, finitely many, or no negative signs are allowed.
+- For a one-sided law, the finite conditional sums force nonnegative rows
+  for both inverse matrices. The same argument forces ordinary permutations.
+- The affine Gamma result concerns an affine transformation. Its endpoint
+  identity and logarithmic scale summability are consistent with the separate
+  homogeneous linear permutation classification.
+- The uniform-square example lacks the Sobolev regularity used by the new
+  theorem. The smooth-square example satisfies that regularity but a nontrivial
+  rotation fails its row zero-set condition. Neither example contradicts it.
+- The square-intersection formula and its linear small-angle term agree;
+  the smooth comparison has the stated quadratic Fisher expansion.
+
+Seventh-section notation changes
+Coordinate lambda became rho; generic block lambda_k remains a separately
+quantified block law. R_n became the lifted finite-marginal likelihood ratio
+ell_n. The one-use block-density and Gamma-affinity names were removed.
+Undefined r_f(theta) and the temporary uniform-rotation affinity name were
+replaced by explicit Hellinger affinities. The sparse affine-map name Psi was
+removed. The two absolutely continuous masses are now stated as a corollary,
+with explicit dominating measures and the same a-subscript convention as
+the Lebesgue decomposition. A missing density assumption for the block formula
+was made explicit. Countable operator groups use Gamma, reserving G_rho for
+the equivalence group. Misleading 'full support' and 'commutator' descriptions
+were replaced with the actual positivity assumption and operator differences.
+
+Verification boundary
+No TeX compilation, bibliography build, PDF rendering, or numerical experiment
+was performed. scripts/check_manuscript.py and git diff --check check source
+structure and whitespace. The separate Scholar log records completed searches
+and access failures; it does not certify novelty of the new theorem.

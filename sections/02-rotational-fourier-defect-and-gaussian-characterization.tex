@@ -1,21 +1,20 @@
-\section{The Rotational Fourier Defect and Gaussian Characterization}
-\label{sec:fourier-defect}
+\section{Rotational Fourier Defect and Gaussian Characterization}
+\label{sec:rotational-fourier-defect-and-gaussian-characterization}
 
-The purpose of this section is to isolate the only genuinely
-one-dimensional obstruction in the paper.
-The detector is bounded.
-It uses no logarithm of the characteristic function.
-It remains valid in the presence of characteristic-function zeros.
+This section characterizes Gaussian coordinate laws by the rotational
+rotational Fourier defect.
+The centered Fourier feature defining this defect is bounded.
+Its definition uses no logarithm of the characteristic function and remains
+valid when the characteristic function has zeros.
 The conclusion belongs to the same broad lineage as the Kac--Bernstein
 theorem and the classical characterization theory of independent linear
 forms \cite{kac1939characterization,kagan1973characterization}.
 Its hypothesis is different.
-An infinitesimal rotational Fourier response vanishes at every frequency
-pair.
+The rotational Fourier defect vanishes at every frequency pair.
 This leads directly to a global linear ODE.
 
-\subsection{The bivariate Fourier feature and cross-dependence isolation}
-\label{sec:ng-fourier-feature}
+\subsection{The centered Fourier feature}
+\label{sec:centered-fourier-feature}
 
 This subsection requires only $\E X=0$ and $\E|X|<\infty$.
 Neither a density nor a second moment is needed.
@@ -37,36 +36,36 @@ In particular,
  \qquad
  \E|W_{\xi,\eta}(X_1,X_2)|^2
  =(1-|\phi(\xi)|^2)(1-|\phi(\eta)|^2)\le1.
- \label{eq:ng-feature-product-variance}
+ \label{eq:feature-product-variance}
 \end{equation}
 Pointwise, $|W_{\xi,\eta}|\le4$, so its variance under an arbitrary
 comparison law is at most $16$.  Both bounds are dimension-free and require
 no tail assumption.
 
-\subsection{A global linear ODE: zero defect characterizes Gaussians}
-\label{sec:ng-fourier-ode}
+\subsection{Gaussian characterization by a global linear ODE}
+\label{sec:fourier-ode}
 
-\begin{lemma}[Logarithm-free characterization by rotational Fourier defect]
-\label{lem:ng-fourier-ode}
-Let
-$G_{\xi,\eta}(\theta)=\E W_{\xi,\eta}(O_\theta(X_1,X_2))$.
-Then $G_{\xi,\eta}(0)=0$ and
+\begin{lemma}[Gaussian characterization by the rotational Fourier defect]
+\label{lem:fourier-ode}
+For the centered Fourier feature defined above,
 \begin{equation}
- R_\mu(\xi,\eta):=G'_{\xi,\eta}(0)
+ R(\xi,\eta)
+ =\left.\frac{d}{d\theta}
+       \E W_{\xi,\eta}(O_\theta(X_1,X_2))\right|_{\theta=0}
    =\eta\phi'(\xi)\phi(\eta)
           -\xi\phi(\xi)\phi'(\eta).
- \label{eq:ng-rotational-fourier-defect}
+ \label{eq:rotational-fourier-response}
 \end{equation}
 Moreover,
 \begin{equation}
- R_\mu\equiv0
+ R\equiv0
  \quad\Longleftrightarrow\quad
- \operatorname{Law}(X)\text{ is a centered Gaussian, possibly degenerate}.
- \label{eq:ng-fourier-gaussian-characterization}
+ \Law(X)\text{ is a centered Gaussian, possibly degenerate}.
+ \label{eq:fourier-gaussian-characterization}
 \end{equation}
 \end{lemma}
 \begin{proof}
-The first moment implies $\phi\in C^1(\mathbb R)$.
+The first moment implies $\phi\in C^1(\R)$.
 The joint characteristic function after rotation is
 \[
  \phi(\xi\cos\theta+\eta\sin\theta)
@@ -77,9 +76,9 @@ $\phi(\xi\cos\theta)\phi(-\xi\sin\theta)$ and
 $\phi(\eta\sin\theta)\phi(\eta\cos\theta)$.
 Their derivatives at zero vanish because $\phi'(0)=i\E X=0$.
 Differentiating the joint characteristic function therefore gives
-\eqref{eq:ng-rotational-fourier-defect}.
+\eqref{eq:rotational-fourier-response}.
 
-If $R_\mu$ vanishes everywhere, continuity and $\phi(0)=1$ allow us to
+If $R$ vanishes everywhere, continuity and $\phi(0)=1$ allow us to
 choose $\eta_0\ne0$ with $\phi(\eta_0)\ne0$.
 Fix this single frequency.
 The defect equation then becomes the global ODE
@@ -90,8 +89,8 @@ The defect equation then becomes the global ODE
 \]
 No division by $\phi(\xi)$ has occurred.
 Uniqueness for this linear ODE gives $\phi(\xi)=\exp(c\xi^2/2)$ on all of
-$\mathbb R$, including any putative zero of $\phi$.
-The identity $\phi(-\xi)=\overline{\phi(\xi)}$ forces $c\in\mathbb R$.
+$\R$, including any putative zero of $\phi$.
+The identity $\phi(-\xi)=\overline{\phi(\xi)}$ forces $c\in\R$.
 Also $|\phi(\xi)|\le1$ forces $c\le0$.
 Write $c=-\sigma^2$.
 The Gaussian conclusion follows.
@@ -99,29 +98,28 @@ If $\sigma=0$, we get the point mass at zero.
 Substitution proves the converse.
 \end{proof}
 
-\subsection{Wedge-product structure and Fourier curvature}
-\label{sec:ng-fourier-wedge}
+\subsection{The determinant representation and frequency integrals}
+\label{sec:fourier-determinant}
 
-Define the weighted jet
+Consider the curve
 \[
- \Gamma_\mu(u)=\bigl(u\phi(u),\phi'(u)\bigr)\in\mathbb C^2.
+ u\longmapsto\bigl(u\phi(u),\phi'(u)\bigr)\in\mathbb C^2,
 \]
-Then
+described as the weighted Fourier jet.  Its values satisfy
 \begin{equation}
  \det\!\begin{pmatrix}
- s\phi(s)&\phi'(s)\\
- t\phi(t)&\phi'(t)
+ \xi\phi(\xi)&\phi'(\xi)\\
+ \eta\phi(\eta)&\phi'(\eta)
  \end{pmatrix}
- =-R_\mu(s,t).
- \label{eq:ng-fourier-wedge}
+ =-R(\xi,\eta).
+ \label{eq:fourier-wedge}
 \end{equation}
-Thus the defect measures the change of projective direction of the weighted
-Fourier jet.
+Thus the rotational Fourier defect is the negative determinant of two values
+of this curve.
 In the Gaussian case \(\phi'(u)=-\sigma^2u\phi(u)\).
-So the jet lies in the fixed line spanned by \((1,-\sigma^2)\).
-Conversely, vanishing of every wedge product forces precisely the anchored ODE
+So the curve lies in the fixed line spanned by \((1,-\sigma^2)\).
+Conversely, vanishing of every such determinant forces precisely the ODE
 used above.
-This is the rigorous content of the ``zero Fourier curvature'' description.
 
 For a non-Gaussian law, some two distinct frequencies have nonzero
 defect.
@@ -130,21 +128,21 @@ Thus a compact frequency set may be fixed after the coordinate law is chosen.
 This set is independent of the ambient dimension.
 The diagonal \(\xi=\eta\) always has zero defect and cannot serve this
 purpose.
-A global scalar energy is, for example,
+One may also integrate the squared defect over all frequencies:
 \begin{equation}
- \mathcal R_w(\mu)=\iint|R_\mu(\xi,\eta)|^2w(\xi,\eta)\,d\xi\,d\eta,
+ \iint|R(\xi,\eta)|^2w(\xi,\eta)\,d\xi\,d\eta,
  \qquad
  w>0\ \text{a.e.},\quad
  \iint(1+\xi^2+\eta^2)w(\xi,\eta)\,d\xi\,d\eta<\infty.
- \label{eq:ng-fourier-defect-energy}
+ \label{eq:fourier-defect-energy}
 \end{equation}
-Indeed, \(|R_\mu(\xi,\eta)|\le\E|X|(|\xi|+|\eta|)\).
-Hence this energy is finite and is zero exactly for centered Gaussian laws.
-Integrability of $w$ alone need not make the energy finite.
+Indeed, \(|R(\xi,\eta)|\le\E|X|(|\xi|+|\eta|)\).
+Hence this integral is finite and is zero exactly for centered Gaussian laws.
+Integrability of $w$ alone need not make the integral finite.
 
 The same feature gives a local Hellinger lower bound for one rotation.
 Choose a phase $\alpha$ with
-$\operatorname{Re}(e^{-i\alpha}R_\mu(\xi,\eta))>0$ and apply
+$\operatorname{Re}(e^{-i\alpha}R(\xi,\eta))>0$ and apply
 \[
  |\E_\lambda F-\E_\nu F|
  \le h(\lambda,\nu)
@@ -152,59 +150,60 @@ $\operatorname{Re}(e^{-i\alpha}R_\mu(\xi,\eta))>0$ and apply
 \]
 to $F=\operatorname{Re}(e^{-i\alpha}W_{\xi,\eta})$.
 It follows that
-$h((O_\theta)_\#\operatorname{Law}(X)^{\otimes2},
-\operatorname{Law}(X)^{\otimes2})\ge c|\theta|$ for small
+$h((O_\theta)_\#\Law(X)^{\otimes2},
+\Law(X)^{\otimes2})\ge c|\theta|$ for small
 $|\theta|$.
 A first moment suffices for this lower bound.
-The dimension-independent matrix estimates below require the additional
+The dimension-free matrix estimates below require the additional
 second-moment and Sobolev hypotheses.
 
 \subsection{Dimension-free variance and affine normalization}
-\label{sec:ng-fourier-variance}
+\label{sec:variance-and-affine-normalization}
 
-Equation \eqref{eq:ng-feature-product-variance} is the variance estimate used
+Equation \eqref{eq:feature-product-variance} is the variance estimate used
 for empirical or finite-frequency detection.
 Averaging \(N\) independent pairs gives standard error at most \(N^{-1/2}\)
 under the reference product.
 The rough bound \(16/N\) remains available under an arbitrary
 comparison distribution.
-In particular, the detector does not require a fourth moment, symmetry, or a
-density.
+In particular, the centered Fourier feature does not require a fourth moment,
+symmetry, or a density.
 
 \paragraph{Centering, scaling, and phase.}
-For an uncentered variable $Y$ with mean \(m\), use \(R_Y\) for the raw
-expression on the right of \eqref{eq:ng-rotational-fourier-defect}.
-Differentiating the centered feature now also differentiates its marginal
-terms.
-The actual dependence response is
-\[
- D_Y(a,b)=R_Y(a,b)+im(a-b)\phi_Y(a)\phi_Y(b).
- \]
-If \(X=(Y-m)/\sigma\), \(\sigma>0\), direct differentiation gives
+Let $Y$ have mean \(m\) and characteristic function \(\phi_Y\), and put
+\(X=(Y-m)/\sigma\), where \(\sigma>0\).
+For \(a=\xi/\sigma\) and \(b=\eta/\sigma\), the rotational Fourier defect
+of $X$ satisfies
 \begin{equation}
- R_X(\xi,\eta)
- =e^{-i(m/\sigma)(\xi+\eta)}
-       D_Y(\xi/\sigma,\eta/\sigma).
- \label{eq:ng-centering-phase}
+ \begin{aligned}
+ R(\xi,\eta)
+ &=e^{-i(m/\sigma)(\xi+\eta)}
+ \bigl[b\phi_Y'(a)\phi_Y(b)-a\phi_Y(a)\phi_Y'(b)\\
+ &\hspace{8em}+im(a-b)\phi_Y(a)\phi_Y(b)\bigr].
+ \end{aligned}
+ \label{eq:centering-phase}
 \end{equation}
-Thus centering rotates the mean-corrected response by
+The expression in brackets is the derivative at zero of the expectation of
+the centered Fourier feature after rotating two independent copies of $Y$.
+Its last term comes from differentiating the marginal terms.
+Thus centering rotates this mean-corrected expression by
 \(-(m/\sigma)(\xi+\eta)\).
 Scaling also changes the frequencies.
 At fixed corresponding frequencies its modulus is unchanged.
-The raw expression \(R_Y\) alone does not transform by this phase factor.
+Omitting the marginal correction would invalidate this phase identity.
 For a centered symmetric law the defect is real.
 At a particular frequency pair, an asymmetric law can still have a real or
 zero defect.
 So the phase is not, by itself, a complete measure of skewness.
 
 For the concrete comparison $Y\sim\operatorname{Gamma}(2,1)$,
-$m=2$, $\sigma=\sqrt2$, and $(\xi,\eta)=(1,2)$, one obtains
+$m=2$, $\sigma=\sqrt2$, and $(\xi,\eta)=(1,2)$, the expression in brackets in
+\eqref{eq:centering-phase} equals $4/27$, so the standardized law has
 \[
- D_Y(1/\sqrt2,\sqrt2)=\frac4{27},\qquad
- R_{(Y-2)/\sqrt2}(1,2)=\frac4{27}e^{-3i\sqrt2}.
+ R(1,2)=\frac4{27}e^{-3i\sqrt2}.
 \]
-At this particular pair, the entire phase of the Gamma response is
+At this particular pair, the entire phase of the rotational Fourier defect is
 therefore the centering phase, namely $-3\sqrt2$ modulo $2\pi$.
-The variance-one Laplace response is $R_\mu(1,2)=-4/27$.
+The variance-one Laplace law has rotational Fourier defect $R(1,2)=-4/27$.
 Their moduli agree at these frequencies, while their principal phases
 are approximately $116.915^\circ$ and $180^\circ$, respectively.

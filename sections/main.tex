@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,array}
 \usepackage[margin=1.12in]{geometry}
 \usepackage{microtype}
@@ -25,24 +25,15 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\R}{\mathbb R}
 \newcommand{\N}{\mathbb N}
 \newcommand{\E}{\mathbb E}
-\newcommand{\Schatten}{\mathcal S}
 \newcommand{\Aff}{\mathsf A}
-\newcommand{\dist}{\operatorname{dist}}
 \newcommand{\Law}{\operatorname{Law}}
-\newcommand{\Stab}{\operatorname{Stab}}
 \newcommand{\diag}{\operatorname{diag}}
 \newcommand{\supp}{\operatorname{supp}}
-\newcommand{\Id}{I}
 \DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\Var}{Var}
 \DeclareMathOperator{\tr}{tr}
 
 \title{Feldman–Hájek, but Non-Gaussian: \\
@@ -55,22 +46,32 @@ Geometry of the Weighted Fourier Jet}
 \maketitle
 
 \begin{abstract}
-Feldman–Hájek theory gives an exact measure-class classification for 
-Gaussian measures. What replaces it for a non-Gaussian product law under 
-arbitrary linear mixing? We give a complete answer and it is rigid. 
-In the Gaussian case, orthogonal mixing preserves the product structure. 
-Outside the Gaussian case, this continuous symmetry disappears. Only signed 
-permutations remain. We prove this by a weighted Fourier-jet argument.
+For a non-Gaussian i.i.d. product with a positive density, finite second
+moment, and finite location and scale Fisher information, we classify
+measure equivalence under arbitrary bounded invertible linear mixing.
+The equivalence group consists of Hilbert--Schmidt perturbations of the
+signed permutations preserving the coordinate law.
+A weighted Fourier jet supplies the local coercivity behind this result.
+When the density has zeros, the same Sobolev assumptions give an exact
+criterion: Hilbert--Schmidt proximity and avoidance of the zero set by
+every row of the operator and its inverse.  Boundary geometry simplifies
+this classification:
+centered half-line laws permit only permutations, and bounded laws permit
+only signed permutations satisfying a scalar reflection criterion.
+These support classifications require no Fisher information.
+Block examples distinguish equivalence from positive Hellinger affinity
+and exhibit both linear and quadratic boundary-loss thresholds.
 \end{abstract}
 
 \tableofcontents
 
-\input{section1}
-\input{section2}
-\input{section3}
-\input{section4}
-\input{section5}
-\input{section6}
+\input{01-introduction-and-main-results}
+\input{02-rotational-fourier-defect-and-gaussian-characterization}
+\input{03-finite-dimensional-hellinger-coercivity}
+\input{04-measurable-realization-and-dichotomy}
+\input{05-proof-of-the-measure-equivalence-theorem}
+\input{06-scope-and-sharpness-of-the-hypotheses}
+\input{07-density-zeros-and-the-linear-equivalence-group}
 
 \bibliographystyle{plainnat}
 \bibliography{references}

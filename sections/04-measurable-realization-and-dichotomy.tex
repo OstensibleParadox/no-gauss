@@ -1,0 +1,267 @@
+\section{Measurable Realization and Dichotomy}
+\label{sec:measurable-realization-and-dichotomy}
+
+The sample space is \(\R^{\N}\), not \(\ell^2\), so a bounded operator on
+\(\ell^2\) does not act pointwise by a naively convergent matrix product.
+This section constructs the required measurable versions.
+Then it identifies the global measure class through likelihood-ratio martingales
+and a dense translation group.
+
+\subsection{Measurable linear actions and countable-orbit realizations}
+\label{sec:measurable-realization}
+
+Throughout this subsection, only \(\E X=0\) and \(\E X^2=1\) for \(X\sim\rho\) are needed.
+Recall \(\mu=\rho^{\otimes\N}\) and \(\mu_n=\rho^{\otimes n}\).
+The sample sequence is not an \(\ell^2\)-valued random variable.
+So we first specify how an operator on \(\ell^2\) acts on its law.
+
+\begin{lemma}[Measurable realization on each countable operator orbit]
+\label{lem:measurable-action}
+For every \(T\in\mathcal B(H)\), there is a Borel map
+\(\Phi_T:\R^{\N}\to\R^{\N}\) whose coordinates are the \(L^2(\mu)\) row sums
+\[
+  (\Phi_Tx)_i=\sum_{j\geq1}T_{ij}x_j.
+\]
+These maps can be chosen so that the following statements hold.
+If a probability measure \(\lambda\) satisfies
+\begin{equation}
+  \int\left|\sum_j a_jx_j\right|^2\,d\lambda(x)
+  \leq C_\lambda\|a\|_2^2
+  \quad\text{for every finitely supported }a,
+  \label{eq:covariance-domination}
+\end{equation}
+then \((\Phi_T)_\#\lambda\) also satisfies this condition.
+Its constant is at most \(C_\lambda\|T\|_{\mathrm{op}}^2\).  Also
+\begin{equation}
+  \Phi_S\circ\Phi_T=\Phi_{ST}
+  \quad\lambda\text{-almost surely}
+  \qquad(S,T\in\mathcal B(H)).
+  \label{eq:measurable-composition}
+\end{equation}
+For each fixed countable subgroup \(\Gamma\leq\GL(H)\),
+there is a \(\Gamma\)-invariant Borel set \(D\subset\R^{\N}\) of full
+measure for every \(\lambda\) satisfying
+\eqref{eq:covariance-domination}.
+On this set, these restrictions form an action by bimeasurable
+automorphisms.
+In particular, this applies to \(\mu\) and all its \(\Gamma\)-orbit laws,
+including singular orbit laws.
+\end{lemma}
+
+\begin{proof}
+For \(a\in\ell^2\), the finite sums \(\sum_{j\leq n}a_jx_j\) have a
+unique \(L^2(\lambda)\) limit \(L_a\), by
+\eqref{eq:covariance-domination}.  Choose
+\[
+  n_k(a)=\min\left\{n\geq k:
+                \sum_{j>n}|a_j|^2\leq2^{-4k}\right\}.
+\]
+Define \(\widehat L_a(x)\) to be the limit of
+\(\sum_{j\leq n_k(a)}a_jx_j\) when it exists, and zero otherwise.
+The estimate
+\[
+  \left\|\sum_{j\leq n_k(a)}a_jx_j-L_a\right\|_{L^2(\lambda)}^2
+  \leq C_\lambda2^{-4k}
+\]
+and Borel--Cantelli show that \(\widehat L_a=L_a\),
+\(\lambda\)-almost surely.  This one definition therefore works for every
+law satisfying \eqref{eq:covariance-domination}; it does not depend on
+knowing whether that law is equivalent to \(\mu\).  Set
+\(\Phi_T(x)_i=\widehat L_{T^*e_i}(x)\).  The construction is Borel,
+and the same is true jointly in the matrix coefficients of \(T\) and in
+\(x\), since each tail norm and the integer choice \(n_k\) is Borel.
+
+For finitely supported \(b\), the finite sum of output coordinates equals
+\(L_{T^*b}\) almost surely.  This proves the asserted second-moment bound
+for the pushforward.  For the \(i\)-th row of \(S\), finite output sums
+satisfy
+\[
+  \sum_{j\leq n}S_{ij}\widehat L_{T^*e_j}
+     =L_{T^*P_nS^*e_i}
+     \longrightarrow L_{T^*S^*e_i}
+     \quad\text{in }L^2(\lambda).
+\]
+The selected subsequence on the left also converges almost surely to
+\(\Phi_S(\Phi_T(x))_i\), because the output law has the required
+second-moment bound.  Uniqueness of the limit proves
+\eqref{eq:measurable-composition}.
+
+For a countable \(\Gamma\), let \(B\) be the Borel set on which all its
+row limits, identity relations, and pairwise composition relations hold.
+The preceding argument gives \(\lambda(B)=1\) for every law under
+consideration.  Put
+\[
+  D=\bigcap_{T\in\Gamma}\Phi_T^{-1}(B).
+\]
+Every orbit law satisfies the same second-moment condition, so
+\(\lambda(D)=1\).  The composition identities imply that
+\(D\) is invariant and that \(\Phi_{T^{-1}}\) is the inverse of
+\(\Phi_T\) there.  This proves the final assertion.
+\end{proof}
+
+Write \(\nu_T=(\Phi_T)_\#\mu\).
+The preceding lemma makes assertions about a common carrier only for a
+fixed countable subgroup.
+No single pointwise action of all of \(\GL(H)\) on a common
+conull set is required.
+The subsequences in its proof are also essential.
+A covariance bound gives convergence of arbitrary row sums in \(L^2\).
+That is not enough for almost-sure convergence of all ordinary partial sums
+under a correlated orbit law.
+On the original independent product law, the versions agree with the usual
+almost-sure row sums.
+
+\subsection{Rational translation invariance and the zero--one dichotomy}
+\label{sec:translation-dichotomy}
+
+\begin{lemma}[Dichotomy for every bounded invertible orbit]
+\label{lem:orbit-dichotomy}
+For every \(T\in\GL(H)\),
+\begin{equation}
+  \nu_T\sim\mu\quad\text{or}\quad\nu_T\perp\mu.
+  \label{eq:orbit-dichotomy}
+\end{equation}
+This conclusion uses only positivity of \(f\), its centered finite second
+moment, and \(\sqrt f\in W^{1,2}(\R)\).
+In particular, it holds under \eqref{eq:main-assumptions}.
+\end{lemma}
+
+\begin{proof}
+Put \(g=\sqrt f\).  The translation estimate
+\[
+  1-\Aff(f,f(\cdot-a))
+     =\tfrac12\|g(\cdot-a)-g\|_2^2
+     \leq\tfrac12\|g'\|_2^2a^2
+\]
+and Kakutani's theorem imply
+\((x\mapsto x+a)_\#\mu\sim\mu\) for every \(a\in\ell^2\).
+The row realizations satisfy
+\[
+  \Phi_T(x+T^{-1}a)=\Phi_T(x)+a
+  \quad\mu\text{-almost surely};
+\]
+this follows directly by adding the absolutely convergent scalar row
+pairing with the \(\ell^2\) vector \(T^{-1}a\).
+Consequently, \(\nu_T\) is also quasi-invariant under every
+\(\ell^2\) translation.
+
+Let \(\mathcal A\) be the countable additive group generated by
+\(\{qe_j,qTe_j:q\in\mathbb Q,\ j\geq1\}\).
+Both \(\mu\) and \(\nu_T\) are quasi-invariant and ergodic under
+translation by \(\mathcal A\).  Indeed, an event invariant modulo \(\mu\) under
+all rational finite-coordinate translations has, by positivity of the
+finite-dimensional densities, almost-everywhere constant sections in each
+finite coordinate block.  It is therefore a tail event modulo \(\mu\),
+and has probability zero or one.  Here one uses the elementary fact that
+a measurable function on \(\R^n\) invariant almost everywhere
+under rational translations is constant almost everywhere, obtained, for
+example, by convolution with smooth approximate identities.
+For \(\nu_T\), pull an invariant event back by \(\Phi_T\); invariance
+under \(qTe_j\) becomes invariance under \(qe_j\), giving the same
+zero--one conclusion.
+
+Write \(\nu_T=\nu_a+\nu_s\) for its Lebesgue decomposition relative to
+\(\mu\).  Choose a Borel \(\mu\)-null set \(N_0\) supporting
+\(\nu_s\), and let \(N=\bigcup_{a\in\mathcal A}(N_0+a)\).
+Quasi-invariance of \(\mu\) makes \(N\) a \(\mu\)-null set;
+it is exactly \(\mathcal A\)-invariant and still supports \(\nu_s\).
+Thus \(\nu_T(N)=\nu_s(\R^{\N})\), and ergodicity of \(\nu_T\) makes this
+number zero or one.  The latter case gives singularity.  In the former
+case, write \(\nu_T=Z\mu\).  Quasi-invariance of both measures implies
+that \(\{Z>0\}\) is invariant modulo \(\mu\) under \(\mathcal A\).
+Its \(\mu\)-measure is positive because \(\int Z\,d\mu=1\), and
+ergodicity of \(\mu\) makes that measure one.  This gives equivalence.
+\end{proof}
+
+\subsection{Finite-marginal likelihood ratios and Hellinger energy}
+\label{sec:finite-marginal-likelihood-ratios}
+
+\begin{lemma}[Finite-marginal likelihood ratios and two-sided uniform integrability]
+\label{lem:finite-marginal-likelihood-ratios}
+Assume \(f>0\) almost everywhere, \(\sqrt f\in W^{1,2}(\R)\),
+and \(\E X=0\), \(\E X^2=1\).
+For \(T\in\GL(H)\), every finite output law
+\((\pi_n)_\#\nu_T\) is equivalent to \(\mu_n\).
+Writing \(\mathcal F_n=\sigma(x_1,\ldots,x_n)\), define
+\begin{equation}
+ \begin{aligned}
+  \ell_n(x)=\frac{d[(\pi_n)_\#\nu_T]}{d\mu_n}(\pi_n x),
+  &\qquad E_n(T)=-2\log\E_\mu\sqrt{\ell_n},\\
+  \Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr)
+  &=\E_\mu\sqrt{\ell_n}.
+ \end{aligned}
+  \label{eq:finite-marginal-likelihood-ratios}
+\end{equation}
+Then \((\ell_n)\) is a nonnegative mean-one \(\mu\)-martingale.
+We have
+\begin{equation}
+  \Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr)\downarrow\Aff(\mu,\nu_T),
+  \qquad
+  \nu_T\sim\mu
+    \Longleftrightarrow\sup_nE_n(T)<\infty.
+  \label{eq:marginal-affinity-limit}
+\end{equation}
+Otherwise \(E_n(T)\uparrow\infty\).
+Then \(\nu_T\perp\mu\).
+If \(\nu_T\sim\mu\) with density \(Z_T\), then
+\begin{align}
+  \ell_n&=\E_\mu[Z_T\mid\mathcal F_n]
+       \longrightarrow Z_T
+       &&\text{in }L^1(\mu),
+       \label{eq:forward-likelihood-ui}\\
+  \ell_n^{-1}&=\E_{\nu_T}[Z_T^{-1}\mid\mathcal F_n]
+       \longrightarrow Z_T^{-1}
+       &&\text{in }L^1(\nu_T).
+       \label{eq:reverse-likelihood-ui}
+\end{align}
+In particular, both likelihood-ratio martingales are uniformly integrable in
+their respective reference measures.
+\end{lemma}
+
+\begin{proof}
+The first \(n\) rows of \(T\) are linearly independent, since \(T^*\)
+is injective.  Some \(n\) input columns therefore form an invertible
+\(n\times n\) minor \(A\).  Split the input into these coordinates
+and their complement.  The first \(n\) outputs have the form
+\(AU+W\), where \(U\sim\mu_n\) and \(W\) is independent of \(U\).
+Conditioning on \(W\) writes their density as a mixture of translates
+of the strictly positive density of \(AU\).  This mixture is positive
+and finite almost everywhere, proving the finite-dimensional equivalence.
+
+Consistency of projected laws proves the martingale assertion.  The
+martingale limit is
+\(\ell_\infty=d(\nu_T)_a/d\mu\), the density of the absolutely continuous
+part of \(\nu_T\).  To see the identification explicitly, Fatou's lemma
+on cylinder sets gives \(\ell_\infty\mu\leq\nu_T\), first on the cylinder
+algebra and then on the generated sigma-field.  Conversely, if
+\((\nu_T)_a=Z\mu\), then
+\(\E_\mu[Z\mid\mathcal F_n]\leq \ell_n\), so martingale
+convergence gives \(Z\leq \ell_\infty\).  The two inequalities identify
+the limit.
+Since \(\E_\mu(\sqrt{\ell_n})^2=1\), the square roots are uniformly
+integrable in \(L^1(\mu)\).  They thus converge in \(L^1\) to
+\(\sqrt{\ell_\infty}\).  Conditional Jensen's inequality gives the
+monotonicity of their expectations, and consequently
+\[
+  \lim_n\Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr)
+      =\int\sqrt{\ell_\infty}\,d\mu
+      =\Aff(\mu,\nu_T).
+\]
+The dichotomy in \cref{lem:orbit-dichotomy} now proves
+\eqref{eq:marginal-affinity-limit} and the singular alternative.
+
+Under equivalence, the forward conditional-expectation identity is the
+definition of a finite-marginal density.  The reverse identity follows because
+for \(B\in\mathcal F_n\),
+\[
+  \int_B \ell_n^{-1}\,d\nu_T=\mu(B)
+       =\int_B Z_T^{-1}\,d\nu_T.
+\]
+Conditional-expectation convergence gives both \(L^1\) limits and hence
+both uniform-integrability assertions.
+\end{proof}
+
+By data processing, the supremum of the projected Hellinger energies is
+unchanged if one takes all finite coordinate marginals: the initial
+segments are cofinal among finite coordinate sets.  Thus the criterion
+does not depend on the enumeration of the coordinates.

@@ -1,97 +1,102 @@
-\section{Finite-Dimensional Nonlinear Hellinger Coercivity}
-\label{sec:finite-coercivity}
+\section{Finite-Dimensional Hellinger Coercivity}
+\label{sec:finite-dimensional-hellinger-coercivity}
 
-We now convert the one-dimensional Fourier obstruction into a matrix norm.
+We now convert the rotational Fourier defect into a matrix norm bound.
 The argument has two layers.
-The Fisher operator identifies the infinitesimal geometry.
-Finite Fourier sums provide bounded dual witnesses.
-Those norms do not grow with the ambient dimension.
+The matrix Fisher operator identifies the infinitesimal geometry.
+Finite real Fourier sums provide coordinate functions whose dual moments
+give dimension-free bounds.
 The resulting local estimate is then globalized modulo the discrete
 stabilizer in
-\cref{thm:ng-global-coercivity}.
+\cref{thm:global-coercivity}.
 
-\subsection{Fourier-to-Frobenius control and the matrix Fisher operator}
-\label{sec:ng-fisher-operator}
+\subsection{The matrix Fisher operator}
+\label{sec:fisher-operator}
 
 Let $f$ be a probability density and write $g=\sqrt f$.
 In this subsection we assume
 \begin{equation}
  \begin{gathered}
  f>0\quad\text{Lebesgue-almost everywhere},\qquad
- g\in W^{1,2}(\mathbb R),\qquad xg'(x)\in L^2(\mathbb R),\\
- \mathbb E X=0,\qquad \mathbb E X^2=1,
+ g\in W^{1,2}(\R),\qquad xg'(x)\in L^2(\R),\\
+ \E X=0,\qquad \E X^2=1,
  \qquad X\sim f(x)\,dx.
  \end{gathered}
- \label{eq:ng-fisher-regularity}
+ \label{eq:fisher-regularity}
 \end{equation}
 The derivatives in these assumptions are weak derivatives.
-Define the
-location score $s=-f'/f=-2g'/g$ almost everywhere, and put
+Define the location score $s=-f'/f=-2g'/g$ almost everywhere.  Then
 \begin{equation}
- \mathbb E s(X)=0,\qquad \mathbb E[Xs(X)]=1,\qquad
- J:=\mathbb E s(X)^2=4\|g'\|_2^2,
- \label{eq:ng-score-moments}
+ \E s(X)=0,\qquad \E[Xs(X)]=1,\qquad
+ J:=\E s(X)^2=4\|g'\|_2^2.
+ \label{eq:score-moments}
 \end{equation}
-and
+Define the scale score and its second moment by
 \begin{equation}
  d(x):=xs(x)-1,\qquad
- \kappa:=\mathbb E d(X)^2=4\|xg'\|_2^2-1.
- \label{eq:ng-kappa}
+ \kappa:=\E d(X)^2=4\|xg'\|_2^2-1.
+ \label{eq:kappa}
 \end{equation}
 The two integration-by-parts identities in
-\eqref{eq:ng-score-moments} follow from these assumptions.
+\eqref{eq:score-moments} follow from these assumptions.
 Indeed,
 $f'=2gg'$ belongs to $L^1$, and $xf'$ belongs to $L^1$ by
-Cauchy--Schwarz and the finite second moment.  Applying integration by
-parts first to a compactly supported cutoff and then to
-$x\chi(x/R)$ gives the identities as $R\to\infty$.
+Cauchy--Schwarz and the finite second moment.  Choose a smooth compactly
+supported cutoff $\chi$ equal to one near zero.  Applying integration by
+parts first to $\chi(x/L)$ and then to
+$x\chi(x/L)$ gives the identities as $L\to\infty$.
 
-For $X=(X_1,\ldots,X_n)\sim\mu_n:=f^{\otimes n}$ and
-$A\in M_n(\mathbb R)$, the score of the pushforward by $I+tA$ at
+For independent copies $X_1,\ldots,X_n$ of $X$, write
+$\mathbf X=(X_1,\ldots,X_n)\sim\mu_n$.  For
+$A\in M_n(\R)$, define the matrix score as the score of the pushforward by $I+tA$ at
 $t=0$ is
 \begin{equation}
- S_A(X)=\sum_{i,j=1}^n A_{ij}
+ S_A(\mathbf X)=\sum_{i,j=1}^n A_{ij}
        \bigl(s(X_i)X_j-\delta_{ij}\bigr)
        =\sum_i A_{ii}d(X_i)+\sum_{i\ne j}A_{ij}s(X_i)X_j.
- \label{eq:ng-matrix-score}
+ \label{eq:matrix-score}
 \end{equation}
 
 \begin{theorem}[The matrix Fisher operator]
-\label{thm:ng-fisher-spectrum}
-Under \eqref{eq:ng-fisher-regularity}, the quadratic form
-$\mathcal I_f^{(n)}(A):=\mathbb E S_A^2$ has the decomposition
+\label{thm:fisher-spectrum}
+Under \eqref{eq:fisher-regularity}, define the matrix Fisher operator
+$\mathcal I$ by
+$\langle A,\mathcal I B\rangle_F=\E[S_AS_B]$.
+Then
 \begin{equation}
- \boxed{\mathscr I_f^{(n)}
- =\kappa P_{\mathrm{diag}}
-  +(J+1)P_{\mathrm{sym,off}}
-  +(J-1)P_{\mathrm{skew}}.}
- \label{eq:ng-fisher-operator-spectrum}
+ \boxed{\mathcal I A=JA+A^*
+                     +(\kappa-J-1)\diag A.}
+ \label{eq:fisher-operator-spectrum}
 \end{equation}
-Here the projections are orthogonal for the Frobenius inner product.
-Equivalently, if
-$D=\operatorname{diag}A$,
-$S_0=(A+A^{\mathsf T})/2-D$, and
-$K=(A-A^{\mathsf T})/2$, then
+Here $\diag A$ is the matrix with diagonal entries $A_{ii}$ and zero
+off-diagonal entries.  The diagonal, symmetric off-diagonal, and skew-symmetric matrix subspaces
+are orthogonal for the Frobenius inner product and have eigenvalues
+$\kappa$, $J+1$, and $J-1$, respectively.  Equivalently,
 \begin{equation}
- \mathcal I_f^{(n)}(A)
- =\kappa\|D\|_F^2+(J+1)\|S_0\|_F^2+(J-1)\|K\|_F^2.
- \label{eq:ng-fisher-decomposition}
+ \begin{aligned}
+ \langle A,\mathcal I A\rangle_F
+ &=\kappa\|\diag A\|_F^2
+   +(J+1)\left\|\frac{A+A^*}2-\diag A\right\|_F^2\\
+ &\quad +(J-1)\left\|\frac{A-A^*}2\right\|_F^2.
+ \end{aligned}
+ \label{eq:fisher-decomposition}
 \end{equation}
-Their multiplicities are respectively
+The eigenvalue multiplicities are, respectively,
 \begin{equation}
  n,\qquad n(n-1)/2,\qquad n(n-1)/2.
- \label{eq:ng-fisher-multiplicities}
+ \label{eq:fisher-multiplicities}
 \end{equation}
 Moreover, $\kappa>0$ and $J\ge1$.
 Here $J=1$ holds precisely for the
 standard Gaussian density.  Thus, for a non-Gaussian $f$,
+$\min\{\kappa,J-1\}>0$ and
 \begin{equation}
- \lambda_f\|A\|_F^2\le\mathcal I_f^{(n)}(A)
- \le C_f\|A\|_F^2,
- \qquad
- \lambda_f:=\min\{\kappa,J-1\}>0,
- \quad C_f:=\max\{\kappa,J+1\}.
- \label{eq:ng-fisher-ellipticity}
+ \begin{gathered}
+ \min\{\kappa,J-1\}\|A\|_F^2\le\langle A,\mathcal I A\rangle_F
+ \le C_f\|A\|_F^2,\\
+ C_f:=\max\{\kappa,J+1\}.
+ \end{gathered}
+ \label{eq:fisher-ellipticity}
 \end{equation}
 \end{theorem}
 
@@ -100,21 +105,21 @@ The diagonal variables $d(X_i)$ are independent and centered.
 Their covariances with every off-diagonal term $s(X_j)X_k$, $j\ne k$,
 vanish.
 After any shared coordinate is integrated out, the remaining factor has
-expectation \(\mathbb E X\) or \(\mathbb E s(X)\).
+expectation \(\E X\) or \(\E s(X)\).
 Two off-diagonal terms can have a nonzero covariance only when their
 ordered index pairs coincide or are reversed.  Those covariances are,
-respectively, $J$ and $(\mathbb E Xs(X))^2=1$.  Consequently
+respectively, $J$ and $(\E Xs(X))^2=1$.  Consequently
 \begin{equation}
- \mathbb E S_A^2
+ \E S_A^2
  =\kappa\sum_i A_{ii}^2+
    \sum_{i<j}\{J(A_{ij}^2+A_{ji}^2)+2A_{ij}A_{ji}\}.
- \label{eq:ng-fisher-pair-form}
+ \label{eq:fisher-pair-form}
 \end{equation}
 Resolving each pair into its symmetric and skew-symmetric parts proves
 the decomposition.  In particular, the calculation uses centering and
 independence and imposes no parity condition on $f$.
 
-Cauchy--Schwarz applied to $\mathbb E Xs(X)=1$ gives $J\ge1$.
+Cauchy--Schwarz applied to $\E Xs(X)=1$ gives $J\ge1$.
 Equality implies $s(X)=X$ almost surely, hence
 $g'=-xg/2$ almost everywhere and $f$ is the standard Gaussian.
 If $\kappa=0$, then $2xg'+g=0$ almost everywhere on each of the two
@@ -124,88 +129,94 @@ density.  This proves $\kappa>0$ and the asserted bounds.
 \end{proof}
 
 \subsection{Hellinger paths, polar decomposition, and symmetric perturbations}
-\label{sec:ng-hs-hellinger-closure}
+\label{sec:hellinger-paths}
 
 For orientation, write the left polar decomposition of an invertible matrix
-as \(T=BO\), where \(B=(TT^{\mathsf T})^{1/2}\) is positive and \(O\) is
-orthogonal.  The covariance defect is \(TT^{\mathsf T}-I=B^2-I\), so a
+as \(T=BO\), where \(B=(TT^*)^{1/2}\) is positive and \(O\) is
+orthogonal.  The covariance defect is \(TT^*-I=B^2-I\), so a
 finite second moment detects the symmetric factor.  The skew tangent of the
 orthogonal factor has Fisher eigenvalue \(J-1\), which is positive precisely
 off the Gaussian law.  The full matrix Fisher decomposition above packages
 these two mechanisms without requiring a nonlinear separation of \(B\) and
 \(O\) at every step.
 
-For $A\in\mathrm{GL}(n,\mathbb R)$ define a unitary operator on
-$L^2(\mathbb R^n,dx)$ by
+For $A\in\GL(n,\R)$ define a unitary operator on
+$L^2(\R^n,dx)$ by
 \[
  (U_Av)(y)=|\det A|^{-1/2}v(A^{-1}y),
  \qquad
  \Omega_n(x)=\prod_{i=1}^n g(x_i).
 \]
 Thus $U_A\Omega_n$ is the square root of the Lebesgue density of
-$A_\#\mu_n$, and
+$A_\#\mu_n$.  For invertible $A,B$,
 $h(A_\#\mu_n,B_\#\mu_n)=\|U_A\Omega_n-U_B\Omega_n\|_2$.
 For a fixed real matrix $A$, the generator of $U_{\exp(tA)}$ is
 \begin{equation}
- G_Av=-\tfrac12\operatorname{tr}(A)v-(Ax)\cdot\nabla v,
+ G_Av=-\tfrac12\tr(A)v-(Ax)\cdot\nabla v,
  \qquad G_A\Omega_n=\tfrac12S_A\Omega_n.
- \label{eq:ng-half-density-generator}
+ \label{eq:half-density-generator}
 \end{equation}
 These identities hold in $L^2$.
-To justify them under \eqref{eq:ng-fisher-regularity}, observe that
+To justify them under \eqref{eq:fisher-regularity}, observe that
 $x_j\partial_i\Omega_n\in L^2$ for all $i,j$: the diagonal case
 uses $xg'\in L^2$, and the off-diagonal case uses $g'\in L^2$
-and $\mathbb E X^2=1$.  Cutoff and mollification approximate
+and $\E X^2=1$.  Cutoff and mollification approximate
 $\Omega_n$ in the corresponding weighted Sobolev graph norm, where
 the usual change-of-variables differentiation is valid.
 
 \begin{lemma}[A dimension-free Hellinger path bound]
-\label{lem:ng-finite-hellinger-upper}
+\label{lem:finite-hellinger-upper}
 If $A_t$, $0\le t\le1$, is a continuously differentiable path in
-$\mathrm{GL}(n,\mathbb R)$, then
+$\GL(n,\R)$, then $t\mapsto U_{A_t}\Omega_n$ is continuously
+differentiable in $L^2$ and
+\begin{equation}
+ \begin{aligned}
+ \frac d{dt}U_{A_t}\Omega_n
+ &=U_{A_t}G_{A_t^{-1}\dot A_t}\Omega_n,\\
+ \left\|\frac d{dt}U_{A_t}\Omega_n\right\|_2
+ &=\frac12\sqrt{\left\langle A_t^{-1}\dot A_t,
+                  \mathcal I(A_t^{-1}\dot A_t)\right\rangle_F}.
+ \end{aligned}
+ \label{eq:finite-hellinger-path-derivative}
+\end{equation}
+Consequently,
 \begin{equation}
  h((A_1)_\#\mu_n,(A_0)_\#\mu_n)
  \le\frac{\sqrt{C_f}}2
        \int_0^1\|A_t^{-1}\dot A_t\|_F\,dt.
- \label{eq:ng-finite-hellinger-path}
+ \label{eq:finite-hellinger-path}
 \end{equation}
 In particular, if $\|B\|_{\mathrm{op}}\le r<1$, then
 \begin{equation}
  h((I+B)_\#\mu_n,\mu_n)
  \le\frac{\sqrt{C_f}}{2(1-r)}\|B\|_F.
- \label{eq:ng-finite-hellinger-upper}
+ \label{eq:finite-hellinger-upper}
 \end{equation}
 All constants are independent of $n$.
 \end{lemma}
 
 \begin{proof}
 The representation law $U_AU_B=U_{AB}$ and
-\eqref{eq:ng-half-density-generator} give
-\[
- \frac d{dt}U_{A_t}\Omega_n
- =U_{A_t}G_{A_t^{-1}\dot A_t}\Omega_n,
- \qquad
- \left\|\frac d{dt}U_{A_t}\Omega_n\right\|_2
- =\frac12\sqrt{\mathcal I_f^{(n)}(A_t^{-1}\dot A_t)}.
-\]
-Integrate this identity and use the Fisher upper bound.  For the last
+\eqref{eq:half-density-generator} give
+\eqref{eq:finite-hellinger-path-derivative}.
+Integrate the derivative and use the Fisher upper bound.  For the last
 assertion take $A_t=I+tB$ and use
 $\|A_t^{-1}\|_{\mathrm{op}}\le(1-r)^{-1}$.
 \end{proof}
 
-\subsection{Off-diagonal detection by finite Fourier projection}
-\label{sec:ng-local-fourier-fisher}
+\subsection{Finite real Fourier sums with dual moments}
+\label{sec:fourier-dual-moments}
 
 We now assume that $f$ is non-Gaussian in addition to
-\eqref{eq:ng-fisher-regularity}.
+\eqref{eq:fisher-regularity}.
 We use finite real Fourier sums.
 These are finite real linear combinations of $1$, $\cos(\xi x)$ and
 $\sin(\xi x)$ with real frequencies $\xi$.
 Their frequencies may depend on $f$.
 Once chosen, their finite set is independent of the matrix dimension.
 
-\begin{lemma}[Bounded Fourier functions with exact dual moments]
-\label{lem:ng-trig-duals}
+\begin{lemma}[Finite real Fourier sums with dual moments]
+\label{lem:fourier-dual-moments}
 There exist centered finite real Fourier sums $p,q,r$ such that
 \begin{equation}
  \begin{array}{c|cc}
@@ -213,21 +224,21 @@ There exist centered finite real Fourier sums $p,q,r$ such that
  p     &1&0\\
  q     &0&1
  \end{array}
- \qquad\text{and}\qquad \mathbb E[r(X)d(X)]=1.
- \label{eq:ng-trig-duality}
+ \qquad\text{and}\qquad \E[r(X)d(X)]=1.
+ \label{eq:fourier-dual-moments}
 \end{equation}
 The entries in the table denote expectations of the products.
 For
 \begin{equation}
- H_A(X):=\sum_i A_{ii}r(X_i)
+ H_A(\mathbf X):=\sum_i A_{ii}r(X_i)
               +\sum_{i\ne j}A_{ij}p(X_i)q(X_j),
- \label{eq:ng-matched-fourier-detector}
+ \label{eq:fourier-functions}
 \end{equation}
 one has, for all real matrices $A,B$ of the same size,
 \begin{equation}
- \mathbb E[H_AS_B]=\langle A,B\rangle_F,
+ \E[H_AS_B]=\langle A,B\rangle_F,
  \qquad \|H_A\|_{L^2(\mu_n)}\le C_0\|A\|_F,
- \label{eq:ng-matched-fourier-pairing}
+ \label{eq:matched-fourier-pairing}
 \end{equation}
 where $C_0$ is independent of $n$.
 \end{lemma}
@@ -236,75 +247,75 @@ where $C_0$ is independent of $n$.
 On the real vector space of centered finite real Fourier sums
 consider the two functionals
 \[
- L_1(h)=\mathbb E h'(X)=\mathbb E[h(X)s(X)],
- \qquad L_2(h)=\mathbb E[Xh(X)].
+ L_1(h)=\E h'(X)=\E[h(X)s(X)],
+ \qquad L_2(h)=\E[Xh(X)].
 \]
 The integration-by-parts identity holds since $h,h'$ are bounded.
 Both functionals are unchanged by subtracting a constant.  If this
 moment map had rank at most one, all its two-by-two determinants
 would vanish, including after complexification.  Writing
-$\phi(\xi)=\mathbb E e^{i\xi X}$ and testing with the centered
+$\phi(\xi)=\E e^{i\xi X}$ and testing with the centered
 exponentials at frequencies $\xi,\eta$ would then give
 \[
  \eta\phi'(\xi)\phi(\eta)
        -\xi\phi(\xi)\phi'(\eta)=0
- \qquad(\xi,\eta\in\mathbb R).
+ \qquad(\xi,\eta\in\R).
 \]
 Here $L_1(e^{i\xi x})=i\xi\phi(\xi)$ and
-$L_2(e^{i\xi x})=-i\phi'(\xi)$.  The no-logarithm ODE
-argument in \cref{lem:ng-fourier-ode} would force a centered
+$L_2(e^{i\xi x})=-i\phi'(\xi)$.  The global linear ODE
+argument in \cref{lem:fourier-ode} would force a centered
 Gaussian law, a contradiction.  The map therefore has rank two.
-Inverting the moment matrix of two real Fourier witnesses
+Inverting the moment matrix of two finite real Fourier sums
 supplies $p,q$ with the displayed dual
 moments.  This construction fixes finitely many frequencies
 depending only on $f$.
 
 The diagonal function can be chosen using only the second moment.
 For $\xi\ne0$ let
-$r_0(x)=\cos(\xi x)-\mathbb E\cos(\xi X)$.  Dominated convergence
+$r_0(x)=\cos(\xi x)-\E\cos(\xi X)$.  Dominated convergence
 gives
 \[
- \frac{\mathbb E[Xr_0'(X)]}{\xi^2}
- =-\mathbb E\left[X\frac{\sin(\xi X)}\xi\right]
- \longrightarrow-\mathbb E X^2=-1
+ \frac{\E[Xr_0'(X)]}{\xi^2}
+ =-\E\left[X\frac{\sin(\xi X)}\xi\right]
+ \longrightarrow-\E X^2=-1
  \qquad(\xi\to0).
 \]
 Choose a sufficiently small nonzero $\xi$ and set
-$r=r_0/\mathbb E[Xr_0'(X)]$.  Cutoff integration by parts gives
-$\mathbb E[r(X)d(X)]=\mathbb E[Xr'(X)]=1$.
+$r=r_0/\E[Xr_0'(X)]$.  Cutoff integration by parts gives
+$\E[r(X)d(X)]=\E[Xr'(X)]=1$.
 
-All diagonal/off-diagonal cross terms in $\mathbb E H_AS_B$ vanish
+All diagonal/off-diagonal cross terms in $\E H_AS_B$ vanish
 by centering.  Coincident ordered off-diagonal pairs contribute
-$\mathbb E[ps]\mathbb E[qX]=1$.
-Reversed pairs contribute $\mathbb E[pX]\mathbb E[qs]=0$.
+$\E[ps]\E[qX]=1$.
+Reversed pairs contribute $\E[pX]\E[qs]=0$.
 This proves the pairing.
 For any centered $a,b\in L^2(f)$, independence gives
 \begin{equation}
  \left\|\sum_{i\ne j}A_{ij}a(X_i)b(X_j)\right\|_2
  \le\sqrt2\,\|a\|_2\|b\|_2\|A\|_F.
- \label{eq:ng-quadratic-chaos-bound}
+ \label{eq:quadratic-chaos-bound}
 \end{equation}
 Together with the independent diagonal terms, this proves the last
 assertion.
 \end{proof}
 
-The next lemma records the uniform estimate needed to use these
-detectors along a matrix path.
+The next lemma records the uniform estimate needed to use the functions
+$H_A$ along a matrix path.
 Its proof gives the index contractions explicitly.
 In particular, it uses no fourth moment of $X$ or higher moment of
 the score.
 
-\begin{lemma}[Generator bound for bounded coordinate detectors]
-\label{lem:ng-trig-generator-bound}
+\begin{lemma}[Generator bound for the functions $H_A$]
+\label{lem:fourier-generator-bound}
 Let $p,q,r$ be any fixed centered bounded continuously differentiable
 functions with bounded derivatives.  Define $H_A$ by
-\eqref{eq:ng-matched-fourier-detector}.  There is a constant $C_1$,
+\eqref{eq:fourier-functions}.  There is a constant $C_1$,
 depending on these functions and on $J,\kappa$, such that
 \begin{equation}
  \|G_B(H_A\Omega_n)\|_{L^2(dx)}
  \le C_1\|A\|_F\|B\|_F
- \qquad(A,B\in M_n(\mathbb R),\ n\ge1).
- \label{eq:ng-detector-generator-bound}
+ \qquad(A,B\in M_n(\R),\ n\ge1).
+ \label{eq:coordinate-function-generator-bound}
 \end{equation}
 \end{lemma}
 
@@ -317,17 +328,17 @@ Consequently
        +x_j(\partial_iH_A)\Omega_n\in L^2(dx)
 \]
 by the weighted Sobolev regularity of $\Omega_n$ and
-$\mathbb E X^2=1$.  The cutoff and mollification argument used for
-\eqref{eq:ng-half-density-generator} therefore puts $H_A\Omega_n$
+$\E X^2=1$.  The cutoff and mollification argument used for
+\eqref{eq:half-density-generator} therefore puts $H_A\Omega_n$
 in the domain of $G_B$.
 The product rule gives
 \begin{equation}
  G_B(H_A\Omega_n)
  =\left\{\tfrac12H_AS_B-(Bx)\cdot\nabla H_A\right\}\Omega_n.
- \label{eq:ng-detector-generator-product}
+ \label{eq:coordinate-function-generator-product}
 \end{equation}
 Both terms belong to $L^2$ in each finite dimension.  We prove a
-dimension-independent bound for each term.
+dimension-free bound for each term.
 
 We will repeatedly use the following elementary consequence of
 independence.  If $h_1,\ldots,h_m$ are centered $L^2(f)$ functions,
@@ -338,7 +349,7 @@ and a coefficient tensor $C$ is indexed by ordered tuples of
  C_{i_1\ldots i_m}\prod_{a=1}^m h_a(X_{i_a})\right\|_2
  \le\sqrt{m!}\,\|C\|_{\ell^2}
                       \prod_{a=1}^m\|h_a\|_2.
- \label{eq:ng-canonical-chaos-bound}
+ \label{eq:canonical-chaos-bound}
 \end{equation}
 In the square of this norm, a mixed term vanishes unless the two
 tuples have the same index set.
@@ -360,8 +371,8 @@ The product $H_AS_B$ is the sum of the four products obtained by
 multiplying $D_{\mathbf a}(r)+Q_{A_0}(p,q)$
 and $D_{\mathbf b}(d)+Q_{B_0}(s,x)$, where
 $\mathbf a=(A_{ii})_i$, $\mathbf b=(B_{ii})_i$,
-$A_0=A-\operatorname{diag}(\mathbf a)$, and
-$B_0=B-\operatorname{diag}(\mathbf b)$.
+$A_0=A-\diag A$, and
+$B_0=B-\diag B$.
 In every common coordinate, a local product is a bounded function
 times one of $d,s,x$ and hence is in $L^2(f)$.  Write each such
 local product as its mean plus its centered part.
@@ -375,7 +386,7 @@ the first index of $Q_M$, and equality with its second index.
 The first gives the tensor $a\otimes M$.  In either equality
 case, centering the local product gives a matrix obtained by
 row or column multiplication of $M$ by $a$, and its mean gives
-$M^{\mathsf T}a$ or $Ma$.  Each norm is at most
+$M^*a$ or $Ma$.  Each norm is at most
 $\|a\|_2\|M\|_F$.  The product $Q_M(u,v)D_a(w)$ has exactly
 the same three patterns and bounds.
 
@@ -401,7 +412,7 @@ Its centered local product has coefficient norm bounded by
  \le\|M\|_F\|N\|_F.
 \]
 Its local mean has coefficient matrix
-$(M^{\mathsf T}N)_{jl}$ off the diagonal; excluding $i=j,l$
+$(M^*N)_{jl}$ off the diagonal; excluding $i=j,l$
 does not change the sum because $M,N$ have zero diagonal.
 The other three shared-index patterns give the same estimate
 with a transpose or with the two coordinates exchanged, and
@@ -423,11 +434,11 @@ For instance
 and the other three estimates follow from the same
 Cauchy--Schwarz inequality.  These cases exhaust the possible
 index coincidences.  Applying
-\eqref{eq:ng-canonical-chaos-bound} to the centered pieces
+\eqref{eq:canonical-chaos-bound} to the centered pieces
 therefore proves
 \begin{equation}
  \|H_AS_B\|_2\le C\|A\|_F\|B\|_F.
- \label{eq:ng-detector-score-product-bound}
+ \label{eq:coordinate-function-score-bound}
 \end{equation}
 
 It remains to bound $(Bx)\cdot\nabla H_A$.  We give the
@@ -439,9 +450,9 @@ is
 \]
 When $i\ne k$, split $r'$ into its mean and centered part.
 The latter has coefficient matrix
-$\operatorname{diag}(\mathbf a)B$, with its diagonal
+$(\diag A)B$, with its diagonal
 deleted.  The mean has coefficient vector
-$B^{\mathsf T}\mathbf a-\mathbf a\mathbin{\odot}\mathbf b$.
+$B^*\mathbf a-\mathbf a\mathbin{\odot}\mathbf b$.
 Their norms are bounded by, respectively, one and two times
 $\|A\|_F\|B\|_F$.  When $i=k$, center the local function
 $xr'(x)$, which is in $L^2$ since $r'$ is bounded.  The
@@ -454,7 +465,7 @@ off-diagonal part is the sum of
  F(M,B;p',q):=
  \sum_{i\ne j,k}M_{ij}B_{ik}p'(X_i)q(X_j)X_k
 \]
-and $F(M^{\mathsf T},B;q',p)$.  In $F$, first take $k$ distinct
+and $F(M^*,B;q',p)$.  In $F$, first take $k$ distinct
 from $i,j$ and split $p'$ into its mean and centered part.
 The centered part has three-index coefficient norm bounded by
 \[
@@ -463,63 +474,63 @@ The centered part has three-index coefficient norm bounded by
  \le\|M\|_F\|B\|_F.
 \]
 The mean part has, off the diagonal, the matrix
-$M^{\mathsf T}B-M^{\mathsf T}\operatorname{diag}(\mathbf b)$;
+$M^*B-M^*\diag B$;
 the second term removes $i=k$, and $i=j$ already contributes
 zero.  Its Frobenius norm is at most $2\|M\|_F\|B\|_F$.
 When $k=i$, center $xp'(x)$; the resulting matrix has entries
 $B_{ii}M_{ij}$ and its mean has vector
-$M^{\mathsf T}\mathbf b$.  When $k=j$, split both
+$M^*\mathbf b$.  When $k=j$, split both
 $p'$ and $xq(x)$ into means and centered parts; the coefficients
 are the Hadamard matrix $M\mathbin{\odot}B$, its row and column
 sums, and its total sum.  The preceding Hadamard estimates
 bound all of them.  All the local functions used here belong
-to $L^2$, since $p',q$ are bounded and $\mathbb E X^2=1$.
-The same proof applies to $F(M^{\mathsf T},B;q',p)$.
-Using \eqref{eq:ng-canonical-chaos-bound} again proves
+to $L^2$, since $p',q$ are bounded and $\E X^2=1$.
+The same proof applies to $F(M^*,B;q',p)$.
+Using \eqref{eq:canonical-chaos-bound} again proves
 \[
  \|(Bx)\cdot\nabla H_A\|_2\le C\|A\|_F\|B\|_F.
 \]
-Together with \eqref{eq:ng-detector-score-product-bound} and
-\eqref{eq:ng-detector-generator-product}, this proves the lemma.
+Together with \eqref{eq:coordinate-function-score-bound} and
+\eqref{eq:coordinate-function-generator-product}, this proves the lemma.
 \end{proof}
 
 \begin{proposition}[Uniform local Hellinger coercivity]
-\label{prop:ng-local-fisher-hellinger}
+\label{prop:local-fisher-hellinger}
 For every non-Gaussian density satisfying
-\eqref{eq:ng-fisher-regularity}, there are constants
+\eqref{eq:fisher-regularity}, there are constants
 $c,C,\delta>0$, independent of $n$, such that
 \begin{equation}
  c\|B\|_F\le h((I+B)_\#\mu_n,\mu_n)
              \le C\|B\|_F
  \qquad\text{whenever }\|B\|_F\le\delta.
- \label{eq:ng-local-matrix-hellinger}
+ \label{eq:local-matrix-hellinger}
 \end{equation}
 The lower bound can be obtained using the fixed finite set of
-coordinate frequencies from \cref{lem:ng-trig-duals}.
+coordinate frequencies from \cref{lem:fourier-dual-moments}.
 \end{proposition}
 
 \begin{proof}
-Fix the dual functions from \cref{lem:ng-trig-duals}.
+Fix the dual functions from \cref{lem:fourier-dual-moments}.
 First use exponential coordinates.  Unitarity and the
 one-parameter group derivative give
 \begin{align*}
  \langle H_A\Omega_n,(U_{\exp A}-I)\Omega_n\rangle
  &=\int_0^1
-   \langle U_{\exp(-tA)}(H_A\Omega_n),G_A\Omega_n\rangle\,dt\\
- &=\tfrac12\|A\|_F^2+\mathcal R_A.
+   \langle U_{\exp(-tA)}(H_A\Omega_n),G_A\Omega_n\rangle\,dt.
 \end{align*}
-Here the exact leading term is
-$\tfrac12\mathbb E H_AS_A$.
+Replacing $U_{\exp(-tA)}(H_A\Omega_n)$ by $H_A\Omega_n$ in the integral
+gives the leading term $\tfrac12\E H_AS_A=\tfrac12\|A\|_F^2$.
 For a vector in the domain of $G_A$, the fundamental theorem of
 calculus gives
 $\|(U_{\exp(-tA)}-I)v\|_2\le t\|G_Av\|_2$.
-Thus \cref{lem:ng-trig-generator-bound} and the Fisher upper
+Thus \cref{lem:fourier-generator-bound} and the Fisher upper
 bound imply
 \[
- |\mathcal R_A|
+ \left|\langle H_A\Omega_n,(U_{\exp A}-I)\Omega_n\rangle
+                       -\tfrac12\|A\|_F^2\right|
  \le\frac{C_1\sqrt{C_f}}4\|A\|_F^3.
 \]
-Cauchy--Schwarz and \eqref{eq:ng-matched-fourier-pairing} now
+Cauchy--Schwarz and \eqref{eq:matched-fourier-pairing} now
 give, for all sufficiently small $\|A\|_F$,
 \[
  h((\exp A)_\#\mu_n,\mu_n)
@@ -535,45 +546,44 @@ $A=\log(I+B)$ exists and satisfies
 Its norm is therefore uniformly comparable to $\|B\|_F$ in a
 fixed small chart.  This proves the lower bound for $I+B$;
 the upper bound follows from
-\cref{lem:ng-finite-hellinger-upper}.
+\cref{lem:finite-hellinger-upper}.
 \end{proof}
 
 The preceding pairing is a half-density pairing: it is
 $\int H_A\sqrt{d\mu_n\,d((\exp A)_\#\mu_n)}-
 \int H_A\,d\mu_n$.  It provides a uniform local lower bound
-without asserting a dimension-uniform variance bound for
+without asserting a dimension-free variance bound for
 $H_A$ under every arbitrarily mixed output law.  Such a bound,
 or an independent tail argument, is a separate requirement
 when passing to necessity for arbitrary output marginals.
 
-\subsection{Uniform coercivity modulo the discrete stabilizer}
-\label{sec:ng-global-coercivity}
-
-Let \(\mathcal P_f(n)\) denote the allowed signed-permutation matrices in
-dimension \(n\), and set
-\begin{equation}
- d_{n,f}(T)=\min_{Q\in\mathcal P_f(n)}\|T-Q\|_F.
- \label{eq:ng-distance-stabilizer}
-\end{equation}
+\subsection{Uniform coercivity modulo the exact linear stabilizer}
+\label{sec:global-coercivity}
 
 \begin{theorem}[Dimension-free global Hellinger coercivity]
-\label{thm:ng-global-coercivity}
-Assume \eqref{eq:ng-iid-assumptions}.  For every \(0<a\le b<\infty\)
+\label{thm:global-coercivity}
+Assume \eqref{eq:main-assumptions}.  Let \(\mathcal P_n\) denote the allowed
+signed-permutation matrices in dimension \(n\), and set
+\begin{equation}
+ d_n(T)=\min_{Q\in\mathcal P_n}\|T-Q\|_F.
+ \label{eq:distance-stabilizer}
+\end{equation}
+For every \(0<a\le b<\infty\)
 there are constants \(c=c(f,a,b)>0\) and \(C=C(f,a,b)<\infty\) such
-that, for every \(n\) and every \(T\in\GL(n,\mathbb R)\) whose singular
+that, for every \(n\) and every \(T\in\GL(n,\R)\) whose singular
 values lie in \([a,b]\),
 \begin{equation}
- c\min\{d_{n,f}(T)^2,1\}
+ c\min\{d_n(T)^2,1\}
  \le h(\mu_n,T_\#\mu_n)^2
- \le C\min\{d_{n,f}(T)^2,1\}.
- \label{eq:ng-global-coercivity}
+ \le C\min\{d_n(T)^2,1\}.
+ \label{eq:global-coercivity}
 \end{equation}
 \end{theorem}
 
-The local regime of \eqref{eq:ng-global-coercivity} is exactly
-\cref{prop:ng-local-fisher-hellinger}, after conjugating by a member of
-\(\mathcal P_f(n)\).  The uniform separation away from that local chart is a
-genuinely global statement.  Its proof, given in
+The local regime of \eqref{eq:global-coercivity} is exactly
+\cref{prop:local-fisher-hellinger}, after right multiplication by a member of
+\(\mathcal P_n\).  The uniform separation away from that local chart is a
+global statement.  Its proof, given in
 \cref{sec:globalization-proof}, uses the infinite-dimensional equivalence
 theorem as a compactness device: a hypothetical sequence of distant
 near-invariances is assembled into one block-diagonal equivalence, which the

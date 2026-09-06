@@ -7,7 +7,6 @@
 ehthumbs.db
 Thumbs.db
 *.md
-prior_arts/
 
 # LaTeX outputs
 *.aux
@@ -39,8 +38,7 @@ prior_arts/
 *.spl
 
 # Build directory
-paper/build/
-preprint/
+/build/
 __pycache__/
 *.py[cod]
 .pytest_cache
