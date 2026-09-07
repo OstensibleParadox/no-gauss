@@ -7,252 +7,6 @@ in the tail? Absolute continuity will identify the individual axes. The
 decisive step is then to compare errors on one group of coordinates with
 negligible errors on another, using exchanges that preserve the product law.
 
-\subsection{Making row sums composable}
-
-We will compare a mixing with its inverse and with conjugated coordinate
-exchanges. These operations require actual maps on the product space. A
-sample almost surely lies outside \(\ell^2\), even though every row sum is
-well defined in \(L^2\). The way to make the maps composable is to choose
-the subsequence defining each sum from its coefficients alone. The same
-choice then works before and after a bounded linear mixing. This realization
-of Hilbert-space operators on the product space goes back to
-\cite{shimomura1977linear}. Throughout this construction,
-\(\E X=0\) and \(\E X^2=1\).
-
-\begin{lemma}[Measurable row-series realization on each countable operator orbit]
-\label{lem:measurable-row-series-realization}
-For every \(T\in\mathcal B(H)\), there is a measurable row-series
-realization, namely a Borel map
-\(\Phi_T:\R^{\N}\to\R^{\N}\) whose coordinates are the \(L^2(\mu)\) row sums
-\[
-  (\Phi_Tx)_i=\sum_{j\geq1}T_{ij}x_j.
-\]
-These maps can be chosen so that the following statements hold.
-If a probability measure \(\lambda\) satisfies, for some finite
-\(C_\lambda\geq0\),
-\begin{equation}
-  \int\left|\sum_j a_jx_j\right|^2\,d\lambda(x)
-  \leq C_\lambda\|a\|_2^2
-  \quad\text{for every finitely supported }a,
-  \label{eq:covariance-domination}
-\end{equation}
-then \((\Phi_T)_\#\lambda\) also satisfies this condition.
-Its constant is at most \(C_\lambda\|T\|_{\mathrm{op}}^2\).  Also
-\begin{equation}
-  \Phi_S\circ\Phi_T=\Phi_{ST}
-  \quad\lambda\text{-almost surely}
-  \qquad(S,T\in\mathcal B(H)).
-  \label{eq:measurable-composition}
-\end{equation}
-For each fixed countable subgroup \(\Gamma\leq\GL(H)\),
-there is a \(\Gamma\)-invariant Borel set \(D\subset\R^{\N}\) of full
-measure for every \(\lambda\) satisfying
-\eqref{eq:covariance-domination}.
-On this set, these restrictions form an action by bimeasurable
-automorphisms.
-In particular, this applies to \(\mu\) and all its \(\Gamma\)-orbit laws,
-including singular orbit laws.
-\end{lemma}
-
-\begin{proof}
-For \(a\in\ell^2\), the finite sums \(\sum_{j\leq n}a_jx_j\) have a
-unique \(L^2(\lambda)\) limit \(L_a\).  Choose
-\[
-  n_k(a)=\min\left\{n\geq k:
-                \sum_{j>n}|a_j|^2\leq2^{-4k}\right\}.
-\]
-Define \(\widehat L_a(x)\) to be the limit of
-\(\sum_{j\leq n_k(a)}a_jx_j\) when it exists, and zero otherwise.
-By \eqref{eq:covariance-domination},
-\[
-  \left\|\sum_{j\leq n_k(a)}a_jx_j-L_a\right\|_{L^2(\lambda)}^2
- \leq C_\lambda2^{-4k}.
-\]
-Chebyshev's inequality and Borel--Cantelli give convergence along this
-subsequence \(\lambda\)-almost surely and in \(L^2(\lambda)\).  This
-deterministic choice works for every law satisfying
-\eqref{eq:covariance-domination}.  Set
-\(\Phi_T(x)_i=\widehat L_{T^*e_i}(x)\); the construction is Borel.
-
-For finitely supported \(b\),
-\(\sum_i b_i\Phi_T(x)_i=L_{T^*b}\) almost surely, proving the asserted
-second-moment bound for the pushforward.  For the \(i\)-th row of \(S\),
-\[
-  \sum_{j\leq n}S_{ij}\widehat L_{T^*e_j}
-     =L_{T^*P_nS^*e_i}
-     \longrightarrow L_{T^*S^*e_i}
-     \quad\text{in }L^2(\lambda).
-\]
-The selected subsequence on the left also converges almost surely to
-\(\Phi_S(\Phi_T(x))_i\), because the output law satisfies the same type of
-bound.  Uniqueness of the limit proves
-\eqref{eq:measurable-composition}.
-
-For a countable \(\Gamma\), let \(B\) be the Borel set on which all its
-row limits, identity relations, and pairwise composition relations hold.
-The preceding argument gives \(\lambda(B)=1\) for every admissible law.  Put
-\[
-  D=\bigcap_{T\in\Gamma}\Phi_T^{-1}(B).
-\]
-Every orbit law satisfies \eqref{eq:covariance-domination}, so \(D\) has full
-measure.  The composition identities make \(D\) invariant and
-\(\Phi_{T^{-1}}\) the inverse of \(\Phi_T\) on \(D\).
-\end{proof}
-
-Write \(\nu_T=(\Phi_T)_\#\mu\).
-
-\subsection{Why overlap implies equivalence}
-
-Two arbitrary measures can overlap without being equivalent. For the
-positive-density products considered here, translations rule out this
-intermediate possibility. Both the original and the mixed law admit
-\(\ell^2\) shifts, and neither can be split into nontrivial pieces invariant
-under those shifts. Their common part must therefore be all or nothing.
-This is the mechanism of Okazaki's dichotomy
-\cite{okazaki1985dichotomy}. The product translation theory is developed in
-\cite{shepp1965translate,hora1991quasi,sadasue2008quasi,arutyunyan2015spaces,honda2015approximations};
-we give the argument needed here.
-
-\begin{lemma}[Equivalence--singularity dichotomy on every bounded invertible orbit]
-\label{lem:equivalence-singularity-dichotomy}
-For every \(T\in\GL(H)\),
-\begin{equation}
-  \nu_T\sim\mu\quad\text{or}\quad\nu_T\perp\mu.
-\end{equation}
-The assumptions are \(f>0\) a.e., \(\sqrt f\in W^{1,2}(\R)\),
-\(\E X=0\), and \(\E X^2=1\).
-\end{lemma}
-
-\begin{proof}
-Put \(g=\sqrt f\).  The translation estimate
-\[
-  1-\Aff(f,f(\cdot-a))
-     =\tfrac12\|g(\cdot-a)-g\|_2^2
-     \leq\tfrac12\|g'\|_2^2a^2
-\]
-and Kakutani's theorem imply
-\((x\mapsto x+a)_\#\mu\sim\mu\) for every \(a\in\ell^2\).
-Since the scalar pairing of a row of \(T\) with \(T^{-1}a\) is absolutely
-convergent,
-\[
-  \Phi_T(x+T^{-1}a)=\Phi_T(x)+a
-  \quad\mu\text{-almost surely};
-\]
-hence \(\nu_T\) is also quasi-invariant under every \(\ell^2\) translation.
-
-Let \(\mathcal A\) be the countable additive group generated by
-\(\{qe_j,qTe_j:q\in\mathbb Q,\ j\geq1\}\).
-Both \(\mu\) and \(\nu_T\) are quasi-invariant and ergodic under
-translation by \(\mathcal A\).  Indeed, rational-translation invariance and
-positivity of the finite-dimensional densities make every finite-coordinate
-section constant almost everywhere (convolve with a smooth approximate
-identity); the event is therefore a tail event, so Kolmogorov's zero--one law
-applies.  Pullback by \(\Phi_T\) proves the same assertion for \(\nu_T\),
-because translation by \(qTe_j\) pulls back to translation by \(qe_j\).
-
-Write \(\nu_T=(\nu_T)_{\mathrm{ac}}+(\nu_T)_{\mathrm{s}}\) for its Lebesgue decomposition relative to
-\(\mu\).  Choose a Borel \(\mu\)-null set \(N_0\) supporting
-\((\nu_T)_{\mathrm{s}}\), and let \(N=\bigcup_{a\in\mathcal A}(N_0+a)\).
-Quasi-invariance of \(\mu\) makes \(N\) a \(\mu\)-null set;
-it is exactly \(\mathcal A\)-invariant and still supports \((\nu_T)_{\mathrm{s}}\).
-Thus \(\nu_T(N)=(\nu_T)_{\mathrm{s}}(\R^{\N})\in\{0,1\}\) by ergodicity.  Mass one gives
-singularity.  If the mass is zero, write \(\nu_T=\ell_T\mu\).
-Quasi-invariance makes \(\{\ell_T>0\}\) invariant modulo \(\mu\); it has
-positive measure and hence, by ergodicity, full measure.  Thus
-\(\nu_T\sim\mu\).
-\end{proof}
-
-\subsection{Reading the full law through finite marginals}
-
-Every finite output marginal has a positive density. Singularity can
-therefore emerge only as more coordinates are observed. The likelihood
-ratios form a martingale, and the limiting affinity measures the overlap
-that survives these observations. By the preceding dichotomy, any positive
-overlap gives equivalence. The likelihood interpretation is standard
-\cite{lecam1986asymptotic,mandrekar2018lebesgue}; here it lets us compare
-dependent outputs, whereas independent additive perturbations can be
-studied through convolution \cite{kitada1989absolute}.
-
-\begin{lemma}[Projected Hellinger energy and finite-marginal likelihood ratios]
-\label{lem:finite-marginal-likelihood-ratios}
-Assume \(f>0\) almost everywhere, \(\sqrt f\in W^{1,2}(\R)\),
-and \(\E X=0\), \(\E X^2=1\).
-For \(T\in\GL(H)\), every finite output marginal
-\((\pi_n)_\#\nu_T\) is equivalent to \(\mu_n\).
-Writing \(\mathcal F_n=\sigma(x_1,\ldots,x_n)\), define
-\begin{equation}
-  \ell_{T,n}(x)=
-  \frac{d[(\pi_n)_\#\nu_T]}{d\mu_n}(\pi_n x).
-\end{equation}
-Then
-\(\Aff(\mu_n,(\pi_n)_\#\nu_T)=\E_\mu\sqrt{\ell_{T,n}}\), and \(E_n(T)\) is
-as in \eqref{eq:projected-hellinger-energy}; moreover,
-\((\ell_{T,n})_{n\geq1}\) is a nonnegative mean-one \(\mu\)-martingale.
-We have
-\begin{equation}
-  \Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr)\downarrow\Aff(\mu,\nu_T),
-  \qquad
-  \nu_T\sim\mu
-    \Longleftrightarrow\sup_nE_n(T)<\infty.
-  \label{eq:marginal-affinity-limit}
-\end{equation}
-Otherwise \(E_n(T)\uparrow\infty\) and \(\nu_T\perp\mu\).
-If \(\nu_T\sim\mu\) with density
-\(\ell_T=d\nu_T/d\mu\), then
-\begin{align}
-  \ell_{T,n}&=\E_\mu[\ell_T\mid\mathcal F_n]
-       \longrightarrow \ell_T
-       &&\text{in }L^1(\mu),\\
-  \ell_{T,n}^{-1}&=\E_{\nu_T}[\ell_T^{-1}\mid\mathcal F_n]
-       \longrightarrow \ell_T^{-1}
-       &&\text{in }L^1(\nu_T).
-\end{align}
-In particular, both likelihood-ratio martingales are uniformly integrable in
-their respective reference measures.
-\end{lemma}
-
-\begin{proof}
-The first \(n\) rows of \(T\) are linearly independent, since \(T^*\)
-is injective, so some \(n\) input columns form an invertible minor \(A\).
-Writing the first \(n\) outputs as \(AU+W\), with \(U\sim\mu_n\) independent
-of \(W\), shows that their density is a mixture of translates of the
-a.e.-positive density of \(AU\).  It is positive and finite almost
-everywhere, proving finite-dimensional equivalence.
-
-Consistency of projected laws proves the martingale assertion.  The
-martingale limit is
-\(\ell_{T,\infty}=d(\nu_T)_{\mathrm{ac}}/d\mu\), the density of the absolutely continuous
-part of \(\nu_T\).  Indeed, Fatou on cylinder sets gives
-\(\ell_{T,\infty}\mu\leq\nu_T\); conversely, if
-\((\nu_T)_{\mathrm{ac}}=\ell_{\mathrm{ac}}\mu\), then
-\(\E_\mu[\ell_{\mathrm{ac}}\mid\mathcal F_n]\leq\ell_{T,n}\), and martingale
-convergence gives the reverse inequality.  Since
-\(\E_\mu(\sqrt{\ell_{T,n}})^2=1\), the square roots are uniformly integrable
-and converge in \(L^1\) to \(\sqrt{\ell_{T,\infty}}\).  Conditional Jensen
-also makes their expectations decreasing; hence
-\[
-  \lim_n\Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr)
-      =\int\sqrt{\ell_{T,\infty}}\,d\mu
-      =\Aff(\mu,\nu_T).
-\]
-The dichotomy in \cref{lem:equivalence-singularity-dichotomy} now proves
-\eqref{eq:marginal-affinity-limit} and the singular alternative.
-
-Under equivalence, the forward identity is the defining
-conditional-expectation identity for a marginal density.  For the reverse,
-for \(B\in\mathcal F_n\),
-\[
-  \int_B \ell_{T,n}^{-1}\,d\nu_T=\mu(B)
-       =\int_B \ell_T^{-1}\,d\nu_T.
-\]
-Conditional-expectation convergence gives both \(L^1\) limits and hence
-both uniform-integrability assertions.
-\end{proof}
-
-Since initial segments are cofinal among finite coordinate sets, Hellinger
-data processing also makes the criterion independent of their enumeration
-\cite{liese2006divergences}.
-
 \subsection{Sufficiency of Hilbert--Schmidt perturbations}
 
 For a Hilbert--Schmidt perturbation, the finite-dimensional path bound is
@@ -308,9 +62,35 @@ The inverse approximants converge in Hilbert--Schmidt norm because
  \le\|T_n^{-1}\|_{\mathrm{op}}
        \|T_n-T\|_{\mathcal S_2}\|T^{-1}\|_{\mathrm{op}}.
 \]
-Applying the same argument gives $\nu_{T^{-1}}\ll\mu$.  On the common
-measurable carrier supplied by
-\cref{lem:measurable-row-series-realization},
+Applying the same argument gives $\nu_{T^{-1}}\ll\mu$. To deduce
+reverse absolute continuity, we compose the row maps. Choose their versions
+from the coefficients alone, so the choice works before and after mixing.
+For \(a\in H\), take \(n_k(a)\ge k\) with
+\(\sum_{j>n_k(a)}|a_j|^2\le2^{-4k}\), and define \(\widehat L_a\) as the
+limit of these partial sums, or zero when it does not exist. For any law
+\(\lambda\) with
+\begin{equation}
+ \int\left|\sum_j a_jx_j\right|^2\,d\lambda(x)
+       \le C_\lambda\|a\|_2^2
+       \quad(a\text{ finitely supported}),
+ \label{eq:covariance-domination}
+\end{equation}
+the squared \(L^2\) error is at most \(C_\lambda2^{-4k}\), so
+Borel--Cantelli identifies \(\widehat L_a\) with the row sum almost surely.
+Set \(\Phi_T(x)_i=\widehat L_{T^*e_i}(x)\). Finite linear combinations
+of these rows give \(\widehat L_{T^*b}\); hence the output law has bound
+\(C_\lambda\|T\|_{\mathrm{op}}^2\). Taking \(L^2\) limits in the next
+row sum gives \(\widehat L_b\circ\Phi_T=\widehat L_{T^*b}\) and therefore
+\begin{equation}
+ \Phi_S\circ\Phi_T=\Phi_{ST}\quad\lambda\text{-almost surely}
+       \qquad(S,T\in\mathcal B(H)).
+ \label{eq:measurable-composition}
+\end{equation}
+For a fixed countable operator group, intersecting the composition sets
+and their group preimages gives an invariant set on which the maps are
+mutual inverses. The second-moment bound makes this set full under
+\(\mu\) and all its orbit laws. This is the row-series realization used
+throughout \cite{shimomura1977linear}. In particular,
 \[
  \mu=(\Phi_T)_\#\nu_{T^{-1}}
        \ll(\Phi_T)_\#\mu=\nu_T.
@@ -781,9 +561,8 @@ Hellinger invariance and $P_\#\mu=\mu$ give
  h(\mu,\nu_W)=h(\nu_T,S_\#\nu_T).
  \label{eq:swap-hellinger-identity}
 \end{equation}
-All differences have finite rank, and
-\cref{lem:measurable-row-series-realization} supplies the common measurable carrier
-needed for this identity.
+The composition law \eqref{eq:measurable-composition} justifies the
+change of variables.
 
 The norm comparison becomes transparent if the auxiliary matches are exact.
 We can make this change at arbitrarily small Hilbert--Schmidt cost. Define
@@ -886,6 +665,131 @@ If $T$ is orthogonal, both covariance defects vanish, and every
 $W=P T^*ST$ above is orthogonal.  Thus only the orthogonal part of
 \cref{lem:local-hs-coercivity} is used, and it requires no scale Fisher
 information.
+\end{proof}
+
+\subsection{Completing the classification}
+
+The preceding arguments classify equivalence by the distance from a
+coordinate symmetry. To finish the theorem, we identify the alternative
+as singularity and recover the same distinction from finite observations.
+
+\paragraph{Why overlap implies equivalence.}
+
+Two arbitrary measures can overlap without being equivalent. For the
+positive-density products considered here, translations rule out this
+intermediate possibility. Both the original and the mixed law admit
+\(\ell^2\) shifts, and neither can be split into nontrivial pieces invariant
+under those shifts. Their common part must therefore be all or nothing.
+This is the mechanism of Okazaki's dichotomy
+\cite{okazaki1985dichotomy}. The product translation theory is developed in
+\cite{shepp1965translate,hora1991quasi,sadasue2008quasi,arutyunyan2015spaces,honda2015approximations};
+we give the argument needed here.
+
+\begin{lemma}[Equivalence--singularity dichotomy on every bounded invertible orbit]
+\label{lem:equivalence-singularity-dichotomy}
+For every \(T\in\GL(H)\),
+\begin{equation}
+  \nu_T\sim\mu\quad\text{or}\quad\nu_T\perp\mu.
+\end{equation}
+The assumptions are \(f>0\) a.e., \(\sqrt f\in W^{1,2}(\R)\),
+\(\E X=0\), and \(\E X^2=1\).
+\end{lemma}
+
+\begin{proof}
+Put \(g=\sqrt f\).  The translation estimate
+\[
+  1-\Aff(f,f(\cdot-a))
+     =\tfrac12\|g(\cdot-a)-g\|_2^2
+     \leq\tfrac12\|g'\|_2^2a^2
+\]
+and Kakutani's theorem imply
+\((x\mapsto x+a)_\#\mu\sim\mu\) for every \(a\in\ell^2\).
+Since the scalar pairing of a row of \(T\) with \(T^{-1}a\) is absolutely
+convergent,
+\[
+  \Phi_T(x+T^{-1}a)=\Phi_T(x)+a
+  \quad\mu\text{-almost surely};
+\]
+hence \(\nu_T\) is also quasi-invariant under every \(\ell^2\) translation.
+
+Let \(\mathcal A\) be the countable additive group generated by
+\(\{qe_j,qTe_j:q\in\mathbb Q,\ j\geq1\}\).
+Both \(\mu\) and \(\nu_T\) are quasi-invariant and ergodic under
+translation by \(\mathcal A\).  Indeed, rational-translation invariance and
+positivity of the finite-dimensional densities make every finite-coordinate
+section constant almost everywhere (convolve with a smooth approximate
+identity); the event is therefore a tail event, so Kolmogorov's zero--one law
+applies.  Pullback by \(\Phi_T\) proves the same assertion for \(\nu_T\),
+because translation by \(qTe_j\) pulls back to translation by \(qe_j\).
+
+Write \(\nu_T=(\nu_T)_{\mathrm{ac}}+(\nu_T)_{\mathrm{s}}\) for its Lebesgue decomposition relative to
+\(\mu\).  Choose a Borel \(\mu\)-null set \(N_0\) supporting
+\((\nu_T)_{\mathrm{s}}\), and let \(N=\bigcup_{a\in\mathcal A}(N_0+a)\).
+Quasi-invariance of \(\mu\) makes \(N\) a \(\mu\)-null set;
+it is exactly \(\mathcal A\)-invariant and still supports \((\nu_T)_{\mathrm{s}}\).
+Thus \(\nu_T(N)=(\nu_T)_{\mathrm{s}}(\R^{\N})\in\{0,1\}\) by ergodicity.  Mass one gives
+singularity.  If the mass is zero, write \(\nu_T=\ell_T\mu\).
+Quasi-invariance makes \(\{\ell_T>0\}\) invariant modulo \(\mu\); it has
+positive measure and hence, by ergodicity, full measure.  Thus
+\(\nu_T\sim\mu\).
+\end{proof}
+
+\paragraph{Reading the full law through finite marginals.}
+
+The Hellinger energy records how much overlap survives as more outputs are
+observed. This uses their joint distributions and therefore applies to
+dependent coordinates as well. We collect the affinity limit and the
+likelihood identities used below \cite{lecam1986asymptotic,mandrekar2018lebesgue}.
+
+\begin{lemma}[Affinity and likelihood ratios through finite marginals]
+\label{lem:finite-marginal-likelihood-ratios}
+For any probability laws \(\lambda,\nu\) on \(\R^{\N}\),
+\begin{equation}
+ \Aff((\pi_n)_\#\lambda,(\pi_n)_\#\nu)
+       \downarrow\Aff(\lambda,\nu).
+ \label{eq:general-marginal-affinity-limit}
+\end{equation}
+Under the assumptions of \cref{lem:equivalence-singularity-dichotomy},
+every \(T\in\GL(H)\) has positive finite-dimensional output densities and
+\begin{equation}
+ \nu_T\sim\mu\quad\Longleftrightarrow\quad\sup_nE_n(T)<\infty;
+ \qquad E_n(T)\uparrow\infty\quad\text{otherwise}.
+ \label{eq:marginal-affinity-limit}
+\end{equation}
+If \(\nu_T=\ell_T\mu\sim\mu\), its marginal likelihood ratios satisfy,
+with \(\mathcal F_n=\sigma(x_1,\ldots,x_n)\),
+\begin{equation}
+ \begin{aligned}
+ \ell_{T,n}
+ &=\frac{d[(\pi_n)_\#\nu_T]}{d\mu_n}(\pi_n x)
+   =\E_\mu[\ell_T\mid\mathcal F_n]
+       \longrightarrow\ell_T &&\text{in }L^1(\mu),\\
+ \ell_{T,n}^{-1}
+ &=\E_{\nu_T}[\ell_T^{-1}\mid\mathcal F_n]
+       \longrightarrow\ell_T^{-1} &&\text{in }L^1(\nu_T).
+ \end{aligned}
+\end{equation}
+Both martingales are uniformly integrable, and
+\(\Aff(\mu_n,(\pi_n)_\#\nu_T)=\E_\mu\sqrt{\ell_{T,n}}\).
+\end{lemma}
+\begin{proof}
+Take \(m=(\lambda+\nu)/2\), write \(u=d\lambda/dm\), \(v=d\nu/dm\),
+and let \(u_n,v_n\) be their conditional expectations on \(\mathcal F_n\).
+Since \(u,v\le2\), martingale convergence gives
+\[
+ \Aff((\pi_n)_\#\lambda,(\pi_n)_\#\nu)
+ =\int\sqrt{u_nv_n}\,dm\longrightarrow\int\sqrt{uv}\,dm.
+\]
+Conditional Cauchy--Schwarz gives monotonicity. The limit is positive
+exactly when the laws overlap, so the preceding dichotomy gives
+\eqref{eq:marginal-affinity-limit}.
+
+The first \(n\) rows of \(T\) contain an invertible input minor \(A\).
+Their output has the form \(AU+W\), where \(U\sim\mu_n\) is independent
+of \(W\). Its density is a mixture of translates of the positive density
+of \(AU\), proving finite-dimensional equivalence. Under full equivalence,
+the two likelihood identities follow by integrating over
+\(\mathcal F_n\); conditional-expectation convergence proves the rest.
 \end{proof}
 
 \paragraph{Exact linear stabilizer.}

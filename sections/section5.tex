@@ -198,9 +198,17 @@ Removing the four corner triangles gives, for \(0<\delta\leq\pi/4\),
  &=\frac{\delta}{2}+O(\delta^2).
  \end{aligned}
 \]
-At \(\delta=0\), the affinity is one.  Each nonzero \(\delta\) leaves
-positive area on both sides of the support difference.
-Consequently \cref{thm:block-kakutani} gives the complete trichotomy
+At \(\delta=0\), the affinity is one. Each nonzero \(\delta\) leaves
+positive area on both sides of the support difference, precluding absolute
+continuity in either direction already in that block. Independence makes
+the affinity of finitely many pairs the product of their affinities.
+Passing to the limit by \eqref{eq:general-marginal-affinity-limit} gives
+\[
+ \Aff(\mu,\nu_T)
+ =\prod_k\Aff(\mu_{\mathrm u,2},(O_{\delta_k})_\#\mu_{\mathrm u,2}).
+\]
+The expansion above makes this product positive exactly when
+\(\sum_k\delta_k<\infty\). Thus
 \[
  \begin{array}{c|l}
   \delta_k=0\text{ for every }k&\nu_T=\mu\\
@@ -242,8 +250,7 @@ For a half-line, a negative coefficient is ruled out by the unbounded tail,
 and the same argument leaves only ordinary permutations.
 
 Write \(\rho=\Law(X)\), \(\rho^-=\Law(-X)\), and \(\mu=\rho^{\otimes\N}\),
-with \(\E X=0\) and \(\E X^2=1\). The row-series action is that of
-\cref{lem:measurable-row-series-realization}.
+with \(\E X=0\) and \(\E X^2=1\).
 
 \begin{theorem}[Linear equivalence for bounded and half-line coordinate laws]
 \label{thm:bounded-and-half-line-classification}
@@ -275,8 +282,6 @@ Let \(T\in\GL(H)\).
  The same conclusion holds for a law bounded above and unbounded below.
 \end{enumerate}
 In the second case every equivalence is exact invariance.
-Failure of any of these equivalence criteria does not, by itself,
-imply singularity.
 \end{theorem}
 \begin{proof}
 Assume \(\nu_T\sim\mu\), and set \(S=T^{-1}\).
@@ -347,9 +352,12 @@ argument treats all positive shapes in the same way.
 
 \paragraph{What a one-coordinate contraction leaves behind.}
 
-We return to the contraction that opened this section. It keeps every
-output in the original support, but it leaves a region of positive mass
-unreachable. This is exactly what the inverse row condition detects.
+Transformations outside the equivalence group can retain overlap: the
+rotated squares above give neither direction of absolute continuity, while
+a contraction gives exactly one. Return to the contraction that opened
+this section. It keeps every output in the original support, but leaves
+a region of positive mass unreachable. This is what the inverse row
+condition detects.
 
 Let \(f\) be the rescaling to variance one of
 \(C(1-x^2)^2\mathbf 1_{\{|x|<1\}}\), and write its support as
@@ -377,84 +385,6 @@ Nevertheless,
 The affinity sees the overlap on \((-ca,ca)\). The inverse row condition
 sees the missing mass on the rest of \((-a,a)\). The smooth boundary makes
 the Hellinger cost small, but it cannot restore that mass.
-
-\subsection{Block and finite-marginal criteria}
-
-The rotating-square examples combine two effects: each block can lose
-support, and the affinities of infinitely many blocks can tend to zero.
-The following form of the product criterion keeps these effects separate.
-
-\begin{theorem}[Block products without equivalence of the factors]
-\label{thm:block-kakutani}
-Let \(\mu=\bigotimes_{k\geq1}\lambda_k\) and
-\(\nu=\bigotimes_{k\geq1}\eta_k\) be probability products over
-finite-dimensional coordinate blocks.
-Set
-\[
- r_k=\Aff(\lambda_k,\eta_k),\qquad
- L=\sum_k-\log r_k\in[0,\infty],
- \qquad -\log0=+\infty.
-\]
-Then
-\begin{equation}
- \Aff(\mu,\nu)=\prod_kr_k,\qquad
- \mu\perp\nu\quad\Longleftrightarrow\quad L=\infty.
- \label{eq:block-product-affinity-and-singularity}
-\end{equation}
-If \(L<\infty\), then
-\[
- \begin{aligned}
-  \nu\ll\mu&\quad\Longleftrightarrow\quad
-                         \eta_k\ll\lambda_k\text{ for every }k,\\
- \mu\ll\nu&\quad\Longleftrightarrow\quad
-                         \lambda_k\ll\eta_k\text{ for every }k.
- \end{aligned}
-\]
-Thus positive affinity is compatible with equivalence, with exactly one of
-\(\nu\ll\mu\) and \(\mu\ll\nu\), or with neither.
-For a linear block \(A_k\in\GL(d_k)\) and
-\(\lambda_k=\rho^{\otimes d_k}\), where \(\rho(dx)=f(x)\,dx\),
-the comparison density is
-\[
- |\det A_k|^{-1}\prod_{i=1}^{d_k}
-                         f((A_k^{-1}y)_i).
-\]
-The local absolute-continuity conditions concern the positivity set of this
-density modulo null sets, not merely the closure of its support.
-If \(L<\infty\), take \(m_k=(\lambda_k+\eta_k)/2\) with densities \(p_k,q_k\).
-Then the masses of the parts of \(\nu\) absolutely continuous relative to
-\(\mu\), and of \(\mu\) relative to \(\nu\), are respectively
-\begin{equation}
- \prod_k\eta_k(\{p_k>0\}),
- \qquad
- \prod_k\lambda_k(\{q_k>0\}).
- \label{eq:block-ac-part-masses}
-\end{equation}
-\end{theorem}
-\begin{proof}
-Affinity tensorizes on finite block prefixes, and projected affinities
-decrease to global affinity by the conditional-expectation argument in
-\cref{prop:two-sided-finite-marginal-ratio-tails}.  This proves
-\eqref{eq:block-product-affinity-and-singularity}.
-
-The local absolute-continuity conditions are necessary by projection.  If
-\(\eta_k\ll\lambda_k\) for every \(k\) and \(\prod_kr_k>0\), set
-\(\ell_n=\prod_{k\le n}d\eta_k/d\lambda_k\).  Independence gives
-\[
- \|\sqrt{\ell_m}-\sqrt{\ell_n}\|_{L^2(\mu)}^2
-       =2\left(1-\prod_{n<k\leq m}r_k\right)\longrightarrow0.
-\]
-Their \(L^2\) limit has norm one, and its square defines a probability
-measure which cylinder tests identify with \(\nu\); hence \(\nu\ll\mu\).
-Interchanging \(\mu\) and \(\nu\) proves the reverse assertion.  The local
-condition cannot be omitted
-\cite{kakutani1948equivalence,shepp1965translate}.
-For the mass formula, restrict to \(C=\prod_k\{p_kq_k>0\}\).  Cauchy--Schwarz
-and \(\prod_kr_k>0\) make the conditional affinities have positive product,
-so the conditional product laws are equivalent.  Their restrictions to
-\(C\) are precisely the two absolutely continuous parts, with the masses in
-\eqref{eq:block-ac-part-masses}.
-\end{proof}
 
 \paragraph{Gamma scale changes and the effect of centering.}
 
@@ -498,15 +428,11 @@ permutation \(\pi\) and numbers \(c_i>0\) such that
 \]
 \end{corollary}
 \begin{proof}
-Set \(S=T^{-1}\), so \(Sb\in\ell^2\).  Cauchy--Schwarz gives
-\(\Phi_S(z+b)=\Phi_S(z)+Sb\) wherever the row limits exist, so the inverse is
-\(z\mapsto\Phi_S(z)-Sb\).  Translation by \(d\in\ell^2\) changes a covariance
-constant \(C_\lambda\) to at most \(2(C_\lambda+\|d\|_2^2)\), and a bounded
-linear pushforward by \(R\) changes it to at most
-\(C_\lambda\|R\|_{\mathrm{op}}^2\).  Thus every affine-orbit law satisfies the
-hypothesis of \cref{lem:measurable-row-series-realization}; that lemma and the
-translation identity give the map and its inverse a common full-measure
-carrier.  Conditioning finite row sums as in the proof of
+Set \(S=T^{-1}\). Cauchy--Schwarz and
+\eqref{eq:measurable-composition} give the inverse affine map
+\(z\mapsto\Phi_S(z)-Sb\). The identities apply to the affine orbit
+because \(\ell^2\) translations preserve the bound
+\eqref{eq:covariance-domination}. Conditioning finite row sums as in
 \cref{thm:bounded-and-half-line-classification} shows that both \(T\) and
 \(T^{-1}\) have nonnegative entries: a negative coefficient would create an
 unbounded lower tail that no fixed shift can remove.  The inverse identities
@@ -514,72 +440,6 @@ then make \(T\) monomial with positive weights \(c_i\).  Equality of the
 scalar lower endpoints forces
 \(-\sqrt{r_\Gamma}c_i+b_i=-\sqrt{r_\Gamma}\).
 Equation \eqref{eq:gamma-scale-product-equivalence} completes both directions.
-\end{proof}
-
-\paragraph{Finite-marginal criterion.}
-
-Affinity tells us whether two laws overlap. When supports differ, full
-equivalence requires more: neither direction of the likelihood ratio may
-lose mass as more coordinates are observed. Uniform integrability expresses
-this requirement, and the following tail formula checks both directions at
-once.
-
-\begin{proposition}[Finite-marginal tails characterize equivalence]
-\label{prop:two-sided-finite-marginal-ratio-tails}
-Let \(\mu,\nu\) be any probability measures on \(\R^\N\), and let
-\(\mu^{(n)},\nu^{(n)}\) be their first \(n\) marginals.
-Choose densities \(p_n,q_n\) with respect to any common dominating
-measure \(m_n\).
-For \(M>1\), define
-\[
- \Tail_n(M)=
- \int_{\{q_n>Mp_n\}}q_n\,dm_n+
- \int_{\{p_n>Mq_n\}}p_n\,dm_n.
-\]
-Then
-\begin{equation}
- \mu\sim\nu
- \quad\Longleftrightarrow\quad
- \lim_{M\to\infty}\sup_n\Tail_n(M)=0.
- \label{eq:two-sided-finite-marginal-ui}
-\end{equation}
-Equivalently, every finite pair is equivalent and its forward and
-reverse likelihood-ratio martingales are uniformly integrable in their
-respective reference measures.
-Without any finite-marginal equivalence assumption,
-\[
- \Aff(\mu^{(n)},\nu^{(n)})\downarrow\Aff(\mu,\nu),\qquad
- \sup_n[-2\log\Aff(\mu^{(n)},\nu^{(n)})]<\infty
-     \quad\Longleftrightarrow\quad \mu\not\perp\nu.
-\]
-\end{proposition}
-\begin{proof}
-If the limit in \eqref{eq:two-sided-finite-marginal-ui} is zero, a set
-where \(p_n=0<q_n\) must have zero \(\nu^{(n)}\)-mass for every \(n\);
-the second integral gives the reverse, so \(\mu^{(n)}\sim\nu^{(n)}\).  With
-\(\ell_n(x)=q_n(\pi_n x)/p_n(\pi_n x)\), the two summands in
-\(\Tail_n(M)\) are
-\[
- \E_\mu[\ell_n\mathbf1_{\{\ell_n>M\}}],
- \qquad
- \E_\nu[\ell_n^{-1}\mathbf1_{\{\ell_n^{-1}>M\}}].
-\]
-Thus the limit is exactly uniform integrability of the two mean-one
-likelihood-ratio martingales.  Their \(L^1\) limits have mass one, and cylinder
-tests prove mutual absolute continuity.  Conversely, under equivalence they
-are conditional expectations of the full likelihood ratio and its reciprocal,
-hence uniformly integrable.
-
-For affinity, take \(m=(\mu+\nu)/2\), write \(u=d\mu/dm\), \(v=d\nu/dm\),
-and let \(u_n,v_n\) be their conditional expectations on the first \(n\)
-coordinates.  Since \(u,v\le2\), bounded martingale convergence gives
-\[
- \Aff(\mu^{(n)},\nu^{(n)})
-       =\int\sqrt{u_nv_n}\,dm
-       \longrightarrow\int\sqrt{uv}\,dm.
-\]
-Conditional Cauchy--Schwarz gives monotonicity, and the limit vanishes exactly
-for mutually singular measures.
 \end{proof}
 
 \paragraph{An asymmetric example with no fourth moment.}
