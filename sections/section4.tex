@@ -1,11 +1,21 @@
 \section{Symmetric Stable Products}
 
-For symmetric stable products, both the coefficient domain and the mixing cost
-are \(\alpha\)-dependent.  Marques and Cambanis treat product-preserving affine
-maps~\cite{marques1991dichotomies}; for Cauchy products, coordinatewise
-location and scale changes are characterized in
-\cite{lie2018cauchy,okamura2020cauchy}.  Off-diagonal dependence instead leads
-to the column cost below.
+The second moment enters the preceding classification through the cost of
+mixing one coordinate into another. A shear \((x,y)\mapsto(x+ty,y)\) moves
+the first coordinate by order one when \(|y|\) is of order \(|t|^{-1}\).
+For a symmetric \(\alpha\)-stable input, this event has probability of order
+\(|t|^\alpha\). It changes the local mixing cost from quadratic to
+\(\alpha\)-th order, even though the density is smooth and its Fisher
+information is finite.
+
+When one input moves several outputs, all those displacements occur
+together. Their size is the \(\ell^2\)-length of the corresponding matrix
+column. This suggests a sum of column lengths to the power \(\alpha\),
+while individual changes of scale keep their quadratic cost. We prove that
+this is exactly the geometry of stable linear equivalence. The distinction
+from coordinatewise affine transformations
+\cite{marques1991dichotomies,lie2018cauchy,okamura2020cauchy} is the dependence
+created by a shared input.
 Fix \(0<\alpha<2\), let \(\rho_\alpha\) be the standard symmetric
 \(\alpha\)-stable law, and put
 \begin{equation}
@@ -27,11 +37,11 @@ moment~\cite{bobkov2014stable}: the density and derivative asymptotics in
 \cite{zolotarev1986stable} give
 \(f_\alpha(x)\asymp(1+|x|)^{-1-\alpha}\) and location score
 \(O((1+|x|)^{-1})\).
-For \(\alpha\le1\), the normalization in
-\eqref{eq:standard-symmetric-stable-law} specifies a zero location parameter,
-not a finite mean.
+The normalization fixes the location parameter at zero, including when
+\(\alpha\le1\) and the mean does not exist.
 
-A stable series \(\sum_ja_jX_j\) converges almost surely exactly for
+The tails also determine which rows define random variables. A stable
+series \(\sum_ja_jX_j\) converges almost surely exactly for
 \(a\in\ell^\alpha\)~\cite{samorodnitsky1994stable}.  For a matrix \(T\) with
 such rows, let \(\Phi_{\alpha,T}\) be its row-series map and
 \(\nu_{\alpha,T}=(\Phi_{\alpha,T})_\#\mu_\alpha\).  The realization is
@@ -42,9 +52,7 @@ measurable row-series maps satisfying
  \qquad
  \Phi_{\alpha,T}\circ\Phi_{\alpha,S}=I
 \]
-on a common full-measure carrier for the corresponding orbit laws.  Unlike
-\cref{lem:measurable-row-series-realization}, this is an assumption, not a
-consequence of boundedness on \(\ell^2\).
+on a common full-measure carrier for the corresponding orbit laws.
 
 For a matrix \(K\), put \(F_\alpha(K)=\sum_j\|Ke_j\|_2^\alpha\).  For
 \(M=(m_{ij})\), define
@@ -54,9 +62,9 @@ For a matrix \(K\), put \(F_\alpha(K)=\sum_j\|Ke_j\|_2^\alpha\).  For
   +F_\alpha(M-\diag M).
  \label{eq:stable-mixing-cost}
 \end{equation}
-Thus scales cost quadratically, whereas off-diagonal input columns cost their
-\(\ell^2\)-norms to the \(\alpha\)-th power.
-For the finite output marginals, set
+The two terms measure the scale changes and the simultaneous displacements
+caused by each input. As before, we compare the first \(n\) output coordinates
+through their Hellinger energy:
 \begin{equation}
  E_{\alpha,n}(T)
  =-2\log\Aff\bigl(
@@ -86,11 +94,21 @@ compatible stable row-series realizations of \(T\) and \(T^{-1}\).
 The exact linear stabilizer in this class is \(\mathcal P\).
 \end{theorem}
 
-\begin{proof}
-The proof separates the equivalence--singularity dichotomy, a Gaussian-mixture upper
-bound, and Fourier/rare-event arguments for necessity.
+The coordinate symmetries are unchanged, but their neighbourhood of
+equivalent mixings is smaller in the off-diagonal directions. For instance,
+a square-summable sequence of independent shears can now give a singular
+image. At the end of the section we contrast this with a single input
+spread over infinitely many outputs.
 
-\emph{Dichotomy, energy, and the coefficient domain.}
+\begin{proof}
+Two ways of viewing a stable law are useful for different parts of the
+proof. As a Gaussian scale mixture it gives the upper bound. After Fourier
+transformation of its square-root density, its finite Fisher information
+becomes a finite second moment, allowing us to recover coordinate matching
+from Section~3. Finally, the large-input events described above detect the
+additional column cost that the second-moment argument cannot see.
+
+\emph{Translations determine the operator domain.}
 Put \(g_\alpha=\sqrt{f_\alpha}\) and define
 \[
  a_\alpha(u)=\int_\R g_\alpha(x)g_\alpha(x-u)\,dx.
@@ -106,14 +124,15 @@ of \(\mu_\alpha\).  Under equivalence, conjugating translations through the
 compatible realization shows that \(T\) and its inverse matrix \(S\) preserve
 \(\ell^2\); the closed graph theorem gives \(T|_H\in\GL(H)\).
 
-The inverse also makes every finite family of output rows linearly independent;
-a nonsingular input minor convolved with the remaining inputs gives a positive
-finite output marginal density.  Using compatibility for composition,
-\eqref{eq:stable-translation-affinity} for translation quasi-invariance, and
-these marginal densities, the proofs of
-\cref{lem:equivalence-singularity-dichotomy,lem:finite-marginal-likelihood-ratios} adapt to
-\(\mu_\alpha\).  Together with the equivalence--singularity theorem of
-\cite{okazaki1985dichotomy}, they give
+For the dichotomy itself, the two laws need not have the same translation
+space. The product is quasi-invariant and ergodic under \(c_{00}\);
+its image has the same properties under \(T(c_{00})\), by translating the
+inputs. Okazaki's theorem \cite{okazaki1985dichotomy}, which allows different
+linear subspaces, therefore gives equivalence or singularity. The compatible
+inverse makes every finite family of output rows linearly independent.
+A nonsingular input minor then gives a positive output density, as in
+\cref{lem:finite-marginal-likelihood-ratios}. Passing to the limiting
+affinity yields
 \begin{equation}
  \nu_{\alpha,T}\sim\mu_\alpha
  \quad\Longleftrightarrow\quad
@@ -122,7 +141,8 @@ these marginal densities, the proofs of
 \end{equation}
 with singularity and divergent energy on the other branch.
 
-\emph{Sufficiency.}
+\emph{Averaging the Gaussian comparison.}
+The column cost behaves well under the operations needed for approximation:
 \begin{equation}
  \begin{gathered}
  F_\alpha(AK)\le\|A\|_{\mathrm{op}}^\alpha F_\alpha(K),
@@ -136,8 +156,10 @@ with singularity and divergent energy on the other branch.
 for bounded \(A\), bounded diagonal \(D\), and \(\gamma\in\ell^2\).  In
 particular, finite column cost gives admissible stable rows.
 
-The finite-dimensional estimate that replaces the finite-variance Hellinger
-path bound is
+To bound the change of law, condition on the random scales in a Gaussian
+mixture representation. We can then use the Gaussian affinity formula,
+and averaging over the scales produces the column exponent \(\alpha\).
+The resulting estimate is
 \begin{equation}
  h^2(A_\#\mu_{\alpha,n},\mu_{\alpha,n})
  \le C_\alpha\min\{\mathfrak e_\alpha(A),1\}
@@ -165,7 +187,8 @@ truncated-moment bounds, together with \(\E V_1^{-1}<\infty\), give
 Summation over \(j\), followed by the quadratic diagonal-scale estimate, proves
 \eqref{eq:stable-finite-dimensional-upper-bound}.
 
-Remove the measure-preserving \(Q\) and write
+With this estimate, finite-coordinate approximation follows the same
+principle as in Section~3. Remove the measure-preserving \(Q\) and write
 \(M=D+K\), where \(D=\diag M\) has entries \(d_i\),
 \((d_i-1)\in\ell^2\), and
 \(F_\alpha(K)<\infty\).
@@ -199,10 +222,15 @@ inverse.  Continuity of stable random functionals from \(\ell^\alpha\) to
 convergence in probability then passes finite-matrix composition to the
 row-series limits and supplies compatible versions.
 
-\emph{Reduction to a Hilbert--Schmidt perturbation.}
-For necessity, suppose \(\nu_{\alpha,T}\sim\mu_\alpha\).  We first transfer the
-half-density through Fourier transform to obtain the Hilbert--Schmidt part;
-the sharper column cost will be recovered separately.
+\emph{Recovering coordinate matching through Fourier transformation.}
+Now suppose \(\nu_{\alpha,T}\sim\mu_\alpha\). The lack of a second moment
+prevents us from applying the row-rigidity argument to the stable variables
+themselves. Plancherel suggests a way around this: the square-integrable
+derivative of \(g_\alpha\) becomes a square-integrable frequency weight.
+Thus Fourier transformation gives an auxiliary probability law with a finite
+second moment. Its characteristic function is the translation affinity
+\(a_\alpha\), the adjoint-measure construction of
+\cite{shimomura1977linear}.
 
 Let \(\widehat g_\alpha\) be the unitary Fourier transform of \(g_\alpha\),
 and set
@@ -214,7 +242,8 @@ The law \(\rho_\alpha^\sharp\) is symmetric, has variance
 \(a_\alpha\).  Since \(\widehat g_\alpha*\widehat g_\alpha\) is a positive
 multiple of \(e^{-|t|^\alpha}\), we also have
 \(|\widehat g_\alpha|^2*|\widehat g_\alpha|^2>0\) almost everywhere.
-Polynomial stable tails give two-sided polynomial bounds for \(a_\alpha\), and
+To apply the finite-variance classification, we smooth this auxiliary law
+by convolution. Polynomial stable tails give two-sided polynomial bounds for \(a_\alpha\), and
 \(a_\alpha'\) is bounded.
 Choose an integer \(r\) so large that
 \[
@@ -252,9 +281,11 @@ Equivalence gives
 \(\sqrt{\ell_{\alpha,T,n}}\to\sqrt{\ell_{\alpha,T}}\)
 in \(L^2(\mu_\alpha)\).
 
-Fourier transformation turns half-density translations into phases;
-tensorization and frequency addition then produce the desired convolution.
-Precisely, take \(k\) tensor copies of \(\sqrt{f_{\alpha,T,n}}\), Fourier
+We must also transfer the change of measure to the auxiliary product.
+Fourier transformation preserves the \(L^2\) convergence of square roots,
+and taking squared moduli converts it to total-variation convergence of
+probability laws. To obtain the convolution power just constructed, take
+\(k\) tensor copies of \(\sqrt{f_{\alpha,T,n}}\), Fourier
 transform, square the modulus, and add the \(k\) frequencies at each site.
 Let \(\Xi_{\alpha,T,n}\) be the product of the resulting law on \(\R^n\)
 with \(((\rho_\alpha^\sharp)^{*k})^{\otimes\{i>n\}}\).
@@ -307,10 +338,15 @@ After removing \(Q\), write
  \label{eq:stable-hilbert-schmidt-match}
 \end{equation}
 
-\emph{Necessity of the off-diagonal column summability.}
-For \(\alpha<2\), Hilbert--Schmidt control is weaker than the column cost.  We
-detect column \(j\) on the event
-\(|X_j|\asymp\|Be_j\|_2^{-1}\), whose probability has the required order.
+\emph{Detecting one large input.}
+We have found the coordinate symmetry and obtained square-summable errors.
+To recover the stronger column cost, we look at a different scale. An input
+of size \(\|Be_j\|_2^{-1}\) creates an order-one displacement in the other
+coordinates. Its stable probability is of order \(\|Be_j\|_2^\alpha\),
+precisely the contribution of that column. The test below detects the
+direction of this displacement on the large-input event. When the total
+cost is small, simultaneous large inputs are rare enough that their
+contributions do not obscure one another.
 We prove that there are constants \(\varepsilon_\alpha,c_\alpha>0\) such that,
 for every \(n\) and every \(B\in\R^{n\times n}\),
 \begin{equation}
@@ -341,8 +377,11 @@ gives a tail of order
  \label{eq:stable-hilbert-random-sum-truncation}
 \end{equation}
 
-Next, a bounded statistic detects unit displacements uniformly in the
-dimension.  Set \(\psi(x)=\tanh x\).  There are a smooth odd increasing
+We need a bounded statistic that detects an order-one displacement even
+when it is spread across many coordinates. Applying \(\tanh\) first makes
+the coordinate variances finite; projecting in the direction of the
+displacement retains a positive response. Set \(\psi(x)=\tanh x\).
+There are a smooth odd increasing
 \(\chi\), bounded by one, and \(c_\alpha>0\) such that every unit
 vector \(u\) satisfies
 \begin{equation}
@@ -363,7 +402,8 @@ by two.  The bound
 absorbed.  Oddness gives \(\mathcal M_u(0)=0\), proving
 \eqref{eq:stable-directional-detection}.
 
-Now choose a nonzero smooth odd function \(w\), supported where
+The second part of the test selects the input responsible for the
+displacement. Choose a nonzero smooth odd function \(w\), supported where
 \(1\le|t|\le2\), with \(0\le w\le1\) on the positive half-line.
 Put
 \[
@@ -426,10 +466,13 @@ The test is nonzero only when at least one such event occurs, and the coordinate
 Hellinger Cauchy--Schwarz now gives
 \eqref{eq:stable-off-diagonal-column-lower-bound}.
 
-We globalize this local estimate using finite tail sign changes.  Such a change
-isolates the entries crossing a coordinate cut: equivalence makes every remote
-cut Hellinger-invisible, whereas the local estimate detects every cut of a
-fixed small cost.
+\emph{From local detection to summability.}
+To use the lower bound, we must isolate a small amount of column cost from
+a possibly divergent total. Changing the signs of a finite set of
+coordinates does exactly this: conjugation cancels the entries within
+each side of the cut and doubles those crossing it. As in the finite-variance
+proof, equivalence makes remote sign changes invisible. We will choose a
+cut whose cost stays large enough for the local estimate to detect it.
 
 Let \(B\in\mathcal S_2\) have \(\ell^\alpha\) rows, zero diagonal, and
 \(\|B\|_{\mathrm{op}}\le1/10\).  Suppose
@@ -494,7 +537,10 @@ such change preserves \(\mu_\alpha\), Hellinger invariance gives
  \longrightarrow0.
  \label{eq:stable-tail-sign-change-invariance}
 \end{equation}
-Suppose \(F_\alpha(B)=\infty\).  Deleting finitely many columns or rows
+It remains to find such a cut. A random cut retains, on average, a fixed
+fraction of the off-diagonal cost. Adding its coordinates one at a time
+then lets us stop at a prescribed small threshold. Suppose
+\(F_\alpha(B)=\infty\). Deleting finitely many columns or rows
 changes the cost finitely, the latter because each row lies in
 \(\ell^\alpha\); thus every tail has infinite cost.  For a finite tail set
 \(\mathcal I_0\), include each coordinate independently in \(\mathcal J\) with
@@ -573,8 +619,10 @@ converse follows from independence and symmetry.
 
 \subsection{Anisotropic stable Hellinger coercivity and sharpness}
 
-The two summands in \eqref{eq:stable-mixing-cost} have genuinely different
-homogeneities.  For a finite matrix \(A\), put
+The proof gives more than a summability criterion: it measures the local
+change of law. The diagonal and off-diagonal directions have different
+orders, so the natural distance to the coordinate symmetries uses both
+terms of \(\mathfrak e_\alpha\). For a finite matrix \(A\), put
 \[
  \mathfrak e_{\alpha,n}(A)
  =\min_{Q\in\mathcal P_n}\mathfrak e_\alpha(AQ^{-1}).
@@ -654,7 +702,7 @@ preserved.  The corresponding block restrictions then give
 \(\varepsilon\).  This proves the global lower bound.
 \end{proof}
 
-The different local powers already appear for the shear
+The exponent can be read directly from a single shear
 \(T_t(x,y)=(x+ty,y)\).  Conditioning on \(y\) and applying Plancherel gives
 \begin{equation}
  \begin{aligned}
@@ -665,12 +713,12 @@ The different local powers already appear for the shear
                   |\widehat g_\alpha(\xi)|^2\,d\xi,\qquad t\to0.
  \end{aligned}
 \end{equation}
-Diagonal scales instead cost \(t^2\), so no single finite-dimensional matrix
-Fisher quadratic form generates this anisotropic coercivity.
+Thus the \(\alpha\)-th order response comes from an explicit affinity
+calculation. Diagonal scales cost \(t^2\); a quadratic Fisher form on all
+matrix directions would miss this difference.
 
-In particular, Hilbert--Schmidt proximity is necessary but no longer
-sufficient.
-On independent two-coordinate blocks, let
+Repeating the shear on independent pairs turns the local exponent into
+an exact summability threshold. Let
 \[
  T_a(x_k,y_k)_{k\ge1}=(x_k+a_ky_k,y_k)_{k\ge1}.
 \]
@@ -682,9 +730,13 @@ Any \(a\in\ell^2\setminus\ell^\alpha\) therefore gives a
 Hilbert--Schmidt perturbation with singular image law, even though the
 stable coordinate density is everywhere positive and has finite location
 and scale Fisher information.
-By contrast, when one source is mixed into many outputs, the criterion
-charges the \(\ell^2\)-norm of that whole column only once.
-An entrywise \(\ell^\alpha\) condition would therefore be too strong.
-The correct stable criterion is the anisotropic mixing cost
-\eqref{eq:stable-mixing-cost}, not a Schatten-class replacement for the
-finite-variance theorem.
+Now place all the mixing coefficients in a single input column:
+\[
+ S_u=I+u\otimes e_1,\qquad u_1=0,\qquad u\in\ell^2.
+\]
+The inverse is \(I-u\otimes e_1\), every row is finite, and the entire
+off-diagonal cost is \(\|u\|_2^\alpha\). Hence \(\nu_{\alpha,S_u}\sim\mu_\alpha\),
+even for \(u\notin\ell^\alpha\). The same square-summable coefficients can
+therefore give singularity when attached to independent sources and
+equivalence when attached to one shared source. The column geometry records
+this dependence.

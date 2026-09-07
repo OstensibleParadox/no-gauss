@@ -1,21 +1,23 @@
 \section{The Finite-Variance Classification}
 
-After realizing row series on a common measurable carrier, we prove
-Hilbert--Schmidt sufficiency by approximation and necessity by combining tail
-rigidity with conjugated coordinate swaps.
+The local estimate answers how much a small perturbation changes the law.
+The classification asks the converse question: how can equivalence of laws
+force a general operator to be a small perturbation of a coordinate symmetry
+in the tail? Absolute continuity will identify the individual axes. The
+decisive step is then to compare errors on one group of coordinates with
+negligible errors on another, using exchanges that preserve the product law.
 
-\subsection{Measurable row-series realizations on countable operator orbits}
+\subsection{Making row sums composable}
 
-Only \(\E X=0\) and \(\E X^2=1\) are needed here.  Each row series exists as
-an \(L^2\) equivalence class.  The distinction between an operator on
-\(\ell^2\) and its measurable realization on \(\R^\N\) is already central
-to~\cite{shimomura1977linear}.  Such equivalence classes cannot be composed pointwise:
-separately chosen versions for different operators or orbit laws may fail on
-incompatible null sets.  We therefore select deterministic subsequences for
-every row in a fixed countable operator group, so that operator multiplication
-becomes composition on one common measurable carrier.  Countability is used
-only to intersect the exceptional sets; no universal pointwise action of all of
-\(\GL(H)\) is asserted.
+We will compare a mixing with its inverse and with conjugated coordinate
+exchanges. These operations require actual maps on the product space. A
+sample almost surely lies outside \(\ell^2\), even though every row sum is
+well defined in \(L^2\). The way to make the maps composable is to choose
+the subsequence defining each sum from its coefficients alone. The same
+choice then works before and after a bounded linear mixing. This realization
+of Hilbert-space operators on the product space goes back to
+\cite{shimomura1977linear}. Throughout this construction,
+\(\E X=0\) and \(\E X^2=1\).
 
 \begin{lemma}[Measurable row-series realization on each countable operator orbit]
 \label{lem:measurable-row-series-realization}
@@ -99,14 +101,17 @@ measure.  The composition identities make \(D\) invariant and
 
 Write \(\nu_T=(\Phi_T)_\#\mu\).
 
-\subsection{Rational translation invariance and the equivalence--singularity dichotomy}
+\subsection{Why overlap implies equivalence}
 
-The relevant translation theory identifies shifts preserving product and
-coordinatewise measure classes
-\cite{shepp1965translate,hora1991quasi,sadasue2008quasi,arutyunyan2015spaces,honda2015approximations}.
-Here \(\ell^2\)-quasi-invariance and rational-translation ergodicity specialize
-the equivalence--singularity dichotomy of \cite{okazaki1985dichotomy} to each
-bounded invertible orbit.
+Two arbitrary measures can overlap without being equivalent. For the
+positive-density products considered here, translations rule out this
+intermediate possibility. Both the original and the mixed law admit
+\(\ell^2\) shifts, and neither can be split into nontrivial pieces invariant
+under those shifts. Their common part must therefore be all or nothing.
+This is the mechanism of Okazaki's dichotomy
+\cite{okazaki1985dichotomy}. The product translation theory is developed in
+\cite{shepp1965translate,hora1991quasi,sadasue2008quasi,arutyunyan2015spaces,honda2015approximations};
+we give the argument needed here.
 
 \begin{lemma}[Equivalence--singularity dichotomy on every bounded invertible orbit]
 \label{lem:equivalence-singularity-dichotomy}
@@ -114,9 +119,8 @@ For every \(T\in\GL(H)\),
 \begin{equation}
   \nu_T\sim\mu\quad\text{or}\quad\nu_T\perp\mu.
 \end{equation}
-This conclusion uses only the a.e. positivity of \(f\), its centered finite second
-moment, and \(\sqrt f\in W^{1,2}(\R)\).
-In particular, it holds under \eqref{eq:main-assumptions}.
+The assumptions are \(f>0\) a.e., \(\sqrt f\in W^{1,2}(\R)\),
+\(\E X=0\), and \(\E X^2=1\).
 \end{lemma}
 
 \begin{proof}
@@ -158,14 +162,16 @@ positive measure and hence, by ergodicity, full measure.  Thus
 \(\nu_T\sim\mu\).
 \end{proof}
 
-\subsection{Finite-marginal likelihood ratios and projected Hellinger energy}
+\subsection{Reading the full law through finite marginals}
 
-The finite-marginal martingale converges only to the density of the absolutely
-continuous part of \(\nu_T\); the equivalence--singularity dichotomy upgrades positive
-limiting affinity to equivalence.  See
-\cite{lecam1986asymptotic,mandrekar2018lebesgue} for the likelihood-ratio and
-Lebesgue-decomposition background, and \cite{kitada1989absolute} for the
-distinct problem of independent additive perturbations.
+Every finite output marginal has a positive density. Singularity can
+therefore emerge only as more coordinates are observed. The likelihood
+ratios form a martingale, and the limiting affinity measures the overlap
+that survives these observations. By the preceding dichotomy, any positive
+overlap gives equivalence. The likelihood interpretation is standard
+\cite{lecam1986asymptotic,mandrekar2018lebesgue}; here it lets us compare
+dependent outputs, whereas independent additive perturbations can be
+studied through convolution \cite{kitada1989absolute}.
 
 \begin{lemma}[Projected Hellinger energy and finite-marginal likelihood ratios]
 \label{lem:finite-marginal-likelihood-ratios}
@@ -249,10 +255,11 @@ data processing also makes the criterion independent of their enumeration
 
 \subsection{Sufficiency of Hilbert--Schmidt perturbations}
 
-Finite-coordinate Hilbert--Schmidt approximants are Cauchy in Hellinger
-distance, but this alone produces only a candidate density and one direction
-of absolute continuity.  The inverse approximants and the common measurable
-carrier are what prevent the limit from losing mass in the reverse direction.
+For a Hilbert--Schmidt perturbation, the finite-dimensional path bound is
+already enough. Truncate the matrix to finitely many coordinates. The
+remaining Hilbert--Schmidt norm tends to zero, so the square-root likelihoods
+are Cauchy and converge to a density for the mixed law. Applying the same
+argument to the inverse gives the reverse absolute continuity.
 
 \begin{proposition}[Hilbert--Schmidt sufficiency and likelihood-ratio convergence]
 \label{prop:hilbert-schmidt-sufficiency}
@@ -314,18 +321,19 @@ Finally, $\nu_Q=\mu$ and $T=(TQ^{-1})Q$ give the assertion about exact
 stabilizers.
 \end{proof}
 
-\subsubsection{The orthogonal case requires only location Fisher information}
+\subsubsection{Rotations and the scale score}
 
-For orthogonal transformations the assumptions can be reduced to
+An orthogonal path has a skew-symmetric tangent, whose diagonal vanishes.
+The scale score therefore disappears from both the path length and the
+Fourier pairing. The assumptions reduce to
 \begin{equation}
  f>0\ \text{almost everywhere},\qquad
  g=\sqrt f\in W^{1,2}(\R),\qquad
  \E X=0,\qquad\E X^2=1.
  \label{eq:orthogonal-fisher-regularity}
 \end{equation}
-Thus \(xg'\in L^2\) is not required.  Cutoff integration by parts still gives
-\(\E s(X)=0\) and \(\E[Xs(X)]=1\), while a skew-symmetric \(A\) has only
-off-diagonal score terms and
+Cutoff integration by parts gives \(\E s(X)=0\), \(\E[Xs(X)]=1\), and,
+for skew-symmetric \(A\),
 \begin{equation}
  \E S_A^2=(J-1)\|A\|_F^2.
 \end{equation}
@@ -368,8 +376,8 @@ orthogonal $V-I$ has a real skew-symmetric logarithm with
 $\|\log V\|_F\asymp\|V-I\|_F$, this proves
 \eqref{eq:orthogonal-local-hellinger}.
 
-For the infinite-dimensional assertion, set $T_n=I+P_n(U-I)P_n$ and take
-its polar factor
+Truncation does not preserve orthogonality. We restore it by taking the
+polar factor of $T_n=I+P_n(U-I)P_n$:
 \[
  V_n=T_n(T_n^*T_n)^{-1/2}.
 \]
@@ -391,6 +399,11 @@ equivalence and all asserted convergence.
 \end{proof}
 
 \subsection{Necessity of Hilbert--Schmidt perturbations}
+
+We now start from equivalence of laws, with no prescribed coordinate
+symmetry. Before locating that symmetry, we pass the local comparison to
+Hilbert--Schmidt operators. This will let us apply the finite-dimensional
+estimate to the conjugated exchanges at the end of the argument.
 
 \begin{lemma}[The local bound for Hilbert--Schmidt operators]
 \label{lem:local-hs-coercivity}
@@ -432,11 +445,15 @@ Thus all sufficiently large approximants lie within the finite-dimensional
 radius, and \eqref{eq:orthogonal-local-hellinger} passes to the limit.
 \end{proof}
 
-\subsubsection{Characteristic-function rigidity and bounded invertible linear mixing}
+\subsubsection{Finding the coordinate axes}
 
-The next two lemmas use only a centered, variance-one, non-Gaussian coordinate
-law: a row whose linear combination converges in law to \(X\) must approach an
-allowed signed coordinate.
+Why should a row whose output resembles \(X\) concentrate on a single
+coordinate? If its coefficients are all small, their sum is approximately
+Gaussian. More generally, large coefficients survive in a subsequential
+limit and the remaining small coefficients contribute a Gaussian summand.
+A non-Gaussian law can reproduce itself in this way only when one surviving
+coefficient is an allowed sign. The next two lemmas prove this using just
+\(\E X=0\), \(\E X^2=1\), and non-Gaussianity.
 
 \begin{lemma}[A product approximation for small coefficients]
 \label{lem:characteristic-product-tail}
@@ -489,7 +506,8 @@ then
 \end{equation}
 \end{lemma}
 \begin{proof}
-Reorder each row by decreasing absolute value; this preserves the law of the
+To separate surviving coefficients from a diffuse tail, reorder each row
+by decreasing absolute value; this preserves the law of the
 sum and gives $|a_j^{(n)}|\le j^{-1/2}$.  From any subsequence, extract a
 further one with $a_j^{(n)}\to a_j$ for every $j$.  Fatou gives
 \[
@@ -510,8 +528,10 @@ Letting first $n\to\infty$ and then $m\to\infty$ gives
 Thus the limit is $\sum_j a_jX_j$ plus an independent
 $N(0,1-\tau_a)$ variable.
 
-Under the convergence hypothesis this limiting law is the law of $X$.
-Suppose that no $|a_j|$ is one.  If all $a_j$ vanish,
+The limiting law is \(\rho\). If every surviving coefficient is smaller
+than one, substituting this representation into itself repeatedly makes
+all coefficients small. The resulting law must then be Gaussian.
+To see this, suppose that no $|a_j|$ is one. If all $a_j$ vanish,
 \eqref{eq:unit-row-gaussian-summand} already makes $X$ Gaussian.
 Otherwise $m_a:=\max_j|a_j|$ exists and lies in $(0,1)$.  For
 $\mathbf j=(j_1,\ldots,j_k)\in\N^k$, set
@@ -549,6 +569,11 @@ produces an allowed $\varsigma e_j$ with
 Undoing the permutations is a contradiction.
 \end{proof}
 
+An absolutely continuous change of a product law can be approximated by
+changing only a finite prefix. Beyond that prefix, coordinate permutations
+are almost invisible and the marginals are almost unchanged. We will use
+both consequences of this observation.
+
 \begin{lemma}[Uniform invariance under tail symmetries]
 \label{lem:tail-symmetry-uniform}
 Let $\mu$ be the i.i.d. product law and let $\nu\ll\mu$.  Let
@@ -583,6 +608,13 @@ $\E_\mu[\ell_N\mid x_i]=1$, so
 \]
 Taking the supremum over $i>N$ proves the marginal assertion.
 \end{proof}
+
+The marginal conclusion identifies the limiting row laws. To use unit-row
+rigidity, we also need their lengths. In fact, absolute continuity controls
+the covariance on the entire remote subspace, giving a compact covariance
+defect. The only obstacle is that covariance is unbounded; truncating the
+input variables will justify passing from closeness of laws to closeness
+of second moments.
 
 \begin{lemma}[Compactness of the covariance defect]
 \label{lem:compact-covariance-rigidity}
@@ -656,18 +688,20 @@ If $T$ is invertible, then
 $T^*T-I=T^{-1}(TT^*-I)T$.
 \end{proof}
 
-Covariance compactness and unit-row rigidity match remote rows and columns
-with distinct allowed coordinates, but do not sum the errors.  If their sum
-diverges, a remote packet can be swapped with better-matched auxiliary
-coordinates.  After conjugation this gives \(W=PT^{-1}ST\), whose
-Hilbert--Schmidt size is comparable to the packet error.  Local coercivity
-detects \(W\), whereas absolute continuity makes the remote output swap
-asymptotically invisible.
+The axes are now identifiable, but the errors could still tend to zero too
+slowly to be square summable. To exclude this, compare a finite group of
+imperfect matches with an equal number of much better matches farther out.
+Exchange the two groups at both input and output. Exact matches would make
+the input exchange followed by \(T\) agree with \(T\) followed by the output
+exchange. The discrepancy therefore measures the matching error. Composing
+with the inverse maps turns it into a perturbation of the identity, where
+the local Hellinger lower bound applies. Absolute continuity, meanwhile,
+makes the remote output exchange
+invisible. The next proof makes these two comparisons quantitative.
 
 \begin{lemma}[Hilbert--Schmidt necessity under a second-moment hypothesis]
 \label{lem:hilbert-schmidt-necessity}
-Assume that the common law has an a.e.-positive density $f$, that
-$g=\sqrt f\in W^{1,2}(\R)$, and that $xg'\in L^2(\R)$.
+Assume \eqref{eq:main-assumptions}.
 If $T\in\GL(H)$ and $\nu_T\sim\mu$, then
 \begin{equation}
  T-Q\in\mathcal S_2
@@ -705,7 +739,9 @@ Together with $\langle T\widehat e_i,e_i\rangle
        +\|T\widehat e_i-e_i\|_2^2\longrightarrow0.
 \end{equation}
 
-We claim that $\sum_{i>N_0}\operatorname{err}_i<\infty$.  Choose the local
+We have matched both the row and its corresponding column; together their
+errors will control the discrepancy between the exchanges. We claim that
+$\sum_{i>N_0}\operatorname{err}_i<\infty$. Choose the local
 constants in \cref{lem:local-hs-coercivity} so that
 \begin{equation}
  h(\mu,\nu_W)\geq c_{\mathrm{HS}}\|W-I\|_{\mathcal S_2}
@@ -749,7 +785,8 @@ All differences have finite rank, and
 \cref{lem:measurable-row-series-realization} supplies the common measurable carrier
 needed for this identity.
 
-To compare the norms, freeze the auxiliary matches by defining
+The norm comparison becomes transparent if the auxiliary matches are exact.
+We can make this change at arbitrarily small Hilbert--Schmidt cost. Define
 \[
  T_0^*e_k=\widehat e_k,\qquad T_0\widehat e_k=e_k\qquad(k\in G).
 \]
@@ -783,7 +820,7 @@ Here $B,C$ are Hilbert--Schmidt, and the error on $E$ is
                     +\|T_0\widehat e_i-e_i\|_2^2\bigr)
  =2\|A-I\|_F^2+\|B\|_{\mathcal S_2}^2+\|C\|_{\mathcal S_2}^2,
 \]
-while the commutator satisfies
+while the discrepancy satisfies
 \[
  \|ST_0-T_0P\|_{\mathcal S_2}^2
  =2\bigl(\|A-I\|_F^2+\|B\|_{\mathcal S_2}^2
@@ -823,7 +860,10 @@ But $S$ is supported in the chosen remote tail, so
 this quantity tend to zero as the tail recedes.  This contradiction proves
 $\sum_{i>N_0}\operatorname{err}_i<\infty$.
 
-Define $Q_0$ by the matched rows $\widehat e_i$ after the fixed initial cutoff
+It remains to complete the tail matching to a permutation of all coordinates.
+The number of unused inputs must equal the number of unmatched outputs;
+this follows from the Fredholm index. Define $Q_0$ by the matched rows
+$\widehat e_i$ after the fixed initial cutoff
 $N_0$, and by zero rows for $i\leq N_0$.
 The summability just proved implies
 \[
@@ -883,14 +923,16 @@ $Q_\#\mu=\mu$.  The alternative follows from
 \cref{lem:equivalence-singularity-dichotomy}.
 \end{proof}
 
-\subsection{Globalization of finite-dimensional coercivity}
+\subsection{Returning to the global finite-dimensional bound}
 \label{sec:globalization-proof}
 
-To globalize local coercivity, stack a hypothetical sequence of
-finite-dimensional counterexamples with summable Hellinger energies into one
-block-diagonal operator.  Kakutani gives equivalence, so the classification
-makes this operator Hilbert--Schmidt-close to an allowed signed coordinate permutation;
-that permutation must eventually preserve the blocks, a contradiction.
+The infinite-dimensional theorem also answers the question left open at the
+end of Section~2. Suppose matrices could stay a fixed Frobenius distance
+from every coordinate symmetry while their Hellinger distances tended to
+zero. Choose them with summable Hellinger losses and stack them in
+independent blocks. Kakutani would give equivalence, whereas our
+classification would force those same blocks to approach coordinate
+symmetries. This contradiction gives uniform separation in every dimension.
 
 \begin{proof}[Proof of \cref{thm:global-coercivity}]
 Fix \(0<a\le b<\infty\).  We first prove uniform separation away from

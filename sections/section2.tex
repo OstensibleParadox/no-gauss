@@ -1,16 +1,19 @@
 \section{Dimension-Free Hellinger Geometry}
 \label{sec:dimension-free-hellinger-geometry}
 
-The rotational Fourier defect detects non-Gaussianity without dividing by the
-characteristic function.  Fixed frequencies and the matrix Fisher operator
-then yield the dimension-free local estimate in
-\cref{prop:local-fisher-hellinger}; globalization is deferred to
-\cref{sec:globalization-proof}.
+The Hilbert--Schmidt criterion suggests a local question: does the Hellinger
+distance created by a small matrix perturbation measure its Frobenius norm,
+with constants that survive as the dimension grows? The upper bound follows
+by integrating the Fisher length of a path. The lower bound requires a way
+to detect every direction of motion. We find it by first asking what a
+rotation does to two independent coordinates.
 
-\subsection{A product of centered complex exponentials}
+\subsection{Detecting a rotation}
 
-Here only $\E X=0$ and $\E|X|<\infty$ are required.  Write
-$\phi(u)=\E e^{iuX}$, and for independent copies $X_1,X_2$ put
+Characteristic functions let us detect dependence with bounded tests. To
+remove the separate responses of the two marginals, we center each
+exponential before multiplying. For independent copies \(X_1,X_2\) with
+\(\E X=0\) and \(\E|X|<\infty\), write \(\phi(u)=\E e^{iuX}\) and set
 \[
  O_\theta=\begin{pmatrix}\cos\theta&-\sin\theta\\
                          \sin\theta&\cos\theta\end{pmatrix},
@@ -18,24 +21,19 @@ $\phi(u)=\E e^{iuX}$, and for independent copies $X_1,X_2$ put
  W_{\xi,\eta}(x,y)
    =(e^{i\xi x}-\phi(\xi))(e^{i\eta y}-\phi(\eta)).
 \]
-With this sign convention, centering cancels the two marginal responses and
-isolates the dependence created by rotation.  In particular,
+Before rotation, independence gives
 \begin{equation}
  \E W_{\xi,\eta}(X_1,X_2)=0,
  \qquad
  \E|W_{\xi,\eta}(X_1,X_2)|^2
  =(1-|\phi(\xi)|^2)(1-|\phi(\eta)|^2)\le1.
 \end{equation}
-Pointwise, $|W_{\xi,\eta}|\le4$, so its variance under an arbitrary
-comparison law is at most $16$.  Both bounds are dimension-free and require
-no tail assumption.
-
-\subsection{Gaussian characterization by a global linear ODE}
-
-The following logarithm-free rigidity argument remains valid when \(\phi\)
-has zeros and is the infinitesimal counterpart of classical Gaussian
-independence characterizations
-\cite{kac1939characterization,kagan1973characterization}.
+Also \(|W_{\xi,\eta}|\le4\). Thus the test remains integrable after mixing,
+regardless of the tails. Its derivative at zero rotation answers the
+question suggested by Gaussian invariance: can a non-Gaussian law escape
+every one of these tests? The following infinitesimal form of Gaussian
+independence rigidity \cite{kac1939characterization,kagan1973characterization}
+shows that it cannot.
 
 \begin{lemma}[Gaussian characterization by the rotational Fourier defect]
 \label{lem:fourier-ode}
@@ -66,7 +64,8 @@ The two marginal terms in the centered product have zero derivative at
 $\theta=0$, again by $\phi'(0)=0$; differentiating the displayed product
 gives \eqref{eq:rotational-fourier-response}.
 
-Now suppose $R\equiv0$.  Choose $\eta_0\ne0$ with
+To recover the law from a vanishing response, fix one frequency and regard
+the other as the variable of an ODE. Suppose $R\equiv0$ and choose $\eta_0\ne0$ with
 $\phi(\eta_0)\ne0$, possible because $\phi(0)=1$.  Then, for every $\xi$,
 \[
  \phi'(\xi)=c\xi\phi(\xi),\qquad
@@ -82,13 +81,12 @@ Conversely, direct substitution shows that every such Gaussian has
 $R\equiv0$.
 \end{proof}
 
-\subsection{The weighted Fourier jet}
-
-The weighted Fourier jet
+The response has a simple geometric interpretation. The two entries of the
+weighted Fourier jet
 \[
  u\longmapsto\bigl(u\phi(u),\phi'(u)\bigr)\in\mathbb C^2
 \]
-satisfies
+form a curve whose two-point determinants are
 \begin{equation}
  \det\!\begin{pmatrix}
  \xi\phi(\xi)&\phi'(\xi)\\
@@ -96,15 +94,17 @@ satisfies
  \end{pmatrix}
  =-R(\xi,\eta).
 \end{equation}
-Thus \cref{lem:fourier-ode} says that a non-Gaussian law is detected by one
-pair of distinct frequencies.  The factor \(u\) is essential: for a
-nondegenerate Gaussian law, the unweighted curve
-\(u\mapsto(\phi(u),\phi'(u))\) is not contained in a fixed line.
+For a Gaussian this curve lies in a line; for every non-Gaussian it spans
+two directions. This is exactly the freedom we will need to separate the
+two ordered entries of a matrix tangent. The weight \(u\) comes from
+differentiating the exponential under rotation. It makes Gaussianity a
+linear dependence relation, and fixing one nonzero frequency proves that
+relation globally, even across zeros of \(\phi\).
 
-\subsection{Affine normalization}
+\paragraph{Centering the response.}
 
-We record how \(R\) changes under affine normalization.
-Let $Y$ have mean \(m\) and characteristic function \(\phi_Y\), and put
+Centering is what separates the effect of mixing from the motion of the
+mean. For a variable $Y$ with mean \(m\) and characteristic function \(\phi_Y\), put
 \(X=(Y-m)/\sigma\), where \(\sigma>0\).
 For \(a=\xi/\sigma\) and \(b=\eta/\sigma\), the rotational Fourier defect
 of $X$ satisfies
@@ -116,19 +116,17 @@ of $X$ satisfies
  &\hspace{8em}+im(a-b)\phi_Y(a)\phi_Y(b)\bigr].
  \end{aligned}
 \end{equation}
-The bracket is the mean-corrected response for two copies of \(Y\): centering
-contributes the phase and scaling changes the frequencies.  For a centered
-symmetric law the defect is real, but its phase at one pair is not a complete
-measure of skewness.
+The last term removes the contribution of the mean. Scaling then changes
+only the frequencies, apart from the phase introduced by centering.
 
 \subsection{The matrix Fisher operator}
 
-The matrix Fisher operator resolves diagonal scale, symmetric off-diagonal,
-and rotational directions; this is the linear-mixing instance of the Fisher metric viewpoint
-\cite{amari2000methods}.
-
-Let $f$ be a probability density and write $g=\sqrt f$.
-In this subsection we assume
+The rotation calculation identifies the exceptional law. To measure the
+size of a general infinitesimal mixing, we now compute its Fisher metric
+\cite{amari2000methods}. There are three natural motions: changing individual
+scales, mixing symmetrically, and rotating. The calculation below assigns
+one eigenvalue to each, and shows exactly where the Gaussian metric loses
+a direction. Write \(g=\sqrt f\) and assume
 \begin{equation}
  \begin{gathered}
  f>0\quad\text{Lebesgue-almost everywhere},\qquad
@@ -138,8 +136,7 @@ In this subsection we assume
  \end{gathered}
  \label{eq:fisher-regularity}
 \end{equation}
-The derivatives in these assumptions are weak derivatives.
-Define the location score $s=-f'/f=-2g'/g$ almost everywhere.  Then
+The location score \(s=-f'/f=-2g'/g\) satisfies
 \begin{equation}
  \E s(X)=0,\qquad \E[Xs(X)]=1,\qquad
  J:=\E s(X)^2=4\|g'\|_2^2.
@@ -224,15 +221,16 @@ multiples of $|x|^{-1/2}$, which cannot give a positive probability
 density.  This proves $\kappa>0$ and the asserted bounds.
 \end{proof}
 
-\subsection{Hellinger paths, polar decomposition, and symmetric perturbations}
+\subsection{Following square-root densities}
 
-In the left polar decomposition \(T=BO\), covariance detects
-\(B^2-I=TT^*-I\), while the skew tangent of \(O\) has Fisher eigenvalue
-\(J-1\).  The half-density formulation below packages both directions and is
-the square-root form of quadratic-mean differentiability
-\cite[Section~7.2]{vandervaart1998asymptotic}; see also
-\cite{bogachev1997differentiable,bell1985quasi} for differentiation of
-measures and quasi-invariance.
+The rotational eigenvalue \(J-1\) is the part of the Fisher metric that
+covariance misses. Together with the scale and symmetric eigenvalues, it
+measures every matrix tangent when the law is non-Gaussian. To turn this
+infinitesimal calculation into a comparison of measures, we work with
+square-root densities: their ordinary \(L^2\) distance is Hellinger distance,
+and linear changes of variables act unitarily. This is the
+quadratic-mean viewpoint of \cite[Section~7.2]{vandervaart1998asymptotic};
+see also \cite{bogachev1997differentiable,bell1985quasi}.
 
 For $A\in\GL(n,\R)$ define a unitary operator on
 $L^2(\R^n,dx)$ by
@@ -296,11 +294,17 @@ $\|A_t^{-1}\|_{\mathrm{op}}\le(1-r)^{-1}$.
 
 \subsection{Bounded Fourier tests for matrix tangents}
 
-Assume now that \(f\) is non-Gaussian.  Although \(S_A\) is the tangent, using
-it as a moved-law test would require unavailable regularity and integrability.
-The rank-two obstruction in \cref{lem:fourier-ode} instead gives bounded
-Fourier tests for the off-diagonal directions; a small-frequency argument using
-the second moment supplies the diagonal test, all independently of \(n\).
+We now return to a non-Gaussian \(f\) and seek a lower bound. Integrating the
+speed of a path gives an upper bound on the distance travelled; a lower
+bound must also prevent cancellation along the path. We do this by pairing
+the displacement with a test chosen for its direction.
+
+The score \(S_A\) suggests the right pairing, but following the score itself
+would introduce derivatives and moments beyond our assumptions. The
+Fourier jet gives a smoother choice. Each off-diagonal score term is
+\(s(X_i)X_j\). We choose bounded Fourier sums \(p,q\) dual to \(s,x\), so
+that \(p(X_i)q(X_j)\) detects the ordered entry \(A_{ij}\) and cancels the
+reversed entry. A third Fourier sum detects changes of scale.
 
 \begin{lemma}[Finite real Fourier sums with dual moments]
 \label{lem:fourier-dual-moments}
@@ -375,10 +379,13 @@ Combining this with orthogonality of the centered diagonal terms proves the
 uniform norm bound.
 \end{proof}
 
-To pair \(H_A\) with a moved Hellinger tangent, we need a derivative bound for
-\(H_A\Omega_n\) uniform in \(n\).  Term counting loses dimension and direct
-H\"older estimates require unavailable moments; grouping index coincidences
-instead reduces every surviving coefficient array to a Frobenius contraction.
+The dual pairing is exact at the identity. To use it along a path, we must
+control how fast the test itself moves. The apparent obstacle is the number
+of terms in \(H_AS_B\), which grows like the fourth power of the dimension.
+Most cross terms vanish by centering. Grouping the others by their shared
+coordinates leaves a fixed number of patterns, each controlled by a
+Frobenius contraction. This is where independence makes the estimate
+uniform in the dimension.
 
 \begin{lemma}[Generator bound for the functions $H_A$]
 \label{lem:fourier-generator-bound}
@@ -494,8 +501,10 @@ Together with \eqref{eq:coordinate-function-score-bound} and
 \eqref{eq:coordinate-function-generator-product}, this proves the lemma.
 \end{proof}
 
-Pairing \(H_A\) with the tangent detects the first-order displacement; the
-generator bound controls the error along the exponential path.
+We can now keep the first-order response from cancelling. Pairing with
+\(H_A\) gives a quadratic main term, while the generator bound makes the
+error cubic. Choosing one sufficiently small radius therefore works in
+every dimension.
 
 \begin{proposition}[Uniform local Hellinger coercivity]
 \label{prop:local-fisher-hellinger}
@@ -543,11 +552,16 @@ bound.  The upper bound is
 \cref{lem:finite-hellinger-upper}.
 \end{proof}
 
-\subsection{Uniform coercivity modulo the exact linear stabilizer}
+\subsection{The global comparison}
 
-The following global form is proved in \cref{sec:globalization-proof}, after
-the infinite-dimensional classification supplies the compactness input; it is
-not used in that classification.
+Near the identity, Hellinger distance now measures Frobenius distance. The
+same is true near every allowed coordinate symmetry, since these preserve
+the law. The global question is whether matrices far from all such
+symmetries could nevertheless change the law by arbitrarily little.
+The infinite-dimensional classification will rule this out: stacking such
+matrices in independent blocks would contradict Hilbert--Schmidt necessity.
+We state the resulting comparison here and prove it in
+\cref{sec:globalization-proof}.
 
 \begin{theorem}[Dimension-free global Hellinger coercivity]
 \label{thm:global-coercivity}

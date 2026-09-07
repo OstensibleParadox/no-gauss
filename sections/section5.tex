@@ -1,15 +1,24 @@
 \section{Density Zeros and Support Rigidity}
 
-When the density has zeros, Hilbert--Schmidt proximity controls Hellinger
-accumulation, but equivalence also requires the forward and inverse
-zero-set row conditions: every row series of \(T\) and \(T^{-1}\) lies almost
-surely in \(\{f>0\}\).  Bounded or one-sided support then forces permutation
-rigidity.
+A smooth density can vanish outside an interval. Contract just one
+coordinate, and part of that interval becomes inaccessible to the image
+law. The change has rank one and can be arbitrarily small, yet equivalence
+is lost. This obstruction is already present in finite dimension; no
+accumulation of errors is needed.
 
-\subsection{Equivalence criterion when the density has zeros}
+We separate this support obstruction from the Hellinger cost. The local
+geometry still measures small matrix perturbations, and absolute continuity
+still forces Hilbert--Schmidt proximity to a coordinate symmetry. Within
+that neighbourhood, the singular part is exactly the mass sent into zeros
+of the density. Requiring the same avoidance for the inverse gives
+equivalence. For bounded and one-sided laws, these support constraints
+determine the operator outright.
 
-The Fourier/Fisher mechanism still supplies the metric part of the
-classification; for its matrix estimates the appropriate regularity is
+\subsection{Separating the mixing cost from the support obstruction}
+
+The path argument differentiates the square-root density on the whole
+line. It continues to work when that function reaches zero continuously
+enough to remain Sobolev. We assume
 \begin{equation}
  \begin{gathered}
  f\geq0,\quad \int f=1,\quad
@@ -18,11 +27,12 @@ classification; for its matrix estimates the appropriate regularity is
  \end{gathered}
  \label{eq:zero-set-row-assumptions}
 \end{equation}
-The global zero extension is essential: \(g\in W^{1,2}(\R)\) excludes boundary
-jumps and makes \(g'=0\) almost everywhere on \(\{g=0\}\).  Thus \(sg=-2g'\)
-and the Fourier/Fisher integrations by parts hold on the whole line without a
-boundary term.  Interior regularity is insufficient; the uniform density has
-zero interior derivative but a jump in its zero-extended half-density.
+The boundary is part of this regularity condition. For example, the uniform
+density has zero derivative inside its support, but its square root jumps
+at the endpoints. Such a jump contributes a first-order Hellinger loss
+under a small rotation, as we will see below. A Sobolev square root has no
+boundary jump, and its derivative vanishes almost everywhere on its zero
+set. The identity \(sg=-2g'\) therefore survives on the whole line.
 
 \begin{proposition}[Local Fourier coercivity with zeros of the density]
 \label{prop:local-coercivity-with-density-zeros}
@@ -50,8 +60,6 @@ condition survives:
 For orthogonal transformations one may omit \(xg'\in L^2\),
 retaining non-Gaussianity, \(g\in W^{1,2}(\R)\), and normalization to a
 centered law with variance one.
-These statements do not assert absolute continuity of
-\(\nu_{I+K}\).
 \end{proposition}
 \begin{proof}
 Define \(s=-2g'/g\) on \(\{g>0\}\) and zero elsewhere.  Since Sobolev
@@ -71,8 +79,9 @@ The Hellinger path bound and invariance give, for large \(m,n\),
 \]
 The square-root densities are therefore Cauchy in \(L^2\) relative to a common
 dominating measure.  Their norm-one limit is identified with \(\nu_{I+K}\) by
-finite-row convergence, proving \eqref{eq:local-hs-bound-with-density-zeros}
-but not \(\nu_{I+K}\ll\mu\).  Polar approximants and the skew-generator bound
+finite-row convergence, proving \eqref{eq:local-hs-bound-with-density-zeros}.
+The dominating measure here includes the parts outside the original
+positivity set. Polar approximants and the skew-generator bound
 from \cref{prop:orthogonal-sufficiency} give the orthogonal case.
 
 In \cref{lem:hilbert-schmidt-necessity}, the tail-symmetry and covariance
@@ -82,16 +91,16 @@ tail perturbations.  The estimate above supplies the last input, so the same
 tail-matching proof yields \eqref{eq:hs-necessity-with-density-zeros}.
 \end{proof}
 
-The zero-extended square root lies in \(W^{1,2}(\R)\) exactly for Gamma shape
-\(>2\) or both Beta shapes \(>2\); at shape one it jumps.  The support results
-need no such regularity.
+To identify absolute continuity, we now ask where the image mass goes.
+Finite-coordinate approximants have densities wherever the original product
+is positive, and Hellinger convergence preserves this absolute continuity
+on that set. All singular mass must therefore lie outside it. For
+equivalence, apply the same argument to the inverse.
 
 \begin{theorem}[The linear equivalence group with density zeros]
 \label{thm:linear-equivalence-group}
-Assume \eqref{eq:zero-set-row-assumptions}, let $\rho(dx)=f(x)\,dx$, and put
-$\mathcal U=\{x\in\R:f(x)>0\}$.  For every $T\in\GL(H)$,
-the almost-sure requirements below are called the forward and inverse
-zero-set row conditions.
+Assume \eqref{eq:zero-set-row-assumptions} and put
+$\mathcal U=\{x\in\R:f(x)>0\}$. For every $T\in\GL(H)$,
 \begin{equation}
  \nu_T\ll\mu
  \quad\Longleftrightarrow\quad
@@ -160,15 +169,19 @@ approximants from \cref{prop:orthogonal-sufficiency}, which require only
 location Fisher information.
 \end{proof}
 
-Null-set modifications of \(f\) do not affect the forward and inverse zero-set
-row conditions, since nonzero row sums have densities.  They are automatic for
-positive densities; the rank-one contraction below satisfies the forward
-zero-set row condition but not the inverse zero-set row condition, yielding
-\(\nu_T\ll\mu\) while \(\mu\not\ll\nu_T\).
+The forward condition prevents the image from entering a forbidden set.
+The inverse condition prevents it from leaving behind a region of positive
+original mass. These are different requirements, as the rank-one
+contraction below illustrates. Since nonzero row sums have densities,
+changing \(f\) on a Lebesgue-null set changes neither condition.
 
-\subsection{Boundary behavior of the density and summability criteria}
+\subsection{A rotating square: overlap without equivalence}
 
-Let \(\rho\) be uniform on \([-\sqrt3,\sqrt3]\), let
+The difference between boundary loss and accumulated loss is visible in a
+square. A small rotation removes thin triangles from its support. With
+uniform density, their mass is proportional to the angle; with a density
+vanishing smoothly at the boundary, their effect can be smaller. Start
+with \(\rho\) uniform on \([-\sqrt3,\sqrt3]\), let
 \(\mu_{\mathrm u,2}=\rho^{\otimes2}\), and consider
 \(T=\bigoplus_kO_{\theta_k}\).
 Write
@@ -201,7 +214,7 @@ In particular, \(\theta_k=1/k\) gives \(T-I\in\mathcal S_2\) but
 With \(\theta_k=1/k^2\), the laws instead have positive affinity
 and neither is absolutely continuous with respect to the other.
 
-For comparison, let \(f\) be the variance-one rescaling of
+To see the effect of a smoother boundary, let \(f\) be the variance-one rescaling of
 \((1-x^2)^r\mathbf1_{\{|x|<1\}}\), \(r>1\), put
 \(\mu_{f,2}=(f(x)\,dx)^{\otimes2}\), and set
 \(J=4\|(\sqrt f)'\|_2^2>1\).
@@ -217,14 +230,20 @@ rotation retains positive overlap near the origin.  Continuity and
 \(\sum_k\delta_k\) by \(\sum_k\delta_k^2\) in the trichotomy, while equivalence
 still requires every \(\delta_k=0\).
 
-\subsection{Complete linear classification for bounded and half-line laws}
+\subsection{When the support determines the operator}
 
-Let \(X\) be centered with variance one, put \(\rho=\Law(X)\),
-\(\rho^-=\Law(-X)\), and \(\mu=\rho^{\otimes\N}\), and use the row-series
-action of \cref{lem:measurable-row-series-realization}.  Conditional
-expectations turn a support boundary into an \(\ell^1\) row constraint; the
-inverse relations then force a monomial operator, without density or Fisher
-assumptions.
+A bounded coordinate cannot be mixed freely with many independent copies
+without enlarging its range. Conditioning on finitely many inputs makes
+this observation precise: the width of the resulting sum is the original
+width multiplied by the \(\ell^1\)-norm of the coefficients. If both the
+map and its inverse preserve the range, both matrices have row norms at
+most one. Their inverse identities then force a signed permutation.
+For a half-line, a negative coefficient is ruled out by the unbounded tail,
+and the same argument leaves only ordinary permutations.
+
+Write \(\rho=\Law(X)\), \(\rho^-=\Law(-X)\), and \(\mu=\rho^{\otimes\N}\),
+with \(\E X=0\) and \(\E X^2=1\). The row-series action is that of
+\cref{lem:measurable-row-series-realization}.
 
 \begin{theorem}[Linear equivalence for bounded and half-line coordinate laws]
 \label{thm:bounded-and-half-line-classification}
@@ -321,10 +340,16 @@ support, signs are governed by \(\rho\) versus \(\rho^-\): if
 allowed, whereas unequal endpoint magnitudes, as for a centered asymmetric
 Beta law, preclude them.
 
-\paragraph{Necessity of the inverse zero-set row condition.}
+These support conclusions also cover densities with abrupt boundaries.
+For Gamma laws the zero-extended square root is Sobolev exactly when the
+shape exceeds two; for Beta laws both shapes must exceed two. The support
+argument treats all positive shapes in the same way.
 
-Even a rank-one perturbation can have positive Hellinger affinity, with
-\(\nu_T\ll\mu\) but \(\mu\not\ll\nu_T\).
+\paragraph{What a one-coordinate contraction leaves behind.}
+
+We return to the contraction that opened this section. It keeps every
+output in the original support, but it leaves a region of positive mass
+unreachable. This is exactly what the inverse row condition detects.
 
 Let \(f\) be the rescaling to variance one of
 \(C(1-x^2)^2\mathbf 1_{\{|x|<1\}}\), and write its support as
@@ -349,14 +374,15 @@ Nevertheless,
  \Aff(\mu,\nu_T)=\int\sqrt{f(y)f_c(y)}\,dy>0,
  \qquad \sup_n E_n(T)<\infty.
 \]
-Thus neither Hilbert--Schmidt proximity nor bounded projected Hellinger energy
-implies equivalence without the inverse zero-set row condition.
-The failure occurs with finite location and scale Fisher information.
+The affinity sees the overlap on \((-ca,ca)\). The inverse row condition
+sees the missing mass on the rest of \((-a,a)\). The smooth boundary makes
+the Hellinger cost small, but it cannot restore that mass.
 
 \subsection{Block and finite-marginal criteria}
 
-The boundary examples require a block criterion separating local absolute
-continuity from accumulated Hellinger loss.
+The rotating-square examples combine two effects: each block can lose
+support, and the affinities of infinitely many blocks can tend to zero.
+The following form of the product criterion keeps these effects separate.
 
 \begin{theorem}[Block products without equivalence of the factors]
 \label{thm:block-kakutani}
@@ -431,6 +457,11 @@ so the conditional product laws are equivalent.  Their restrictions to
 \end{proof}
 
 \paragraph{Gamma scale changes and the effect of centering.}
+
+The half-line classification concerns linear maps of centered coordinates.
+A dilation about the endpoint of a Gamma support is an affine map after
+centering. Its compensating translation keeps the endpoint fixed, allowing
+the familiar family of scale changes to reappear.
 For the uncentered shape-\(r_\Gamma\), scale-one Gamma law, direct integration
 gives
 \[
@@ -486,6 +517,12 @@ Equation \eqref{eq:gamma-scale-product-equivalence} completes both directions.
 \end{proof}
 
 \paragraph{Finite-marginal criterion.}
+
+Affinity tells us whether two laws overlap. When supports differ, full
+equivalence requires more: neither direction of the likelihood ratio may
+lose mass as more coordinates are observed. Uniform integrability expresses
+this requirement, and the following tail formula checks both directions at
+once.
 
 \begin{proposition}[Finite-marginal tails characterize equivalence]
 \label{prop:two-sided-finite-marginal-ratio-tails}
@@ -545,31 +582,20 @@ Conditional Cauchy--Schwarz gives monotonicity, and the limit vanishes exactly
 for mutually singular measures.
 \end{proof}
 
-\paragraph{Roles of the finite-variance hypotheses.}
+\paragraph{An asymmetric example with no fourth moment.}
 
-The positive-density theorem includes variance-one rescalings of the Laplace
-and \(e^{-x^4}\) laws, and the centered, variance-one version of the law with
-density before normalization proportional to
+The finite-variance classification does not rely on moment expansions
+beyond order two. To see the range this permits, consider the density
+proportional to
 \[
  (1+y^2)^{-(\tau+1)/2}e^{\vartheta\arctan y},\qquad
- \tau>2,\quad\vartheta\in\R.
+ 2<\tau\le4,\quad\vartheta\in\R\setminus\{0\}.
 \]
 Its pre-normalization score is \(((\tau+1)y-\vartheta)/(1+y^2)\); it and its
 product with \(y\) are bounded, and these bounds persist under normalization.
-For \(2<\tau\le4\) the fourth moment is infinite, while \(\vartheta\ne0\) gives
-unequal tail constants.  Thus neither symmetry nor a fourth moment is assumed.
-
-When \(f\) has zeros, the forward and inverse zero-set row conditions determine
-whether row laws avoid them.  The second moment makes \(\ell^2\) row series
-converge, their squares uniformly integrable, and the Gaussian-summand
-extraction in \cref{lem:unit-row-rigidity} possible.  By contrast,
-\cref{lem:fourier-ode} assumes only a first moment and has broader scope than
-\cref{thm:measure-equivalence}.
-
-Location and scale Fisher information control dimension-free Hellinger path
-and generator bounds.  The tests \(H_A\) require no higher moments
-and pair those bounds with every matrix tangent.  In the necessity proof,
-\cref{lem:tail-symmetry-uniform} makes remote swaps asymptotically invisible in
-Hellinger distance, avoiding variance bounds under conjugated output laws.
-Thus the orthogonal theorem drops scale Fisher information, while the full
-bounded invertible theorem retains it.
+The fourth moment is infinite, and the two tails have
+unequal constants. After centering and normalization, the main theorem
+therefore classifies every bounded invertible mixing of this product.
+The bounded Fourier tests still detect its coordinate structure, and the
+tail exchanges still force exactly the Hilbert--Schmidt amount of deviation
+from an ordinary permutation.
