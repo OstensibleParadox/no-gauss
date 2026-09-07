@@ -1,20 +1,15 @@
 \section{Dimension-Free Hellinger Geometry}
-\label{sec:rotational-fourier-defect-and-hellinger-coercivity}
+\label{sec:dimension-free-hellinger-geometry}
 
-The rotational Fourier defect distinguishes every non-Gaussian coordinate law
-without dividing by its characteristic function.  Fixed Fourier frequencies
-then produce bounded tests for all matrix directions, and the matrix Fisher
-operator identifies their infinitesimal cost.  The goal of this section is the
-dimension-free local estimate in
-\cref{prop:local-fisher-hellinger}; the global estimate is derived from the
-classification in \cref{sec:globalization-proof}.
+The rotational Fourier defect detects non-Gaussianity without dividing by the
+characteristic function.  Fixed frequencies and the matrix Fisher operator
+then yield the dimension-free local estimate in
+\cref{prop:local-fisher-hellinger}; globalization is deferred to
+\cref{sec:globalization-proof}.
 
 \subsection{A product of centered complex exponentials}
-\label{sec:product-of-centered-exponentials}
 
-This subsection requires only $\E X=0$ and $\E|X|<\infty$.
-Neither a density nor a second moment is needed.
-Write
+Here only $\E X=0$ and $\E|X|<\infty$ are required.  Write
 $\phi(u)=\E e^{iuX}$, and for independent copies $X_1,X_2$ put
 \[
  O_\theta=\begin{pmatrix}\cos\theta&-\sin\theta\\
@@ -23,29 +18,24 @@ $\phi(u)=\E e^{iuX}$, and for independent copies $X_1,X_2$ put
  W_{\xi,\eta}(x,y)
    =(e^{i\xi x}-\phi(\xi))(e^{i\eta y}-\phi(\eta)).
 \]
-This fixes the sign convention for rotation.
-Centering removes the two marginal responses.
-It leaves only the dependence created by rotation.
-In particular,
+With this sign convention, centering cancels the two marginal responses and
+isolates the dependence created by rotation.  In particular,
 \begin{equation}
  \E W_{\xi,\eta}(X_1,X_2)=0,
  \qquad
  \E|W_{\xi,\eta}(X_1,X_2)|^2
  =(1-|\phi(\xi)|^2)(1-|\phi(\eta)|^2)\le1.
- \label{eq:centered-exponential-product-variance}
 \end{equation}
 Pointwise, $|W_{\xi,\eta}|\le4$, so its variance under an arbitrary
 comparison law is at most $16$.  Both bounds are dimension-free and require
 no tail assumption.
 
 \subsection{Gaussian characterization by a global linear ODE}
-\label{sec:fourier-ode}
 
-The next lemma makes the rotational Fourier defect a logarithm-free rigidity
-tool, valid even when \(\phi\) has zeros.  It is an infinitesimal version of
-the Gaussian rigidity behind independence characterizations
-\cite{kac1939characterization,kagan1973characterization}:
-every non-Gaussian law has a nonzero rotational response.
+The following logarithm-free rigidity argument remains valid when \(\phi\)
+has zeros and is the infinitesimal counterpart of classical Gaussian
+independence characterizations
+\cite{kac1939characterization,kagan1973characterization}.
 
 \begin{lemma}[Gaussian characterization by the rotational Fourier defect]
 \label{lem:fourier-ode}
@@ -63,14 +53,7 @@ Moreover,
  R\equiv0
  \quad\Longleftrightarrow\quad
  \Law(X)\text{ is a centered Gaussian, possibly degenerate}.
- \label{eq:fourier-gaussian-characterization}
 \end{equation}
-Equivalently, all pairs of values of the weighted Fourier jet
-\[
- u\longmapsto\bigl(u\phi(u),\phi'(u)\bigr)
-\]
-are linearly dependent if and only if \(\Law(X)\) is a centered Gaussian,
-possibly degenerate.
 \end{lemma}
 \begin{proof}
 Since $\E|X|<\infty$, we have $\phi\in C^1(\R)$ and
@@ -99,59 +82,28 @@ Conversely, direct substitution shows that every such Gaussian has
 $R\equiv0$.
 \end{proof}
 
-\subsection{The determinant representation and finite detection}
-\label{sec:fourier-determinant}
+\subsection{The weighted Fourier jet}
 
-The determinant form supplies the finite frequency pair used to construct the
-dual moments in \cref{sec:fourier-dual-moments}.
-
-Consider the curve
+The weighted Fourier jet
 \[
- u\longmapsto\bigl(u\phi(u),\phi'(u)\bigr)\in\mathbb C^2,
+ u\longmapsto\bigl(u\phi(u),\phi'(u)\bigr)\in\mathbb C^2
 \]
-described as the weighted Fourier jet.  Its values satisfy
+satisfies
 \begin{equation}
  \det\!\begin{pmatrix}
  \xi\phi(\xi)&\phi'(\xi)\\
  \eta\phi(\eta)&\phi'(\eta)
  \end{pmatrix}
  =-R(\xi,\eta).
- \label{eq:fourier-wedge}
 \end{equation}
-The weighting by \(u\) is essential: for a nondegenerate Gaussian law, the
-unweighted curve \(u\mapsto(\phi(u),\phi'(u))\) is not contained in a fixed
-line.
+Thus \cref{lem:fourier-ode} says that a non-Gaussian law is detected by one
+pair of distinct frequencies.  The factor \(u\) is essential: for a
+nondegenerate Gaussian law, the unweighted curve
+\(u\mapsto(\phi(u),\phi'(u))\) is not contained in a fixed line.
 
-For a non-Gaussian law, continuity supplies distinct frequencies and a compact
-detecting neighborhood, independent of the ambient dimension; the diagonal
-\(\xi=\eta\) never detects the law.
+\subsection{Affine normalization}
 
-The same product of centered complex exponentials gives a local Hellinger
-lower bound for one rotation.
-Choose a phase $\alpha$ with
-$\operatorname{Re}(e^{-i\alpha}R(\xi,\eta))>0$ and apply
-\[
- |\E_\lambda F-\E_\nu F|
- \le h(\lambda,\nu)
-             \{2\E_\lambda F^2+2\E_\nu F^2\}^{1/2}
-\]
-to $F=\operatorname{Re}(e^{-i\alpha}W_{\xi,\eta})$.
-It follows that
-$h((O_\theta)_\#\Law(X)^{\otimes2},
-\Law(X)^{\otimes2})\ge c|\theta|$ for small
-$|\theta|$.
-A first moment suffices for this lower bound.
-The dimension-free matrix estimates below require the additional
-second-moment and Sobolev hypotheses.
-
-\subsection{Dimension-free variance and affine normalization}
-\label{sec:variance-and-affine-normalization}
-
-The dimension-free variance bounds needed below are already contained in
-\eqref{eq:centered-exponential-product-variance}; we record only how \(R\)
-changes under affine normalization.
-
-\paragraph{Centering, scaling, and phase.}
+We record how \(R\) changes under affine normalization.
 Let $Y$ have mean \(m\) and characteristic function \(\phi_Y\), and put
 \(X=(Y-m)/\sigma\), where \(\sigma>0\).
 For \(a=\xi/\sigma\) and \(b=\eta/\sigma\), the rotational Fourier defect
@@ -163,32 +115,17 @@ of $X$ satisfies
  \bigl[b\phi_Y'(a)\phi_Y(b)-a\phi_Y(a)\phi_Y'(b)\\
  &\hspace{8em}+im(a-b)\phi_Y(a)\phi_Y(b)\bigr].
  \end{aligned}
- \label{eq:centering-phase}
 \end{equation}
-The bracketed term is the mean-corrected rotational response for two copies of
-\(Y\).  Centering contributes the displayed phase, scaling changes the
-frequencies, and the modulus at corresponding frequencies is unchanged.  For
-a centered symmetric law the defect is real, but its phase at a single pair is
-not a complete measure of skewness.
-
-For the concrete comparison $Y\sim\operatorname{Gamma}(2,1)$,
-$m=2$, $\sigma=\sqrt2$, and $(\xi,\eta)=(1,2)$, the expression in brackets in
-\eqref{eq:centering-phase} equals $4/27$, so the law centered with variance one has
-\[
- R(1,2)=\frac4{27}e^{-3i\sqrt2}.
-\]
-Thus the defect can remain explicit even for an asymmetric law with a support
-boundary.
+The bracket is the mean-corrected response for two copies of \(Y\): centering
+contributes the phase and scaling changes the frequencies.  For a centered
+symmetric law the defect is real, but its phase at one pair is not a complete
+measure of skewness.
 
 \subsection{The matrix Fisher operator}
-\label{sec:fisher-operator}
 
-The matrix Fisher operator separates diagonal scale, symmetric off-diagonal,
-and skew-symmetric rotational directions.  Its rotational eigenvalue is
-\(J-1\), which vanishes exactly in the Gaussian case.
-The general interpretation of Fisher information as a metric on density
-families is developed in~\cite{amari2000methods}; here the matrix decomposition
-specifies the cost of each mixing direction.
+The matrix Fisher operator resolves diagonal scale, symmetric off-diagonal,
+and rotational directions; this is the linear-mixing instance of the Fisher metric viewpoint
+\cite{amari2000methods}.
 
 Let $f$ be a probability density and write $g=\sqrt f$.
 In this subsection we assume
@@ -212,16 +149,9 @@ Define the scale score and its second moment by
 \begin{equation}
  d(x):=xs(x)-1,\qquad
  \kappa:=\E d(X)^2=4\|xg'\|_2^2-1.
- \label{eq:kappa}
 \end{equation}
-The two integration-by-parts identities in
-\eqref{eq:score-moments} follow from these assumptions.
-Indeed,
-$f'=2gg'$ belongs to $L^1$, and $xf'$ belongs to $L^1$ by
-Cauchy--Schwarz and the finite second moment.  Choose a smooth compactly
-supported cutoff $\chi$ equal to one near zero.  Applying integration by
-parts first to $\chi(x/L)$ and then to
-$x\chi(x/L)$ gives the identities as $L\to\infty$.
+Here \(f',xf'\in L^1\), so cutoff integration by parts against \(1\) and \(x\)
+gives the two identities in \eqref{eq:score-moments}.
 
 For independent copies $X_1,\ldots,X_n$ of $X$, write
 $\mathbf X^{(n)}=(X_1,\ldots,X_n)\sim\mu_n$.  For
@@ -230,11 +160,9 @@ $A\in M_n(\R)$, define the score of the pushforward by $I+tA$ at $t=0$ by
  S_A(\mathbf X^{(n)})=\sum_{i,j=1}^n A_{ij}
        \bigl(s(X_i)X_j-\delta_{ij}\bigr)
        =\sum_i A_{ii}d(X_i)+\sum_{i\ne j}A_{ij}s(X_i)X_j.
- \label{eq:matrix-score}
 \end{equation}
 
 \begin{theorem}[The matrix Fisher operator]
-\label{thm:fisher-spectrum}
 Under \eqref{eq:fisher-regularity}, let \(s\) and \(d\) be the location and
 scale scores defined above, and define the matrix Fisher operator
 $\mathcal I$ by
@@ -258,11 +186,7 @@ $\kappa$, $J+1$, and $J-1$, respectively.  Equivalently,
  \end{aligned}
  \label{eq:fisher-decomposition}
 \end{equation}
-The eigenvalue multiplicities are, respectively,
-\begin{equation}
- n,\qquad n(n-1)/2,\qquad n(n-1)/2.
- \label{eq:fisher-multiplicities}
-\end{equation}
+Their multiplicities are \(n,n(n-1)/2,n(n-1)/2\), respectively.
 Moreover, $\kappa>0$ and $J\ge1$.
 Here $J=1$ holds precisely for the
 standard Gaussian density.  Thus, for a non-Gaussian $f$,
@@ -286,7 +210,6 @@ corresponding covariances are $J$ and $(\E Xs(X))^2=1$.  Hence
  \E S_A^2
  =\kappa\sum_i A_{ii}^2+
    \sum_{i<j}\{J(A_{ij}^2+A_{ji}^2)+2A_{ij}A_{ji}\}.
- \label{eq:fisher-pair-form}
 \end{equation}
 Polarization gives \eqref{eq:fisher-operator-spectrum}; resolving each
 off-diagonal pair into its symmetric and skew-symmetric parts gives
@@ -302,24 +225,14 @@ density.  This proves $\kappa>0$ and the asserted bounds.
 \end{proof}
 
 \subsection{Hellinger paths, polar decomposition, and symmetric perturbations}
-\label{sec:hellinger-paths}
 
-For orientation, write the left polar decomposition of an invertible matrix
-as \(T=BO\), where \(B=(TT^*)^{1/2}\) is positive and \(O\) is
-orthogonal.  The covariance defect is \(TT^*-I=B^2-I\), so a
-finite second moment detects the symmetric factor.  The skew tangent of the
-orthogonal factor has Fisher eigenvalue \(J-1\), which is positive precisely
-off the Gaussian law.  The full matrix Fisher operator decomposition above packages
-these two mechanisms without requiring a nonlinear separation of \(B\) and
-\(O\) at every step.
-
-The square-root formulation is the one used in quadratic-mean
-differentiability~\cite[Section~7.2]{vandervaart1998asymptotic}.
-Logarithmic derivatives and the relation between differentiation of measures
-and quasi-invariance are treated in
-\cite{bogachev1997differentiable,bell1985quasi}.
-For the present linear transformations, the half-density action below gives
-a path bound whose constant does not grow with the number of coordinates.
+In the left polar decomposition \(T=BO\), covariance detects
+\(B^2-I=TT^*-I\), while the skew tangent of \(O\) has Fisher eigenvalue
+\(J-1\).  The half-density formulation below packages both directions and is
+the square-root form of quadratic-mean differentiability
+\cite[Section~7.2]{vandervaart1998asymptotic}; see also
+\cite{bogachev1997differentiable,bell1985quasi} for differentiation of
+measures and quasi-invariance.
 
 For $A\in\GL(n,\R)$ define a unitary operator on
 $L^2(\R^n,dx)$ by
@@ -339,13 +252,9 @@ For a fixed real matrix $A$, the generator of $U_{\exp(tA)}$ is
  \qquad G_A\Omega_n=\tfrac12S_A\Omega_n.
  \label{eq:half-density-generator}
 \end{equation}
-These identities hold in $L^2$.
-To justify them under \eqref{eq:fisher-regularity}, observe that
-$x_j\partial_i\Omega_n\in L^2$ for all $i,j$: the diagonal case
-uses $xg'\in L^2$, and the off-diagonal case uses $g'\in L^2$
-and $\E X^2=1$.  Cutoff and mollification approximate
-$\Omega_n$ in the corresponding weighted Sobolev graph norm, where
-the usual change-of-variables differentiation is valid.
+These identities hold in \(L^2\): the diagonal terms use \(xg'\in L^2\), the
+off-diagonal terms use \(g'\in L^2\) and \(\E X^2=1\), and cutoff followed by
+mollification gives convergence in the required weighted Sobolev graph norm.
 
 \begin{lemma}[A dimension-free Hellinger path bound]
 \label{lem:finite-hellinger-upper}
@@ -360,7 +269,6 @@ differentiable in $L^2$ and
  &=\frac12\sqrt{\left\langle A_t^{-1}\dot A_t,
                   \mathcal I(A_t^{-1}\dot A_t)\right\rangle_F}.
  \end{aligned}
- \label{eq:finite-hellinger-path-derivative}
 \end{equation}
 Consequently,
 \begin{equation}
@@ -386,20 +294,13 @@ bound take $A_t=I+tB$ and use
 $\|A_t^{-1}\|_{\mathrm{op}}\le(1-r)^{-1}$.
 \end{proof}
 
-\subsection{Finite real Fourier sums with dual moments}
-\label{sec:fourier-dual-moments}
+\subsection{Bounded Fourier tests for matrix tangents}
 
-Assume in addition that \(f\) is non-Gaussian.  The score \(S_A\) is the correct
-tangent, but it is not a usable dimension-free test after the law moves:
-differentiating a score-based test would require regularity and integrability
-not assumed here.  We instead need, for every matrix direction, a test built
-from bounded one-coordinate functions, with exact duality against the score and
-with \(L^2\)-norm bounded by a constant times the Frobenius norm of that
-direction, uniformly in the dimension.  The rank-two
-obstruction in \cref{lem:fourier-ode} produces the two off-diagonal coordinate
-functions; a separate small-frequency argument using the second moment
-produces the diagonal coordinate function.  All three are finite real Fourier
-sums at frequencies depending on \(f\) but not on the matrix dimension.
+Assume now that \(f\) is non-Gaussian.  Although \(S_A\) is the tangent, using
+it as a moved-law test would require unavailable regularity and integrability.
+The rank-two obstruction in \cref{lem:fourier-ode} instead gives bounded
+Fourier tests for the off-diagonal directions; a small-frequency argument using
+the second moment supplies the diagonal test, all independently of \(n\).
 
 \begin{lemma}[Finite real Fourier sums with dual moments]
 \label{lem:fourier-dual-moments}
@@ -411,7 +312,6 @@ There exist centered finite real Fourier sums $p,q,r$ such that
  q     &0&1
  \end{array}
  \qquad\text{and}\qquad \E[r(X)d(X)]=1.
- \label{eq:fourier-dual-moments}
 \end{equation}
 The entries in the table denote expectations of the products.
 For
@@ -470,20 +370,15 @@ Finally, independence gives, for centered $a,b\in L^2(f)$,
 \begin{equation}
  \left\|\sum_{i\ne j}A_{ij}a(X_i)b(X_j)\right\|_2
  \le\sqrt2\,\|a\|_2\|b\|_2\|A\|_F.
- \label{eq:quadratic-chaos-bound}
 \end{equation}
 Combining this with orthogonality of the centered diagonal terms proves the
 uniform norm bound.
 \end{proof}
 
-The test functions \(H_A\) will be paired with the Hellinger tangent along a matrix
-path.  To keep that pairing uniformly controlled after moving away from the
-identity, we need one uniform derivative bound for \(H_A\Omega_n\).  A naive
-term count grows with \(n\), while a direct H\"older estimate asks for
-integrability that is unavailable.  The next lemma isolates this non-formal
-step.  Its proof groups terms by their index-coincidence patterns, turning every
-surviving coefficient array into a Frobenius-controlled contraction.  In
-particular, it uses no fourth moment of \(X\) or higher moment of the score.
+To pair \(H_A\) with a moved Hellinger tangent, we need a derivative bound for
+\(H_A\Omega_n\) uniform in \(n\).  Term counting loses dimension and direct
+H\"older estimates require unavailable moments; grouping index coincidences
+instead reduces every surviving coefficient array to a Frobenius contraction.
 
 \begin{lemma}[Generator bound for the functions $H_A$]
 \label{lem:fourier-generator-bound}
@@ -495,34 +390,21 @@ depending on these functions and on $J,\kappa$, such that
  \|G_B(H_A\Omega_n)\|_{L^2(dx)}
  \le C_{\mathrm{gen}}\|A\|_F\|B\|_F
  \qquad(A,B\in M_n(\R),\ n\ge1).
- \label{eq:coordinate-function-generator-bound}
 \end{equation}
 \end{lemma}
 
 \begin{proof}
-For fixed $n$, both $H_A$ and its first derivatives are bounded.
-Consequently
-\[
- x_j\partial_i(H_A\Omega_n)
- =H_Ax_j\partial_i\Omega_n
-       +x_j(\partial_iH_A)\Omega_n\in L^2(dx)
-\]
-by the weighted Sobolev regularity of $\Omega_n$ and
-$\E X^2=1$.  The cutoff and mollification argument used for
-\eqref{eq:half-density-generator} therefore puts $H_A\Omega_n$
-in the domain of $G_B$.
-The product rule gives
+For fixed \(n\), boundedness of \(H_A\) and its first derivatives, together
+with \(\E X^2=1\) and the weighted Sobolev regularity of \(\Omega_n\), puts
+\(H_A\Omega_n\) in the domain of \(G_B\).  The product rule gives
 \begin{equation}
  G_B(H_A\Omega_n)
  =\left\{\tfrac12H_AS_B-(Bx)\cdot\nabla H_A\right\}\Omega_n.
  \label{eq:coordinate-function-generator-product}
 \end{equation}
-We bound the two terms uniformly in $n$ by grouping indices according to
-their coincidences.
 
-We will repeatedly use the following elementary consequence of
-independence.  If $u_1,\ldots,u_m$ are centered $L^2(f)$ functions,
-and a coefficient tensor $C$ is indexed by ordered tuples of
+If $u_1,\ldots,u_m$ are centered $L^2(f)$ functions and \(C\) is indexed by
+ordered tuples of
 \emph{distinct} coordinates, then
 \begin{equation}
  \left\|\sum_{i_1,\ldots,i_m}^{\ne}
@@ -531,91 +413,79 @@ and a coefficient tensor $C$ is indexed by ordered tuples of
                      \prod_{a=1}^m\|u_a\|_2.
  \label{eq:canonical-chaos-bound}
 \end{equation}
-Indeed, after squaring, a mixed term vanishes unless the two tuples have the
-same index set; summing the at most $m!$ permutations and applying
-Cauchy--Schwarz proves the estimate.  We use it only for $m\le4$.
+After squaring, only pairs of tuples with the same index set survive; summing
+their at most \(m!\) matchings proves the estimate.  We use it for \(m\le4\).
 
-First consider $H_AS_B$.  For a vector $a$ and a zero-diagonal
-matrix $M$, abbreviate
+For a vector \(a\) and a zero-diagonal matrix \(M\), abbreviate
 \[
  D_a(u)=\sum_i a_i u(X_i),\qquad
  Q_M(u,v)=\sum_{i\ne j}M_{ij}u(X_i)v(X_j).
 \]
-The product $H_AS_B$ is the sum of the four products obtained by
-multiplying $D_{\mathbf a}(r)+Q_{A_0}(p,q)$
-and $D_{\mathbf b}(d)+Q_{B_0}(s,x)$, where
+Then \(H_AS_B\) is obtained by multiplying
+\(D_{\mathbf a}(r)+Q_{A_0}(p,q)\) and
+\(D_{\mathbf b}(d)+Q_{B_0}(s,x)\), where
 $\mathbf a=(A_{ii})_i$, $\mathbf b=(B_{ii})_i$,
 $A_0=A-\diag A$, and
 $B_0=B-\diag B$.
 Every local product on a shared coordinate is a bounded function times one of
-$d,s,x$, hence lies in $L^2(f)$; split it into its mean and centered part.
-For $D_a(u)D_b(v)$, the distinct-index tensor, diagonal Hadamard vector, and
-total contraction all have norm at most $\|a\|_2\|b\|_2$.  For
-$D_a(u)Q_M(v,w)$, the three coincidence patterns give $a\otimes M$, a row
-or column multiplication of $M$ by $a$, and $Ma$ or $M^*a$; all have norm at
-most $\|a\|_2\|M\|_F$.  The reversed product is identical.
+\(d,s,x\), hence is in \(L^2(f)\); split it into its mean and centered part.
+For \(D_aD_b\), the distinct-index tensor, Hadamard vector, and scalar
+contraction have norm at most \(\|a\|_2\|b\|_2\).  For \(D_aQ_M\), the
+three coincidence classes yield \(a\otimes M\), a row or column multiplication
+of \(M\), and \(Ma\) or \(M^*a\), all bounded by
+\(\|a\|_2\|M\|_F\).
 
-It remains only to record the contractions for
+For the remaining product
 \[
  Q_M(u,v)Q_N(w,z)
  =\sum_{i\ne j,\,k\ne l}M_{ij}N_{kl}
                          u_i v_j w_k z_l,
 \]
-where $u,v$ are bounded and $w,z\in L^2$.  Four distinct indices give
-$M\otimes N$.  For the representative one-coincidence pattern $i=k$, the
-centered local product has coefficient norm
+with \(u,v\) bounded and \(w,z\in L^2\), four distinct indices give
+\(M\otimes N\).  In the representative one-coincidence pattern \(i=k\), the
+centered coefficient has norm
 \[
  \left\{\sum_i\left(\sum_j M_{ij}^2\right)
                     \left(\sum_l N_{il}^2\right)\right\}^{1/2}
  \le\|M\|_F\|N\|_F.
 \]
-Its mean contraction is the off-diagonal part of $M^*N$; the other three
-one-coincidence patterns are transposes of this one.  With both indices
-shared, the coefficients are $M_{ij}N_{ij}$ or $M_{ij}N_{ji}$ and their row,
-column, or total contractions.  For example,
-\[
- \sum_i\left|\sum_j M_{ij}N_{ij}\right|^2
- \le\sum_i\left(\sum_j M_{ij}^2\right)
-            \left(\sum_j N_{ij}^2\right)
- \le\|M\|_F^2\|N\|_F^2,
-\]
-and Cauchy--Schwarz gives the same bound for every transpose, Hadamard, and
-total contraction.  These patterns exhaust all coincidences.  Applying
+Its mean gives the off-diagonal part of \(M^*N\); the other one-coincidence
+classes are transposes.  When both indices are shared, Cauchy--Schwarz bounds
+the Hadamard coefficients \(M_{ij}N_{ij}\), \(M_{ij}N_{ji}\), and all their
+row, column, and scalar contractions by \(\|M\|_F\|N\|_F\).  These are all
+partitions of the two ordered pairs.  Applying
 \eqref{eq:canonical-chaos-bound} to the centered pieces proves
 \begin{equation}
  \|H_AS_B\|_2\le C\|A\|_F\|B\|_F.
  \label{eq:coordinate-function-score-bound}
 \end{equation}
 
-For $(Bx)\cdot\nabla H_A$, the diagonal part is
+For \((Bx)\cdot\nabla H_A\), the derivative of the diagonal part is
 \[
  \sum_{i,k}A_{ii}B_{ik}r'(X_i)X_k.
 \]
-For $i\ne k$, centering $r'$ produces the matrix $(\diag A)B$ and the
-vector $B^*\mathbf a-\mathbf a\mathbin{\odot}\mathbf b$; for $i=k$, center
-$xr'(x)$.  Their coefficient norms are at most
-$2\|A\|_F\|B\|_F$.
+After centering \(r'\) and \(xr'\), its coefficient arrays are
+\((\diag A)B\), \(B^*\mathbf a-(a_i b_i)_i\), and a
+diagonal contraction; their norms are at most
+\(2\|A\|_F\|B\|_F\).
 
-Let $M=A_0$.  The derivative of the
-off-diagonal part is the sum of
+With \(M=A_0\), the off-diagonal derivative is the sum of
 \[
  F(M,B;p',q):=
  \sum_{i\ne j,k}M_{ij}B_{ik}p'(X_i)q(X_j)X_k
 \]
-and $F(M^*,B;q',p)$.  For $k\notin\{i,j\}$, centering $p'$ gives a
-three-index coefficient of norm at most
+and \(F(M^*,B;q',p)\).  For \(k\notin\{i,j\}\), centering \(p'\) gives the
+three-index bound
 \[
  \left\{\sum_i\left(\sum_jM_{ij}^2\right)
                     \left(\sum_kB_{ik}^2\right)\right\}^{1/2}
- \le\|M\|_F\|B\|_F.
+ \le\|M\|_F\|B\|_F,
 \]
-and the mean gives $M^*B-M^*\diag B$, of norm at most
-$2\|M\|_F\|B\|_F$.  For $k=i$, centering $xp'$ gives the matrix
-$(B_{ii}M_{ij})$ and vector $M^*\mathbf b$; for $k=j$, the contractions are
-$M\mathbin{\odot}B$ and its row, column, and total sums.  The preceding
-Hadamard estimates bound all of them by $\|M\|_F\|B\|_F$.  The local
-functions lie in $L^2$ because $p',q$ are bounded and $\E X^2=1$.
-The same argument applies to $F(M^*,B;q',p)$, so
+and its mean gives \(M^*B-M^*\diag B\).  The classes \(k=i\) and \(k=j\)
+give \((B_{ii}M_{ij})\), \(M^*\mathbf b\), \((M_{ij}B_{ij})_{ij}\), and their
+row, column, and scalar contractions.  The same Frobenius estimates control
+each array, while boundedness of \(p',q\) and \(\E X^2=1\) puts every local
+factor in \(L^2\).  Applying the same argument to \(F(M^*,B;q',p)\) and then
 \eqref{eq:canonical-chaos-bound} yields
 \[
  \|(Bx)\cdot\nabla H_A\|_2\le C\|A\|_F\|B\|_F.
@@ -624,12 +494,8 @@ Together with \eqref{eq:coordinate-function-score-bound} and
 \eqref{eq:coordinate-function-generator-product}, this proves the lemma.
 \end{proof}
 
-We can now close the local argument.
-The test functions \(H_A\) give a linear functional that sees the
-first-order displacement, while the generator bound controls the error made
-along the exponential path.
-This turns the nonzero rotational Fourier defect into a uniform Hellinger lower bound
-for every small matrix perturbation.
+Pairing \(H_A\) with the tangent detects the first-order displacement; the
+generator bound controls the error along the exponential path.
 
 \begin{proposition}[Uniform local Hellinger coercivity]
 \label{prop:local-fisher-hellinger}
@@ -670,24 +536,14 @@ For sufficiently small $\|A\|_F$, Cauchy--Schwarz and
  h((\exp A)_\#\mu_n,\mu_n)
  \ge\frac{1}{4C_{\mathrm{dual}}}\|A\|_F.
 \]
-For $\|B\|_{\mathrm{op}}<1/2$, the real power-series logarithm
-$A=\log(I+B)$ exists and satisfies
-\[
- \|A-B\|_F
- \le\sum_{k\ge2}\frac{\|B\|_{\mathrm{op}}^{k-1}}{k}\|B\|_F
- \le C\|B\|_{\mathrm{op}}\|B\|_F.
-\]
-Thus $\|A\|_F$ and $\|B\|_F$ are uniformly comparable in a fixed small
-chart, proving the lower bound.  The upper bound is
+For \(\|B\|_{\mathrm{op}}<1/2\), \(A=\log(I+B)\) is real and
+\(\|A-B\|_F\le C\|B\|_{\mathrm{op}}\|B\|_F\).  Hence \(\|A\|_F\) and
+\(\|B\|_F\) are uniformly comparable in a fixed chart, proving the lower
+bound.  The upper bound is
 \cref{lem:finite-hellinger-upper}.
 \end{proof}
 
-The half-density pairing supplies the uniform local certificate; tail symmetry
-in \cref{sec:necessity} applies it to arbitrary output marginals without a
-separate mixed-law variance bound for \(H_A\).
-
 \subsection{Uniform coercivity modulo the exact linear stabilizer}
-\label{sec:global-coercivity}
 
 The following global form is proved in \cref{sec:globalization-proof}, after
 the infinite-dimensional classification supplies the compactness input; it is
@@ -699,7 +555,6 @@ Assume \eqref{eq:main-assumptions}.  Let \(\mathcal P_n\) denote the allowed
 signed-permutation matrices in dimension \(n\), and set
 \begin{equation}
  d_n(T)=\min_{Q\in\mathcal P_n}\|T-Q\|_F.
- \label{eq:distance-stabilizer}
 \end{equation}
 For every \(0<a\le b<\infty\)
 there are constants \(c=c(f,a,b)>0\) and \(C=C(f,a,b)<\infty\) such

@@ -1,14 +1,10 @@
 \section{The Finite-Variance Classification}
-\label{sec:finite-variance-equivalence-and-global-rigidity}
 
-We first realize row series on a common measurable carrier and prove the
-equivalent--singular orbit dichotomy.  Hilbert--Schmidt sufficiency follows by
-finite-coordinate approximation.  For necessity, qualitative tail rigidity is
-upgraded to square summability by conjugating remote coordinate swaps and
-applying the local estimate from \cref{prop:local-fisher-hellinger}.
+After realizing row series on a common measurable carrier, we prove
+Hilbert--Schmidt sufficiency by approximation and necessity by combining tail
+rigidity with conjugated coordinate swaps.
 
 \subsection{Measurable row-series realizations on countable operator orbits}
-\label{sec:measurable-realization}
 
 Only \(\E X=0\) and \(\E X^2=1\) are needed here.  Each row series exists as
 an \(L^2\) equivalence class.  The distinction between an operator on
@@ -68,10 +64,12 @@ Define \(\widehat L_a(x)\) to be the limit of
 By \eqref{eq:covariance-domination},
 \[
   \left\|\sum_{j\leq n_k(a)}a_jx_j-L_a\right\|_{L^2(\lambda)}^2
-  \leq C_\lambda2^{-4k}
+ \leq C_\lambda2^{-4k}.
 \]
-\(\lambda\)-almost surely.  This deterministic definition works for every
-law satisfying \eqref{eq:covariance-domination}.  Set
+Chebyshev's inequality and Borel--Cantelli give convergence along this
+subsequence \(\lambda\)-almost surely and in \(L^2(\lambda)\).  This
+deterministic choice works for every law satisfying
+\eqref{eq:covariance-domination}.  Set
 \(\Phi_T(x)_i=\widehat L_{T^*e_i}(x)\); the construction is Borel.
 
 For finitely supported \(b\),
@@ -99,36 +97,22 @@ measure.  The composition identities make \(D\) invariant and
 \(\Phi_{T^{-1}}\) the inverse of \(\Phi_T\) on \(D\).
 \end{proof}
 
-Write \(\nu_T=(\Phi_T)_\#\mu\).  Every countable operator family used below
-therefore acts on one common measurable carrier.  No universal pointwise action of all
-\(\GL(H)\) is needed; on the original product law these versions agree with
-the usual almost-sure row sums.
+Write \(\nu_T=(\Phi_T)_\#\mu\).
 
-\subsection{Rational translation invariance and the zero--one dichotomy}
-\label{sec:translation-dichotomy}
+\subsection{Rational translation invariance and the equivalence--singularity dichotomy}
 
-Quasi-invariance under \(\ell^2\)-translations eliminates the intermediate
-case: every bounded invertible orbit is either equivalent to \(\mu\) or
-singular to it.
-The translation input belongs to the Shepp-space problem of identifying
-all shifts that preserve a product measure class
-\cite{shepp1965translate}.  Beyond scalar translations, this question
-extends to infinite products of commutative Lie groups and to
-coordinatewise group actions~\cite{hora1991quasi,sadasue2008quasi}.
-Within the translation problem, finer questions concern quasi-invariance
-in all \(\ell^q\) directions, \(1\le q<2\)
-\cite{arutyunyan2015spaces}, and the linearity and sequence-space
-description of the Shepp space~\cite{honda2015approximations}.
-Here its \(\ell^2\) quasi-invariance is combined with translation ergodicity;
-the following proof specializes the equivalent--singular mechanism
-of~\cite{okazaki1985dichotomy} to each bounded invertible orbit.
+The relevant translation theory identifies shifts preserving product and
+coordinatewise measure classes
+\cite{shepp1965translate,hora1991quasi,sadasue2008quasi,arutyunyan2015spaces,honda2015approximations}.
+Here \(\ell^2\)-quasi-invariance and rational-translation ergodicity specialize
+the equivalence--singularity dichotomy of \cite{okazaki1985dichotomy} to each
+bounded invertible orbit.
 
-\begin{lemma}[Dichotomy for every bounded invertible orbit]
-\label{lem:orbit-dichotomy}
+\begin{lemma}[Equivalence--singularity dichotomy on every bounded invertible orbit]
+\label{lem:equivalence-singularity-dichotomy}
 For every \(T\in\GL(H)\),
 \begin{equation}
   \nu_T\sim\mu\quad\text{or}\quad\nu_T\perp\mu.
-  \label{eq:orbit-dichotomy}
 \end{equation}
 This conclusion uses only the a.e. positivity of \(f\), its centered finite second
 moment, and \(\sqrt f\in W^{1,2}(\R)\).
@@ -162,12 +146,12 @@ identity); the event is therefore a tail event, so Kolmogorov's zero--one law
 applies.  Pullback by \(\Phi_T\) proves the same assertion for \(\nu_T\),
 because translation by \(qTe_j\) pulls back to translation by \(qe_j\).
 
-Write \(\nu_T=\nu_a+\nu_s\) for its Lebesgue decomposition relative to
+Write \(\nu_T=(\nu_T)_{\mathrm{ac}}+(\nu_T)_{\mathrm{s}}\) for its Lebesgue decomposition relative to
 \(\mu\).  Choose a Borel \(\mu\)-null set \(N_0\) supporting
-\(\nu_s\), and let \(N=\bigcup_{a\in\mathcal A}(N_0+a)\).
+\((\nu_T)_{\mathrm{s}}\), and let \(N=\bigcup_{a\in\mathcal A}(N_0+a)\).
 Quasi-invariance of \(\mu\) makes \(N\) a \(\mu\)-null set;
-it is exactly \(\mathcal A\)-invariant and still supports \(\nu_s\).
-Thus \(\nu_T(N)=\nu_s(\R^{\N})\in\{0,1\}\) by ergodicity.  Mass one gives
+it is exactly \(\mathcal A\)-invariant and still supports \((\nu_T)_{\mathrm{s}}\).
+Thus \(\nu_T(N)=(\nu_T)_{\mathrm{s}}(\R^{\N})\in\{0,1\}\) by ergodicity.  Mass one gives
 singularity.  If the mass is zero, write \(\nu_T=\ell_T\mu\).
 Quasi-invariance makes \(\{\ell_T>0\}\) invariant modulo \(\mu\); it has
 positive measure and hence, by ergodicity, full measure.  Thus
@@ -175,44 +159,29 @@ positive measure and hence, by ergodicity, full measure.  Thus
 \end{proof}
 
 \subsection{Finite-marginal likelihood ratios and projected Hellinger energy}
-\label{sec:finite-marginal-likelihood-ratios}
 
-Finite-marginal likelihood ratios form a martingale, but its limit is the
-density of the absolutely continuous part of \(\nu_T\), not automatically a
-density of the whole law.  Martingale convergence therefore identifies the
-limiting affinity; the orbit dichotomy is the additional input that upgrades
-positive limiting affinity from mere overlap to equivalence.  This is why
-bounded projected Hellinger energy is an exact diagnostic in the present orbit
-problem.
-For background on likelihood ratios and Hellinger comparison,
-see~\cite{lecam1986asymptotic}; the role of Lebesgue decomposition in
-equivalence and singularity criteria is discussed
-in~\cite{mandrekar2018lebesgue}.
-
-The convolution argument below establishes finite-dimensional absolute
-continuity.  Global equivalence after an independent symmetric additive
-perturbation is a distinct problem studied in~\cite{kitada1989absolute},
-under a second-derivative integrability condition on the coordinate density.
-For the dependent image law here, the global step uses translation ergodicity.
+The finite-marginal martingale converges only to the density of the absolutely
+continuous part of \(\nu_T\); the equivalence--singularity dichotomy upgrades positive
+limiting affinity to equivalence.  See
+\cite{lecam1986asymptotic,mandrekar2018lebesgue} for the likelihood-ratio and
+Lebesgue-decomposition background, and \cite{kitada1989absolute} for the
+distinct problem of independent additive perturbations.
 
 \begin{lemma}[Projected Hellinger energy and finite-marginal likelihood ratios]
 \label{lem:finite-marginal-likelihood-ratios}
 Assume \(f>0\) almost everywhere, \(\sqrt f\in W^{1,2}(\R)\),
 and \(\E X=0\), \(\E X^2=1\).
-For \(T\in\GL(H)\), every finite output law
+For \(T\in\GL(H)\), every finite output marginal
 \((\pi_n)_\#\nu_T\) is equivalent to \(\mu_n\).
 Writing \(\mathcal F_n=\sigma(x_1,\ldots,x_n)\), define
 \begin{equation}
- \begin{aligned}
-  \ell_{T,n}(x)=\frac{d[(\pi_n)_\#\nu_T]}{d\mu_n}(\pi_n x),
-  &\qquad E_n(T)=-2\log\E_\mu\sqrt{\ell_{T,n}},\\
-  \Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr)
-  &=\E_\mu\sqrt{\ell_{T,n}}.
- \end{aligned}
-  \label{eq:finite-marginal-likelihood-ratios}
+  \ell_{T,n}(x)=
+  \frac{d[(\pi_n)_\#\nu_T]}{d\mu_n}(\pi_n x).
 \end{equation}
-Then \((\ell_{T,n})_{n\geq1}\) is a nonnegative mean-one
-\(\mu\)-martingale.
+Then
+\(\Aff(\mu_n,(\pi_n)_\#\nu_T)=\E_\mu\sqrt{\ell_{T,n}}\), and \(E_n(T)\) is
+as in \eqref{eq:projected-hellinger-energy}; moreover,
+\((\ell_{T,n})_{n\geq1}\) is a nonnegative mean-one \(\mu\)-martingale.
 We have
 \begin{equation}
   \Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr)\downarrow\Aff(\mu,\nu_T),
@@ -221,19 +190,16 @@ We have
     \Longleftrightarrow\sup_nE_n(T)<\infty.
   \label{eq:marginal-affinity-limit}
 \end{equation}
-Otherwise \(E_n(T)\uparrow\infty\).
-Then \(\nu_T\perp\mu\).
+Otherwise \(E_n(T)\uparrow\infty\) and \(\nu_T\perp\mu\).
 If \(\nu_T\sim\mu\) with density
 \(\ell_T=d\nu_T/d\mu\), then
 \begin{align}
   \ell_{T,n}&=\E_\mu[\ell_T\mid\mathcal F_n]
        \longrightarrow \ell_T
-       &&\text{in }L^1(\mu),
-       \label{eq:forward-likelihood-ui}\\
+       &&\text{in }L^1(\mu),\\
   \ell_{T,n}^{-1}&=\E_{\nu_T}[\ell_T^{-1}\mid\mathcal F_n]
        \longrightarrow \ell_T^{-1}
        &&\text{in }L^1(\nu_T).
-       \label{eq:reverse-likelihood-ui}
 \end{align}
 In particular, both likelihood-ratio martingales are uniformly integrable in
 their respective reference measures.
@@ -249,10 +215,10 @@ everywhere, proving finite-dimensional equivalence.
 
 Consistency of projected laws proves the martingale assertion.  The
 martingale limit is
-\(\ell_{T,\infty}=d(\nu_T)_a/d\mu\), the density of the absolutely continuous
+\(\ell_{T,\infty}=d(\nu_T)_{\mathrm{ac}}/d\mu\), the density of the absolutely continuous
 part of \(\nu_T\).  Indeed, Fatou on cylinder sets gives
 \(\ell_{T,\infty}\mu\leq\nu_T\); conversely, if
-\((\nu_T)_a=\ell_{\mathrm{ac}}\mu\), then
+\((\nu_T)_{\mathrm{ac}}=\ell_{\mathrm{ac}}\mu\), then
 \(\E_\mu[\ell_{\mathrm{ac}}\mid\mathcal F_n]\leq\ell_{T,n}\), and martingale
 convergence gives the reverse inequality.  Since
 \(\E_\mu(\sqrt{\ell_{T,n}})^2=1\), the square roots are uniformly integrable
@@ -263,7 +229,7 @@ also makes their expectations decreasing; hence
       =\int\sqrt{\ell_{T,\infty}}\,d\mu
       =\Aff(\mu,\nu_T).
 \]
-The dichotomy in \cref{lem:orbit-dichotomy} now proves
+The dichotomy in \cref{lem:equivalence-singularity-dichotomy} now proves
 \eqref{eq:marginal-affinity-limit} and the singular alternative.
 
 Under equivalence, the forward identity is the defining
@@ -277,15 +243,11 @@ Conditional-expectation convergence gives both \(L^1\) limits and hence
 both uniform-integrability assertions.
 \end{proof}
 
-Because initial segments are cofinal among finite coordinate sets, data
-processing also shows that the criterion is independent of the coordinate
-enumeration.
-Here data processing is the contraction of Hellinger divergence under
-measurable projections, a special case of the divergence inequalities
-in~\cite{liese2006divergences}.
+Since initial segments are cofinal among finite coordinate sets, Hellinger
+data processing also makes the criterion independent of their enumeration
+\cite{liese2006divergences}.
 
 \subsection{Sufficiency of Hilbert--Schmidt perturbations}
-\label{sec:sufficiency}
 
 Finite-coordinate Hilbert--Schmidt approximants are Cauchy in Hellinger
 distance, but this alone produces only a candidate density and one direction
@@ -294,8 +256,7 @@ carrier are what prevent the limit from losing mass in the reverse direction.
 
 \begin{proposition}[Hilbert--Schmidt sufficiency and likelihood-ratio convergence]
 \label{prop:hilbert-schmidt-sufficiency}
-Assume \eqref{eq:fisher-regularity}, let
-$\mu=\rho^{\otimes\N}$, where $\rho(dx)=f(x)\,dx$, and let
+Assume \eqref{eq:fisher-regularity} and let
 $T=I+K\in\GL(H)$ with $K\in\mathcal S_2$.
 Then \(\nu_T\sim\mu\).
 For the eventually invertible operators
@@ -303,22 +264,10 @@ $T_n=I+P_nKP_n$, their likelihood ratios
 $\ell_{T_n}=d\nu_{T_n}/d\mu$ converge in $L^1(\mu)$ to the strictly
 positive likelihood ratio $\ell_T=d\nu_T/d\mu$, and
 $\sqrt{\ell_{T_n}}\to\sqrt{\ell_T}$ in $L^2(\mu)$.
-The inverse approximants satisfy the same conclusion:
-\[
- \ell_{T_n^{-1}}\longrightarrow\ell_{T^{-1}}
- \quad\text{in }L^1(\mu).
-\]
-For $S,T\in\GL(H)$ with $S-I,T-I\in\mathcal S_2$, the
-likelihood ratios obey, on the common measurable carrier of their countable
-operator group,
-\begin{align}
- \ell_{ST}(y)&=\ell_S(y)\ell_T(\Phi_{S^{-1}}y),
-   \label{eq:rn-cocycle}\\
- \ell_T(y)\ell_{T^{-1}}(\Phi_{T^{-1}}y)&=1.
-   \label{eq:rn-inverse}
-\end{align}
-If $Q$ is an exact linear stabilizer of $\mu$, the same equivalence
-holds whenever \(TQ^{-1}-I\in\mathcal S_2\) and \(T\) is invertible.
+The inverse approximants likewise satisfy
+\(\ell_{T_n^{-1}}\to\ell_{T^{-1}}\) in \(L^1(\mu)\).
+If $Q$ is an exact linear stabilizer of $\mu$, then \(\nu_T\sim\mu\)
+whenever \(TQ^{-1}-I\in\mathcal S_2\) and \(T\) is invertible.
 \end{proposition}
 
 \begin{proof}
@@ -334,7 +283,6 @@ Hellinger invariance under the finite invertible map $T_n^{-1}$ and
  \|\sqrt{\ell_{T_m}}-\sqrt{\ell_{T_n}}\|_2
  \le\sqrt{C_f}\,\|T_n^{-1}\|_{\mathrm{op}}
                     \|T_m-T_n\|_{\mathcal S_2}.
- \label{eq:approximant-hellinger-cauchy}
 \end{equation}
 Thus \(\sqrt{\ell_{T_n}}\) converges in $L^2(\mu)$ to a nonnegative
 function of norm one; denote its square by $\widetilde\ell_T$.  Since
@@ -362,13 +310,11 @@ measurable carrier supplied by
 \]
 This proves equivalence and identifies
 $\widetilde\ell_T=\ell_T>0$ almost everywhere.
-Change of variables on that carrier proves
-\eqref{eq:rn-cocycle} and \eqref{eq:rn-inverse}.  Finally, $\nu_Q=\mu$ and
-$T=(TQ^{-1})Q$ give the assertion about exact stabilizers.
+Finally, $\nu_Q=\mu$ and $T=(TQ^{-1})Q$ give the assertion about exact
+stabilizers.
 \end{proof}
 
 \subsubsection{The orthogonal case requires only location Fisher information}
-\label{sec:orthogonal-transformations}
 
 For orthogonal transformations the assumptions can be reduced to
 \begin{equation}
@@ -377,18 +323,15 @@ For orthogonal transformations the assumptions can be reduced to
  \E X=0,\qquad\E X^2=1.
  \label{eq:orthogonal-fisher-regularity}
 \end{equation}
-In particular, $xg'\in L^2$ is not required.
-The cutoff identities $\E s(X)=0$ and $\E[Xs(X)]=1$ still follow
-from $J<\infty$ and the second moment.
-For a skew-symmetric matrix $A$, the score has only off-diagonal terms and
+Thus \(xg'\in L^2\) is not required.  Cutoff integration by parts still gives
+\(\E s(X)=0\) and \(\E[Xs(X)]=1\), while a skew-symmetric \(A\) has only
+off-diagonal score terms and
 \begin{equation}
  \E S_A^2=(J-1)\|A\|_F^2.
- \label{eq:orthogonal-fisher}
 \end{equation}
-The generator formula remains valid.
-Only $x_j\partial_i\Omega_n$ with $i\ne j$ occur.
-One can justify it by radial cutoff and radial mollification.
-Those operators commute with the orthogonal one-parameter group.
+Only \(x_j\partial_i\Omega_n\) with \(i\ne j\) occur in the generator formula,
+which follows by radial cutoff and mollification commuting with the orthogonal
+one-parameter group.
 
 \begin{proposition}[Orthogonal local bounds and Hilbert--Schmidt sufficiency]
 \label{prop:orthogonal-sufficiency}
@@ -448,11 +391,6 @@ equivalence and all asserted convergence.
 \end{proof}
 
 \subsection{Necessity of Hilbert--Schmidt perturbations}
-\label{sec:necessity}
-
-Approximation and likelihood-ratio convergence transfer local coercivity from
-coordinate blocks to Hilbert--Schmidt operators, allowing many small tail
-mismatches to be combined into a contradiction.
 
 \begin{lemma}[The local bound for Hilbert--Schmidt operators]
 \label{lem:local-hs-coercivity}
@@ -464,21 +402,17 @@ $\|K\|_{\mathcal S_2}\le\delta$ satisfies
  c\|K\|_{\mathcal S_2}
  \le h(\nu_{I+K},\mu)
  \le C\|K\|_{\mathcal S_2}.
- \label{eq:local-hs-hellinger}
 \end{equation}
 The constants can be chosen with $\delta<1$, so $I+K$ is
 automatically invertible.  Under the weaker assumptions
 \eqref{eq:orthogonal-fisher-regularity}, the same conclusion
 holds for orthogonal $I+K$ whenever $f$ is non-Gaussian.
-This includes finite-rank perturbations whose ranges have
-infinite coordinate support.
 \end{lemma}
 
 \begin{proof}
-Let $K_n=P_nKP_n$.  The untouched tail has affinity one, so
-\eqref{eq:local-matrix-hellinger} applies directly to
-$h(\nu_{I+K_n},\mu)$.  By
-\cref{prop:hilbert-schmidt-sufficiency},
+Let \(K_n=P_nKP_n\).  Since the untouched tail has affinity one,
+\eqref{eq:local-matrix-hellinger} applies to \(I+K_n\), while
+\cref{prop:hilbert-schmidt-sufficiency} gives
 \[
  h(\nu_{I+K_n},\mu)
  \longrightarrow h(\nu_{I+K},\mu),
@@ -486,40 +420,23 @@ $h(\nu_{I+K_n},\mu)$.  By
 \]
 Passing to the limit proves both bounds.
 
-In the orthogonal case, the polar approximants from
-\cref{prop:orthogonal-sufficiency} satisfy
+For the orthogonal assertion, choose the radius in this lemma to be half the
+finite-dimensional radius in \eqref{eq:orthogonal-local-hellinger}.  The polar
+approximants from \cref{prop:orthogonal-sufficiency} satisfy
 \[
  h(\nu_{V_n},\mu)\longrightarrow h(\nu_{I+K},\mu),
  \qquad
- \|V_n-I\|_{\mathcal S_2}\longrightarrow\|K\|_{\mathcal S_2}.
+ \|V_n-I\|_{\mathcal S_2}\longrightarrow\|K\|_{\mathcal S_2},
 \]
-After reducing the radius if necessary, pass to the limit in
-\eqref{eq:orthogonal-local-hellinger}.
+Thus all sufficiently large approximants lie within the finite-dimensional
+radius, and \eqref{eq:orthogonal-local-hellinger} passes to the limit.
 \end{proof}
 
 \subsubsection{Characteristic-function rigidity and bounded invertible linear mixing}
-\label{sec:characteristic-function-rigidity}
 
-Necessity begins by identifying what a single output row can look like if
-its law is close to the original coordinate law.
-This is a one-dimensional rigidity problem for linear combinations of
-independent copies of \(X\).
-The characteristic-function argument below says that, for a non-Gaussian
-coordinate law, such a row must asymptotically be one signed coordinate.
-
-Throughout this subsection, $X_j$ are independent copies of a real random
-variable $X$ with law $\rho$ and
-\[
-  \E X=0,\qquad \E X^2=1,
-\]
-and $\rho$ is non-Gaussian.  The characteristic-function arguments
-below require no moments of order greater than two.  Recall
-\[
-  \phi(t)=\E e^{itX},\qquad \mu=\rho^{\otimes\N}.
-\]
-The group $\mathcal P$ consists of coordinate permutations whose row
-signs preserve $\rho$.  This definition applies even when $\rho$ has
-no density.
+The next two lemmas use only a centered, variance-one, non-Gaussian coordinate
+law: a row whose linear combination converges in law to \(X\) must approach an
+allowed signed coordinate.
 
 \begin{lemma}[A product approximation for small coefficients]
 \label{lem:characteristic-product-tail}
@@ -739,23 +656,13 @@ If $T$ is invertible, then
 $T^*T-I=T^{-1}(TT^*-I)T$.
 \end{proof}
 
-We now pass from qualitative row matching to square-summable error.  Compactness
-of the covariance defect normalizes the remote rows; tail marginal convergence and
-\cref{lem:unit-row-rigidity} match each with an allowed signed coordinate;
-bounded invertibility makes these matches eventually distinct; and
-\(T^*T-I\) gives the corresponding column matching.  None of these facts
-controls the sum of the errors.
-
-Suppose that sum diverges.  Isolate a remote finite packet with fixed small
-error energy and swap it with fresh, almost perfectly matched auxiliary
-coordinates.  Conjugating the output swap through \(T\) and cancelling the
-aligned input swap produces \(W=PT^{-1}ST\): a small Hilbert--Schmidt
-perturbation of the identity whose squared norm is comparable to the packet's
-error energy.
-Local coercivity must detect \(W\), while absolute continuity makes the same
-change asymptotically invisible because \(S\) is supported arbitrarily far in
-the tail.  The block computation below has one purpose: to verify this norm
-comparison without losing constants to the ambient dimension.
+Covariance compactness and unit-row rigidity match remote rows and columns
+with distinct allowed coordinates, but do not sum the errors.  If their sum
+diverges, a remote packet can be swapped with better-matched auxiliary
+coordinates.  After conjugation this gives \(W=PT^{-1}ST\), whose
+Hilbert--Schmidt size is comparable to the packet error.  Local coercivity
+detects \(W\), whereas absolute continuity makes the remote output swap
+asymptotically invisible.
 
 \begin{lemma}[Hilbert--Schmidt necessity under a second-moment hypothesis]
 \label{lem:hilbert-schmidt-necessity}
@@ -796,7 +703,6 @@ Together with $\langle T\widehat e_i,e_i\rangle
 \begin{equation}
  \operatorname{err}_i:=\|T^*e_i-\widehat e_i\|_2^2
        +\|T\widehat e_i-e_i\|_2^2\longrightarrow0.
- \label{eq:row-column-tail-errors}
 \end{equation}
 
 We claim that $\sum_{i>N_0}\operatorname{err}_i<\infty$.  Choose the local
@@ -840,15 +746,15 @@ Hellinger invariance and $P_\#\mu=\mu$ give
  \label{eq:swap-hellinger-identity}
 \end{equation}
 All differences have finite rank, and
-\cref{lem:measurable-row-series-realization} supplies the common carrier
+\cref{lem:measurable-row-series-realization} supplies the common measurable carrier
 needed for this identity.
 
-To compare the norms, freeze the auxiliary matches by replacing in $T$ each
-row and column indexed by $G$ with its matched coordinate vector:
+To compare the norms, freeze the auxiliary matches by defining
 \[
  T_0^*e_k=\widehat e_k,\qquad T_0\widehat e_k=e_k\qquad(k\in G).
 \]
-and retain the complementary block of $T$.  Orthogonal block decomposition
+On the complementary block let \(T_0\) agree with \(T\).  Orthogonal block
+decomposition
 gives
 \begin{equation}
  \|T-T_0\|_{\mathcal S_2}^2
@@ -856,7 +762,6 @@ gives
        \bigl(\|T^*e_k-\widehat e_k\|_2^2
                     +\|T\widehat e_k-e_k\|_2^2\bigr)
  =\sum_{k\in G}\operatorname{err}_k.
- \label{eq:auxiliary-coordinate-approximation}
 \end{equation}
 
 Using the decompositions $E\oplus(E\cup G)^c\oplus G$ on the output and the
@@ -876,15 +781,15 @@ Here $B,C$ are Hilbert--Schmidt, and the error on $E$ is
  \sum_{i\in E}
  \bigl(\|T_0^*e_i-\widehat e_i\|_2^2
                     +\|T_0\widehat e_i-e_i\|_2^2\bigr)
- =2\|A-I\|_F^2+\|B\|_{\mathcal S_2}^2+\|C\|_{\mathcal S_2}^2.
+ =2\|A-I\|_F^2+\|B\|_{\mathcal S_2}^2+\|C\|_{\mathcal S_2}^2,
 \]
-while the displayed commutator gives
+while the commutator satisfies
 \[
  \|ST_0-T_0P\|_{\mathcal S_2}^2
  =2\bigl(\|A-I\|_F^2+\|B\|_{\mathcal S_2}^2
                          +\|C\|_{\mathcal S_2}^2\bigr),
 \]
-Therefore
+Therefore,
 \begin{equation}
  \begin{aligned}
  2\|A-I\|_F^2+\|B\|_{\mathcal S_2}^2+\|C\|_{\mathcal S_2}^2
@@ -943,11 +848,8 @@ $W=P T^*ST$ above is orthogonal.  Thus only the orthogonal part of
 information.
 \end{proof}
 
-\subsection{Exact identification of the linear stabilizer}
-\label{sec:exact-stabilizer}
-
-Unlike measure-class equivalence, exact invariance requires only the second
-moment.
+\paragraph{Exact linear stabilizer.}
+Exact invariance requires only the second moment.
 
 \begin{proof}[Proof of \cref{cor:moment-only-stabilizer}]
 Every member of $\mathcal P$ preserves the product law.
@@ -959,50 +861,18 @@ consisting of this row shows that the row is an allowed signed unit
 vector.  Orthogonality makes the selected coordinates a bijection.
 Thus $T\in\mathcal P$.
 \end{proof}
-\subsection{Two-sided uniform integrability and completion of the proof}
-\label{sec:likelihood-convergence}
-
-The finite-coordinate limits and the two finite-marginal
-conditional-expectation martingales now combine to complete the proof.
-
-\begin{proposition}[Finite-coordinate approximants recover the likelihood ratio]
-\label{prop:finite-coordinate-approximants-recover-likelihood-ratio}
-Under the assumptions of \cref{thm:measure-equivalence}, suppose
-\(\nu_T\sim\mu\).  For any \(Q\in\mathcal P\) satisfying
-\(TQ^{-1}-I\in\mathcal S_2(H)\), put \(K=TQ^{-1}-I\) and
-\(T_n=I+P_nKP_n\).  Then \(T_n\) is eventually invertible and
-\begin{equation}
- \frac{d\nu_{T_n}}{d\mu}\longrightarrow
-       \frac{d\nu_{TQ^{-1}}}{d\mu}
-       \quad\text{in }L^1(\mu),
- \qquad
- \sqrt{\frac{d\nu_{T_n}}{d\mu}}
-       \longrightarrow
- \sqrt{\frac{d\nu_{TQ^{-1}}}{d\mu}}
-       \quad\text{in }L^2(\mu).
- \label{eq:likelihood-convergence}
-\end{equation}
-Since \(\nu_Q=\mu\), the limiting law is also \(\nu_T\).  Moreover,
-the finite-marginal likelihood ratios and their reciprocals are uniformly
-integrable in their respective reference measures.
-\end{proposition}
-
-\begin{proof}[Proof of \cref{thm:measure-equivalence} and \cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}]
+\begin{proof}[Proof of \cref{thm:measure-equivalence}]
 Necessity follows from \cref{lem:hilbert-schmidt-necessity}.  If
 $T-Q\in\mathcal S_2$ for $Q\in\mathcal P$, then
 $TQ^{-1}=I+(T-Q)Q^{-1}$ is invertible and differs from the identity
 by a Hilbert--Schmidt operator.  By \cref{prop:hilbert-schmidt-sufficiency},
 $\nu_{TQ^{-1}}\sim\mu$.  Since $Q_\#\mu=\mu$, this is
-$\nu_T\sim\mu$.  The same proposition gives the finite-coordinate
-likelihood-ratio and square-root limits stated in
-\cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}.
-The exact linear stabilizer is identified in
-\cref{cor:moment-only-stabilizer}.
-Finally, \cref{lem:orbit-dichotomy,lem:finite-marginal-likelihood-ratios}
-give the finite-marginal affinity characterization and the singular
-alternative in \cref{thm:measure-equivalence}, and both
-uniform-integrability statements in
-\cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}.
+$\nu_T\sim\mu$.  For \(K=TQ^{-1}-I\), the same proposition shows that the
+likelihood ratios for \(I+P_nKP_n\) converge to \(d\nu_T/d\mu\) in
+\(L^1(\mu)\), and their square roots converge in \(L^2(\mu)\).
+\Cref{lem:equivalence-singularity-dichotomy,lem:finite-marginal-likelihood-ratios} give the
+projected-energy characterization, the singular alternative, and two-sided
+uniform integrability.  The exact linear stabilizer was proved above.
 \end{proof}
 \begin{proof}[Proof of \cref{cor:orthogonal-equivalence}]
 Necessity is \cref{lem:hilbert-schmidt-necessity}.  For sufficiency, write
@@ -1010,24 +880,17 @@ $UQ^{-1}=I+(U-Q)Q^{-1}$.  This is orthogonal and differs from the
 identity by a Hilbert--Schmidt operator.  Apply
 \cref{prop:orthogonal-sufficiency}, and then use
 $Q_\#\mu=\mu$.  The alternative follows from
-\cref{lem:orbit-dichotomy}.
+\cref{lem:equivalence-singularity-dichotomy}.
 \end{proof}
 
 \subsection{Globalization of finite-dimensional coercivity}
 \label{sec:globalization-proof}
 
-Local coercivity controls only a fixed Frobenius neighborhood of the
-stabilizer.  The global obstacle would be a sequence in varying dimensions
-whose Hellinger displacement tends to zero while its distance from every
-allowed signed permutation stays positive.  After passing to a subsequence
-whose block Hellinger energies are summable, we stack these matrices as blocks
-of one bounded invertible operator on \(\ell^2\).  Kakutani's theorem turns this
-summability into equivalence of the infinite product, and the classification
-forces the block-diagonal operator to be Hilbert--Schmidt-close to one allowed
-signed permutation.  That
-permutation must eventually preserve each block, contradicting the assumed
-separation.  This direct-sum argument is the compactness input missing from the
-local theorem.
+To globalize local coercivity, stack a hypothetical sequence of
+finite-dimensional counterexamples with summable Hellinger energies into one
+block-diagonal operator.  Kakutani gives equivalence, so the classification
+makes this operator Hilbert--Schmidt-close to an allowed signed coordinate permutation;
+that permutation must eventually preserve the blocks, a contradiction.
 
 \begin{proof}[Proof of \cref{thm:global-coercivity}]
 Fix \(0<a\le b<\infty\).  We first prove uniform separation away from
@@ -1062,7 +925,6 @@ Kakutani's theorem \cite{kakutani1948equivalence} gives \(\nu_A\sim\mu\),
 so \cref{thm:measure-equivalence} supplies \(Q\in\mathcal P\) with
 \begin{equation}
  D:=A-Q\in\mathcal S_2(H).
- \label{eq:globalization-D}
 \end{equation}
 
 Let \(\Pi_k\) be the orthogonal projection onto the \(k\)-th output block.
@@ -1077,7 +939,6 @@ corresponding input block, then the two vectors have disjoint supports and
 \begin{equation}
  \|A^*e_i-Q^*e_i\|_2^2
  =\|A_k^*e_i\|_2^2+1\ge a^2+1.
- \label{eq:row-escape-cost}
  \end{equation}
 For large $k$ this contradicts
 $\|\Pi_kD\|_{\mathcal S_2}^2<a^2+1$.  Thus $Q^*$ preserves every sufficiently
@@ -1101,13 +962,11 @@ $Q_n\in\mathcal P_n$ for $d_n(T)$.  Since
  \qquad
  \|TQ_n^{-1}-I\|_F=d_n(T).
 \]
-For $d_n(T)\le\delta_{\mathrm{loc}}$, the local theorem gives the required
-bounds.  For $d_n(T)>\delta_{\mathrm{loc}}$,
-\eqref{eq:uniform-separation} gives the lower bound and $h^2\le2$ the upper
-bound.  Taking $c$ no larger than $c_{\mathrm{loc}}^2$ and the separation
-constant at $\varepsilon=\delta_{\mathrm{loc}}$, and taking
-\[
- C=\max\{C_{\mathrm{loc}}^2,2\delta_{\mathrm{loc}}^{-2}\}.
-\]
-proves \eqref{eq:global-coercivity}.
+For \(d_n(T)\le\delta_{\mathrm{loc}}\), the local theorem gives both bounds.
+For \(d_n(T)>\delta_{\mathrm{loc}}\),
+\eqref{eq:uniform-separation} gives the lower bound and \(h^2\le2\) the upper
+bound.  Taking the smaller
+lower constant and
+\(C=\max\{C_{\mathrm{loc}}^2,2\delta_{\mathrm{loc}}^{-2}\}\) proves
+\eqref{eq:global-coercivity}.
 \end{proof}
