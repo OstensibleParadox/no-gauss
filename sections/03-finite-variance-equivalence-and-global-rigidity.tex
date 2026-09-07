@@ -1,13 +1,18 @@
 \section{Finite-Variance Equivalence and Global Rigidity}
 \label{sec:finite-variance-equivalence-and-global-rigidity}
 
-Because the product sample space is \(\R^{\N}\), not \(\ell^2\), we first
-realize bounded operators by compatible measurable row series, establish the
-orbit dichotomy, and recover the full affinity from finite marginals.  We then
-prove the finite-variance classification: Hilbert--Schmidt perturbations yield
-convergent likelihood ratios, whereas nonsummable tail deviations produce a
-Hellinger obstruction.  The classification finally supplies the compactness
-input for global finite-dimensional coercivity.
+Two losses of information drive this section.  First, the product sample space
+is \(\R^{\N}\), not \(\ell^2\): row sums defined only up to separate null sets
+cannot simply be composed.  We construct a common measurable carrier before
+using inverse maps, tail symmetries, or likelihood cocycles.  Second, convergence
+of individual remote rows gives no summability.  The necessity proof combines
+qualitative row rigidity with carefully chosen tail-coordinate swaps that turn
+any nonsummable error into a locally visible but asymptotically invisible
+Hellinger perturbation.
+Hilbert--Schmidt sufficiency, the orbit dichotomy, and the finite-marginal
+criterion complete the classification.  The classification then supplies the
+direct-sum compactness argument needed for global finite-dimensional
+coercivity.
 
 \input{parts/measurable-realization-and-measure-class-dichotomy}
 \input{parts/finite-variance-classification}

@@ -2,8 +2,9 @@
 \label{sec:sufficiency}
 
 Finite-coordinate Hilbert--Schmidt approximants are Cauchy in Hellinger
-distance, and the proposition identifies their limit as an
-infinite-dimensional likelihood ratio.
+distance, but this alone produces only a candidate density and one direction
+of absolute continuity.  The inverse approximants and the common measurable
+carrier are what prevent the limit from losing mass in the reverse direction.
 
 \begin{proposition}[Hilbert--Schmidt sufficiency and likelihood-ratio convergence]
 \label{prop:hilbert-schmidt-sufficiency}
@@ -84,15 +85,15 @@ This gives $\nu_{T^{-1}}\ll\mu$.
 The measurable row-series construction in
 \cref{lem:measurable-row-series-realization} requires only the centered finite
 second moment.
-On its countable-group carrier it gives
+On the common measurable carrier for the required countable group it gives
 \[
  \mu=(\Phi_T)_\#\nu_{T^{-1}}
        \ll(\Phi_T)_\#\mu=\nu_T.
 \]
 This proves equivalence and identifies
 $\widetilde\ell_T=\ell_T>0$ almost everywhere.
-Change of variables on the same carrier proves the cocycle and inverse
-identities.
+Change of variables on the same common measurable carrier proves the cocycle
+and inverse identities.
 Finally, $\nu_Q=\mu$ and $T=(TQ^{-1})Q$ give the assertion about the exact
 linear stabilizer.
 \end{proof}
@@ -327,6 +328,17 @@ then
 \end{equation}
 \end{lemma}
 \begin{proof}
+The compactness mechanism separates retained coefficients from an escaping
+Gaussian component.  After reordering and passing to a subsequence, the
+coefficients converge coordinatewise; the squared mass escaping
+through coefficients that tend individually to zero becomes an independent
+Gaussian because only the quadratic term of \(\phi\) survives.  If the
+resulting law is again \(\rho\) and no limiting coefficient has modulus one,
+iterating the same smoothing identity makes every iterated coefficient product
+geometrically small and forces \(\phi(t)=e^{-t^2/2}\).  Non-Gaussianity
+therefore leaves only one possible fixed point: a single allowed signed
+coordinate.  We now make these three steps precise.
+
 We first describe the limits of such coefficient arrays.  Permuting
 coefficients does not change the law of their sum.  Arrange each row in
 nonincreasing order of absolute value, retaining its signs and padding
@@ -451,6 +463,14 @@ Let $T$ be bounded on $\ell^2$.  If $\nu_T\ll\mu$, then
 If $T$ is boundedly invertible, $T^*T-I$ is compact as well.
 \end{lemma}
 \begin{proof}
+For the self-adjoint covariance defect \(TT^*-I\), compactness will follow once
+the operator norms of its remote tail compressions tend to zero.  Absolute
+continuity compares \(\mu\) and \(\nu_T\) on bounded tail tests, whereas the
+quadratic forms of the covariance defect are unbounded.  The real issue is
+therefore uniform integrability of the squares of all \(\ell^2\) linear sums
+with bounded coefficient norm.  The truncation below supplies exactly this
+bridge using a second moment only.
+
 We first record uniform integrability of the squares of the linear sums
 \begin{equation}
  Y_b:=\sum_jb_jX_j,\qquad \|b\|_2\leq B,
@@ -520,14 +540,23 @@ For invertible $T$, use
 $T^*T-I=T^{-1}(TT^*-I)T$.
 \end{proof}
 
-We now assemble the necessity argument.
-The preceding row rigidity gives only qualitative matching of far-out rows
-with signed coordinates.
-To obtain a Hilbert--Schmidt conclusion, those row errors must be summable.
-The proof forces summability by swapping carefully chosen tail coordinates:
-if the errors were not summable, the swaps would create a small finite-rank
-perturbation that local coercivity can detect, while tail invariance makes
-it asymptotically invisible.
+We now pass from qualitative row matching to square-summable error.  Compactness
+of the covariance defect normalizes the remote rows; tail marginal convergence and
+\cref{lem:unit-row-rigidity} match each with an allowed signed coordinate;
+bounded invertibility makes these matches eventually distinct; and
+\(T^*T-I\) gives the corresponding column matching.  None of these facts
+controls the sum of the errors.
+
+Suppose that sum diverges.  Isolate a remote finite packet with fixed small
+error energy and swap it with fresh, almost perfectly matched auxiliary
+coordinates.  Conjugating the output swap through \(T\) and cancelling the
+aligned input swap produces \(W=PT^{-1}ST\): a small Hilbert--Schmidt
+perturbation of the identity whose squared norm is comparable to the packet's
+error energy.
+Local coercivity must detect \(W\), while absolute continuity makes the same
+change asymptotically invisible because \(S\) is supported arbitrarily far in
+the tail.  The block computation below has one purpose: to verify this norm
+comparison without losing constants to the ambient dimension.
 
 \begin{lemma}[Hilbert--Schmidt necessity under a second-moment hypothesis]
 \label{lem:hilbert-schmidt-necessity}
@@ -626,11 +655,13 @@ Hellinger invariance and $P_\#\mu=\mu$ give
  \label{eq:swap-hellinger-identity}
 \end{equation}
 All maps in use lie in a countable operator group, so
-\cref{lem:measurable-row-series-realization} justifies this identity on a common
-carrier.
+\cref{lem:measurable-row-series-realization} justifies this identity on a
+common measurable carrier.
 
-We now estimate $ST-TP$ in \eqref{eq:swap-relative-norm}.
-Obtain $T_0$ from $T$ by replacing each auxiliary row and column with
+We now verify the norm comparison.  The auxiliary operator \(T_0\) freezes the
+nearly exact matches in \(G\), so the remaining commutator isolates precisely
+the row-and-column error carried by \(E\).  Obtain \(T_0\) from \(T\) by
+replacing each auxiliary row and column with
 its matched coordinate vector:
 \[
  T_0^*e_k=\widehat e_k,\qquad T_0\widehat e_k=e_k\qquad(k\in G).
@@ -800,9 +831,18 @@ $Q_\#\mu=\mu$.  The alternative follows from
 \subsection{Globalization of finite-dimensional coercivity}
 \label{sec:globalization-proof}
 
-The infinite-dimensional classification supplies the compactness needed to
-rule out finite-dimensional almost-symmetries that stay a fixed distance from
-the exact linear stabilizer.
+Local coercivity controls only a fixed Frobenius neighborhood of the
+stabilizer.  The global obstacle would be a sequence in varying dimensions
+whose Hellinger displacement tends to zero while its distance from every
+allowed signed permutation stays positive.  After passing to a subsequence
+whose block Hellinger energies are summable, we stack these matrices as blocks
+of one bounded invertible operator on \(\ell^2\).  Kakutani's theorem turns this
+summability into equivalence of the infinite product, and the classification
+forces the block-diagonal operator to be Hilbert--Schmidt-close to one allowed
+signed permutation.  That
+permutation must eventually preserve each block, contradicting the assumed
+separation.  This direct-sum argument is the compactness input missing from the
+local theorem.
 
 \begin{proof}[Proof of \cref{thm:global-coercivity}]
 Fix \(0<a\le b<\infty\).  We first prove uniform separation away from

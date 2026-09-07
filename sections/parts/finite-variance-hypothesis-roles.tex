@@ -34,13 +34,16 @@ coordinate permutations for homogeneous linear equivalence.
 \Cref{cor:affine-gamma-classification} treats the distinct affine problem, in
 which support-preserving scales can remain equivalent.
 
-Support controls null-set admissibility.  The second moment instead makes
-every \(\ell^2\) row a convergent random series, supplies uniform integrability
-of squared linear forms, and enables the Gaussian-summand extraction in
-\cref{lem:unit-row-rigidity}.  Hence the first-moment ODE result has strictly
-broader moment scope than \cref{thm:measure-equivalence}.
+The hypotheses enter at different points.  Support controls null-set
+admissibility.  The second moment makes every \(\ell^2\) row a convergent random
+series, supplies uniform integrability of squared linear forms, and enables the
+Gaussian-summand extraction in \cref{lem:unit-row-rigidity}.  Hence the
+first-moment ODE result has strictly broader moment scope than
+\cref{thm:measure-equivalence}.
 
-Under \eqref{eq:main-assumptions}, the Hellinger paths give \(L^1\) likelihood
-convergence and uniform integrability.  The finite Fourier witnesses use only
-their dimension-free \(L^2(\mu_n)\) and generator bounds; tail symmetry avoids
-a separate mixed-law variance estimate.
+Location and scale Fisher information control the Hellinger paths and their
+dimension-free generator bounds.  The test functions \(H_A\) require no
+higher moments: their role is to pair those bounds with every matrix tangent.
+Tail symmetry then avoids a separate mixed-law variance estimate.  This
+division of labor explains why the orthogonal theorem drops scale Fisher
+information, while the full bounded invertible theorem retains it.

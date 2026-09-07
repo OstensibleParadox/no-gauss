@@ -39,8 +39,9 @@ Canonical language and macro-expansion checks
 - "matrix Fisher operator" expands to the score-covariance operator I defined
   by <A,I B>_F=E[S_A S_B].
 - "compatible stable row-series realization" expands to the measurable
-  row-series maps for T and a row inverse S satisfying both composition
-  identities on common conull carriers.
+  row-series maps for T and the inverse matrix S satisfying both composition
+  identities on a common measurable carrier of full measure for the relevant
+  orbit laws.
 - "anisotropic mixing cost" expands to the displayed diagonal-square term plus
   the off-diagonal column cost F_alpha.
 - "zero-set row condition" expands to the formal forward and inverse
@@ -66,7 +67,7 @@ for each row in audit/notation-review.tsv.
   measurable row-series realization            7
   projected Hellinger energy                   9
   finite-marginal likelihood ratios            6
-  likelihood ratio                            18
+  likelihood ratio                            15
   Hellinger coercivity                          6
   exact linear stabilizer                     17
   bounded invertible linear mixing            15
@@ -74,9 +75,9 @@ for each row in audit/notation-review.tsv.
   a.e.-positive density                        5
   compatible stable row-series realization    7
   anisotropic mixing cost                      7
-  column cost                                  7
+  column cost                                 10
   anisotropic stable Hellinger coercivity      3
-  zero-set row condition                      13
+  zero-set row condition                      14
   linear equivalence group                     3
 
 Every row meets the three-use threshold and occurs in a formal result directly,

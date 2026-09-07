@@ -1,10 +1,14 @@
 \subsection{Measurable row-series realizations on countable operator orbits}
 \label{sec:measurable-realization}
 
-Only \(\E X=0\) and \(\E X^2=1\) are needed here.  Since a sample from
-\(\mu=\rho^{\otimes\N}\) need not lie in \(\ell^2\), the row action and its
-inverse, tail exchanges, and likelihood cocycles require compatible measurable
-versions.
+Only \(\E X=0\) and \(\E X^2=1\) are needed here.  Each row series exists as
+an \(L^2\) equivalence class, but such classes cannot be composed pointwise:
+separately chosen versions for different operators or orbit laws may fail on
+incompatible null sets.  We therefore select deterministic subsequences for
+every row in a fixed countable operator group, so that operator multiplication
+becomes composition on one common measurable carrier.  Countability is used
+only to intersect the exceptional sets; no universal pointwise action of all of
+\(\GL(H)\) is asserted.
 
 \begin{lemma}[Measurable row-series realization on each countable operator orbit]
 \label{lem:measurable-row-series-realization}
@@ -64,7 +68,9 @@ knowing whether that law is equivalent to \(\mu\).  Set
 and the same is true jointly in the matrix coefficients of \(T\) and in
 \(x\), since each tail norm and the integer choice \(n_k\) is Borel.
 
-For finitely supported \(b\), the finite sum of output coordinates equals
+The composition identity is the delicate point: separate almost-sure
+realizations do not by themselves compose.  For finitely supported \(b\), the
+finite sum of output coordinates equals
 \(L_{T^*b}\) almost surely.  This proves the asserted second-moment bound
 for the pushforward.  For the \(i\)-th row of \(S\), finite output sums
 satisfy
@@ -93,7 +99,7 @@ Every orbit law satisfies the same second-moment condition, so
 \end{proof}
 
 Write \(\nu_T=(\Phi_T)_\#\mu\).  Every countable operator family used below
-therefore acts on one common carrier.  No universal pointwise action of all
+therefore acts on one common measurable carrier.  No universal pointwise action of all
 \(\GL(H)\) is needed; on the original product law these versions agree with
 the usual almost-sure row sums.
 
@@ -166,9 +172,13 @@ ergodicity of \(\mu\) makes that measure one.  This gives equivalence.
 \subsection{Finite-marginal likelihood ratios and projected Hellinger energy}
 \label{sec:finite-marginal-likelihood-ratios}
 
-Finite-marginal likelihood ratios form martingales and their affinities
-decrease to the full affinity.  Consequently bounded projected Hellinger
-energy is an exact equivalence diagnostic, not merely a necessary condition.
+Finite-marginal likelihood ratios form a martingale, but its limit is the
+density of the absolutely continuous part of \(\nu_T\), not automatically a
+density of the whole law.  Martingale convergence therefore identifies the
+limiting affinity; the orbit dichotomy is the additional input that upgrades
+positive limiting affinity from mere overlap to equivalence.  This is why
+bounded projected Hellinger energy is an exact diagnostic in the present orbit
+problem.
 
 \begin{lemma}[Projected Hellinger energy and finite-marginal likelihood ratios]
 \label{lem:finite-marginal-likelihood-ratios}

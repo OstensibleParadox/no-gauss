@@ -219,20 +219,27 @@ Moreover, the finite-marginal likelihood ratios and their reciprocals are
 uniformly integrable in their respective reference measures.
 \end{proposition}
 
-\Cref{prop:finite-coordinate-approximants-recover-likelihood-ratio} is the analytic bookkeeping
-behind the criterion: finite-dimensional likelihood computations do not
-merely approximate cylinder probabilities, but converge to the actual
-infinite-dimensional likelihood on the equivalence branch.
+The three assertions in \cref{thm:measure-equivalence} are connected by
+mechanisms of different difficulty.  Hilbert--Schmidt sufficiency is an
+approximation problem: finite-coordinate half-densities must converge, and
+inverse approximants must prevent the limit from losing two-sided absolute
+continuity.  Necessity is the hard direction.  Absolute continuity first gives
+only qualitative matching of remote output rows with allowed signed
+coordinates; the argument in \cref{lem:hilbert-schmidt-necessity} swaps remote
+coordinates to upgrade that matching to a square-summable error.  Finally,
+\cref{lem:orbit-dichotomy,lem:finite-marginal-likelihood-ratios} turns a
+positive limit of the finite-marginal affinities into full equivalence.  The
+dichotomy is essential here, since positive affinity by itself detects only a
+nonzero absolutely continuous component.
 
-The theorem contains the global energy formulation through
-\(\sup_nE_n(T)\).
-The rotational Fourier defect is not an additional scalar condition on \(T\).
-It is the calibration mechanism.
-It turns small Hellinger displacement into squared Frobenius displacement.
-This distinction keeps the one-dimensional Gaussian characterization separate
-from the operator-valued equivalence criterion.
-
-Two refinements identify the assumptions needed for the stabilizer and
+The rotational Fourier defect is the calibration mechanism behind the
+quantitative step, not an additional scalar condition on \(T\).  Through the
+test functions built from the finite real Fourier sums of
+\cref{lem:fourier-dual-moments}, it turns the Hellinger half-density
+displacement into a quadratic Frobenius pairing, yielding a linear Frobenius
+lower bound while keeping the one-dimensional Gaussian characterization
+separate from the operator-valued criterion.  The next two corollaries record
+what remains true under weaker assumptions for the exact linear stabilizer and
 for orthogonal transformations.
 
 \begin{corollary}[Moment-only stabilizer]
@@ -252,9 +259,70 @@ non-Gaussian and centered with variance one, then every orthogonal \(U\) obeys
  \quad\Longleftrightarrow\quad
  U-Q\in\mathcal S_2\quad\text{for some }Q\in\mathcal P.
 \]
-Thus scale Fisher information is needed for bounded invertible linear mixing but not for
-the orthogonal subproblem.
+Thus scale Fisher information enters our proof for bounded invertible linear
+mixing but not for the orthogonal subproblem.
 \end{corollary}
+
+\subsection{Proof architecture and genuine bottlenecks}
+\label{sec:proof-architecture}
+
+Across the paper, five transitions carry the main conceptual burden; proof
+length is not a reliable guide to their difficulty.
+
+\emph{From non-Gaussianity to dimension-free tests.}
+It is not enough to know that the characteristic function differs from a
+Gaussian one.  The later tail argument needs a fixed finite collection of
+bounded one-coordinate Fourier functions from which a test for every matrix
+direction can be assembled, with constants independent of the matrix
+dimension.  Taking a logarithm of the characteristic function would also lose
+control at its zeros.  The determinant in \eqref{eq:fourier-wedge} avoids that
+division and produces the off-diagonal tests; a separate small-frequency test
+using the second moment handles diagonal scale directions.
+\Cref{lem:fourier-generator-bound} then keeps the error of these test functions
+uniform in dimension.  This is the delicate step: a termwise count loses a
+dimension factor, while a H\"older bound on the whole products would require
+fourth moments that are not assumed.
+
+\emph{From finite matrices to an infinite-dimensional action.}
+A product sample almost surely need not belong to \(\ell^2\), so formal matrix
+composition does not justify composition of row series.  The measurable
+realization in \cref{lem:measurable-row-series-realization} puts every operator
+in the relevant fixed countable group on one common measurable carrier.  There
+is a second one-sided trap: an \(L^2\) limit of square-root likelihoods first proves only
+\(\nu_T\ll\mu\).  Applying the same construction to the inverse and then using
+the common measurable carrier supplies the reverse absolute continuity.
+
+\emph{From row rigidity to Hilbert--Schmidt summability.}
+Absolute continuity makes the remote one-coordinate output marginals converge
+to \(\rho\); compactness of the covariance defect normalizes their coefficient
+rows, and \cref{lem:unit-row-rigidity} then matches each row with an allowed
+signed coordinate.  This is only an \(o(1)\) statement and does not sum the row errors.
+The decisive step in \cref{lem:hilbert-schmidt-necessity} packages a finite
+amount of any hypothetical nonsummable error into a small conjugated
+perturbation by swapping carefully chosen tail coordinates.  Local coercivity
+sees that perturbation, whereas absolute continuity makes the same remote swap
+asymptotically invisible.  Their contradiction is what upgrades qualitative
+matching to a Hilbert--Schmidt conclusion.
+
+\emph{Why the stable branch needs a different mechanism.}
+For \(0<\alpha<2\), the covariance argument is unavailable, and
+fixed-dimensional quadratic Fisher geometry does not capture the uniform
+column accumulation law.  A Fourier transform of Hellinger
+half-densities first transfers equivalence to an auxiliary finite-variance
+product and recovers only Hilbert--Schmidt proximity.  A separate bounded
+statistic gates on rare source events occurring with probability comparable to
+the \(\alpha\)-th power of the corresponding column norm.  This second step, not a formal
+replacement of the exponent \(2\) by \(\alpha\), produces the off-diagonal
+column cost in \eqref{eq:stable-mixing-cost}.
+
+\emph{Why zeros of the density are not another metric correction.}
+Hellinger convergence controls overlap, but it cannot by itself decide either
+direction of absolute continuity.  When \(f\) vanishes, the missing information
+is whether each row sum lands in \(\{f>0\}\).  The forward and inverse zero-set
+row conditions record those two directions separately; the rank-one example
+in \cref{sec:zero-set-row-condition-counterexample}, together with the same
+construction applied to its inverse, shows that neither can be recovered from
+Hilbert--Schmidt proximity or bounded projected energy.
 
 \subsection{Result map}
 \label{sec:result-map}

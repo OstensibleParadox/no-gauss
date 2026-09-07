@@ -53,18 +53,18 @@ audit/notation-review.tsv and audit/source-review.txt.  Any source hash change
 invalidates the prior snapshot.
 
 Snapshot time (UTC)
-2026-09-07T02:35:01.066886+00:00
+2026-09-07T03:14:00.082446+00:00
 
 SHA-256 source fingerprints
-sections/main.tex  b8263766e7a94eb5ab78b0e5f538f93eb4e8fd0d4fca2883dfc6c19da8986c16
-sections/01-introduction-and-main-results.tex  ecf65b2e0c87ccc559534011fbfe34dcf3af189f6140b864407a15e69b8a4a88
-sections/02-rotational-fourier-defect-and-hellinger-coercivity.tex  3b6009f8439f839cd9d8d60145c1fda543789ed55b1bb806f06a7c4e29dd7677
+sections/main.tex  517e0e75765e15bc1de7f972f6f30ba10abe3b29b9d3c0186175fcdce42b75ff
+sections/01-introduction-and-main-results.tex  511bc6955f1e49ed6cad949bb544d4fb7038a813e5545a8251b68d245ad5bc7b
+sections/02-rotational-fourier-defect-and-hellinger-coercivity.tex  bc4e55b7321d298fb4d900eab15322d1938855b66311539147b264d2a0db9d75
 sections/parts/rotational-fourier-detection.tex  e7821acc76e9ed55c9cd79b3b7446ee9898d5b5a35692b40d0653d827ed4784e
-sections/parts/finite-dimensional-hellinger-geometry.tex  43b855313d3d0924fd20a81487f142c70aef8beea34ec5cd4a1fe48668a397e4
-sections/03-finite-variance-equivalence-and-global-rigidity.tex  fecb30e27f69f38df28dd9d60a90fc8c9a37751e3ca25659b14569255117c604
-sections/parts/measurable-realization-and-measure-class-dichotomy.tex  c0d69e3e0c7149a26991044f519a9c139cb404362de25b0e79350bc0fe702638
-sections/parts/finite-variance-classification.tex  7bdb961e1aa1067a0f16e0e29376060f7abc1e83649d95ee6814ff92a2e12fcb
-sections/04-symmetric-stable-products-and-anisotropic-geometry.tex  c5787987404d7c6624e36ebb6927b0dc0ba013dec34e7eb404e521277fe38ff9
+sections/parts/finite-dimensional-hellinger-geometry.tex  4ddb3551a627f7af5d57a9c338389b18bc0e2b83bda634286ea7b31cd39140f3
+sections/03-finite-variance-equivalence-and-global-rigidity.tex  b9ad32138053327066a947c55cfa0bfe697d4b894f5a8eb6e5fe8893674d2444
+sections/parts/measurable-realization-and-measure-class-dichotomy.tex  b70d0a5524178af770124055c27e32d90530b9cf4a54179b579c7053718b6b70
+sections/parts/finite-variance-classification.tex  0828cf6deef8f69713acc79ff7485ee02fc03e9e3e404b65be091162d1844761
+sections/04-symmetric-stable-products-and-anisotropic-geometry.tex  4a66c4e9db2bda4fa29f3975da3fbf8a11bddbc7762cf9731d8361b2c4362a71
 sections/05-zero-set-row-condition-and-support-geometry.tex  66f52669bc6a3b6c23b1b065683e9d2300e8f389934e6d6ec75823cdd472e4ae
-sections/parts/zero-set-and-support-classification.tex  ea2c69dfb4e32936713d0bf9e3143cf576b056b61f89c296f3248c680316e59a
-sections/parts/finite-variance-hypothesis-roles.tex  80e8b72cfac76d6601f53e22e4cb58a460b798513e2c5ae35e25e36df438cd0f
+sections/parts/zero-set-and-support-classification.tex  85487b0a4fbf2cd88ff006573dac3fcc8377885a4cf82892cf0c2435b20e799f
+sections/parts/finite-variance-hypothesis-roles.tex  3e49a4bbc2afb065158085a58772094262c8b57105531f8b405b271d913cdb4a

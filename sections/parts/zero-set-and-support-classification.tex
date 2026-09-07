@@ -11,11 +11,13 @@ classification; for its matrix estimates the appropriate regularity is
  \end{gathered}
  \label{eq:zero-set-row-assumptions}
 \end{equation}
-Here \(g\) is defined on the whole real line, including by zero outside
-the support.
-Regularity only in the interior of the support is insufficient.
-For example, the uniform density has zero interior derivative but its
-square root has jumps at the boundary.
+The global zero extension is essential.  Membership of \(g\) in
+\(W^{1,2}(\R)\) rules out a hidden boundary jump and makes its weak derivative
+vanish almost everywhere on \(\{g=0\}\).  Consequently the identity
+\(sg=-2g'\) and the integrations by parts used by the Fourier/Fisher argument
+remain valid on the whole line, with no boundary term.  Interior regularity
+alone does not suffice: the uniform density has zero interior derivative but a
+jump in its zero-extended half-density.
 
 \begin{proposition}[Local Fourier coercivity with zeros of the density]
 \label{prop:local-coercivity-with-density-zeros}

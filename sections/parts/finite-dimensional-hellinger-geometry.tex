@@ -201,10 +201,17 @@ $\|A_t^{-1}\|_{\mathrm{op}}\le(1-r)^{-1}$.
 \subsection{Finite real Fourier sums with dual moments}
 \label{sec:fourier-dual-moments}
 
-Assume in addition that \(f\) is non-Gaussian.  The next lemma turns the
-rank-two obstruction from \cref{lem:fourier-ode} into bounded dual witnesses:
-finite real combinations of \(1,\cos(\xi x),\sin(\xi x)\), at frequencies
-depending on \(f\) but not on the matrix dimension.
+Assume in addition that \(f\) is non-Gaussian.  The score \(S_A\) is the correct
+tangent, but it is not a usable dimension-free test after the law moves:
+differentiating a score-based test would require regularity and integrability
+not assumed here.  We instead need, for every matrix direction, a test built
+from bounded one-coordinate functions, with exact duality against the score and
+with \(L^2\)-norm bounded by a constant times the Frobenius norm of that
+direction, uniformly in the dimension.  The rank-two
+obstruction in \cref{lem:fourier-ode} produces the two off-diagonal coordinate
+functions; a separate small-frequency argument using the second moment
+produces the diagonal coordinate function.  All three are finite real Fourier
+sums at frequencies depending on \(f\) but not on the matrix dimension.
 
 \begin{lemma}[Finite real Fourier sums with dual moments]
 \label{lem:fourier-dual-moments}
@@ -290,14 +297,14 @@ Together with the independent diagonal terms, this proves the last
 assertion.
 \end{proof}
 
-The functions \(H_A\) will be paired with the Hellinger tangent along a
-matrix path.
-To keep that pairing uniformly controlled after moving away from the identity, we need one
-uniform derivative bound for \(H_A\Omega_n\).
-The next lemma is the technical price of keeping the test functions
-finite-frequency and dimension-free.
-Its proof gives the index contractions explicitly and uses no fourth moment
-of \(X\) or higher moment of the score.
+The test functions \(H_A\) will be paired with the Hellinger tangent along a matrix
+path.  To keep that pairing uniformly controlled after moving away from the
+identity, we need one uniform derivative bound for \(H_A\Omega_n\).  A naive
+term count grows with \(n\), while a direct H\"older estimate asks for
+integrability that is unavailable.  The next lemma isolates this non-formal
+step.  Its proof groups terms by their index-coincidence patterns, turning every
+surviving coefficient array into a Frobenius-controlled contraction.  In
+particular, it uses no fourth moment of \(X\) or higher moment of the score.
 
 \begin{lemma}[Generator bound for the functions $H_A$]
 \label{lem:fourier-generator-bound}
@@ -314,6 +321,11 @@ depending on these functions and on $J,\kappa$, such that
 \end{lemma}
 
 \begin{proof}
+The issue is not membership in the generator domain in a fixed dimension, but
+uniformity as the dimension grows.  The product rule creates up to four
+coordinate factors; grouping them by coincidences rather than counting terms
+will keep the constants independent of \(n\).
+
 For fixed $n$, both $H_A$ and its first derivatives are bounded.
 Consequently
 \[
@@ -489,7 +501,7 @@ Together with \eqref{eq:coordinate-function-score-bound} and
 \end{proof}
 
 We can now close the local argument.
-The dual Fourier functions give a linear functional that sees the
+The test functions \(H_A\) give a linear functional that sees the
 first-order displacement, while the generator bound controls the error made
 along the exponential path.
 This turns the nonzero rotational Fourier defect into a uniform Hellinger lower bound
@@ -511,7 +523,13 @@ coordinate frequencies from \cref{lem:fourier-dual-moments}.
 \end{proposition}
 
 \begin{proof}
-Fix the dual functions from \cref{lem:fourier-dual-moments}.
+Fix the finite real Fourier sums from \cref{lem:fourier-dual-moments}.
+The dependence of \(H_A\) on the direction \(A\) is essential.  Its pairing
+with the tangent is quadratic, \(\frac12\|A\|_F^2\), whereas
+\(\|H_A\|_2\) is only linear in \(\|A\|_F\); Cauchy--Schwarz will therefore
+give a linear Hellinger lower bound.  The generator estimate is used only to
+keep the nonlinear remainder cubic, with a coefficient independent of \(n\).
+
 First use exponential coordinates.  Unitarity and the
 one-parameter group derivative give
 \begin{align*}
