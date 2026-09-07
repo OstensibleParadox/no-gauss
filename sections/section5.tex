@@ -58,54 +58,40 @@ These statements do not assert absolute continuity of
 \(\nu_{I+K}\).
 \end{proposition}
 \begin{proof}
-A Sobolev function has weak derivative zero almost everywhere on its
-zero set.
-Define \(s=-2g'/g\) on \(\{g>0\}\) and \(s=0\) elsewhere.
-Then \(sg=-2g'\) almost everywhere on \(\R\).
-The cutoff integration-by-parts identities, including
-\(\E s(X)=0\), \(\E[Xs(X)]=1\), and the formulas for \(J,\kappa\), are
-therefore unchanged.
-Equality \(J=1\) still gives the global equation \(g'=-xg/2\);
-it cannot produce a Gaussian truncated at a boundary.
-Similarly, \(\kappa=0\) would give \(2xg'+g=0\) globally and no
-nonzero square-integrable probability half-density.
-The finite real Fourier sums with dual moments and estimates for half-density
-derivatives use
-these identities and \(L^2\) regularity, so their proofs apply.
+A Sobolev function has weak derivative zero almost everywhere on its zero
+set.  Thus, defining \(s=-2g'/g\) on \(\{g>0\}\) and \(s=0\) elsewhere,
+we have \(sg=-2g'\) on \(\R\).  All cutoff integration-by-parts identities,
+including \(\E s(X)=0\), \(\E[Xs(X)]=1\), and the formulas for
+\(J,\kappa\), remain valid.  Moreover, \(J=1\) would give the global
+Gaussian equation \(g'=-xg/2\), while \(\kappa=0\) would give
+\(2xg'+g=0\), which has no nonzero square-integrable solution.  Hence the
+finite-dimensional Fourier/Fisher proofs apply unchanged.
 
-The infinite-dimensional limiting step needs a different interpretation.
 For \(K\in\mathcal S_2\) with \(I+K\) invertible, put
 \(T_n=I+P_nKP_n\).
-The dimension-free Hellinger path bound and invariance of Hellinger distance
-give, for sufficiently large \(m,n\),
+The Hellinger path bound and invariance give, for large \(m,n\),
 \[
  h(\nu_{T_n},\nu_{T_m})
  \leq C\|T_n^{-1}\|_{\mathrm{op}}
                  \|T_n-T_m\|_{\mathcal S_2}.
 \]
-Choose a single probability measure dominating the countable family
-\(\mu,\nu_{T_1},\nu_{T_2},\ldots\).
-Their square-root densities are Cauchy in its \(L^2\) space.
-The nonnegative limit has norm one and defines a probability measure;
-convergence of finite output row sums identifies this measure with
-\(\nu_{I+K}\).
-This proves Hellinger convergence, not a density relative to \(\mu\).
-Passing the finite local bounds to this limit proves
-\eqref{eq:local-hs-bound-with-density-zeros}.
-For orthogonal operators, use the finite-coordinate polar
-approximants and skew-generator bound from
-\cref{prop:orthogonal-sufficiency} in the same way.
+Relative to one measure dominating
+\(\mu,\nu_{T_1},\nu_{T_2},\ldots\), the square-root densities are therefore
+Cauchy in \(L^2\).  Their limit has norm one, and convergence of finite row
+sums identifies its law with \(\nu_{I+K}\).  Passing the finite-dimensional
+bounds to this Hellinger limit proves
+\eqref{eq:local-hs-bound-with-density-zeros}; it does not assert
+\(\nu_{I+K}\ll\mu\).  For orthogonal operators, the polar approximants and
+skew-generator bound from \cref{prop:orthogonal-sufficiency} give the same
+conclusion.
 
-Finally, the proof of \cref{lem:hilbert-schmidt-necessity} uses absolute
-continuity only through
+The proof of \cref{lem:hilbert-schmidt-necessity} uses absolute continuity
+only through
 \cref{lem:tail-symmetry-uniform,lem:compact-covariance-rigidity},
-which assume \(\nu_T\ll\mu\).
-Its other inputs are the moment-only characteristic-function rigidity,
-the measurable inverse action, and the local estimate for the finite-rank
-conjugated tail perturbations used in that proof.
-The estimate just established supplies this last input without any
-quasi-invariance assumption.
-The same tail matching and permutation argument therefore proves
+both of which assume only \(\nu_T\ll\mu\); its remaining inputs are
+moment-only rigidity, the measurable inverse action, and the local estimate
+for finite-rank conjugated tail perturbations.  The estimate just proved
+supplies the last input, so the same tail-matching argument proves
 \eqref{eq:hs-necessity-with-density-zeros}.
 \end{proof}
 
@@ -170,30 +156,22 @@ to the complement: the former is absolutely continuous and the latter
 is singular.
 \end{theorem}
 \begin{proof}
-First suppose $T-Q\in\mathcal S_2$ and put $K=TQ^{-1}-I$.
-The exact invariance $\nu_Q=\mu$ gives $\nu_T=\nu_{I+K}$.
-For the eventually invertible finite-coordinate approximants
-$T_n=I+P_nKP_n$, the proof of \cref{prop:local-coercivity-with-density-zeros} gives
+Suppose first that $T-Q\in\mathcal S_2$ and put $K=TQ^{-1}-I$.  Since
+$\nu_Q=\mu$, we have $\nu_T=\nu_{I+K}$.  For the eventually invertible
+operators $T_n=I+P_nKP_n$, \cref{prop:local-coercivity-with-density-zeros}
+gives
 \[
  h(\nu_{T_n},\nu_T)\longrightarrow0.
 \]
-In particular their probabilities converge uniformly over measurable
-sets, by the Hellinger bound on total variation.
-
-For each such $n$, the law $\nu_{T_n}$ has a Lebesgue density in the
-first $n$ coordinates and retains the independent product law on the
-remaining coordinates.  On $\mathcal U^n$, the density of $\mu_n$ is
-strictly positive.  Fubini's theorem therefore gives
+Hence $\nu_{T_n}\to\nu_T$ in total variation.  Each $\nu_{T_n}$ has a
+Lebesgue density in its first $n$ coordinates and agrees with $\mu$ on the
+tail; since the density of $\mu_n$ is positive on $\mathcal U^n$, Fubini
+gives
 \[
  \left.\nu_{T_n}\right|_{\mathcal U^{\N}}\ll\mu.
 \]
-If $B$ is any $\mu$-null Borel set, then
-$\nu_{T_n}(B\cap\mathcal U^{\N})=0$ for all sufficiently large $n$.
-Total variation convergence implies
-$\nu_T(B\cap\mathcal U^{\N})=0$.
-Thus $\left.\nu_T\right|_{\mathcal U^{\N}}\ll\mu$.
-Since $\mu(\mathcal U^{\N})=1$, the restriction to its complement is
-singular.  This proves the asserted decomposition and
+Passing to the limit proves $\nu_T|_{\mathcal U^{\N}}\ll\mu$, while
+$\nu_T|_{(\mathcal U^{\N})^c}\perp\mu$.  Consequently
 \[
  \nu_T\ll\mu
  \quad\Longleftrightarrow\quad
@@ -202,32 +180,28 @@ singular.  This proves the asserted decomposition and
  \mu\!\left\{x:\sum_jT_{ij}x_j\notin\mathcal U\right\}=0
        \text{ for every }i.
 \]
-The necessary Hilbert--Schmidt condition in
-\eqref{eq:hs-necessity-with-density-zeros} now proves
-\eqref{eq:absolute-continuity-operator-criterion} in both directions.
+Together with \eqref{eq:hs-necessity-with-density-zeros}, this proves
+\eqref{eq:absolute-continuity-operator-criterion}.
 
 If $\nu_T\sim\mu$, the measurable inverse action gives
-$\nu_{T^{-1}}\sim\mu$, so both zero-set row conditions in
-\eqref{eq:linear-equivalence-group} are necessary.
-Conversely, $T-Q\in\mathcal S_2$ implies
+$\nu_{T^{-1}}\sim\mu$, so both row conditions are necessary.  Conversely,
+$T-Q\in\mathcal S_2$ implies
 \[
  T^{-1}-Q^{-1}=-T^{-1}(T-Q)Q^{-1}\in\mathcal S_2.
 \]
-Apply \eqref{eq:absolute-continuity-operator-criterion} to $T$ and
-$T^{-1}$ to obtain $\nu_T\ll\mu$ and $\nu_{T^{-1}}\ll\mu$.
-The measurable inverse action then gives
+Thus the two row conditions and
+\eqref{eq:absolute-continuity-operator-criterion} give
+$\nu_T,\nu_{T^{-1}}\ll\mu$.  The inverse action then yields
 \[
  \mu=(\Phi_T)_\#\nu_{T^{-1}}\ll(\Phi_T)_\#\mu=\nu_T,
 \]
-which proves equivalence.
-For $S,T\in\mathcal G_\rho$, measurable composition yields
-$\nu_{ST}=(\Phi_S)_\#\nu_T\sim\nu_S\sim\mu$; the inverse argument
-already proved gives $T^{-1}\in\mathcal G_\rho$.
-Thus the displayed operator class is a group.
-For orthogonal transformations, repeat the restriction argument with
-the finite-coordinate orthogonal approximants from
-\cref{prop:orthogonal-sufficiency}; their Hellinger convergence needs
-only location Fisher information.
+and hence equivalence.  Finally, if $S,T\in\mathcal G_\rho$, measurable
+composition gives
+$\nu_{ST}=(\Phi_S)_\#\nu_T\sim\nu_S\sim\mu$, and the preceding argument
+gives $T^{-1}\in\mathcal G_\rho$; thus $\mathcal G_\rho$ is a group.  In the
+orthogonal case, the same restriction argument uses the approximants from
+\cref{prop:orthogonal-sufficiency}, which require only location Fisher
+information.
 \end{proof}
 
 Every nonzero row sum has an absolutely continuous scalar law, so the
@@ -354,83 +328,56 @@ imply singularity.
 \end{theorem}
 \begin{proof}
 Assume \(\nu_T\sim\mu\), and set \(S=T^{-1}\).
-The measurable inverse action implies
-\((\Phi_S)_\#\nu_T=\mu\).
-Pushing equivalence forward by \(\Phi_S\) therefore gives
-\(\nu_S\sim\mu\).
-For any row \(v\) of \(T\) or \(S\), the random series
-\(Z=\sum_jv_jX_j\) converges in \(L^2\).
-Centering and independence imply
+The measurable inverse action also gives \(\nu_S\sim\mu\).
+For every row \(v\) of \(T\) or \(S\), the series
+\(Z=\sum_jv_jX_j\) converges in \(L^2\), and
 \begin{equation}
  \E[Z\mid X_1,\ldots,X_m]=\sum_{j\leq m}v_jX_j.
  \label{eq:finite-row-conditional-expectation}
 \end{equation}
 
-In the bounded case \(Z\in[a,b]\) almost surely.
-Its conditional expectation lies in the same interval.
-Independence and the definition of essential endpoints show that
-the essential width of the finite sum on the right of
+In the bounded case \(Z\in[a,b]\) almost surely, so its conditional
+expectation does too.  The essential width of the finite sum in
 \eqref{eq:finite-row-conditional-expectation} is
-\((b-a)\sum_{j\leq m}|v_j|\).
-Consequently every row of both \(T\) and \(S\) has
+\((b-a)\sum_{j\leq m}|v_j|\); hence every row of \(T\) and \(S\) has
 \(\ell^1\)-norm at most one.
-This proves the required bound even when the original row has
-infinitely many nonzero entries.
 
 Let \(A_{ij}=|T_{ij}|\) and \(B_{ij}=|S_{ij}|\).
-The products defining the entries of \(TS\) and \(ST\) are absolutely
-convergent by the \(\ell^2\) row/column Cauchy--Schwarz inequality.
-Thus \(AB\geq I\) and \(BA\geq I\) entrywise.
-Tonelli's theorem and the row bounds give
+The \(\ell^2\) row/column Cauchy--Schwarz inequality makes the entries of
+\(TS\) and \(ST\) absolutely convergent, so \(AB\ge I\) and \(BA\ge I\)
+entrywise.  Tonelli and the row bounds give
 \[
  \sum_j(AB)_{ij}
  =\sum_k A_{ik}\sum_jB_{kj}\leq1,
  \qquad
  \sum_j(BA)_{ij}\leq1.
 \]
-It follows that \(AB=BA=I\).
-This reasoning concerns nonnegative matrix entries and does not
-assume that entrywise absolute values define bounded operators
-on \(\ell^2\).
-
-For completeness, nonnegative matrices inverse to one another in
-this sense are monomial.
-For each \(i\), choose \(k\) with \(A_{ik}B_{ki}>0\).
-The off-diagonal entries of \(AB=I\) force row \(k\) of \(B\)
-to vanish outside column \(i\).
-Then \(BA=I\) forces row \(i\) of \(A\) to vanish outside column \(k\).
-The resulting correspondence is bijective.
-Its weights and their reciprocals are at most one by the row bounds,
-so all weights are one.
-Hence \(T\) is a signed permutation.
+Thus \(AB=BA=I\).  For each \(i\), choose \(k\) with
+\(A_{ik}B_{ki}>0\).  The off-diagonal entries of \(AB\) force row \(k\) of
+\(B\) to vanish outside column \(i\), and those of \(BA\) force row \(i\)
+of \(A\) to vanish outside column \(k\).  This gives a bijective monomial
+pattern.  Its weights and reciprocals are at most one by the row bounds, so
+every weight is one; hence \(T\) is a signed permutation.
 
 For a negative row sign, scalar equivalence requires
-\(\rho^-\sim\rho\), which in particular requires \(a=-b\).
-The remaining classification is a product calculation.
-When these laws are equivalent, \(\Aff(\rho,\rho^-)>0\), and
-\(\Aff(\rho,\rho^-)=1\) exactly when they are equal.  Each negative sign contributes the factor
-\(\Aff(\rho,\rho^-)\), while positive signs contribute one.
-Kakutani's theorem~\cite{kakutani1948equivalence} gives precisely
-the three alternatives stated above.
+\(\rho^-\sim\rho\), and therefore \(a=-b\).  Each negative sign contributes
+\(\Aff(\rho,\rho^-)\) to the product affinity.  This number equals one
+exactly when \(\rho^-=\rho\); otherwise Kakutani's theorem
+\cite{kakutani1948equivalence} permits only finitely many negative signs.
+This proves the three alternatives.
 
-For the lower-bounded, upper-unbounded case, centering and
-nondegeneracy give \(a<0\).
-Now every finite sum in \eqref{eq:finite-row-conditional-expectation}
-is bounded below by \(a\).
-A negative coefficient would make its essential infimum
-\(-\infty\), which is impossible.
-Thus every \(v_j\geq0\), and its finite essential infimum gives
+In the lower-bounded, upper-unbounded case, centering and nondegeneracy give
+\(a<0\).  Every finite sum in
+\eqref{eq:finite-row-conditional-expectation} is bounded below by \(a\), so
+no coefficient can be negative.  Its essential infimum is
+\(a\sum_{j\le m}v_j\), whence
 \[
  a\sum_{j\leq m}v_j\geq a,
  \qquad\text{hence}\qquad \sum_jv_j\leq1.
 \]
-Both \(T\) and \(S\) are therefore nonnegative with row sums at
-most one.
-The same inverse-matrix argument makes \(T\) an ordinary
-permutation.
-Such a permutation preserves the i.i.d. product, proving the
-converse.
-Reflection proves the upper-bounded case.
+Thus \(T\) and \(S\) are nonnegative with row sums at most one, and the
+preceding inverse-matrix argument makes \(T\) an ordinary permutation.  Such
+permutations preserve \(\mu\); reflection handles the upper-bounded case.
 \end{proof}
 
 For \(Y\sim\operatorname{Gamma}(r_\Gamma,\theta_\Gamma)\), where
@@ -536,28 +483,23 @@ The local absolute-continuity conditions concern its actual zero
 set, not just the closure of its support.
 \end{theorem}
 \begin{proof}
-Affinity tensorizes on each finite block prefix.
-Convergence of projected affinities to global affinity follows by
-conditional expectation under the common dominating measure
-\((\mu+\nu)/2\); the proof is also given below.
-This gives \eqref{eq:block-product-affinity-and-singularity}.
+Affinity tensorizes on finite block prefixes, and projected affinities
+decrease to global affinity by the conditional-expectation argument in
+\cref{prop:two-sided-finite-marginal-ratio-tails}.  This proves
+\eqref{eq:block-product-affinity-and-singularity}.
 
-Necessity of each local absolute-continuity condition follows by
-projection.
-For sufficiency, suppose \(\eta_k\ll\lambda_k\) for all \(k\) and
-\(\prod_kr_k>0\).
-With \(\ell_n=\prod_{k\leq n}d\eta_k/d\lambda_k\), independence gives
+The local absolute-continuity conditions are necessary by projection.  If
+\(\eta_k\ll\lambda_k\) for every \(k\) and \(\prod_kr_k>0\), set
+\(\ell_n=\prod_{k\le n}d\eta_k/d\lambda_k\).  Independence gives
 \[
  \|\sqrt{\ell_m}-\sqrt{\ell_n}\|_{L^2(\mu)}^2
        =2\left(1-\prod_{n<k\leq m}r_k\right)\longrightarrow0.
 \]
-The square roots have norm one, so their limit squared is a
-probability density.
-Cylinder tests identify its measure with \(\nu\).
-Interchanging \(\mu,\nu\) proves the reverse assertion.
-This is the product argument behind Kakutani's criterion; the
-mutual absolute-continuity hypothesis on each factor cannot be
-discarded~\cite{kakutani1948equivalence,shepp1965translate}.
+Their \(L^2\) limit has norm one, and its square defines a probability
+measure which cylinder tests identify with \(\nu\); hence \(\nu\ll\mu\).
+Interchanging \(\mu\) and \(\nu\) proves the reverse assertion.  The local
+condition cannot be omitted
+\cite{kakutani1948equivalence,shepp1965translate}.
 \end{proof}
 
 \begin{corollary}[Masses of the absolutely continuous parts]
@@ -578,13 +520,12 @@ Then
 \end{equation}
 \end{corollary}
 \begin{proof}
-Since \(r_k^2\leq a_kb_k\) and \(L<\infty\), both displayed products are positive.
-On \(C=\prod_k\{p_kq_k>0\}\), the two conditional product laws have
-equivalent factors and affinities \(r_k/\sqrt{a_kb_k}\) with positive
-product; hence they are equivalent.
-Outside \(C\), each measure is carried by a set null for the other.
-Their restrictions to \(C\) are therefore exactly their absolutely
-continuous parts.
+Since \(r_k^2\leq a_kb_k\) and \(\prod_kr_k>0\), both displayed products
+are positive.  On \(C=\prod_k\{p_kq_k>0\}\), the conditional product laws
+have equivalent factors and affinities \(r_k/\sqrt{a_kb_k}\) with positive
+product, so \cref{thm:block-kakutani} makes them equivalent.  The
+restrictions to \(C\) are therefore precisely the absolutely continuous
+parts, with masses \(\prod_kb_k\) and \(\prod_ka_k\), respectively.
 \end{proof}
 
 \paragraph{Gamma scale changes and the effect of centering.}
@@ -632,25 +573,21 @@ permutation \(\pi\) and numbers \(c_i>0\) such that
 \begin{proof}
 The inverse affine map has linear part \(T^{-1}\) and shift
 \(-T^{-1}b\in\ell^2\).
-To justify this for the row-series versions, Cauchy--Schwarz gives
+For the row-series realizations, Cauchy--Schwarz gives
 \(\Phi_S(z+b)=\Phi_S(z)+Sb\) wherever the selected row limits exist,
 for every \(b\in\ell^2\).
-The affine orbit has second-moment bound
-\(\|T\|_{\mathrm{op}}^2+\|b\|_2^2\).
-This translation identity and the measurable composition lemma show
-that the inverse affine map pushes the orbit back to \(\mu\).
-Its pushforward of \(\mu\) is consequently also equivalent to \(\mu\).
-Equivalence and the lower support bound show, by conditioning
-finite row sums as before, that both linear parts have nonnegative
-entries: a negative coefficient would produce an unbounded lower
-tail, which no finite shift can repair.
-Since \(T\) and \(T^{-1}\) have nonnegative matrix entries, the
-off-diagonal inverse identities used above show that \(T\) is monomial
-with positive weights.
-Equality of the scalar lower endpoints forces
+The affine orbit satisfies the covariance bound required by
+\cref{lem:measurable-row-series-realization}; hence that lemma and the
+translation identity show that the inverse affine map also preserves the
+measure class.  Conditioning finite row sums, as in
+\cref{thm:bounded-and-half-line-classification}, shows that both \(T\) and
+\(T^{-1}\) have nonnegative entries: a negative coefficient would create an
+unbounded lower tail that no fixed shift can remove.  The inverse identities
+then make \(T\) monomial with positive weights \(c_i\).  Equality of the
+scalar lower endpoints forces
 \(-\sqrt{r_\Gamma}c_i+b_i=-\sqrt{r_\Gamma}\).
-The product criterion \eqref{eq:gamma-scale-product-equivalence}
-then proves necessity and sufficiency.
+Now \eqref{eq:gamma-scale-product-equivalence} proves necessity and
+sufficiency.
 \end{proof}
 
 \subsection{An exact finite-marginal equivalence criterion}
@@ -694,40 +631,35 @@ Without any finite-marginal equivalence assumption,
 \begin{proof}
 If the limit in \eqref{eq:two-sided-finite-marginal-ui} is zero, a set
 where \(p_n=0<q_n\) must have zero \(\nu_n\)-mass for every \(n\);
-the reverse statement follows from the second integral.
-Hence \(\mu_n\sim\nu_n\).
-Writing \(\ell_n(x)=q_n(\pi_n x)/p_n(\pi_n x)\), the two terms in
-\(\Tail_n(M)\) are exactly
+the second integral gives the reverse, so \(\mu_n\sim\nu_n\).  With
+\(\ell_n(x)=q_n(\pi_n x)/p_n(\pi_n x)\), the two summands in
+\(\Tail_n(M)\) are
 \[
  \E_\mu[\ell_n\mathbf1_{\{\ell_n>M\}}],
  \qquad
  \E_\nu[\ell_n^{-1}\mathbf1_{\{\ell_n^{-1}>M\}}].
 \]
-They are the two terms in \(\Tail_n(M)\), hence the
-uniform-integrability tests for the two mean-one
-likelihood-ratio martingales.
-Each \(L^1\) limit has mass one, and cylinder tests identify the
-corresponding absolutely continuous measure.
-This gives both directions of absolute continuity.
-Conversely, under equivalence these martingales are the conditional
-expectations of the full likelihood ratio and its reciprocal, so both
-are uniformly integrable.
+Thus the displayed limit is exactly uniform integrability of the two
+mean-one likelihood-ratio martingales.  Their \(L^1\) limits have mass one,
+and cylinder tests identify the corresponding absolutely continuous
+measures, proving mutual absolute continuity.  Conversely, under
+equivalence the martingales are conditional expectations of the full
+likelihood ratio and its reciprocal, and are therefore uniformly integrable.
 
 For the affinity assertion put \(m=(\mu+\nu)/2\),
 \(u=d\mu/dm\), and \(v=d\nu/dm\).
-Both densities are bounded by two.
 For \(\mathcal F_n=\sigma(x_1,\ldots,x_n)\), set
 \(u_n=\E_m[u\mid\mathcal F_n]\) and
 \(v_n=\E_m[v\mid\mathcal F_n]\).
-Martingale convergence and bounded convergence imply
+Since \(u,v\le2\), martingale convergence and bounded convergence give
 \[
  \Aff(\mu_n,\nu_n)
        =\int\sqrt{u_nv_n}\,dm
        \longrightarrow\int\sqrt{uv}\,dm.
 \]
-Conditional Cauchy--Schwarz gives monotonicity.
-Global affinity is zero exactly for mutually singular measures,
-which proves \eqref{eq:finite-marginal-energy-overlap}.
+Conditional Cauchy--Schwarz gives monotonicity, and global affinity vanishes
+exactly for mutually singular measures.  This proves
+\eqref{eq:finite-marginal-energy-overlap}.
 \end{proof}
 
 For bounded invertible linear mixing, finite output marginals still have
@@ -786,4 +718,3 @@ higher moments: their role is to pair those bounds with every matrix tangent.
 Tail symmetry then avoids a separate mixed-law variance estimate.  This
 division of labor explains why the orthogonal theorem drops scale Fisher
 information, while the full bounded invertible theorem retains it.
-

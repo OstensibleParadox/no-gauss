@@ -98,48 +98,34 @@ The exact linear stabilizer in this class is \(\mathcal P^{\pm}\).
 \end{theorem}
 
 \begin{proof}
-There are two transfers from the finite-variance argument and two genuinely
-stable steps.  The measure-class dichotomy and the diagonal scale analysis
-transfer once the translation space is identified as \(\ell^2\).  The first
-stable step is a dimension-free upper bound obtained from the Gaussian
-scale-mixture representation.  Necessity is harder: a Fourier half-density
-transfer recovers only Hilbert--Schmidt proximity, and a bounded test supported
-on rare source events, followed by finite sign changes and coordinate cuts, is
-needed to recover the sharper
-\(\ell^\alpha(\ell^2)\) column cost.  We keep these roles separate below.
+The proof has three parts: the translation action gives the dichotomy, a
+Gaussian scale mixture proves sufficiency, and necessity follows from a
+Fourier transfer to the finite-variance theorem followed by a rare-event test
+that recovers the sharper column cost.
 
 \emph{Dichotomy, energy, and the coefficient domain.}
 Put \(g_\alpha=\sqrt{f_\alpha}\) and define
 \[
  a_\alpha(u)=\int_\R g_\alpha(x)g_\alpha(x-u)\,dx.
 \]
-Finite positive location Fisher information, everywhere positivity of the
-density, and decay of translations in \(L^2\) give
+Finite positive location Fisher information and decay of translations in
+\(L^2\) give
 \begin{equation}
  1-a_\alpha(u)\asymp_\alpha\min\{u^2,1\}.
  \label{eq:stable-translation-affinity}
 \end{equation}
-Kakutani's theorem therefore identifies \(\ell^2\) as exactly the space of
-translations under which \(\mu_\alpha\) is quasi-invariant.
-If \(\nu_{\alpha,T}\sim\mu_\alpha\), translating before and after the
-compatible stable row-series realization shows that the restrictions of \(T\)
-and of the inverse matrix \(S\) in that realization map this translation space
-into itself.
-The closed graph theorem then gives \(T|_H\in\GL(H)\).
+Kakutani's theorem therefore identifies \(\ell^2\) as the translation space
+of \(\mu_\alpha\).  Under equivalence, conjugating translations through the
+compatible realization shows that \(T\) and its inverse matrix \(S\) preserve
+\(\ell^2\); the closed graph theorem gives \(T|_H\in\GL(H)\).
 
-The compatible two-sided inverse makes every finite family of output rows
-linearly independent.
-It therefore has a nonsingular input minor, and the remaining stable inputs
-contribute an independent convolution factor; hence every finite output
-block has an everywhere-positive density.
-The finite-marginal likelihood ratios consequently form the same mean-one
-martingale as in
-\cref{lem:finite-marginal-likelihood-ratios}.
-The product measure is quasi-invariant and ergodic under finitely supported
-translations, while its row-series image has the same properties under their
-images by \(T\).
-The equivalent--singular theorem for quasi-invariant ergodic measures allows
-these two translation spaces to differ and therefore applies
+The two-sided inverse also makes every finite family of output rows linearly
+independent.  A nonsingular input minor, convolved with the remaining stable
+inputs, gives each finite output block an everywhere-positive density, so its
+likelihood ratios form the martingale of
+\cref{lem:finite-marginal-likelihood-ratios}.  Both product measures are
+quasi-invariant and ergodic under their corresponding finitely supported
+translation groups; the equivalent--singular theorem therefore applies
 \cite{okazaki1985dichotomy}.
 It follows exactly as in \eqref{eq:marginal-affinity-limit} that
 \begin{equation}
@@ -164,7 +150,7 @@ for bounded \(A\) and bounded diagonal \(D\), and
  \le F_\alpha(K)\|\gamma\|_2^\alpha.
  \label{eq:stable-row-admissibility-bound}
 \end{equation}
-Thus \(F_\alpha(K)<\infty\) implies that \(K\) has admissible stable rows.
+Thus \(F_\alpha(K)<\infty\) gives admissible stable rows.
 
 The finite-dimensional estimate that replaces the finite-variance Hellinger
 path bound is
@@ -175,13 +161,12 @@ path bound is
 \end{equation}
 for every invertible real \(n\times n\) matrix \(A\), with a constant
 independent of \(n\).
-To prove it, put \(\beta=\alpha/2\), let \(V_i\) be independent positive
+Put \(\beta=\alpha/2\), and let \(V_i\) be independent positive
 \(\beta\)-stable variables with
 \(\E e^{-tV_i}=e^{-t^\beta}\), and write
 \(X_i=\sqrt{2V_i}Z_i\) with independent standard Gaussians \(Z_i\).
-Conditionally on the diagonal matrix \(V\) with entries \(V_i\), Hellinger
-data processing and the
-Gaussian affinity formula bound the left side of
+Conditioning on \(V=\diag(V_i)\), Hellinger data processing and the Gaussian
+affinity formula bound the left side of
 \eqref{eq:stable-finite-dimensional-upper-bound} by a constant times
 \[
  \E\min\{\|V^{-1/2}(A-I)V^{1/2}\|_F^2,1\}.
@@ -191,8 +176,7 @@ For \(c_j^2=\sum_{i\ne j}|a_{ij}|^2\), the contribution of source column
 \[
  W_j=V_j\sum_{i\ne j}\frac{|a_{ij}|^2}{V_i}.
 \]
-The column estimate is the point at which the stable exponent enters.  The
-positive stable estimates, for \(y>0\),
+The positive-stable estimates
 \[
  \mathbb P(V_1>y)\le C_\beta y^{-\beta},
  \qquad
@@ -200,40 +184,36 @@ positive stable estimates, for \(y>0\),
  \qquad
  \E V_1^{-1}<\infty
 \]
-show that the contribution of \(\{c_j^2V_j>1\}\) is at most
-\(C_\alpha c_j^{2\beta}=C_\alpha c_j^\alpha\).  For \(c_j>0\), independence
-gives on the complementary event
+bound the contribution of \(\{c_j^2V_j>1\}\) by
+\(C_\alpha c_j^{2\beta}=C_\alpha c_j^\alpha\), while on the complementary
+event independence gives
 \[
  \E[W_j;c_j^2V_j\le1]
  \le C_\beta c_j^2\E[V_j;V_j\le c_j^{-2}]
  \le C_\alpha c_j^\alpha.
 \]
-The zero-column case is immediate.  Thus source column \(j\) contributes at
-most \(C_\alpha c_j^\alpha\) to this upper bound, regardless of how its mass is
-distributed among receiver coordinates.  Summing these bounds, while retaining
-the ordinary quadratic estimate for diagonal scales, proves
+Thus column \(j\) costs at most \(C_\alpha c_j^\alpha\).  Summing over \(j\)
+and using the ordinary quadratic estimate for diagonal scales proves
 \eqref{eq:stable-finite-dimensional-upper-bound}.
 
-Now remove the measure-preserving \(Q\) and write the resulting matrix as
+Remove the measure-preserving \(Q\) and write
 \(M=D+K\), where \(D\) is diagonal with entries \(d_i\),
 \((d_i-1)\in\ell^2\), and
 \(F_\alpha(K)<\infty\).
-The finitely many indices on which the diagonal of \(M\) is not positive
-are absorbed into \(K\).
+Absorb into \(K\) the finitely many nonpositive diagonal entries of \(M\).
 For
 \[
  D_n=I+P_n(D-I)P_n,
  \qquad K_n=P_nKP_n,
  \qquad M_n=D_n+K_n,
 \]
-we have \(M_n\to M\) in operator norm, so the \(M_n\) are eventually
-invertible with uniformly bounded inverses.
-The identity
+Then \(M_n\to M\) in operator norm, so they are eventually invertible with
+uniformly bounded inverses.  From
 \[
  M_n^{-1}=D_n^{-1}-M_n^{-1}K_nD_n^{-1}
 \]
-and the column-class bounds show that
-\(F_\alpha(M_n^{-1}K_nD_n^{-1})\) is uniformly bounded.  Moreover,
+and \eqref{eq:stable-column-class-bounds},
+\(F_\alpha(M_n^{-1}K_nD_n^{-1})\) is uniformly bounded.  Also
 \begin{equation}
  \begin{aligned}
  M_n^{-1}M_m-I
@@ -242,57 +222,42 @@ and the column-class bounds show that
  \end{aligned}
  \label{eq:stable-relative-approximants}
 \end{equation}
-The first term has diagonal \(\ell^2\)-norm tending to zero.
-The other two have column cost tending to zero by
-\eqref{eq:stable-column-class-bounds},
+The first term tends to zero in diagonal \(\ell^2\); the other two tend to
+zero in column cost by \eqref{eq:stable-column-class-bounds},
 \(\|D_m-D_n\|_{\mathrm{op}}\to0\), and
-\(F_\alpha(K_m-K_n)\to0\); their diagonal square cost tends to zero as
-well because finite column cost implies membership in \(\mathcal S_2\).
-Thus \eqref{eq:stable-finite-dimensional-upper-bound}, applied to
-\(M_n^{-1}M_m\), makes the square-root likelihoods of
-\((M_n)_\#\mu_\alpha\) Cauchy in \(L^2(\mu_\alpha)\).
-Their limit has norm one, and convergence of each stable row in
-\(\ell^\alpha\) identifies its square with
-\(d\nu_{\alpha,M}/d\mu_\alpha\).
-This proves absolute continuity and then equivalence by
-\eqref{eq:stable-energy-dichotomy}.
+\(F_\alpha(K_m-K_n)\to0\).  Their diagonal square costs also vanish because
+finite column cost implies Hilbert--Schmidt membership.  Hence
+\eqref{eq:stable-finite-dimensional-upper-bound} makes the square-root
+likelihoods of \((M_n)_\#\mu_\alpha\) Cauchy in \(L^2\).  The limit has norm
+one, and \(\ell^\alpha\)-convergence of every row identifies its square with
+\(d\nu_{\alpha,M}/d\mu_\alpha\).  This proves absolute continuity, which
+\eqref{eq:stable-energy-dichotomy} upgrades to equivalence.
 Finally,
 \begin{equation}
  (D+K)^{-1}
  =D^{-1}-(D+K)^{-1}KD^{-1}
  \label{eq:stable-inverse-decomposition}
 \end{equation}
-and \eqref{eq:stable-column-class-bounds} show that the inverse has the same
-admissible form.
-The continuity of the stable random functional from \(\ell^\alpha\) to
-convergence in probability lets the finite-matrix composition identities
-pass to the row-series limits, producing compatible measurable versions.
-This also proves the last assertion of the theorem.
+has the same admissible form by \eqref{eq:stable-column-class-bounds}.
+Continuity of the stable random functional from \(\ell^\alpha\) to convergence
+in probability passes the finite-matrix composition identities to the
+row-series limits, giving compatible measurable versions.
 
 \emph{Reduction to a Hilbert--Schmidt perturbation.}
-Suppose conversely that \(\nu_{\alpha,T}\sim\mu_\alpha\).  We first extract
-the quadratic information that equivalence still forces.  The auxiliary law
-is dictated by the quantity already controlled by equivalence: the translation
-affinity \(a_\alpha\) is the autocorrelation of the half-density \(g_\alpha\),
-hence the characteristic function of the probability obtained by squaring the
-modulus of its unitary Fourier transform.  Moreover, a linear change of
-variables on half-densities becomes the adjoint inverse on the Fourier side.  A
-convolution power will regularize this auxiliary law enough to apply the
-finite-variance theorem without changing the intertwining relation.  This
-transfer yields only a Hilbert--Schmidt conclusion; the stable column cost will
-be recovered separately.
+Conversely, suppose \(\nu_{\alpha,T}\sim\mu_\alpha\).  We first transfer the
+half-density through Fourier transform to obtain the Hilbert--Schmidt part;
+the sharper column cost will be recovered separately.
 
 Let \(\widehat g_\alpha\) be the unitary Fourier transform of \(g_\alpha\),
 and set
 \[
  \lambda(d\xi)=|\widehat g_\alpha(\xi)|^2\,d\xi.
 \]
-The probability \(\lambda\) is symmetric and has variance
-\(\|g_\alpha'\|_2^2\in(0,\infty)\).
-Moreover, \(\widehat g_\alpha*\widehat g_\alpha\) is a positive constant multiple of
-\(e^{-|t|^\alpha}\); hence
+The law \(\lambda\) is symmetric, has variance
+\(\|g_\alpha'\|_2^2\in(0,\infty)\), and has characteristic function
+\(a_\alpha\).  Since \(\widehat g_\alpha*\widehat g_\alpha\) is a positive
+multiple of \(e^{-|t|^\alpha}\), we also have
 \(|\widehat g_\alpha|^2*|\widehat g_\alpha|^2>0\) almost everywhere.
-The characteristic function of \(\lambda\) is \(a_\alpha\).
 Polynomial stable tails give, for some \(m_0,\delta_0>0\),
 \[
  c(1+|t|)^{-m_0}\le a_\alpha(t)
@@ -304,9 +269,9 @@ Choose an integer \(r\) so large that
  \int_\R t^2\bigl(|a_\alpha(t)|^{2r}
                  +|(a_\alpha^r)'(t)|^2\bigr)\,dt<\infty.
 \]
-Fourier inversion makes the density of \(\lambda^{*r}\) a bounded-variation
-density; three such convolutions have finite location Fisher information by
-the Fisher smoothing estimate~\cite{bobkov2014stable}.
+Fourier inversion gives \(\lambda^{*r}\) a bounded-variation density; its
+third convolution has finite location Fisher information by the Fisher
+smoothing estimate \cite{bobkov2014stable}.
 Let \(f_\lambda\) be the density of \(\lambda^{*3r}\), put
 \(f_{\lambda,2}=f_\lambda*f_\lambda\), and let
 \(s_\lambda,s_{\lambda,2}\) be their location scores.
@@ -315,16 +280,12 @@ Independent \(U_1,U_2\) with density \(f_\lambda\) satisfy
  x s_{\lambda,2}(x)-1
  =2\E[U_1s_\lambda(U_2)\mid U_1+U_2=x].
 \]
-Their finite variance and the finite Fisher information of \(f_\lambda\)
-therefore
-give finite scale Fisher information for \(f_{\lambda,2}\).
+Finite variance and finite Fisher information of \(f_\lambda\) therefore give
+finite scale Fisher information for \(f_{\lambda,2}\).
 Set \(k=6r\) and \(\Lambda_k=(\lambda^{*k})^{\otimes\N}\).
-The density of \(\lambda^{*k}\), after
-rescaling to variance one, is a.e. positive and satisfies
-\eqref{eq:main-assumptions}.
-It is non-Gaussian because its characteristic function
-\(a_\alpha^k\) has a polynomial lower bound, whereas a nondegenerate
-Gaussian characteristic function has Gaussian decay.
+After rescaling to variance one, \(\lambda^{*k}\) has an a.e.-positive density
+satisfying \eqref{eq:main-assumptions}; it is non-Gaussian because its
+characteristic function \(a_\alpha^k\) has a polynomial lower bound.
 
 Let \(f_{\alpha,n}=f_\alpha^{\otimes n}\), let \(f_{\alpha,T,n}\) be the
 density of the true first \(n\) stable outputs, and put
@@ -340,37 +301,27 @@ Equivalence gives
 \(\sqrt{\ell_{\alpha,T,n}}\to\sqrt{\ell_{\alpha,T}}\)
 in \(L^2(\mu_\alpha)\).
 
-The construction is easiest to read backwards.  We seek a probability whose
-characteristic function at finitely supported \(z\) is
-\(\prod_i a_\alpha((T^{-1}z)_i)^k\), because that is the characteristic
-function of \(((T^{-1})^*)_\#\Lambda_k\).  Translation of a half-density
-becomes phase multiplication after Fourier transform, so one copy produces
-one autocorrelation factor; \(k\) tensor copies produce the \(k\)-th power;
-and addition of the \(k\) frequencies at each site realizes convolution by
-\(\lambda^{*k}\).  Thus each operation below corresponds to one factor in the
-desired intertwining identity.
+We construct \(((T^{-1})^*)_\#\Lambda_k\) from finite marginals: Fourier
+transformation turns half-density translations into phases, tensorization
+raises autocorrelations to the \(k\)th power, and frequency addition realizes
+convolution by \(\lambda^{*k}\).
 
 For each \(n\), take \(k\) tensor copies of
-\(\sqrt{f_{\alpha,T,n}}\), apply the
-finite-dimensional unitary Fourier transform, square the modulus, and push
-the resulting probability on \(\R^{kn}\) forward by adding the \(k\)
-frequency coordinates belonging to each site.
-Call the resulting probability on \(\R^n\) \(\xi_{\alpha,T,n}\), and extend it to
-the full sequence space by
+\(\sqrt{f_{\alpha,T,n}}\), Fourier transform, square the modulus, and add the
+\(k\) frequency coordinates at each site.  Denote the resulting law on
+\(\R^n\) by \(\xi_{\alpha,T,n}\), and set
 \begin{equation}
  \Xi_{\alpha,T,n}=\xi_{\alpha,T,n}\otimes
        (\lambda^{*k})^{\otimes\{i>n\}}.
  \label{eq:stable-fourier-transfer-approximants}
 \end{equation}
-The finite-dimensional pushforward \(\xi_{\alpha,T,n}\) has a Lebesgue density, and
-the density of \(\lambda^{*k}\) is positive almost everywhere; hence
+The first factor has a Lebesgue density and the tail density is positive
+almost everywhere; hence
 \(\Xi_{\alpha,T,n}\ll\Lambda_k\).
 
 For \(m>n\), pad \(\sqrt{f_{\alpha,T,n}}\) by \(m-n\) factors of
-\(g_\alpha\) before making the Fourier comparison.
-Using total variation in the \(L^1\)-norm convention, unitarity, the inequality
-\(\||u|^2-|v|^2\|_1\le2\|u-v\|_2\) for unit vectors, and contraction of
-total variation under pushforward give
+\(g_\alpha\).  Unitarity, contraction under pushforward, and
+\(\||u|^2-|v|^2\|_1\le2\|u-v\|_2\) give
 \begin{equation}
  \|\Xi_{\alpha,T,m}-\Xi_{\alpha,T,n}\|_{\mathrm{TV}}
  \le2\|(\sqrt{\ell_{\alpha,T,m}})^{\otimes k}
@@ -382,10 +333,8 @@ total variation under pushforward give
 Thus \(\Xi_{\alpha,T,n}\) converges in total variation to a probability
 \(\Xi_{\alpha,T}\ll\Lambda_k\).
 
-Let \(\nu_{\alpha,T}^{[n]}=\ell_{\alpha,T,n}\mu_\alpha\); this measure has the true first \(n\)
-output marginal and the original independent tail.
-For every finitely supported \(z\), Fourier autocorrelation and
-the square-root likelihood convergence give
+Let \(\nu_{\alpha,T}^{[n]}=\ell_{\alpha,T,n}\mu_\alpha\).  For every finitely
+supported \(z\), Fourier autocorrelation and square-root convergence give
 \begin{align*}
  \widehat\Xi_{\alpha,T}(z)
  &=\lim_n\Aff\bigl(\nu_{\alpha,T}^{[n]},
@@ -395,18 +344,14 @@ the square-root likelihood convergence give
  &=\prod_i a_\alpha((T^{-1}z)_i)^k.
 \end{align*}
 The last expression is the characteristic function of
-\(((T^{-1})^*)_\#\Lambda_k\).  Agreement for every finitely supported \(z\)
-identifies every finite marginal, and hence the probability on the sequence
-space:
-\(\Xi_{\alpha,T}=((T^{-1})^*)_\#\Lambda_k\).
-Consequently
+\(((T^{-1})^*)_\#\Lambda_k\); agreement for finitely supported \(z\)
+identifies all finite marginals.  Hence
 \begin{equation}
  ((T^{-1})^*)_\#\Lambda_k\ll\Lambda_k.
  \label{eq:stable-fourier-transfer}
 \end{equation}
-The equivalent--singular alternative in \cref{thm:measure-equivalence}
-upgrades this absolute continuity to equivalence.  Applying that theorem to
-the product of the \(\lambda^{*k}\) law rescaled to variance one then gives
+The dichotomy and classification in \cref{thm:measure-equivalence} upgrade
+this to equivalence and give
 \(Q\in\mathcal P^{\pm}\) such that
 \((T^{-1})^*-Q\in\mathcal S_2\).
 Since
@@ -422,17 +367,10 @@ After removing \(Q\), write
 \end{equation}
 
 \emph{Necessity of the off-diagonal column summability.}
-The Fourier transfer sees only \(K\in\mathcal S_2\).  For \(\alpha<2\) this
-is too weak: when \(0<c_j=\|Be_j\|_2<1\), the required cost
-\(c_j^\alpha\) is larger than \(c_j^2\).  The missing mass is detected on the
-rare event \(|X_j|\asymp c_j^{-1}\): it has probability of order
-\(c_j^\alpha\), while the receiver displacement \(X_jBe_j\) then has
-order-one norm.  The test below gates on precisely these events.  A tail
-estimate controls interference from the other columns, a
-directional statistic prevents cancellation, and the probability of two open
-gates makes the truncation error quadratic in the total cost.  These three
-ingredients prove the following dimension-free estimate, valid for every
-dimension and every real square matrix \(B\): there are
+For \(\alpha<2\), Hilbert--Schmidt control is weaker than the column cost.  We
+detect column \(j\) on the event
+\(|X_j|\asymp\|Be_j\|_2^{-1}\), whose probability has the required order.
+This gives constants
 \(\varepsilon_\alpha,c_\alpha>0\) such that
 \begin{equation}
  \diag B=0,\quad F_\alpha(B)\le\varepsilon_\alpha
@@ -451,18 +389,15 @@ output row \(i\) satisfies
  \label{eq:stable-row-scale-bound}
 \end{equation}
 
-First, for any finite family of vectors \(v_j\) in a real Hilbert space,
+For any finite family of Hilbert-space vectors \(v_j\),
 \begin{equation}
  \mathbb P\left(\left\|\sum_jv_jX_j\right\|_2>t\right)
  \le C_\alpha t^{-\alpha}\sum_j\|v_j\|_2^\alpha.
  \label{eq:stable-hilbert-random-sum-tail}
 \end{equation}
-Indeed, exclude the events
-\(\|v_j\|_2|X_j|>t\), truncate on their complement, and apply Chebyshev's
-inequality to the centered truncated sum.
-The stable tail and truncated second moment give
-\eqref{eq:stable-hilbert-random-sum-tail}.
-In particular, there is a deterministic modulus
+Indeed, exclude \(\{\|v_j\|_2|X_j|>t\}\) and apply Chebyshev to the centered
+truncated sum, using the stable tail and truncated second moment.  Integration
+gives a modulus
 \(\tau_\alpha(s)\downarrow0\) as \(s\downarrow0\) such that
 \begin{equation}
  \E\min\left\{\left\|\sum_jv_jX_j\right\|_2,1\right\}
@@ -485,35 +420,31 @@ vector \(u\),
  \mathcal M_u(t)\ge c_{\alpha,\mathrm{rec}}\quad(1\le t\le2).
  \label{eq:stable-directional-detection}
 \end{equation}
-Here uniformity in \(u\) requires care.  Since \(\psi\) is odd and bounded,
-\(\E\Theta_u(\mathbf X)=0\) and
+Oddness and boundedness give \(\E\Theta_u(\mathbf X)=0\) and
 \(\operatorname{Var}\Theta_u(\mathbf X)
 =\operatorname{Var}(\psi(X))\sum_i u_i^2\), so one compact interval contains
-all but a prescribed small amount of its mass.  Also
+all but a uniformly small amount of its mass.  Moreover,
 \[
  |\Theta_u(\mathbf X+tu)-\Theta_u(\mathbf X)|
  \le |t|\sum_i u_i^2\le2.
 \]
-Choose \(\chi'\) bounded below by a positive constant on that interval enlarged
-by two on each side.
-Since
+Choose \(\chi\) so that \(\chi'\) is positive on that interval enlarged by
+two.  Since
 \[
  \inf_{|\zeta|\le2}\E\psi'(X+\zeta)>0,
 \]
-the expectation of
-\(\sum_i u_i^2\psi'(X_i+tu_i)\) is bounded below by this positive infimum.
-Choose the interval so that the discarded contribution is smaller than half
-that infimum.  Differentiation then gives a dimension-free positive lower
-bound for
+the expectation of \(\sum_i u_i^2\psi'(X_i+tu_i)\) has the same positive
+lower bound.  Taking the discarded contribution smaller than half of it and
+differentiating bounds from below
 \[
  \mathcal M_u'(t)=\E\left[
    \chi'(\Theta_u(\mathbf X+tu))\sum_i u_i^2\psi'(X_i+tu_i)
                  \right]
 \]
-when \(|t|\le2\).  Oddness then proves
+for \(|t|\le2\).  Oddness proves
 \eqref{eq:stable-directional-detection}.
 
-Third, choose a nonzero smooth odd function \(w\), supported where
+Now choose a nonzero smooth odd function \(w\), supported where
 \(1\le|t|\le2\), with \(0\le w\le1\) on the positive half-line.
 Put
 \[
@@ -532,13 +463,11 @@ For all sufficiently small \(c_j\), stable tail asymptotics give
  \E|w(c_jX_j)|\ge c_\alpha c_j^\alpha.
  \label{eq:stable-gate-probability}
 \end{equation}
-The gates depend on independent input coordinates.
-If \(N_{\mathrm{open}}\) is the number of open gates, then
+The gates are independent.  If \(N_{\mathrm{open}}\) is their number, then
 \(\E[N_{\mathrm{open}}(N_{\mathrm{open}}-1)]\le C_\alpha F^2\).
-Before the outer truncation, each summand in
-\eqref{eq:stable-column-detection-test} has mean zero because its gate variable
-is independent of its receiver variables.
-The truncation changes the sum only when at least two gates are open, so
+Before truncation, every summand has mean zero because its gate is independent
+of its receiver variables.  Truncation matters only when at least two gates
+are open, so
 \begin{equation}
  |\E\Psi_B(\mathbf X)|\le C_\alpha F^2.
  \label{eq:stable-column-detection-input-mean}
@@ -582,37 +511,27 @@ Because \((u_j)_j=0\), conditioning on \(X_j\) and using
  \ge c_\alpha F.
  \label{eq:stable-column-detection-main-response}
 \end{equation}
-Choose \(\delta\) first so that the \(\delta F\) error is at most one quarter
-of the main response.  With this \(\delta\) fixed, choose \(F\) so small that
-the \(F^2\), \(\delta^{-\alpha}F^2\), and
-\(F\tau_\alpha(F)\) errors together cost at most another quarter.
+Choose \(\delta\), then \(F\), so that the \(\delta F\), \(F^2\),
+\(\delta^{-\alpha}F^2\), and \(F\tau_\alpha(F)\) errors total at most half
+the main response.
 Equations
 \cref{eq:stable-column-detection-input-mean,eq:stable-output-gate-error,eq:stable-receiver-interference-error,eq:stable-column-detection-main-response}
 give
 \[
  \E\Psi_B(\mathbf Y)-\E\Psi_B(\mathbf X)\ge c_\alpha F.
 \]
-The test can be nonzero only when a gate is open.
-The coordinates of \(\mathbf Y\) have stable scales bounded by
-\((1+F)^{1/\alpha}\), so
+The test is nonzero only when a gate is open, and the coordinates of
+\(\mathbf Y\) have stable scales at most \((1+F)^{1/\alpha}\); hence
 \[
  \E\Psi_B(\mathbf X)^2+\E\Psi_B(\mathbf Y)^2\le C_\alpha F.
 \]
-The Hellinger Cauchy--Schwarz inequality now gives
-\(h^2((I+B)_\#\mu_{\alpha,n},\mu_{\alpha,n})\ge c_\alpha F\),
-which is \eqref{eq:stable-off-diagonal-column-lower-bound}.
+Hellinger Cauchy--Schwarz now gives
+\eqref{eq:stable-off-diagonal-column-lower-bound}.
 
-We use this estimate together with uniform invariance under finite tail sign
-changes, thereby avoiding any triangularity assumption.
-The local estimate alone cannot rule out \(F_\alpha(B)=\infty\), because it
-applies only at small cost.  A finite sign change isolates the entries crossing
-a coordinate cut.  Equivalence makes every sufficiently remote finite sign
-change uniformly invisible in Hellinger distance, whereas the local estimate
-makes any cut of a fixed small cost uniformly visible.  Random cuts supply
-arbitrarily large crossing cost, and the vanishing cost of a single remote
-coordinate lets us add coordinates until a prescribed small threshold is
-first crossed.  The contradiction between invisibility and visibility is the
-global step.
+We globalize this local estimate using finite tail sign changes.  Such a change
+isolates the entries crossing a coordinate cut: equivalence makes every remote
+cut Hellinger-invisible, whereas the local estimate detects every cut of a
+fixed small cost.
 
 Let \(B\) have \(\ell^\alpha\) rows, zero diagonal,
 \(\|B\|_{\mathrm{op}}\le1/10\), and belong to \(\mathcal S_2\).  Suppose
@@ -626,15 +545,11 @@ and set
  \qquad
  A_{\mathcal J}=(I+B)^{-1}Q_{\mathcal J}(I+B)Q_{\mathcal J}.
 \]
-The matrix \(\Delta_{\mathcal J}\) contains precisely the entries crossing
-the cut between \(\mathcal J\) and its complement.
-Because \(\mathcal J\) is finite, these entries form a sum of finitely many
-\(\ell^2\) columns and finitely many \(\ell^\alpha\) rows; hence
-\(F_\alpha(\Delta_{\mathcal J})<\infty\).
-The finite-dimensional bound
-\eqref{eq:stable-off-diagonal-column-lower-bound} extends to such infinite matrices by
-applying it to \(P_n\Delta_{\mathcal J}P_n\) and using the Hellinger convergence from
-the already proved sufficiency argument.
+The matrix \(\Delta_{\mathcal J}\) consists of the entries crossing the cut.
+Since \(\mathcal J\) is finite, it has finite column cost.  Applying
+\eqref{eq:stable-off-diagonal-column-lower-bound} to
+\(P_n\Delta_{\mathcal J}P_n\) and using the sufficiency approximation extends
+that bound to \(\Delta_{\mathcal J}\).
 
 Put
 \[
@@ -678,11 +593,9 @@ have respective orders
 \(F_\alpha(\Delta_{\mathcal J})^{1/\alpha}\), and the latter is smaller for small
 cost because \(\alpha<2\).
 
-On the other hand, finite-prefix approximation of the square-root likelihood
-gives uniform invariance under finite tail sign changes.  Every tail sign
-change fixes a prefix-dependent approximation and preserves \(\mu_\alpha\);
-the relevant Hellinger distance is at most twice the \(L^2\)-approximation
-error, uniformly over all finite tail sign sets.  Hence
+Finite-prefix approximation of the square-root likelihood also gives uniform
+invariance under finite tail sign changes: each fixes the prefix approximation
+and preserves \(\mu_\alpha\), so
 \begin{equation}
  \sup_{\substack{\mathcal J\subset\{N+1,N+2,\ldots\}\\ |\mathcal J|<\infty}}
  h\bigl((I+B)_\#\mu_\alpha,
@@ -690,71 +603,55 @@ error, uniformly over all finite tail sign sets.  Hence
  \longrightarrow0.
  \label{eq:stable-tail-sign-change-invariance}
 \end{equation}
-Hellinger invariance and \((Q_{\mathcal J})_\#\mu_\alpha=\mu_\alpha\) also give the
-connecting identity
+Hellinger invariance and \((Q_{\mathcal J})_\#\mu_\alpha=\mu_\alpha\) give
 \begin{equation}
  h\bigl((I+B)_\#\mu_\alpha,
         (Q_{\mathcal J})_\#(I+B)_\#\mu_\alpha\bigr)
  =h(\mu_\alpha,(A_{\mathcal J})_\#\mu_\alpha).
  \label{eq:stable-finite-cut-distance-identity}
 \end{equation}
-If \(F_\alpha(B)=\infty\), deleting finitely many columns changes the cost
-by a finite amount, and so does deleting finitely many rows because those
-rows lie in \(\ell^\alpha\).
-Hence every tail still has infinite column cost.
-Let \(I_0\) be a finite coordinate set in such a tail, and
-form \(\mathcal J\subset I_0\) by independently including each
-coordinate with probability
-one half.
-Column by column, concavity of \(t^{\alpha/2}\) gives
+Suppose \(F_\alpha(B)=\infty\).  Deleting finitely many columns or rows
+changes the cost finitely, the latter because each row lies in
+\(\ell^\alpha\); thus every tail has infinite cost.  For a finite tail set
+\(I_0\), include each coordinate independently in \(\mathcal J\) with
+probability one half.  Columnwise concavity of \(t^{\alpha/2}\) gives
 \begin{equation}
  \E_{\mathcal J}F_\alpha(P_{I_0}\Delta_{\mathcal J}P_{I_0})
  \ge2^{\alpha-1}F_\alpha(P_{I_0}BP_{I_0}).
  \label{eq:stable-random-finite-cut}
 \end{equation}
-As \(I_0\) increases through finite subsets of the tail, the right side is
-unbounded, so some finite cuts have arbitrarily large cost.
-Equivalence also makes every sufficiently remote one-coordinate output
-marginal close to \(\rho_\alpha\), so
+As \(I_0\) exhausts the tail, some finite cuts therefore have arbitrarily
+large cost.  Equivalence makes the remote output marginals converge to
+\(\rho_\alpha\), so
 \[
  \omega_i(B):=\sum_{j\ne i}|b_{ij}|^\alpha\longrightarrow0.
 \]
-Together with \(B\in\mathcal S_2\), which gives
-\(c_i:=\|Be_i\|_2\to0\), this yields
+Since \(B\in\mathcal S_2\) also gives \(c_i:=\|Be_i\|_2\to0\), we have
 \[
  F_\alpha(\Delta_{\{i\}})
  =2^\alpha(c_i^\alpha+\omega_i(B))\longrightarrow0.
 \]
 For \(\alpha\le1\), \(F_\alpha\) is subadditive; for \(\alpha\ge1\),
-\(F_\alpha^{1/\alpha}\) is the \(\ell^\alpha(\ell^2)\) norm and satisfies
-the triangle inequality.
-Moreover, when \(i\notin\mathcal J\),
+\(F_\alpha^{1/\alpha}\) is a norm.  If \(i\notin\mathcal J\),
 \[
  \Delta_{\mathcal J\cup\{i\}}-\Delta_{\mathcal J}
  =Q_{\mathcal J}\Delta_{\{i\}}Q_{\mathcal J},
 \]
-and sign multiplication preserves the relevant subadditive size.
-Thus the increment from adding one sufficiently remote coordinate tends
-uniformly to zero in that size.
-Fix \(0<\varepsilon<\varepsilon_*/2\).
-Starting with the empty cut and adding the elements of a finite cut supplied
-by \eqref{eq:stable-random-finite-cut}, stop the first time the corresponding
-threshold is crossed.
-For every sufficiently remote tail this produces a finite \(\mathcal J\) with
+and signs preserve the relevant subadditive size.  Hence single-coordinate
+increments tend uniformly to zero.  Fix
+\(0<\varepsilon<\varepsilon_*/2\), add the elements of a large cut from
+\eqref{eq:stable-random-finite-cut}, and stop at the first threshold crossing.
+In every sufficiently remote tail this produces \(\mathcal J\) with
 \(\varepsilon\le F_\alpha(\Delta_{\mathcal J})\le2\varepsilon\).
 Equations
 \cref{eq:stable-finite-cut-lower-bound,eq:stable-tail-sign-change-invariance,eq:stable-finite-cut-distance-identity} then contradict one another.
 Hence \(F_\alpha(B)<\infty\).
 
-Finally, put \(M=I+K\) in
-\eqref{eq:stable-hilbert-schmidt-match} and let
-\(K_n=P_nKP_n\) and \(M_n=I+K_n\).
-For a sufficiently large \(n\), the equivalent transformation
-\(A=M_n^{-1}M\) is arbitrarily close to the identity in operator norm.
-Indeed, \(M_n\) changes only finitely many coordinates, so
-\((M_n)_\#\mu_\alpha\sim\mu_\alpha\); compatible composition with
-\(M_\#\mu_\alpha\sim\mu_\alpha\) gives
-\(A_\#\mu_\alpha\sim\mu_\alpha\).
+Finally, write \(M=I+K\) as in
+\eqref{eq:stable-hilbert-schmidt-match}, set
+\(M_n=I+P_nKP_n\), and take $n$ large.  Then $A=M_n^{-1}M$ is arbitrarily
+close to $I$.  Since $M_n$ changes only finitely many coordinates, compatible
+composition gives \(A_\#\mu_\alpha\sim\mu_\alpha\).
 Its diagonal part \(D=\diag A\) is positive, boundedly invertible, and
 \(D-I\in\mathcal S_2\); the one-coordinate scale criterion therefore gives
 \(D_\#\mu_\alpha\sim\mu_\alpha\).
@@ -767,43 +664,33 @@ Consequently
  (I+B)_\#\mu_\alpha\sim\mu_\alpha.
 \]
 Finite-coordinate and bounded diagonal composition preserve the
-\(\ell^\alpha\) row condition and the compatible stable row-series
-realization.  Thus the normalized \(B\) satisfies the hypotheses of the
-preceding finite-cut contradiction, which gives \(F_\alpha(B)<\infty\).
+\(\ell^\alpha\) row condition and compatible realization, so the finite-cut
+argument gives \(F_\alpha(B)<\infty\).
 Since \(K_n\) is supported on a finite coordinate block, we have
 \[
  M=M_nD(I+B)
   =D+\bigl(K_nD+DB+K_nDB\bigr).
 \]
-The term in parentheses has finite column cost by
-\eqref{eq:stable-column-class-bounds} and finite-coordinate support.
-Restoring the initial signed permutation therefore gives
+The parenthesized term has finite column cost by
+\eqref{eq:stable-column-class-bounds}.  Restoring the signed permutation gives
 \[
  \sum_j\left(\sum_{i\ne j}|k_{ij}|^2\right)^{\alpha/2}<\infty,
 \]
 while \(K\in\mathcal S_2\) already gives
 \(\sum_i|k_{ii}|^2<\infty\).
-This is precisely \(\mathfrak e_\alpha(TQ^{-1})<\infty\), and completes
-the necessity.
+This is \(\mathfrak e_\alpha(TQ^{-1})<\infty\).
 
 If \(\nu_{\alpha,T}=\mu_\alpha\), comparison of the joint characteristic
-functions gives
-\(\|T^*u\|_\alpha=\|u\|_\alpha\) for every finitely supported \(u\).
-The same statement for the compatible inverse makes \(T^*\) a surjective
-isometry of \(\ell^\alpha\).
-For \(0<\alpha<2\), the equality case of
+functions, first for $T$ and then for its compatible inverse, makes $T^*$ a
+surjective isometry of \(\ell^\alpha\).  For \(0<\alpha<2\), equality in
 \[
  2\|u\|_\alpha^\alpha+2\|v\|_\alpha^\alpha
  -\|u+v\|_\alpha^\alpha-\|u-v\|_\alpha^\alpha\ge0
 \]
-shows that disjointly supported vectors have disjointly supported images.
-The images of the coordinate vectors therefore have pairwise disjoint
-supports; surjectivity makes each support a singleton, and norm preservation
-makes its nonzero entry \(\pm1\).
-Thus \(T\in\mathcal P^{\pm}\), while every member of \(\mathcal P^{\pm}\)
-preserves \(\mu_\alpha\) by coordinate independence and symmetry.  This proves
-the assertion about the exact linear
-stabilizer and completes the proof.
+characterizes disjoint support.  Hence the images of the coordinate vectors
+have disjoint supports; surjectivity makes each support a singleton, and norm
+preservation makes its entry \(\pm1\).  Thus \(T\in\mathcal P^{\pm}\).  The
+converse follows from independence and symmetry.
 \end{proof}
 
 \subsection{Anisotropic stable Hellinger coercivity and sharpness}
@@ -833,30 +720,22 @@ Let \(A\in\GL(n,\R)\).  If all singular values of \(A\) lie in a fixed interval
 \begin{proof}
 The upper bound is \eqref{eq:stable-finite-dimensional-upper-bound}, after
 removing the minimizing signed permutation.
-For the even convolution power \(k\) constructed in the proof of
-\cref{thm:complete-criterion-symmetric-stable-coordinates}, the
-finite-dimensional Fourier transform gives the quantitative inequality
+For the even convolution power \(k\) used above, Fourier transformation gives
 \begin{equation}
  h^2\bigl(((A^{-1})^*)_\#(\lambda^{*k})^{\otimes n},
                  (\lambda^{*k})^{\otimes n}\bigr)
  \le k\,h^2(A_\#\mu_{\alpha,n},\mu_{\alpha,n}).
  \label{eq:stable-finite-fourier-transfer}
 \end{equation}
-Indeed, the unitary Fourier transform intertwines the half-density actions
-of \(A\) and \((A^{-1})^*\); taking moduli is an \(L^2\) contraction.
-For \(k\) tensor copies, squared Hellinger distance grows by at most the
-factor \(k\), and coordinatewise frequency addition is a data-processing
-map.
-Apply the finite-variance coercivity theorem to the product of the
-\(\lambda^{*k}\) law rescaled to variance one.
-When the singular values of \(A\) lie in \([a,b]\), those of \((A^{-1})^*\)
-lie in \([b^{-1},a^{-1}]\), and
+Indeed, Fourier transformation intertwines the half-density actions of \(A\)
+and \((A^{-1})^*\), modulus is an \(L^2\) contraction, tensorization costs at
+most $k$, and frequency addition is data processing.  Apply finite-variance
+coercivity to the rescaled \(\lambda^{*k}\) product.  The singular values of
+\((A^{-1})^*\) lie in \([b^{-1},a^{-1}]\), and
 \[
  A-Q=-A\bigl((A^{-1})^*-Q\bigr)^*Q
 \]
-shows that distance from the signed-permutation group changes by at most a
-factor depending on \(a,b\).
-Thus \eqref{eq:stable-finite-fourier-transfer} gives
+compares the two distances up to a factor depending on \(a,b\).  Hence
 \begin{equation}
  h^2(A_\#\mu_{\alpha,n},\mu_{\alpha,n})
  \ge c_{\alpha,a,b}
@@ -872,31 +751,25 @@ Near a signed permutation, remove that permutation and write
 \]
 For \(d_{\mathrm{diag}}+F\) small, the identity is the nearest signed
 permutation, so \eqref{eq:stable-quadratic-lower-bound} controls
-\(d_{\mathrm{diag}}\).
-If \(D=\diag A\) and \(D^{-1}A=I+B\), then
+\(d_{\mathrm{diag}}\).  With \(D=\diag A\) and \(D^{-1}A=I+B\),
 \(\diag B=0\) and \(F_\alpha(B)\asymp_\alpha F\).
 The off-diagonal column lower bound and the diagonal scale upper bound give
 \[
  h(A_\#\mu_{\alpha,n},\mu_{\alpha,n})
  \ge c_\alpha\sqrt F-C_\alpha\sqrt{d_{\mathrm{diag}}}.
 \]
-If \(d_{\mathrm{diag}}\) dominates \(F\), use
-\eqref{eq:stable-quadratic-lower-bound}; otherwise absorb the second term in
-the last display.
-This proves the local lower bound in
-\eqref{eq:stable-hellinger-coercivity}.
-If uniform separation failed away from that neighborhood, one could take a
-block-diagonal sum of counterexamples whose squared Hellinger distances are
-summable.
-Kakutani's theorem would make the resulting infinite stable products
-equivalent.
-The Hilbert--Schmidt part of
-\cref{thm:complete-criterion-symmetric-stable-coordinates} forces the signed
-permutation furnished by that theorem to preserve every sufficiently late block;
-otherwise each crossed block contributes a fixed positive square error.
-The restrictions of that permutation to the late blocks would then make
-their anisotropic mixing costs summable, a contradiction.
-This proves the global lower bound.
+Choose $\eta>0$ so that the last negative term is absorbed when
+$d_{\mathrm{diag}}\le\eta F$.  When
+$d_{\mathrm{diag}}\ge\eta F$, use
+\eqref{eq:stable-quadratic-lower-bound}.  This proves the local lower bound.
+
+Otherwise choose a separated sequence with summable squared Hellinger
+distances and form its block-diagonal sum.  Kakutani makes the resulting
+infinite products equivalent.  The classification just proved supplies a
+signed permutation preserving every sufficiently late block, since crossing
+one costs a fixed positive square error.  Its block restrictions would make
+the anisotropic costs summable, a contradiction.  This proves the global
+lower bound.
 \end{proof}
 
 The different local powers are already visible in two dimensions.
