@@ -1,0 +1,76 @@
+\section{Scope of the Finite-Variance Hypotheses}
+\label{sec:scope-of-the-finite-variance-hypotheses}
+
+The zero-set row-condition classification of
+\cref{sec:zero-set-row-condition-and-linear-equivalence} shows that
+positivity is not merely a regularity convenience: without it,
+Hilbert--Schmidt proximity must be paired with the zero-set row condition,
+and boundary geometry may collapse the equivalence group to permutations.
+The remaining assumptions control the Fourier/Fisher mechanism for bounded
+invertible linear mixing.
+
+The finite-variance a.e.-positive-density theorem is broad within its regime.
+It includes Laplace densities centered with variance one despite their
+cusp at the origin, as well as densities centered with variance one and proportional to
+\(e^{-x^4}\).
+Symmetry is not needed in any step of the proof.
+
+For examples allowing both asymmetry and heavy tails, take a density
+proportional to
+\begin{equation}
+ (1+y^2)^{-(\tau+1)/2}
+                           e^{\vartheta\arctan y},
+ \qquad \tau>2,\quad \vartheta\in\R,
+ \label{eq:asymmetric-heavy-tail-example}
+\end{equation}
+and center and rescale to variance one.
+Its location score before centering and rescaling is
+\[
+ \frac{(\tau+1)y-\vartheta}{1+y^2}.
+\]
+Both this score and its product with \(y\) are bounded.
+The density is everywhere positive and smooth.
+It has a finite second moment.
+Centering and rescaling preserve finiteness of the location and scale
+Fisher information.
+So the density centered with variance one satisfies \eqref{eq:main-assumptions}.
+For \(2<\tau\le4\), its fourth moment is infinite.
+When \(\vartheta\ne0\), the two tails have unequal leading constants.
+So centering does not make the density even.
+The case \(\vartheta=0\) is a rescaled Student \(t\) family.
+These examples show that neither evenness nor a fourth moment is implicit in
+the theorem.
+
+The Gamma example used to illustrate the rotational Fourier defect in
+\cref{sec:variance-and-affine-normalization} should therefore be read
+through the zero-set row-condition theorem, not through the
+a.e.-positive-density theorem.
+Its centered density vanishes on a half-line.
+The rotational Fourier defect still gives a local Hellinger obstruction to rotations,
+but equivalence is decided by the half-line support classification:
+homogeneous linear equivalence permits only coordinate permutations.
+The same support theorem classifies all bounded coordinate laws, including
+disconnected supports and laws without densities.
+\Cref{cor:affine-gamma-classification} treats the distinct affine Gamma problem,
+where support-preserving scales do allow equivalence.
+
+The moment assumptions play a different role from the boundary assumptions.
+Support controls which rows are admissible from the viewpoint of null sets;
+the second moment controls whether arbitrary \(\ell^2\) rows define the
+measurable linear action used throughout \cref{thm:measure-equivalence}.
+It also has a specific role beyond differentiating the expectation of the
+product of centered complex exponentials.
+It makes every \(\ell^2\) row into a convergent random series.
+It supplies uniform integrability of squares of linear forms.
+It gives the coefficient-subsequence argument with an independent Gaussian
+summand in \cref{lem:unit-row-rigidity}.
+Thus the first-moment ODE result is stronger in its moment scope than
+\cref{thm:measure-equivalence}.
+
+Under \eqref{eq:main-assumptions}, the Hellinger path estimates give
+\(L^1\) convergence and uniform integrability of likelihood ratios.
+The finite real Fourier sums are bounded in each coordinate.
+Their dimension-free bounds are the \(L^2(\mu_n)\) and generator estimates
+proved above.
+No variance bound for their aggregate under an arbitrary mixed output law is
+needed in the tail-symmetry argument.

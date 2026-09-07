@@ -1,130 +1,100 @@
-Terminology collision review
-Review date: 2026-09-06
-Scope: all seven included manuscript sections, including the density-zero
-operator classification in Section 7.
+TERMINOLOGY AND GOOGLE SCHOLAR COLLISION REVIEW
+Snapshot: 2026-09-06
+Scope: the current eight-section manuscript
 
-Time bound and outcome
-The original one-hour window began at 15:37:41 UTC and ended at 16:37:41 UTC.
-The first session stopped at 16:08:10 after access recovery failed: 30m29s.
-After the user closed unrelated private content and requested resumption, the
-second session began at 16:26:02. All remaining result pages had been inspected
-by 16:37:38, before the original cutoff. The second interval was at most 11m36s;
-the two work intervals total at most 42m05s. No further searches were made.
-All 84 distinct inventory entries now have an inspected Google Scholar page:
-  14 displayed no matching articles;
-  70 returned records;
-  0 remain access-unavailable.
-The table distinguishes 33 standard-context, 15 other-context, 13 context-dependent,
-5 related-context, and 4 nearby-semantic-collision result classifications.
-Repeated access attempts are not counted as extra phrase checks.
-Observation intervals are deliberately bounded timestamps, not invented exact
-query times. Earlier failed attempts remain documented below but are superseded
-by the successful observations in the table.
+Included source sequence
+1. 01-introduction-and-main-results.tex
+2. 02-rotational-fourier-defect-and-gaussian-characterization.tex
+3. 03-finite-dimensional-hellinger-coercivity.tex
+4. 04-measurable-realization-and-dichotomy.tex
+5. 05-finite-variance-equivalence-and-global-rigidity.tex
+6. 06-symmetric-stable-products-and-anisotropic-geometry.tex
+7. 07-zero-set-row-condition-and-linear-equivalence.tex
+8. 08-scope-of-the-finite-variance-hypotheses.tex
 
-Method and limits
-Each inventory phrase was submitted to Google Scholar enclosed in quotation
-marks. Actual public results pages were inspected in the Codex in-app browser
-using accessibility text and, where needed, DOM snapshots. Titles and snippets
-were read to classify context. Primary papers were inspected for the substantive
-nearby naming decisions identified below. No hit-count-based bibliometrics or
-claim of reading every returned paper is made.
-The inventory covers named objects, persistent notation, and descriptive
-technical phrases identified during the manuscript audit. Related local symbols
-are mapped to their definitions. Bare letters, dummy indices, numerical constants
-and ordinary logical notation are not meaningful standalone phrase queries.
-Queries for descriptions subsequently rewritten remain in the table with their
-final action; they are audit records, not aliases retained in the manuscript.
-Replacing a name by its explicit definition does not create a new named concept.
-Scholar may normalize hyphens and punctuation even within quotation marks.
-No articles for an exact query establishes neither novelty nor absence of synonyms.
-A hit alone is not a harmful collision: standard meanings, other disciplinary
-contexts, and nearby competing technical definitions are distinguished.
-These checks do not establish priority or certify the originality of the results.
+The include order in sections/main.tex is exactly 01 through 08. Visible section
+titles and filenames agree. Cross-reference labels are internal identifiers and
+are excluded from prose-terminology counts.
 
-Access history
-Direct opening through the web tool initially returned a non-retryable access
-error. The in-app browser supplied 28 successful pages before a CAPTCHA.
-The user explicitly authorized completion with '授权完成验证并继续'. That verification
-was completed, and another 12 pages were inspected, for 40 in the first session.
-A subsequent interruption removed the temporary in-app browser session.
-Recovery was unavailable or queued. Automatic approval review rejected reading
-native Chrome's full accessibility tree because it contained unrelated private
-content. That rejection was respected. A separately authorized direct public
-Scholar request received HTTP 403 after an initial sandbox DNS failure; neither
-response was recorded as a negative search result. No proxy or alternate identity
-was used.
-After the user's instruction '私人内容关了，什么东西没查的可以现在去查了', the in-app
-browser became available again. All 44 pending exact queries were completed there;
-no native Chrome inspection was needed. No new CAPTCHA appeared in this session.
+Canonical language and macro-expansion checks
+- "a.e.-positive density" expands to f>0 Lebesgue-almost everywhere. The
+  stronger phrase "everywhere-positive density" is used only where pointwise
+  positivity is actually available, notably for symmetric stable densities.
+- "centered with variance one" expands to E X=0 and E X^2=1.
+- "bounded invertible linear mixing" expands to an element of GL(ell^2) acting
+  through the specified measurable row-series realization. "Dense" remains
+  only in its literal topological sense, such as a dense translation group.
+- "projected Hellinger energy" expands to
+  E_n(T)=-2 log Aff(mu_n,(pi_n)_#nu_T).
+- "exact linear stabilizer" expands to {T:nu_T=mu}; its identified subgroup is
+  P in the finite-variance branch and P^{+-} in the symmetric stable branch.
+- "rotational Fourier defect" expands to
+  R(xi,eta)=eta phi'(xi)phi(eta)-xi phi(xi)phi'(eta).
+- "matrix Fisher operator" expands to the score-covariance operator I defined
+  by <A,I B>_F=E[S_A S_B].
+- "compatible stable row-series realization" expands to the measurable
+  row-series maps for T and a row inverse S satisfying both composition
+  identities on common conull carriers.
+- "anisotropic mixing cost" expands to the displayed diagonal-square term plus
+  the off-diagonal column cost F_alpha.
+- "zero-set row condition" expands to the formal forward and inverse
+  almost-sure conditions that every relevant row land in {f>0}.
 
-Nearby naming decisions supported by primary sources
-1. Projected likelihood
-McLeish and Small use projection of likelihood ratios onto inference-function
-spaces in semiparametric models (Biometrika 79(1), 93-102, 1992).
-Official DOI: https://doi.org/10.1093/biomet/79.1.93
-Official publisher abstract was inspected. A separate GP training-objective use
-also occurs in https://arxiv.org/abs/2601.16332 (primary abstract inspected).
-The manuscript uses finite-marginal likelihood ratio for its actual marginal
-Radon-Nikodym derivatives. Its exact query displayed no articles; no novelty
-inference follows.
+One word, one meaning, one name
+The visible manuscript uses the canonical forms above. "Stable" is reserved for
+alpha-stable probability laws and their row series. Convergence is described as
+convergent.
+"Likelihood ratio" is the open compound noun, while attributive compounds use
+"likelihood-ratio", as in likelihood-ratio martingale and likelihood-ratio
+convergence. Every unit-variance normalization is stated as "centered with
+variance one."
 
-2. Projective criterion
-Durieu and Volny (2008) explicitly use this name for L1 convergence of
-sum_(k>=1) X_0 E[X_k | F_0] in stationary-process invariance-principle theory.
-Official primary text, p.325: https://www.numdam.org/item/10.1214/07-AIHP123.pdf
-Related author preprint: https://arxiv.org/abs/0804.1848
-This differs from the manuscript's criterion using finite-marginal likelihood
-ratios. The single-use phrase is replaced by criterion in terms of finite marginals.
+Burden-threshold review
+Whitespace-normalized visible-text counts are:
+  weighted Fourier jet                         6
+  compatible stable row-series realization    5
+  anisotropic stable Hellinger coercivity      3
+  anisotropic mixing cost                      7
+  column cost                                  6
+  projected Hellinger energy                  10
+  exact linear stabilizer                     14
+  rotational Fourier defect                   19
+  matrix Fisher operator                       9
+  bounded invertible linear mixing            12
+  centered with variance one                  10
+  zero-set row condition                      21
+  finite-marginal likelihood ratio             5
 
-3. Fourier feature
-Tancik et al. use sine/cosine vector input maps before an MLP, with equation (5)
-giving the map explicitly. Official primary text:
-https://proceedings.neurips.cc/paper_files/paper/2020/file/55053683268957697aa39fba6f231c68-Paper.pdf
-This is contextual overlap, not proof that the previous phrase was mathematically
-invalid. Product of centered complex exponentials now describes W exactly.
-The undefined fractional-feature aside is replaced by the explicit observation
-that bounded test functions do not remove the admissible-row condition.
+The weighted Fourier jet occurs in the formal Gaussian-characterization lemma
+in Section 2. The compatible stable row-series realization occurs in the
+formal stable criterion in Section 6. Anisotropic stable Hellinger coercivity
+titles and occurs in a formal proposition there. The anisotropic mixing cost
+and column cost are explicitly identified inside that theorem statement.
+Projected Hellinger energy, the exact linear stabilizer, the rotational Fourier
+defect, and the matrix Fisher operator also occur in formal statements.
 
-4. Density zero set
-Inspected Scholar records use this string for sets of asymptotic density zero
-in number theory and set theory, including Density zero slaloms (2000):
-https://www.sciencedirect.com/science/article/pii/S0168007299000184
-The manuscript instead concerns {f=0}; its subsection now says zero sets of the
-density. This is a lexical disambiguation, not a claim that the cited theory is
-applicable to the manuscript's operators.
+Single-use proof steps are stated as direct descriptions rather than inventoried
+as reusable terminology. Standard mathematical vocabulary such as Hellinger
+distance, Fisher information, Hilbert--Schmidt ideal, and Radon--Nikodym
+derivative is not presented as newly coined terminology; applicable context
+checks for such terms remain in the collision table.
 
-Load-bearing name retained after context check
-Linear equivalence group returned three records, including Li, Huang and Pei,
-The Recognition of the Bifurcation Problem with Trivial Solutions (2019).
-Official primary text, pp.2-3:
-https://mdpi-res.com/d_attachment/symmetry/symmetry-11-00935/article_deploy/symmetry-11-00935-v2.pdf
-Its group acts on bifurcation-function germs, not probability measure classes.
-The manuscript retains linear equivalence group of mu and the explicit definition
-G_rho={T in GL(H): nu_T equivalent to mu}. The term is used in the classification
-statement and throughout its development. The inspected overlap does not require
-discarding this useful name. The one- and two-sided operator criteria are unchanged.
+Introduction forward-notation policy
+The opening question-and-answer preview avoids nu_T, P, and E_n before their
+definitions. The result map appears after the finite-variance definitions.
+Its stable row states the criterion in prose, and the introductory symbol table
+contains only notation already defined. All stable-family symbols are first
+introduced with their definitions in Section 6.
 
-Other source decisions
-- Gaussian residual and Gaussian remainder are unified as independent Gaussian
-  summand, describing the existing sqrt(1-q) Z term.
-- Tail rigidity and support rigidity become descriptive result titles stating
-  Hilbert-Schmidt necessity and linear equivalence for bounded/half-line laws.
-- The table describes the relation between rho^- and rho directly.
-- Nonnegative inverse operators becomes an operator and its inverse both having
-  nonnegative matrix entries. Weighted permutation is qualified as an operator.
-- Projective criterion, boundary loss and support mismatch are replaced by the
-  specific finite-marginal and factor-absolute-continuity descriptions.
-- The boundary subsection now states density behavior and summability criteria.
-- Student family becomes Student t family, consistent with the displayed density.
-- The useful U={f>0} notation is retained; prose describes the set where f is
-  positive. It is explicitly distinguished from closed support.
-- Logarithmic affinity, affine equivalence group and semidirect product are not
-  reintroduced where explicit formulas already suffice.
-No bibliography entry is added solely to document an editorial naming decision.
-The table and this file carry the collision evidence outside the manuscript.
-
-Validation
-The notation inventory and source fingerprints were regenerated after the edits.
-Static checks cover consecutive sections, filenames/titles, labels/references,
-math delimiters, environments, citations, and whitespace. No LaTeX compilation,
-bibliography build, PDF rendering, or numerical experiment was performed.
+Google Scholar collision evidence
+audit/terminology-collisions.tsv contains only terms or standard vocabulary
+still applicable to the current manuscript. Rows with successful observations
+retain the inspected Google Scholar evidence and timestamps recorded on
+2026-09-06 and 2026-09-07. All 72 rows have a completed exact quoted query;
+none has a pending or access-error status. A status of no_exact_articles records
+only what the displayed result page showed at that observation; it is not a
+novelty or priority claim. Context statuses distinguish standard mathematical
+usage, mathematically related usage, context-dependent usage, and unrelated
+lexical collisions. The collision table does not claim exhaustive synonym
+search, bibliometrics, or priority; it records exact-phrase checks and the
+observed context only.

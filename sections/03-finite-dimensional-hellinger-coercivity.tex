@@ -13,7 +13,7 @@ stabilizer in
 \subsection{The matrix Fisher operator}
 \label{sec:fisher-operator}
 
-The Fisher operator supplies the infinitesimal metric that all later
+The matrix Fisher operator supplies the infinitesimal metric that all later
 Hellinger bounds linearize around.
 Its eigenspaces separate diagonal scale directions, symmetric off-diagonal
 covariance directions, and skew-symmetric rotational directions.
@@ -54,11 +54,10 @@ parts first to $\chi(x/L)$ and then to
 $x\chi(x/L)$ gives the identities as $L\to\infty$.
 
 For independent copies $X_1,\ldots,X_n$ of $X$, write
-$\mathbf X=(X_1,\ldots,X_n)\sim\mu_n$.  For
-$A\in M_n(\R)$, define the matrix score as the score of the pushforward by $I+tA$ at
-$t=0$ is
+$\mathbf X^{(n)}=(X_1,\ldots,X_n)\sim\mu_n$.  For
+$A\in M_n(\R)$, define the score of the pushforward by $I+tA$ at $t=0$ by
 \begin{equation}
- S_A(\mathbf X)=\sum_{i,j=1}^n A_{ij}
+ S_A(\mathbf X^{(n)})=\sum_{i,j=1}^n A_{ij}
        \bigl(s(X_i)X_j-\delta_{ij}\bigr)
        =\sum_i A_{ii}d(X_i)+\sum_{i\ne j}A_{ij}s(X_i)X_j.
  \label{eq:matrix-score}
@@ -66,7 +65,8 @@ $t=0$ is
 
 \begin{theorem}[The matrix Fisher operator]
 \label{thm:fisher-spectrum}
-Under \eqref{eq:fisher-regularity}, define the matrix Fisher operator
+Under \eqref{eq:fisher-regularity}, let \(s\) and \(d\) be the location and
+scale scores defined above, and define the matrix Fisher operator
 $\mathcal I$ by
 $\langle A,\mathcal I B\rangle_F=\E[S_AS_B]$.
 Then
@@ -143,7 +143,7 @@ as \(T=BO\), where \(B=(TT^*)^{1/2}\) is positive and \(O\) is
 orthogonal.  The covariance defect is \(TT^*-I=B^2-I\), so a
 finite second moment detects the symmetric factor.  The skew tangent of the
 orthogonal factor has Fisher eigenvalue \(J-1\), which is positive precisely
-off the Gaussian law.  The full matrix Fisher decomposition above packages
+off the Gaussian law.  The full matrix Fisher operator decomposition above packages
 these two mechanisms without requiring a nonlinear separation of \(B\) and
 \(O\) at every step.
 
@@ -156,10 +156,12 @@ $L^2(\R^n,dx)$ by
 \]
 Thus $U_A\Omega_n$ is the square root of the Lebesgue density of
 $A_\#\mu_n$.  For invertible $A,B$,
-$h(A_\#\mu_n,B_\#\mu_n)=\|U_A\Omega_n-U_B\Omega_n\|_2$.
+\[
+ h(A_\#\mu_n,B_\#\mu_n)=\|U_A\Omega_n-U_B\Omega_n\|_2.
+\]
 For a fixed real matrix $A$, the generator of $U_{\exp(tA)}$ is
 \begin{equation}
- G_Av=-\tfrac12\tr(A)v-(Ax)\cdot\nabla v,
+ G_Av=-\tfrac12\operatorname{tr}(A)v-(Ax)\cdot\nabla v,
  \qquad G_A\Omega_n=\tfrac12S_A\Omega_n.
  \label{eq:half-density-generator}
 \end{equation}
@@ -222,11 +224,11 @@ $\sin(\xi x)$ with real frequencies $\xi$.
 Their frequencies may depend on $f$.
 Once chosen, their finite set is independent of the matrix dimension.
 
-The Fisher operator gives the correct quadratic form, but the lower bound
+The matrix Fisher operator gives the correct quadratic form, but the lower bound
 must be witnessed by bounded coordinate functions whose variance does not
 grow with the dimension.
 The next lemma builds such witnesses from finitely many Fourier modes.
-The non-Gaussian Fourier defect from \cref{lem:fourier-ode} is used exactly
+The rotational Fourier defect from \cref{lem:fourier-ode} is used exactly
 to make the off-diagonal moment map rank two.
 
 \begin{lemma}[Finite real Fourier sums with dual moments]
@@ -244,27 +246,27 @@ There exist centered finite real Fourier sums $p,q,r$ such that
 The entries in the table denote expectations of the products.
 For
 \begin{equation}
- H_A(\mathbf X):=\sum_i A_{ii}r(X_i)
+ H_A(\mathbf X^{(n)}):=\sum_i A_{ii}r(X_i)
               +\sum_{i\ne j}A_{ij}p(X_i)q(X_j),
  \label{eq:fourier-functions}
 \end{equation}
 one has, for all real matrices $A,B$ of the same size,
 \begin{equation}
  \E[H_AS_B]=\langle A,B\rangle_F,
- \qquad \|H_A\|_{L^2(\mu_n)}\le C_0\|A\|_F,
+ \qquad \|H_A\|_{L^2(\mu_n)}\le C_{\mathrm{dual}}\|A\|_F,
  \label{eq:matched-fourier-pairing}
 \end{equation}
-where $C_0$ is independent of $n$.
+where $C_{\mathrm{dual}}$ is independent of $n$.
 \end{lemma}
 
 \begin{proof}
 On the real vector space of centered finite real Fourier sums
 consider the two functionals
 \[
- L_1(h)=\E h'(X)=\E[h(X)s(X)],
- \qquad L_2(h)=\E[Xh(X)].
+ L_1(u)=\E u'(X)=\E[u(X)s(X)],
+ \qquad L_2(u)=\E[Xu(X)].
 \]
-The integration-by-parts identity holds since $h,h'$ are bounded.
+The integration-by-parts identity holds since $u,u'$ are bounded.
 Both functionals are unchanged by subtracting a constant.  If this
 moment map had rank at most one, all its two-by-two determinants
 would vanish, including after complexification.  Writing
@@ -315,7 +317,7 @@ assertion.
 
 The functions \(H_A\) will be paired with the Hellinger tangent along a
 matrix path.
-To make that pairing stable after moving away from the identity, we need one
+To keep that pairing uniformly controlled after moving away from the identity, we need one
 uniform derivative bound for \(H_A\Omega_n\).
 The next lemma is the technical price of keeping the test functions
 finite-frequency and dimension-free.
@@ -326,11 +328,11 @@ of \(X\) or higher moment of the score.
 \label{lem:fourier-generator-bound}
 Let $p,q,r$ be any fixed centered bounded continuously differentiable
 functions with bounded derivatives.  Define $H_A$ by
-\eqref{eq:fourier-functions}.  There is a constant $C_1$,
+\eqref{eq:fourier-functions}.  There is a constant $C_{\mathrm{gen}}$,
 depending on these functions and on $J,\kappa$, such that
 \begin{equation}
  \|G_B(H_A\Omega_n)\|_{L^2(dx)}
- \le C_1\|A\|_F\|B\|_F
+ \le C_{\mathrm{gen}}\|A\|_F\|B\|_F
  \qquad(A,B\in M_n(\R),\ n\ge1).
  \label{eq:coordinate-function-generator-bound}
 \end{equation}
@@ -358,14 +360,14 @@ Both terms belong to $L^2$ in each finite dimension.  We prove a
 dimension-free bound for each term.
 
 We will repeatedly use the following elementary consequence of
-independence.  If $h_1,\ldots,h_m$ are centered $L^2(f)$ functions,
+independence.  If $u_1,\ldots,u_m$ are centered $L^2(f)$ functions,
 and a coefficient tensor $C$ is indexed by ordered tuples of
 \emph{distinct} coordinates, then
 \begin{equation}
  \left\|\sum_{i_1,\ldots,i_m}^{\ne}
- C_{i_1\ldots i_m}\prod_{a=1}^m h_a(X_{i_a})\right\|_2
+ C_{i_1\ldots i_m}\prod_{a=1}^m u_a(X_{i_a})\right\|_2
  \le\sqrt{m!}\,\|C\|_{\ell^2}
-                      \prod_{a=1}^m\|h_a\|_2.
+                     \prod_{a=1}^m\|u_a\|_2.
  \label{eq:canonical-chaos-bound}
 \end{equation}
 In the square of this norm, a mixed term vanishes unless the two
@@ -515,7 +517,7 @@ We can now close the local argument.
 The dual Fourier functions give a linear functional that sees the
 first-order displacement, while the generator bound controls the error made
 along the exponential path.
-This turns the nonzero Fourier defect into a uniform Hellinger lower bound
+This turns the nonzero rotational Fourier defect into a uniform Hellinger lower bound
 for every small matrix perturbation.
 
 \begin{proposition}[Uniform local Hellinger coercivity]
@@ -552,13 +554,13 @@ bound imply
 \[
  \left|\langle H_A\Omega_n,(U_{\exp A}-I)\Omega_n\rangle
                        -\tfrac12\|A\|_F^2\right|
- \le\frac{C_1\sqrt{C_f}}4\|A\|_F^3.
+ \le\frac{C_{\mathrm{gen}}\sqrt{C_f}}4\|A\|_F^3.
 \]
 Cauchy--Schwarz and \eqref{eq:matched-fourier-pairing} now
 give, for all sufficiently small $\|A\|_F$,
 \[
  h((\exp A)_\#\mu_n,\mu_n)
- \ge\frac{1}{4C_0}\|A\|_F.
+ \ge\frac{1}{4C_{\mathrm{dual}}}\|A\|_F.
 \]
 For $\|B\|_{\mathrm{op}}<1/2$, the real power-series logarithm
 $A=\log(I+B)$ exists and satisfies

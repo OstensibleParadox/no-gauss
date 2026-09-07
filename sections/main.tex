@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{aliascnt}
 \usepackage{booktabs,array}
 \usepackage[margin=1.12in]{geometry}
 \usepackage{microtype}
@@ -17,14 +18,28 @@
   linkcolor=blue!45!black,
   citecolor=blue!45!black,
   urlcolor=blue!45!black,
-  pdftitle={Feldman–Hájek, but Non-Gaussian: Geometry of the Weighted Fourier Jet},
+  pdftitle={Feldman--Hajek, but Non-Gaussian: Geometry of the Weighted Fourier Jet},
   pdfauthor={Anonymous Author(s)}
 }
 
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\crefname{theorem}{theorem}{theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{proposition}{propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{lemma}{lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{corollary}{corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
 
 \newcommand{\R}{\mathbb R}
 \newcommand{\N}{\mathbb N}
@@ -32,11 +47,10 @@
 \newcommand{\Aff}{\mathsf A}
 \newcommand{\Law}{\operatorname{Law}}
 \newcommand{\diag}{\operatorname{diag}}
-\newcommand{\supp}{\operatorname{supp}}
 \DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tail}{Tail}
 
-\title{Feldman–Hájek, but Non-Gaussian: \\
+\title{Feldman--H\'ajek, but Non-Gaussian: \\
 Geometry of the Weighted Fourier Jet}
 \author{Anonymous Author(s)}
 \date{}
@@ -46,24 +60,25 @@ Geometry of the Weighted Fourier Jet}
 \maketitle
 
 \begin{abstract}
-Kakutani's theorem tensorizes equivalence of product measures, but dense
-bounded linear mixing destroys the independence on which that test rests.
+Kakutani's theorem tensorizes equivalence of product measures, but bounded
+invertible linear mixing destroys the independence on which that test rests.
 The resulting difficulty is genuinely infinite-dimensional: every fixed
-finite output marginal may look regular while the full transformed law is
-singular.  For a non-Gaussian i.i.d. product with positive density, finite
-second moment, and finite location and scale Fisher information, we prove
-that equivalence, Hilbert--Schmidt proximity to the discrete stabilizer
-\(\mathcal P\), and bounded projected Hellinger energy are equivalent.
+finite output marginal may look regular while the full image law is
+singular.  For a non-Gaussian i.i.d. product with an a.e.-positive coordinate
+density, finite second moment, and finite location and scale Fisher information, we prove
+that equivalence, Hilbert--Schmidt proximity to the exact linear stabilizer,
+and bounded projected Hellinger energy are equivalent.
 The weighted Fourier jet supplies finite-frequency, dimension-free
 Hellinger witnesses that turn local mixing into Frobenius cost.  We also
 classify standard symmetric \(\alpha\)-stable products for
 \(0<\alpha<2\).  In this infinite-variance branch, the exact cost is
 anisotropic: diagonal deviations are square summable, while the
 \(\ell^2\)-norms of the off-diagonal input columns are \(\alpha\)-summable.
-Thus positivity alone does not make Hilbert--Schmidt proximity sufficient.
+Thus even an everywhere-positive coordinate density does not make
+Hilbert--Schmidt proximity sufficient.
 When a finite-variance density has zeros, the Hilbert--Schmidt criterion has
-an exact support-aware extension: the rows of both \(T\) and \(T^{-1}\)
-must avoid the zero set.  Half-line and bounded supports then reduce the
+an exact extension by the zero-set row condition: the rows of both \(T\) and
+\(T^{-1}\) must avoid the zero set.  Half-line and bounded supports then reduce the
 equivalence group to explicit permutation classes.
 \end{abstract}
 
@@ -73,9 +88,10 @@ equivalence group to explicit permutation classes.
 \input{02-rotational-fourier-defect-and-gaussian-characterization}
 \input{03-finite-dimensional-hellinger-coercivity}
 \input{04-measurable-realization-and-dichotomy}
-\input{05-proof-of-the-measure-equivalence-theorem}
-\input{06-density-zeros-and-the-linear-equivalence-group}
-\input{07-scope-and-sharpness-of-the-hypotheses}
+\input{05-finite-variance-equivalence-and-global-rigidity}
+\input{06-symmetric-stable-products-and-anisotropic-geometry}
+\input{07-zero-set-row-condition-and-linear-equivalence}
+\input{08-scope-of-the-finite-variance-hypotheses}
 
 \bibliographystyle{plainnat}
 \bibliography{references}

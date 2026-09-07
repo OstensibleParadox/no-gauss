@@ -1,11 +1,11 @@
-\section{Proof of the Measure Equivalence Theorem}
-\label{sec:proof-of-the-measure-equivalence-theorem}
+\section{Finite-Variance Equivalence and Global Rigidity}
+\label{sec:finite-variance-equivalence-and-global-rigidity}
 
 We now prove the measure-class classification.
-Sufficiency constructs a stable infinite-dimensional likelihood ratio from
+Sufficiency constructs a convergent infinite-dimensional likelihood ratio from
 finite-coordinate Hilbert--Schmidt approximants.
 Necessity proves that any non-Hilbert--Schmidt tail deviation leaves a
-Hellinger trace that cannot be hidden by dense mixing.
+Hellinger trace that cannot be hidden by bounded invertible linear mixing.
 The global finite-dimensional coercivity theorem is proved at the end,
 after the classification supplies the required compactness principle.
 
@@ -18,7 +18,7 @@ changes whose Hellinger increments are summable.
 The proposition turns this finite-dimensional Cauchy property into an actual
 infinite-dimensional likelihood ratio.
 
-\begin{proposition}[Hilbert--Schmidt sufficiency and likelihood ratio convergence]
+\begin{proposition}[Hilbert--Schmidt sufficiency and likelihood-ratio convergence]
 \label{prop:hilbert-schmidt-sufficiency}
 Assume \eqref{eq:fisher-regularity}, let
 $\mu=\rho^{\otimes\N}$, where $\rho(dx)=f(x)\,dx$, and let
@@ -26,22 +26,21 @@ $T=I+K\in\GL(H)$ with $K\in\mathcal S_2$.
 Then \(\nu_T\sim\mu\).
 For the eventually invertible operators
 $T_n=I+P_nKP_n$, their likelihood ratios
-$Z_{T_n}=d\nu_{T_n}/d\mu$ converge in $L^1(\mu)$ to the strictly
-positive likelihood ratio $Z_T=d\nu_T/d\mu$, and
-$\sqrt{Z_{T_n}}\to\sqrt{Z_T}$ in $L^2(\mu)$.
+$\ell_{T_n}=d\nu_{T_n}/d\mu$ converge in $L^1(\mu)$ to the strictly
+positive likelihood ratio $\ell_T=d\nu_T/d\mu$, and
+$\sqrt{\ell_{T_n}}\to\sqrt{\ell_T}$ in $L^2(\mu)$.
 The inverse approximants satisfy the same conclusion:
 \[
- \frac{d\nu_{T_n^{-1}}}{d\mu}
- \longrightarrow\frac{d\nu_{T^{-1}}}{d\mu}
+ \ell_{T_n^{-1}}\longrightarrow\ell_{T^{-1}}
  \quad\text{in }L^1(\mu).
 \]
 For $S,T\in\GL(H)$ with $S-I,T-I\in\mathcal S_2$, the
 likelihood ratios obey, on the common measurable carrier of their countable
 operator group,
 \begin{align}
- Z_{ST}(y)&=Z_S(y)Z_T(\Phi_{S^{-1}}y),
+ \ell_{ST}(y)&=\ell_S(y)\ell_T(\Phi_{S^{-1}}y),
    \label{eq:rn-cocycle}\\
- Z_T(y)Z_{T^{-1}}(\Phi_{T^{-1}}y)&=1.
+ \ell_T(y)\ell_{T^{-1}}(\Phi_{T^{-1}}y)&=1.
    \label{eq:rn-inverse}
 \end{align}
 If $Q$ is an exact linear stabilizer of $\mu$, the same equivalence
@@ -55,7 +54,7 @@ The approximants are therefore eventually invertible.
 Their inverse norms are uniformly bounded.
 If $A_n$ is the first $n$-coordinate block of $T_n$, then
 \begin{equation}
- Z_{T_n}(x)=|\det A_n|^{-1}
+ \ell_{T_n}(x)=|\det A_n|^{-1}
      \prod_{i=1}^n\frac{f((A_n^{-1}\pi_n x)_i)}{f(x_i)}.
  \label{eq:finite-approximant-density}
 \end{equation}
@@ -65,23 +64,27 @@ acts in a finite coordinate block and has operator norm at most $1/2$.
 Hellinger invariance under the finite invertible map $T_n^{-1}$ and
 \eqref{eq:finite-hellinger-upper} give
 \begin{equation}
- \|\sqrt{Z_{T_m}}-\sqrt{Z_{T_n}}\|_2
+ \|\sqrt{\ell_{T_m}}-\sqrt{\ell_{T_n}}\|_2
  \le\sqrt{C_f}\,\|T_n^{-1}\|_{\mathrm{op}}
                     \|T_m-T_n\|_{\mathcal S_2}.
  \label{eq:approximant-hellinger-cauchy}
 \end{equation}
 Thus the square roots are Cauchy in $L^2(\mu)$.
-They have a nonnegative limit $r$ of norm one.
+They have a nonnegative limit of norm one; denote its square by
+$\widetilde\ell_T$.
 Cauchy--Schwarz also gives
 \begin{equation}
- \|Z_{T_m}-Z_{T_n}\|_1\le2\|\sqrt{Z_{T_m}}-\sqrt{Z_{T_n}}\|_2,
- \qquad Z_{T_n}\longrightarrow r^2\quad\text{in }L^1(\mu).
+ \|\ell_{T_m}-\ell_{T_n}\|_1
+ \le2\|\sqrt{\ell_{T_m}}-\sqrt{\ell_{T_n}}\|_2,
+ \qquad \ell_{T_n}\longrightarrow \widetilde\ell_T
+       \quad\text{in }L^1(\mu).
  \label{eq:approximant-l1-cauchy}
 \end{equation}
+Let $\mathbf X=(X_j)_{j\ge1}$ have law $\mu$.
 For each fixed finite set of output coordinates, the row-series
-realizations $\Phi_{T_n}\mathbf X$ converge to $\Phi_T\mathbf X$ in $L^2$,
-where $\mathbf X=(X_j)_{j\ge1}$ has law $\mu$.
-Bounded continuous cylinder tests identify $r^2\mu$ with $\nu_T$.
+realizations $\Phi_{T_n}\mathbf X$ converge to $\Phi_T\mathbf X$ in $L^2$.
+Bounded continuous cylinder tests identify $\widetilde\ell_T\mu$ with
+$\nu_T$.
 
 The inverse approximants converge in Hilbert--Schmidt norm because
 \[
@@ -92,18 +95,19 @@ The inverse approximants converge in Hilbert--Schmidt norm because
 Apply the same argument to these finite-coordinate approximants.
 This gives $\nu_{T^{-1}}\ll\mu$.
 The measurable row-series construction in
-\cref{lem:measurable-action} requires only the centered finite
+\cref{lem:measurable-row-series-realization} requires only the centered finite
 second moment.
 On its countable-group carrier it gives
 \[
  \mu=(\Phi_T)_\#\nu_{T^{-1}}
        \ll(\Phi_T)_\#\mu=\nu_T.
 \]
-This proves equivalence and strict positivity of $r^2$.
+This proves equivalence and identifies
+$\widetilde\ell_T=\ell_T>0$ almost everywhere.
 Change of variables on the same carrier proves the cocycle and inverse
 identities.
-Finally, $\nu_Q=\mu$ and $T=(TQ^{-1})Q$ give the stabilizer
-assertion.
+Finally, $\nu_Q=\mu$ and $T=(TQ^{-1})Q$ give the assertion about the exact
+linear stabilizer.
 \end{proof}
 
 \subsubsection{The orthogonal case requires only location Fisher information}
@@ -235,7 +239,7 @@ In the general linear case, take $K_n=P_nKP_n$ and apply
 \eqref{eq:local-matrix-hellinger} to its finite coordinate
 block.  Its untouched tail factors contribute affinity one,
 so the finite-dimensional Hellinger distance is also
-$h(\nu_{I+K_n},\mu)$.  The likelihood ratio convergence in
+$h(\nu_{I+K_n},\mu)$.  The likelihood-ratio convergence in
 \cref{prop:hilbert-schmidt-sufficiency} gives
 \[
  h(\nu_{I+K_n},\mu)
@@ -248,7 +252,7 @@ Also $\|K_n\|_{\mathcal S_2}\to\|K\|_{\mathcal S_2}$.
 Passing to the limit proves both bounds.
 
 In the orthogonal case, use the finite-coordinate polar
-approximants $V_n$ and their likelihood ratio convergence from
+approximants $V_n$ and their likelihood-ratio convergence from
 \cref{prop:orthogonal-sufficiency}.  They satisfy
 $V_n\to I+K$ in Hilbert--Schmidt norm.  Choose the radius in
 this assertion to be half the finite-dimensional radius in
@@ -262,7 +266,7 @@ large $V_n$ lie in that Frobenius ball, and
 Pass to the limit in \eqref{eq:orthogonal-local-hellinger}.
 \end{proof}
 
-\subsubsection{Characteristic-function rigidity and arbitrary mixing}
+\subsubsection{Characteristic-function rigidity and bounded invertible linear mixing}
 \label{sec:characteristic-function-rigidity}
 
 Necessity begins by identifying what a single output row can look like if
@@ -288,13 +292,14 @@ no density.
 
 \begin{lemma}[A product approximation for small coefficients]
 \label{lem:characteristic-product-tail}
-There is a nonnegative function $\eta$, with $\eta(\delta)\to0$ as
+There is a nonnegative function $\omega_\rho$, with
+$\omega_\rho(\delta)\to0$ as
 $\delta\downarrow0$, such that, for every finite or countable real family
 $(b_j)$ with $\sum_j b_j^2<\infty$,
 \begin{equation}
  \left|\prod_j\phi(tb_j)
        -\exp\!\left(-\frac{t^2}{2}\sum_jb_j^2\right)\right|
- \leq \eta(\delta)t^2\sum_jb_j^2
+ \leq \omega_\rho(\delta)t^2\sum_jb_j^2
  \quad\text{if}\quad \sup_j|tb_j|\leq\delta.
  \label{eq:characteristic-product-tail}
 \end{equation}
@@ -308,10 +313,10 @@ The centered second-moment assumption gives
 \]
 Consequently
 \[
- \eta(\delta):=
+ \omega_\rho(\delta):=
  \sup_{0<|u|\leq\delta}
  \frac{|\phi(u)-e^{-u^2/2}|}{u^2}
- \longrightarrow0,\qquad \eta(0):=0.
+ \longrightarrow0,\qquad \omega_\rho(0):=0.
 \]
 Both $\phi(u)$ and $e^{-u^2/2}$ have modulus at most one.  Telescoping
 the difference of their finite products therefore bounds it by the sum
@@ -331,9 +336,9 @@ Let $a^{(n)}\in\ell^2$ satisfy $\|a^{(n)}\|_2=1$.  If
 \]
 then
 \begin{equation}
- \inf_{\substack{j\geq1,\ \varepsilon\in\{-1,1\}\\
-                  \Law(\varepsilon X)=\rho}}
-       \|a^{(n)}-\varepsilon e_j\|_2\longrightarrow0.
+ \inf_{\substack{j\geq1,\ \varsigma\in\{-1,1\}\\
+                  \Law(\varsigma X)=\rho}}
+       \|a^{(n)}-\varsigma e_j\|_2\longrightarrow0.
  \label{eq:unit-row-qualitative}
 \end{equation}
 \end{lemma}
@@ -346,7 +351,7 @@ $j^{-1/2}$.  From any subsequence we may extract a further subsequence
 on which each coefficient converges, say $a_j^{(n)}\to a_j$.
 Fatou's lemma gives
 \[
- q:=\sum_j a_j^2\leq1.
+ \tau_a:=\sum_j a_j^2\leq1.
 \]
 For a fixed $m$, apply
 \cref{lem:characteristic-product-tail} to the coefficients with
@@ -357,38 +362,36 @@ function by
         \left(1-\sum_{j\leq m}(a_j^{(n)})^2\right)\right]
 \]
 is at most
-$t^2\eta(|t|/\sqrt{m+1})$, uniformly in $n$.
+$t^2\omega_\rho(|t|/\sqrt{m+1})$, uniformly in $n$.
 Fix any $t$.
 First let $n\to\infty$, and then let $m\to\infty$.
 The limiting characteristic function is
 \begin{equation}
- e^{-(1-q)t^2/2}\prod_j\phi(a_jt).
+ e^{-(1-\tau_a)t^2/2}\prod_j\phi(a_jt).
  \label{eq:unit-row-gaussian-summand}
 \end{equation}
-Equivalently, the limiting law is that of
-\[
- \sum_j a_jX_j+\sqrt{1-q}\,Z,
-\]
-where $Z$ is standard Gaussian and independent of the $X_j$.
+Equivalently, the limiting law is that of $\sum_j a_jX_j$ plus an
+independent centered Gaussian of variance $1-\tau_a$.
 
 Under the convergence hypothesis this limiting law is the law of $X$.
 Suppose that no $|a_j|$ is one.  If all $a_j$ vanish,
 \eqref{eq:unit-row-gaussian-summand} already makes $X$ Gaussian.
 Otherwise the maximum
-$\theta:=\max_j|a_j|$ exists, since $(a_j)\in\ell^2$, and satisfies
-$0<\theta<1$.  Iterating the characteristic-function identity
+$m_a:=\max_j|a_j|$ exists, since $(a_j)\in\ell^2$, and satisfies
+$0<m_a<1$.  For
+$\mathbf j=(j_1,\ldots,j_k)\in\N^k$, set
+$b_{\mathbf j}:=a_{j_1}\cdots a_{j_k}$.
+Iterating the characteristic-function identity
 \eqref{eq:unit-row-gaussian-summand} $k$ times gives
 \begin{equation}
- \phi(t)=e^{-(1-q^k)t^2/2}
-       \prod_{\alpha\in\N^k}\phi(tb_\alpha),
- \qquad
- b_\alpha=a_{\alpha_1}\cdots a_{\alpha_k}.
+ \phi(t)=e^{-(1-\tau_a^k)t^2/2}
+       \prod_{\mathbf j\in\N^k}\phi(tb_{\mathbf j}),
  \label{eq:smoothing-iteration}
 \end{equation}
 Here
 \[
- \sum_\alpha b_\alpha^2=q^k,
- \qquad \sup_\alpha|b_\alpha|\leq\theta^k.
+ \sum_{\mathbf j} b_{\mathbf j}^2=\tau_a^k,
+ \qquad \sup_{\mathbf j}|b_{\mathbf j}|\leq m_a^k.
 \]
 The identity may be obtained by substituting independent copies into
 the $L^2$ series; at each finite depth all series have summable
@@ -397,14 +400,14 @@ coefficient squares.  Applying
 \eqref{eq:smoothing-iteration} yields
 \[
  |\phi(t)-e^{-t^2/2}|
- \leq t^2q^k\eta(|t|\theta^k)\longrightarrow0.
+ \leq t^2\tau_a^k\omega_\rho(|t|m_a^k)\longrightarrow0.
 \]
 This again makes $X$ Gaussian.
 This is a contradiction.
 Thus some
-$a_j=\varepsilon\in\{-1,1\}$; all the remaining coefficients and
+$a_j=\varsigma\in\{-1,1\}$; all the remaining coefficients and
 the independent Gaussian summand vanish.  The limiting identity then says
-$\Law(\varepsilon X)=\rho$, so the sign preserves $\rho$.
+$\Law(\varsigma X)=\rho$, so the sign preserves $\rho$.
 
 To conclude, suppose \eqref{eq:unit-row-qualitative} failed.
 Take a subsequence whose distance from all the indicated unit vectors is
@@ -414,8 +417,8 @@ of modulus one.
 Since the row norms are one, its squared distance from that signed unit
 vector tends to zero:
 \[
- \|a^{(n)}-\varepsilon e_j\|_2^2
-       =2-2\varepsilon a_j^{(n)}\longrightarrow0.
+ \|a^{(n)}-\varsigma e_j\|_2^2
+       =2-2\varsigma a_j^{(n)}\longrightarrow0.
 \]
 Undoing the coefficient permutations gives the required contradiction.
 \end{proof}
@@ -519,7 +522,7 @@ Then let $L\to\infty$.
 Uniform integrability gives
 \[
  \sup_{\substack{\|a\|_2=1,\ a\text{ finitely supported}\\
-                  \supp a\subset\{N+1,N+2,\ldots\}}}
+                  \operatorname{supp}a\subset\{N+1,N+2,\ldots\}}}
  \left|\langle(TT^*-I)a,a\rangle\right|\longrightarrow0.
 \]
 Since $TT^*-I$ is self-adjoint and bounded, density of finite vectors
@@ -544,7 +547,7 @@ it asymptotically invisible.
 
 \begin{lemma}[Hilbert--Schmidt necessity under a second-moment hypothesis]
 \label{lem:hilbert-schmidt-necessity}
-Assume that the common law has a positive density $f$, that
+Assume that the common law has an a.e.-positive density $f$, that
 $g=\sqrt f\in W^{1,2}(\R)$, and that $xg'\in L^2(\R)$.
 If $T\in\GL(H)$ and $\nu_T\sim\mu$, then
 \begin{equation}
@@ -560,60 +563,65 @@ By \cref{lem:tail-symmetry-uniform}, the law of
 $\sum_j(T^*e_i)_jX_j$ converges to $\rho$.
 Normalizing $T^*e_i$ to a unit vector changes this sum by a quantity tending to
 zero in $L^2$.
-Therefore \cref{lem:unit-row-rigidity} gives indices $\pi(i)$ and signs
-$\varepsilon_i\in\{-1,1\}$ preserving $\rho$, outside a finite initial set, with
+Therefore \cref{lem:unit-row-rigidity} gives indices $\iota(i)$ and signs
+$\varsigma_i\in\{-1,1\}$ preserving $\rho$, outside a finite initial set, with
 \begin{equation}
- u_i:=\varepsilon_i e_{\pi(i)},\qquad
- \|T^*e_i-u_i\|_2^2\longrightarrow0.
+ \widehat e_i:=\varsigma_i e_{\iota(i)},\qquad
+ \|T^*e_i-\widehat e_i\|_2^2\longrightarrow0.
  \label{eq:qualitative-tail-matching}
  \end{equation}
-The indices $\pi(i)$ are distinct sufficiently far out.
+The indices $\iota(i)$ are distinct sufficiently far out.
 Indeed, if
-$\pi(i)=\pi(j)$ for two such rows, then
-$\varepsilon_iT^*e_i-\varepsilon_jT^*e_j$ has arbitrarily small norm
+$\iota(i)=\iota(j)$ for two such rows, then
+$\varsigma_iT^*e_i-\varsigma_jT^*e_j$ has arbitrarily small norm
 by \eqref{eq:qualitative-tail-matching}, whereas bounded
 invertibility gives the lower bound $\sqrt2/\|T^{-1}\|_{\mathrm{op}}$.
-Hence we can fix $N_0$ so that $\pi$ is injective on $i>N_0$.
+Hence we can fix $N_0$ so that $\iota$ is injective on $i>N_0$.
 
 There is also column approximation along this matching.
 Compactness
-of $T^*T-I$ and the fact that $\pi(i)$ leaves every finite set imply
+of $T^*T-I$ and the fact that $\iota(i)$ leaves every finite set imply
 \[
- \|Tu_i\|_2^2\longrightarrow1.
+ \|T\widehat e_i\|_2^2\longrightarrow1.
 \]
-Since $\langle Tu_i,e_i\rangle=\langle u_i,T^*e_i\rangle\to1$,
-we obtain $\|Tu_i-e_i\|_2^2\to0$.  Consequently
+Since $\langle T\widehat e_i,e_i\rangle
+=\langle \widehat e_i,T^*e_i\rangle\to1$,
+we obtain $\|T\widehat e_i-e_i\|_2^2\to0$.  Consequently
 \begin{equation}
- \eta_i:=\|T^*e_i-u_i\|_2^2+\|Tu_i-e_i\|_2^2\longrightarrow0.
+ \operatorname{err}_i:=\|T^*e_i-\widehat e_i\|_2^2
+       +\|T\widehat e_i-e_i\|_2^2\longrightarrow0.
  \label{eq:row-column-tail-errors}
 \end{equation}
 
-We prove that $\sum_i\eta_i<\infty$ on this tail.
+We prove that $\sum_i\operatorname{err}_i<\infty$ on this tail.
 By
-\cref{lem:local-hs-coercivity}, there are $c_0,\delta_0>0$ such
+\cref{lem:local-hs-coercivity}, there are
+$c_{\mathrm{HS}},\delta_{\mathrm{HS}}>0$ such
 that
 \begin{equation}
- h(\mu,\nu_W)\geq c_0\|W-I\|_{\mathcal S_2}
+ h(\mu,\nu_W)\geq c_{\mathrm{HS}}\|W-I\|_{\mathcal S_2}
  \quad\text{when }W\in\GL(H),\quad
- \|W-I\|_{\mathcal S_2}\leq\delta_0.
+ \|W-I\|_{\mathcal S_2}\leq\delta_{\mathrm{HS}}.
  \label{eq:local-lower-used}
 \end{equation}
-Suppose instead that $\sum_i\eta_i=\infty$.
+Suppose instead that $\sum_i\operatorname{err}_i=\infty$.
 Choose $\delta>0$ small enough that
-$3\|T^{-1}\|_{\mathrm{op}}\delta<\delta_0$.  In any sufficiently remote tail,
-where $\eta_i\leq\delta^2$, choose a finite set $E$ satisfying
+$3\|T^{-1}\|_{\mathrm{op}}\delta<\delta_{\mathrm{HS}}$.
+In any sufficiently remote tail, where
+$\operatorname{err}_i\leq\delta^2$, choose a finite set $E$ satisfying
 \begin{equation}
- \delta^2\leq\sum_{i\in E}\eta_i\leq2\delta^2.
+ \delta^2\leq\sum_{i\in E}\operatorname{err}_i\leq2\delta^2.
  \label{eq:active-tail-error}
 \end{equation}
 Pair each $i\in E$ with a distinct auxiliary index
 $k_i$ beyond $E$, and set $G=\{k_i:i\in E\}$.
-Since $\eta_i\to0$, these auxiliary indices may be chosen with
-an arbitrarily small value of $\sum_{k\in G}\eta_k$, while $E$ remains fixed.
+Since $\operatorname{err}_i\to0$, these auxiliary indices may be chosen with
+an arbitrarily small value of $\sum_{k\in G}\operatorname{err}_k$, while
+$E$ remains fixed.
 
 Let $S$ exchange each output pair $(e_i,e_{k_i})$, and let $P$ exchange
-the aligned signed input pairs $(u_i,u_{k_i})$, acting identically on
-their orthogonal complements.  Both are involutions in
+the aligned signed input pairs $(\widehat e_i,\widehat e_{k_i})$, acting
+identically on their orthogonal complements.  Both are involutions in
 $\mathcal P$, so they preserve $\mu$.  Define
 \[
  W=P T^{-1} S T.
@@ -634,14 +642,14 @@ Hellinger invariance and $P_\#\mu=\mu$ give
  \label{eq:swap-hellinger-identity}
 \end{equation}
 All maps in use lie in a countable operator group, so
-\cref{lem:measurable-action} justifies this identity on a common
+\cref{lem:measurable-row-series-realization} justifies this identity on a common
 carrier.
 
 We now estimate $ST-TP$ in \eqref{eq:swap-relative-norm}.
 Obtain $T_0$ from $T$ by replacing each auxiliary row and column with
 its matched coordinate vector:
 \[
- T_0^*e_k=u_k,\qquad T_0u_k=e_k\qquad(k\in G).
+ T_0^*e_k=\widehat e_k,\qquad T_0\widehat e_k=e_k\qquad(k\in G).
 \]
 On the orthogonal complements of these input and output coordinates,
 retain the corresponding block of $T$.  These conditions uniquely
@@ -650,8 +658,9 @@ Orthogonal block decomposition then gives
 \begin{equation}
  \|T-T_0\|_{\mathcal S_2}^2
  \leq\sum_{k\in G}
-       \bigl(\|T^*e_k-u_k\|_2^2+\|Tu_k-e_k\|_2^2\bigr)
- =\sum_{k\in G}\eta_k.
+       \bigl(\|T^*e_k-\widehat e_k\|_2^2
+                    +\|T\widehat e_k-e_k\|_2^2\bigr)
+ =\sum_{k\in G}\operatorname{err}_k.
  \label{eq:auxiliary-coordinate-approximation}
 \end{equation}
 For completeness, the left side counts the squared entries of the
@@ -677,7 +686,8 @@ The blocks $B,C$ have finite-dimensional range or domain and are
 Hilbert--Schmidt.  The sum of squared row and column errors on $E$ is
 \[
  \sum_{i\in E}
- \bigl(\|T_0^*e_i-u_i\|_2^2+\|T_0u_i-e_i\|_2^2\bigr)
+ \bigl(\|T_0^*e_i-\widehat e_i\|_2^2
+                    +\|T_0\widehat e_i-e_i\|_2^2\bigr)
  =2\|A-I\|_F^2+\|B\|_{\mathcal S_2}^2+\|C\|_{\mathcal S_2}^2.
 \]
 The displayed block matrix gives the exact identity
@@ -698,7 +708,8 @@ and therefore
 \end{equation}
 As the auxiliary error in
 \eqref{eq:auxiliary-coordinate-approximation} tends to zero,
-the displayed sum of squared errors tends to $\sum_{i\in E}\eta_i$.
+the displayed sum of squared errors tends to
+$\sum_{i\in E}\operatorname{err}_i$.
 Also,
 \[
  \|(ST-TP)-(ST_0-T_0P)\|_{\mathcal S_2}
@@ -714,26 +725,27 @@ It follows from \eqref{eq:swap-relative-norm} that
 \[
  \frac{\delta}{2\|T\|_{\mathrm{op}}}
  \leq\|W-I\|_{\mathcal S_2}
- \leq3\|T^{-1}\|_{\mathrm{op}}\delta<\delta_0.
+ \leq3\|T^{-1}\|_{\mathrm{op}}\delta<\delta_{\mathrm{HS}}.
 \]
 The local bound \eqref{eq:local-lower-used} now forces
-$h(\mu,\nu_W)\geq c_0\delta/(2\|T\|_{\mathrm{op}})$.
+$h(\mu,\nu_W)\geq c_{\mathrm{HS}}\delta/(2\|T\|_{\mathrm{op}})$.
 On the other hand, $S$ is supported in the original remote tail.
 \cref{lem:tail-symmetry-uniform} makes the right side of
 \eqref{eq:swap-hellinger-identity} uniformly smaller than this positive
 number when that tail is far enough out.
 This is the contradiction.
-Therefore $\sum_i\eta_i<\infty$.
+Therefore $\sum_i\operatorname{err}_i<\infty$.
 
-Define $Q_0$ by the matched rows $u_i$ after the fixed initial cutoff
+Define $Q_0$ by the matched rows $\widehat e_i$ after the fixed initial cutoff
 $N_0$, and by zero rows for $i\leq N_0$.
 The summability just proved implies
 \[
  \begin{aligned}
  \|T-Q_0\|_{\mathcal S_2}^2
  &=\sum_{i\leq N_0}\|T^*e_i\|_2^2
-                      +\sum_{i>N_0}\|T^*e_i-u_i\|_2^2\\
- &\leq\sum_{i\leq N_0}\|T^*e_i\|_2^2+\sum_{i>N_0}\eta_i<\infty.
+                      +\sum_{i>N_0}\|T^*e_i-\widehat e_i\|_2^2\\
+ &\leq\sum_{i\leq N_0}\|T^*e_i\|_2^2
+       +\sum_{i>N_0}\operatorname{err}_i<\infty.
  \end{aligned}
  \]
 Therefore $Q_0$ is a compact perturbation of an invertible operator and is
@@ -763,8 +775,8 @@ It requires only the second moment.
 
 \begin{proposition}[Exact linear stabilizer under a second-moment hypothesis]
 \label{prop:exact-linear-stabilizer}
-For a centered, variance-one, non-Gaussian i.i.d. product law,
-the bounded invertible linear stabilizer is exactly $\mathcal P$.
+For an i.i.d. product whose non-Gaussian coordinate law is centered with
+variance one, the exact linear stabilizer is $\mathcal P$.
 This assertion requires neither a density nor Fisher information.
 \end{proposition}
 \begin{proof}
@@ -780,7 +792,7 @@ Thus $T\in\mathcal P$.
 \subsection{Two-sided uniform integrability and completion of the proof}
 \label{sec:likelihood-convergence}
 
-There are two likelihood ratio limits in the argument.
+There are two likelihood-ratio limits in the argument.
 The finite-coordinate approximants in \cref{prop:hilbert-schmidt-sufficiency} converge in
 \(L^1(\mu)\).
 Their square roots converge in \(L^2(\mu)\).
@@ -790,26 +802,26 @@ their reciprocals are the two conditional-expectation martingales in
 This gives uniform integrability in both directions.
 It also rules out loss of mass at the projective limit.
 
-\begin{proof}[Proof of \cref{thm:measure-equivalence} and \cref{prop:finite-coordinate-likelihood-approximation}]
+\begin{proof}[Proof of \cref{thm:measure-equivalence} and \cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}]
 Necessity follows from \cref{lem:hilbert-schmidt-necessity}.  If
 $T-Q\in\mathcal S_2$ for $Q\in\mathcal P$, then
 $TQ^{-1}=I+(T-Q)Q^{-1}$ is invertible and differs from the identity
 by a Hilbert--Schmidt operator.  By \cref{prop:hilbert-schmidt-sufficiency},
 $\nu_{TQ^{-1}}\sim\mu$.  Since $Q_\#\mu=\mu$, this is
 $\nu_T\sim\mu$.  The same proposition gives the finite-coordinate
-likelihood ratio and square-root limits stated in
-\cref{prop:finite-coordinate-likelihood-approximation}.
-The exact stabilizer is identified in \cref{prop:exact-linear-stabilizer}.
+likelihood-ratio and square-root limits stated in
+\cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}.
+The exact linear stabilizer is identified in \cref{prop:exact-linear-stabilizer}.
 Finally, \cref{lem:orbit-dichotomy,lem:finite-marginal-likelihood-ratios}
 give the finite-marginal affinity characterization and the singular
 alternative in \cref{thm:measure-equivalence}, and both
 uniform-integrability statements in
-\cref{prop:finite-coordinate-likelihood-approximation}.
+\cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}.
 \end{proof}
 \begin{theorem}[Complete orthogonal criterion with only location Fisher information]
 \label{thm:orthogonal-equivalence}
-Let $f>0$ almost everywhere be a centered, variance-one, non-Gaussian
-density, and assume only $\sqrt f\in W^{1,2}(\R)$ in addition
+Let $f>0$ almost everywhere be a non-Gaussian density centered with
+variance one, and assume only $\sqrt f\in W^{1,2}(\R)$ in addition
 to its second moment.  For every orthogonal $U$ on $\ell^2$,
 \[
  \nu_U\sim\mu
@@ -836,13 +848,13 @@ We now prove the global finite-dimensional statement announced in
 This final argument is deliberately placed after the main theorem.
 It uses the infinite-dimensional classification to rule out a sequence of
 finite-dimensional almost-symmetries that stay a fixed distance from the
-finite stabilizer.
+finite-dimensional exact linear stabilizer.
 In this way the Hilbert--Schmidt theorem supplies the compactness missing
 from a purely finite-dimensional proof.
 
 \begin{proof}[Proof of \cref{thm:global-coercivity}]
 Fix \(0<a\le b<\infty\).  We first prove uniform separation away from
-the stabilizer: for every \(\varepsilon>0\),
+the exact linear stabilizer: for every \(\varepsilon>0\),
 \begin{equation}
  \inf\left\{
  h(\mu_n,A_\#\mu_n)^2:
@@ -915,26 +927,29 @@ Denote the resulting member of \(\mathcal P_{n_k}\) by
 contradicting \(d_{n_k}(A_k)\ge\varepsilon\).  This proves
 \eqref{eq:uniform-separation}.
 
-Let \(c_0,C_0,\delta_0\) be the constants in
-\cref{prop:local-fisher-hellinger}, decreasing \(\delta_0\) so that
-\(0<\delta_0<1\).  Given \(T\), choose a minimizer
-\(Q\in\mathcal P_n\) in \eqref{eq:distance-stabilizer}.  Since
-\(Q_\#\mu_n=\mu_n\),
+Let \(c_{\mathrm{loc}},C_{\mathrm{loc}},\delta_{\mathrm{loc}}\) be the
+constants in \cref{prop:local-fisher-hellinger}, decreasing
+\(\delta_{\mathrm{loc}}\) so that \(0<\delta_{\mathrm{loc}}<1\).
+Given \(T\), choose a minimizer
+\(Q_n\in\mathcal P_n\) in \eqref{eq:distance-stabilizer}.  Since
+\((Q_n)_\#\mu_n=\mu_n\),
 \[
  h(\mu_n,T_\#\mu_n)
- =h(\mu_n,(TQ^{-1})_\#\mu_n),
+ =h(\mu_n,(TQ_n^{-1})_\#\mu_n),
  \qquad
- \|TQ^{-1}-I\|_F=d_n(T).
+ \|TQ_n^{-1}-I\|_F=d_n(T).
 \]
-When \(d_n(T)\le\delta_0\), the local theorem supplies the two-sided
-linear bounds for \(h\).  When \(d_n(T)>\delta_0\),
+When \(d_n(T)\le\delta_{\mathrm{loc}}\), the local theorem supplies the
+two-sided linear bounds for \(h\).  When
+\(d_n(T)>\delta_{\mathrm{loc}}\),
 \eqref{eq:uniform-separation} with
-\(\varepsilon=\delta_0\) supplies the lower bound, while \(h^2\le2\)
-supplies the upper bound.  Choose $c>0$ no larger than $c_0^2$ and
+\(\varepsilon=\delta_{\mathrm{loc}}\) supplies the lower bound, while
+\(h^2\le2\) supplies the upper bound.  Choose $c>0$ no larger than
+$c_{\mathrm{loc}}^2$ and
 the positive infimum in \eqref{eq:uniform-separation} with
-$\varepsilon=\delta_0$, and take
+$\varepsilon=\delta_{\mathrm{loc}}$, and take
 \[
- C=\max\{C_0^2,2\delta_0^{-2}\}.
+ C=\max\{C_{\mathrm{loc}}^2,2\delta_{\mathrm{loc}}^{-2}\}.
 \]
 These constants give \eqref{eq:global-coercivity} in all regimes.
 \end{proof}

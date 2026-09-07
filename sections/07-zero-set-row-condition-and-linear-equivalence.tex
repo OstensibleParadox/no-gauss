@@ -1,28 +1,30 @@
-\section{Density Zeros and the Linear Equivalence Group}
-\label{sec:density-zeros-and-the-linear-equivalence-group}
+\section{Zero-Set Row Condition and Linear Equivalence}
+\label{sec:zero-set-row-condition-and-linear-equivalence}
 
-The positivity assumption in the main theorem has one precise job: it makes
-finite-coordinate likelihood ratios blind to support.
+The positivity assumption in the main theorem has one precise job: it
+removes a separate zero-set obstruction from the finite-marginal likelihood
+ratios.
 Once the density has zeros, the Hilbert--Schmidt condition remains the right
 metric accumulation condition, but it is no longer the whole story.
-The missing datum is row-wise support compatibility.
+The missing datum is the zero-set row condition.
 Each row of the operator, and for equivalence each row of the inverse, must
-land in the positivity set of the one-dimensional density almost surely.
+land in the set where the one-dimensional density is positive almost surely.
 
-This section gives that support-aware replacement first.
-Arbitrary zero sets lead to an exact zero-set row criterion; bounded
+This section gives the zero-set row-condition replacement first.
+Arbitrary zero sets lead to an exact zero-set row condition; bounded
 coordinate laws force signed permutations with only the scalar reflection
 freedom allowed by the one-dimensional measure class; centered half-line laws
 force ordinary permutations.
-We then return to examples showing why the old positive-density dichotomy
-fails and how boundary behavior changes the summability threshold.
+We then give examples showing why the a.e.-positive-density classification
+does not extend unchanged and how boundary behavior changes the summability
+threshold.
 The hypotheses are stated separately for each result;
 \eqref{eq:main-assumptions} is not a standing assumption.
 
 \subsection{The metric input when the density has zeros}
-\label{sec:restricted-local}
+\label{sec:metric-input-with-density-zeros}
 
-The support-aware theorem still uses the same Fourier/Fisher mechanism for
+The zero-set row-condition theorem still uses the same Fourier/Fisher mechanism for
 the metric part of the classification.
 The logarithm-free Fourier characterization in \cref{lem:fourier-ode}, and
 its one-rotation Hellinger lower bound, already require no density.
@@ -33,7 +35,7 @@ For the stronger matrix estimates, the appropriate regularity condition is
  g=\sqrt f\in W^{1,2}(\R),\quad xg'\in L^2(\R),\\
  \E X=0,\quad \E X^2=1,\quad f\text{ non-Gaussian}.
  \end{gathered}
- \label{eq:restricted-sobolev}
+ \label{eq:zero-set-row-assumptions}
 \end{equation}
 Here \(g\) is defined on the whole real line, including by zero outside
 the support.
@@ -42,8 +44,8 @@ For example, the uniform density has zero interior derivative but its
 square root has jumps at the boundary.
 
 \begin{proposition}[Local Fourier coercivity with zeros of the density]
-\label{prop:restricted-local}
-Under \eqref{eq:restricted-sobolev}, the matrix Fisher decomposition,
+\label{prop:local-coercivity-with-density-zeros}
+Under \eqref{eq:zero-set-row-assumptions}, the matrix Fisher operator decomposition,
 finite-dimensional Hellinger path bound, and dimension-free local
 Frobenius coercivity in \cref{sec:finite-dimensional-hellinger-coercivity} remain valid.
 Write \(\mu=\rho^{\otimes\N},\quad\rho(dx)=f(x)\,dx\).
@@ -52,7 +54,7 @@ There are constants \(c,C,\delta>0\), with \(\delta<1\), such that
  c\|K\|_{\mathcal S_2}\leq h(\mu,\nu_{I+K})
        \leq C\|K\|_{\mathcal S_2}
  \qquad(\|K\|_{\mathcal S_2}\leq\delta).
- \label{eq:restricted-hs-local}
+ \label{eq:local-hs-bound-with-density-zeros}
 \end{equation}
 Moreover, for every \(T\in\GL(H)\), the following necessary
 condition survives:
@@ -61,11 +63,11 @@ condition survives:
  \quad\Longrightarrow\quad
  T-Q\in\mathcal S_2
  \quad\text{for some }Q\in\mathcal P.
- \label{eq:restricted-hs-necessary}
+ \label{eq:hs-necessity-with-density-zeros}
 \end{equation}
 For orthogonal transformations one may omit \(xg'\in L^2\),
-retaining non-Gaussianity, \(g\in W^{1,2}(\R)\), and the centered
-variance-one normalization.
+retaining non-Gaussianity, \(g\in W^{1,2}(\R)\), and normalization to a
+centered law with variance one.
 These statements do not assert absolute continuity of
 \(\nu_{I+K}\).
 \end{proposition}
@@ -81,13 +83,14 @@ Equality \(J=1\) still gives the global equation \(g'=-xg/2\);
 it cannot produce a Gaussian truncated at a boundary.
 Similarly, \(\kappa=0\) would give \(2xg'+g=0\) globally and no
 nonzero square-integrable probability half-density.
-The finite real Fourier sums with dual moments and half-density generator estimates use
+The finite real Fourier sums with dual moments and estimates for half-density
+derivatives use
 these identities and \(L^2\) regularity, so their proofs apply.
 
 The infinite-dimensional limiting step needs a different interpretation.
 For \(K\in\mathcal S_2\) with \(I+K\) invertible, put
 \(T_n=I+P_nKP_n\).
-The finite-dimensional path bound and invariance of Hellinger distance
+The dimension-free Hellinger path bound and invariance of Hellinger distance
 give, for sufficiently large \(m,n\),
 \[
  h(\nu_{T_n},\nu_{T_m})
@@ -102,7 +105,7 @@ convergence of finite output row sums identifies this measure with
 \(\nu_{I+K}\).
 This proves Hellinger convergence, not a density relative to \(\mu\).
 Passing the finite local bounds to this limit proves
-\eqref{eq:restricted-hs-local}.
+\eqref{eq:local-hs-bound-with-density-zeros}.
 For orthogonal operators, use the finite-coordinate polar
 approximants and skew-generator bound from
 \cref{prop:orthogonal-sufficiency} in the same way.
@@ -112,20 +115,20 @@ continuity only through
 \cref{lem:tail-symmetry-uniform,lem:compact-covariance-rigidity},
 which assume \(\nu_T\ll\mu\).
 Its other inputs are the moment-only characteristic-function rigidity,
-the measurable inverse action, and the local estimate for the
-finite-rank differences \(PT^{-1}ST-I\).
+the measurable inverse action, and the local estimate for the finite-rank
+conjugated tail perturbations used in that proof.
 The estimate just established supplies this last input without any
 quasi-invariance assumption.
 The same tail matching and permutation argument therefore proves
-\eqref{eq:restricted-hs-necessary}.
+\eqref{eq:hs-necessity-with-density-zeros}.
 \end{proof}
 
-For standardized Gamma shape \(\alpha\), the zero-extended square
-root is in \(W^{1,2}(\R)\) exactly when \(\alpha>2\).
-For an affine rescaling of a Beta\((\alpha,\beta)\) density the
-corresponding condition is \(\alpha,\beta>2\).
-These assertions follow by squaring the derivative of the boundary
-power \(t^{(\alpha-1)/2}\).
+For a Gamma density centered with variance one, the zero-extended square root is in
+\(W^{1,2}(\R)\) exactly when its shape parameter exceeds two.
+For an affine rescaling of a Beta density, the corresponding condition is
+that both shape parameters exceed two.
+These assertions follow by squaring the derivative of the corresponding
+boundary power.
 At shape one the square root instead has a jump, so its vanishing
 interior power derivative is not an exception.
 The support classifications below require none of this regularity
@@ -134,10 +137,10 @@ and include every positive Gamma or Beta shape.
 \subsection{The linear equivalence group for arbitrary zero sets of the density}
 \label{sec:linear-equivalence-group}
 
-The first replacement theorem is the main support-aware form of the
+The first replacement theorem is the main zero-set row-condition form of the
 classification.
 The Hilbert--Schmidt alternative remains the metric part of the answer.
-The new condition is purely about null sets: no output coordinate may place
+The additional zero-set row condition is purely about null sets: no output coordinate may place
 positive probability in the zero set of the original density, and mutual
 equivalence requires the same condition after applying the inverse operator.
 The condition concerns the actual zero set of the density, rather than its
@@ -145,8 +148,10 @@ closed support.
 
 \begin{theorem}[The linear equivalence group with density zeros]
 \label{thm:linear-equivalence-group}
-Assume \eqref{eq:restricted-sobolev}, let $\rho(dx)=f(x)\,dx$, and put
+Assume \eqref{eq:zero-set-row-assumptions}, let $\rho(dx)=f(x)\,dx$, and put
 $\mathcal U=\{x\in\R:f(x)>0\}$.  For every $T\in\GL(H)$,
+the almost-sure requirements below are called the forward and inverse
+zero-set row conditions.
 \begin{equation}
  \nu_T\ll\mu
  \quad\Longleftrightarrow\quad
@@ -187,7 +192,7 @@ is singular.
 First suppose $T-Q\in\mathcal S_2$ and put $K=TQ^{-1}-I$.
 The exact invariance $\nu_Q=\mu$ gives $\nu_T=\nu_{I+K}$.
 For the eventually invertible finite-coordinate approximants
-$T_n=I+P_nKP_n$, the proof of \cref{prop:restricted-local} gives
+$T_n=I+P_nKP_n$, the proof of \cref{prop:local-coercivity-with-density-zeros} gives
 \[
  h(\nu_{T_n},\nu_T)\longrightarrow0.
 \]
@@ -217,11 +222,11 @@ singular.  This proves the asserted decomposition and
        \text{ for every }i.
 \]
 The necessary Hilbert--Schmidt condition in
-\eqref{eq:restricted-hs-necessary} now proves
+\eqref{eq:hs-necessity-with-density-zeros} now proves
 \eqref{eq:absolute-continuity-operator-criterion} in both directions.
 
 If $\nu_T\sim\mu$, the measurable inverse action gives
-$\nu_{T^{-1}}\sim\mu$, so both row conditions in
+$\nu_{T^{-1}}\sim\mu$, so both zero-set row conditions in
 \eqref{eq:linear-equivalence-group} are necessary.
 Conversely, $T-Q\in\mathcal S_2$ implies
 \[
@@ -246,24 +251,24 @@ only location Fisher information.
 
 Thus density zeros do not introduce an additional global likelihood-ratio
 limit beyond the operator criterion.
-They introduce a row-by-row boundary test.
+They introduce the zero-set row condition.
 Every nonzero row sum has an absolutely continuous scalar law: condition
-on all but one input with a nonzero coefficient.  Thus the row conditions
+on all but one input with a nonzero coefficient.  Thus the zero-set row conditions
 are unchanged if $f$ is modified on a Lebesgue-null set.
 If $f>0$ almost everywhere, all these conditions are automatic and
 \eqref{eq:linear-equivalence-group} reduces to
 \cref{thm:measure-equivalence}.
 For a density with gaps, the rows of $T$ and $T^{-1}$ must avoid those
 gaps almost surely.  The contraction in
-\cref{sec:restricted-counterexample} below satisfies the forward row
-condition but fails the inverse row condition, which is exactly why it gives
+\cref{sec:zero-set-row-condition-counterexample} below satisfies the forward
+zero-set row condition but fails the inverse one, which is exactly why it gives
 strict absolute continuity rather than equivalence.
 
 \subsection{Boundary behavior of the density and summability criteria}
-\label{sec:restricted-threshold}
+\label{sec:boundary-behavior-and-summability}
 
-The row test and the Hellinger energy measure different phenomena.
-Boundary compatibility decides whether the transformed law is absolutely
+The zero-set row condition and the projected Hellinger energy measure different
+phenomena.  The former decides whether the image law is absolutely
 continuous in either direction; Hellinger loss decides whether overlap
 accumulates to zero.
 The two block-rotation examples below separate these effects.
@@ -278,7 +283,7 @@ Hard boundary, uniform square & linear in \(|\theta|\) & accumulated
 Hellinger loss; absolute continuity still fails for every nonzero
 boundary-crossing block\\
 Smooth vanishing boundary & quadratic in \(\theta\) & the Fourier/Fisher
-metric threshold; support compatibility remains a separate row condition\\
+metric threshold; the zero-set row condition remains separate\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -298,7 +303,7 @@ Removing the four corner triangles gives, for \(0<\delta\leq\pi/4\),
  1-\Aff(\mu_2,(O_\delta)_\#\mu_2)
  &=\frac{\delta}{2}+O(\delta^2).
  \end{aligned}
- \label{eq:restricted-uniform-rotation}
+ \label{eq:uniform-square-rotation-affinity}
 \end{equation}
 At \(\delta=0\), the affinity is one.  Each nonzero \(\delta\) leaves
 positive area on both sides of the support difference.
@@ -310,14 +315,14 @@ Consequently \cref{thm:block-kakutani} gives the complete trichotomy
       \nu_T\not\perp\mu,\quad \nu_T\not\ll\mu,\quad\mu\not\ll\nu_T\\
   \sum_k\delta_k=\infty&\nu_T\perp\mu.
  \end{array}
- \label{eq:restricted-uniform-classification}
+ \label{eq:uniform-square-block-trichotomy}
 \end{equation}
 In particular, \(\theta_k=1/k\) gives \(T-I\in\mathcal S_2\) but
 \(\nu_T\perp\mu\).
 With \(\theta_k=1/k^2\), the laws instead have positive affinity
 and neither is absolutely continuous with respect to the other.
 
-For comparison, use the variance-one rescaling of a density proportional
+For comparison, rescale to variance one a density proportional
 to \((1-x^2)^r\mathbf1_{\{|x|<1\}}\), \(r>1\).
 Its zero-extended square root satisfies the Sobolev hypotheses.
 Let \(f\) be this density, \(\rho(dx)=f(x)\,dx\),
@@ -325,42 +330,44 @@ Let \(f\) be this density, \(\rho(dx)=f(x)\,dx\),
 Writing \(J=4\|g'\|_2^2>1\), the skew-generator formula gives
 \begin{equation}
  1-\Aff(\mu_2,(O_\theta)_\#\mu_2)=\frac{J-1}{4}\theta^2+o(\theta^2).
- \label{eq:restricted-smooth-rotation}
+ \label{eq:smooth-boundary-rotation-affinity}
 \end{equation}
-Indeed, the planar skew generator has Frobenius norm squared two,
-and \(h^2=\theta^2\langle A,\mathcal I A\rangle_F/4+o(\theta^2)\).
+Indeed, for the planar skew generator
+\(A=\begin{psmallmatrix}0&-1\\1&0\end{psmallmatrix}\), one has
+\(\|A\|_F^2=2\) and
+\(h^2=\theta^2\langle A,\mathcal I A\rangle_F/4+o(\theta^2)\).
 The only rotations preserving the square support are its signed
 permutation symmetries.
 Every rotated square shares a neighborhood of the origin with the
 original square, on which both densities are positive; hence
 \(\Aff(\mu_2,(O_\theta)_\#\mu_2)>0\) for every angle.
 Affinity is continuous and strictly below one away from them,
-so the three cases in \eqref{eq:restricted-uniform-classification}
+so the three cases in \eqref{eq:uniform-square-block-trichotomy}
 now use \(\sum_k\delta_k^2\) in place of \(\sum_k\delta_k\).
 Equivalence still requires every \(\delta_k=0\).
 Thus the quadratic metric supplied by the Fourier/Fisher method controls
-accumulation of Hellinger loss, while boundary compatibility separately
+accumulation of Hellinger loss, while the zero-set row condition separately
 controls absolute continuity.
 
 \subsection{Complete linear classification for bounded and half-line laws}
-\label{sec:restricted-support-rigidity}
+\label{sec:bounded-and-half-line-classification}
 
 Write \(\rho=\Law(X)\), \(\rho^-=\Law(-X)\), and
 \(\mu=\rho^{\otimes\N}\).
 Throughout this subsection \(X\) is centered with variance one.
-The operator action is the row-series action of
-\cref{lem:measurable-action}.
+The operator action is the measurable row-series realization of
+\cref{lem:measurable-row-series-realization}.
 
-For bounded and one-sided supports, the row condition has much stronger
+For bounded and one-sided supports, the zero-set row condition has much stronger
 consequences than it first suggests.
 Conditional expectations of finite row sums see the boundary of the support.
-This turns support compatibility into an \(\ell^1\)-type row constraint, and
+This turns the boundary restriction into an \(\ell^1\)-type row constraint, and
 the inverse relations then force the operator to be monomial.
 The classification below therefore needs no density and no Fisher
 information.
 
 \begin{theorem}[Linear equivalence for bounded and half-line coordinate laws]
-\label{thm:restricted-support-rigidity}
+\label{thm:bounded-and-half-line-classification}
 Let \(T\in\GL(H)\).
 \begin{enumerate}
  \item Suppose \(a=\operatorname{ess\,inf}X<0<
@@ -385,7 +392,7 @@ Let \(T\in\GL(H)\).
   \nu_T\sim\mu
    \quad\Longleftrightarrow\quad
   T\text{ is an ordinary coordinate permutation}.
-  \label{eq:restricted-halfline-classification}
+  \label{eq:half-line-equivalence-classification}
  \end{equation}
  The same conclusion holds for a law bounded above and unbounded below.
 \end{enumerate}
@@ -399,20 +406,20 @@ The measurable inverse action implies
 \((\Phi_S)_\#\nu_T=\mu\).
 Pushing equivalence forward by \(\Phi_S\) therefore gives
 \(\nu_S\sim\mu\).
-For any row \(r\) of \(T\) or \(S\), the random series
-\(Z=\sum_jr_jX_j\) converges in \(L^2\).
+For any row \(v\) of \(T\) or \(S\), the random series
+\(Z=\sum_jv_jX_j\) converges in \(L^2\).
 Centering and independence imply
 \begin{equation}
- \E[Z\mid X_1,\ldots,X_m]=\sum_{j\leq m}r_jX_j.
- \label{eq:restricted-row-conditioning}
+ \E[Z\mid X_1,\ldots,X_m]=\sum_{j\leq m}v_jX_j.
+ \label{eq:finite-row-conditional-expectation}
 \end{equation}
 
 In the bounded case \(Z\in[a,b]\) almost surely.
 Its conditional expectation lies in the same interval.
 Independence and the definition of essential endpoints show that
 the essential width of the finite sum on the right of
-\eqref{eq:restricted-row-conditioning} is
-\((b-a)\sum_{j\leq m}|r_j|\).
+\eqref{eq:finite-row-conditional-expectation} is
+\((b-a)\sum_{j\leq m}|v_j|\).
 Consequently every row of both \(T\) and \(S\) has
 \(\ell^1\)-norm at most one.
 This proves the required bound even when the original row has
@@ -448,24 +455,22 @@ Hence \(T\) is a signed permutation.
 For a negative row sign, scalar equivalence requires
 \(\rho^-\sim\rho\), which in particular requires \(a=-b\).
 The remaining classification is a product calculation.
-Put \(r=\Aff(\rho,\rho^-)\).
-When these laws are equivalent, \(r>0\), and \(r=1\) exactly when
-they are equal.
-Each negative sign contributes the factor \(r\), while positive
-signs contribute one.
+When these laws are equivalent, \(\Aff(\rho,\rho^-)>0\), and
+\(\Aff(\rho,\rho^-)=1\) exactly when they are equal.  Each negative sign contributes the factor
+\(\Aff(\rho,\rho^-)\), while positive signs contribute one.
 Kakutani's theorem~\cite{kakutani1948equivalence} gives precisely
 the three alternatives stated above.
 
 For the lower-bounded, upper-unbounded case, centering and
 nondegeneracy give \(a<0\).
-Now every finite sum in \eqref{eq:restricted-row-conditioning}
+Now every finite sum in \eqref{eq:finite-row-conditional-expectation}
 is bounded below by \(a\).
 A negative coefficient would make its essential infimum
 \(-\infty\), which is impossible.
-Thus every \(r_j\geq0\), and its finite essential infimum gives
+Thus every \(v_j\geq0\), and its finite essential infimum gives
 \[
- a\sum_{j\leq m}r_j\geq a,
- \qquad\text{hence}\qquad \sum_jr_j\leq1.
+ a\sum_{j\leq m}v_j\geq a,
+ \qquad\text{hence}\qquad \sum_jv_j\leq1.
 \]
 Both \(T\) and \(S\) are therefore nonnegative with row sums at
 most one.
@@ -477,37 +482,39 @@ Reflection proves the upper-bounded case.
 \end{proof}
 
 This is the main bounded-support and half-line payoff.
-For \(Y\sim\operatorname{Gamma}(\alpha,\theta)\), where \(\theta\)
-is the scale, put
+For \(Y\sim\operatorname{Gamma}(r_\Gamma,\theta_\Gamma)\), where
+\(r_\Gamma>0\) is the shape and \(\theta_\Gamma>0\) is the scale, put
 \[
- X=\frac{Y-\alpha\theta}{\sqrt{\alpha}\theta}.
+ X=\frac{Y-r_\Gamma\theta_\Gamma}
+         {\sqrt{r_\Gamma}\,\theta_\Gamma}.
 \]
-Its essential endpoints are \(-\sqrt{\alpha}\) and \(+\infty\).
-Thus \eqref{eq:restricted-halfline-classification} gives the complete
+Its essential endpoints are \(-\sqrt{r_\Gamma}\) and \(+\infty\).
+Thus \eqref{eq:half-line-equivalence-classification} gives the complete
 homogeneous linear equivalence classification for every
-\(\alpha,\theta>0\), including the shape-two Fourier example in
+\(r_\Gamma,\theta_\Gamma>0\), including the shape-two Fourier example in
 \cref{sec:variance-and-affine-normalization}: only ordinary coordinate
 permutations are allowed.
-Compact support permits signs only to the extent allowed by the scalar
-reflected law.
+Compact support permits signs only to the extent allowed by the scalar pair
+\(\rho,\rho^-\).
 For compactly supported densities positive almost everywhere inside
 \((-a,a)\), reflection equivalence is automatic, so an asymmetric such
 density permits finitely many sign changes although they do not preserve the
 measure exactly.
-A standardized asymmetric Beta law has unequal endpoint magnitudes, so it
+An asymmetric Beta law centered and rescaled to variance one has unequal
+endpoint magnitudes, so it
 permits only permutations.
 These conclusions come from support geometry rather than from the
 Fourier/Fisher estimates.
 
-\subsection{Why the support test is indispensable}
-\label{sec:restricted-counterexample}
+\subsection{Why the zero-set row condition is indispensable}
+\label{sec:zero-set-row-condition-counterexample}
 
 The zero-set row condition is not a cosmetic addition to the
 Hilbert--Schmidt criterion.
 It separates positive Hellinger overlap from genuine two-sided absolute
 continuity even for a rank-one perturbation.
 
-Let \(f\) be the variance-one rescaling of
+Let \(f\) be the rescaling to variance one of
 \(C(1-x^2)^2\mathbf 1_{\{|x|<1\}}\), and write its support as
 \([-a,a]\).
 Set \(\rho(dx)=f(x)\,dx\).
@@ -530,12 +537,12 @@ Nevertheless,
  \Aff(\mu,\nu_T)=\int\sqrt{f(y)f_c(y)}\,dy>0,
  \qquad \sup_n E_n(T)<\infty.
 \]
-Thus neither Hilbert--Schmidt proximity nor bounded projected energy
-implies equivalence without the inverse row condition.
+Thus neither Hilbert--Schmidt proximity nor bounded projected Hellinger energy
+implies equivalence without the inverse zero-set row condition.
 The failure occurs with finite location and scale Fisher information.
 
 \subsection{Exact block criteria without equivalence of the factors}
-\label{sec:restricted-blocks}
+\label{sec:block-products-without-factor-equivalence}
 
 For reference, the boundary examples above use the following product
 criterion.
@@ -558,7 +565,7 @@ Then
 \begin{equation}
  \Aff(\mu,\nu)=\prod_kr_k,\qquad
  \mu\perp\nu\quad\Longleftrightarrow\quad L=\infty.
- \label{eq:restricted-block-affinity}
+ \label{eq:block-product-affinity-and-singularity}
 \end{equation}
 If \(L<\infty\), then
 \begin{equation}
@@ -568,7 +575,7 @@ If \(L<\infty\), then
   \mu\ll\nu&\quad\Longleftrightarrow\quad
                          \lambda_k\ll\eta_k\text{ for every }k.
  \end{aligned}
- \label{eq:restricted-block-ac}
+ \label{eq:block-product-absolute-continuity}
 \end{equation}
 Thus positive affinity allows equivalence, either direction of strict
 absolute continuity, or neither direction.
@@ -587,7 +594,7 @@ Affinity tensorizes on each finite block prefix.
 Convergence of projected affinities to global affinity follows by
 conditional expectation under the common dominating measure
 \((\mu+\nu)/2\); the proof is also given below.
-This gives \eqref{eq:restricted-block-affinity}.
+This gives \eqref{eq:block-product-affinity-and-singularity}.
 
 Necessity of each local absolute-continuity condition follows by
 projection.
@@ -621,7 +628,7 @@ Then
 \begin{equation}
  \nu_a(\R^\N)=\prod_kb_k,\qquad
  \mu_a(\R^\N)=\prod_ka_k.
- \label{eq:restricted-common-masses}
+ \label{eq:block-ac-part-masses}
 \end{equation}
 \end{corollary}
 \begin{proof}
@@ -635,42 +642,44 @@ continuous parts.
 \end{proof}
 
 \paragraph{Gamma scale changes and the effect of centering.}
-For the uncentered shape-\(\alpha\), scale-one Gamma density, positive
+Fix \(r_\Gamma>0\).  For the uncentered shape-\(r_\Gamma\), scale-one
+Gamma density, positive
 scaling by \(c\) preserves the scalar measure class and gives
 \begin{equation}
   \int_0^\infty\sqrt{f(y)c^{-1}f(y/c)}\,dy
- =\left(\frac{2\sqrt c}{1+c}\right)^\alpha
- =\cosh\!\left(\frac{\log c}{2}\right)^{-\alpha}.
- \label{eq:restricted-gamma-scale}
+ =\left(\frac{2\sqrt c}{1+c}\right)^{r_\Gamma}
+ =\cosh\!\left(\frac{\log c}{2}\right)^{-r_\Gamma}.
+ \label{eq:gamma-scale-affinity}
 \end{equation}
-Integration of \(y^{\alpha-1}e^{-(1+c^{-1})y/2}\) proves the formula.
+Integration of \(y^{r_\Gamma-1}e^{-(1+c^{-1})y/2}\) proves the formula.
 Since \(\log\cosh(u/2)\sim u^2/8\) at zero, it follows that
 \begin{equation}
  \bigotimes_k\Law(c_kY)\sim\bigotimes_k\Law(Y)
  \quad\Longleftrightarrow\quad
  \sum_k(\log c_k)^2<\infty,
  \qquad c_k>0.
- \label{eq:restricted-gamma-scale-product}
+ \label{eq:gamma-scale-product-equivalence}
 \end{equation}
 The condition is equivalently \(\sum_k(c_k-1)^2<\infty\).
-This does not contradict \cref{thm:restricted-support-rigidity}:
-for \(X=(Y-\alpha)/\sqrt\alpha\), the map \(Y\mapsto cY\) becomes
+This does not contradict \cref{thm:bounded-and-half-line-classification}:
+for \(X=(Y-r_\Gamma)/\sqrt{r_\Gamma}\), the map \(Y\mapsto cY\) becomes
 \[
- X\longmapsto cX+\sqrt\alpha(c-1),
+ X\longmapsto cX+\sqrt{r_\Gamma}(c-1),
 \]
 an affine map fixing the lower endpoint, not the homogeneous
 linear map \(X\mapsto cX\).
 
-\begin{corollary}[Affine Gamma classification]
-\label{cor:restricted-gamma-affine}
-Let \(\mu\) be the standardized shape-\(\alpha\) Gamma product.
+\begin{corollary}[Coordinatewise affine equivalence for Gamma products]
+\label{cor:affine-gamma-classification}
+Let \(\mu\) be the product of the shape-\(r_\Gamma\) Gamma law centered with
+variance one.
 For \(T\in\GL(H)\) and \(b\in\ell^2\), the law of
 \(\Phi_T(x)+b\) under \(\mu\) is equivalent to \(\mu\) if and only if
 there are a coordinate
 permutation \(\pi\) and numbers \(c_i>0\) such that
 \[
  (Tx)_i=c_ix_{\pi(i)},\qquad
- b_i=\sqrt\alpha(c_i-1),\qquad
+ b_i=\sqrt{r_\Gamma}(c_i-1),\qquad
  \sum_i(\log c_i)^2<\infty.
 \]
 \end{corollary}
@@ -690,33 +699,33 @@ finite row sums as before, that both linear parts have nonnegative
 entries: a negative coefficient would produce an unbounded lower
 tail, which no finite shift can repair.
 Since \(T\) and \(T^{-1}\) have nonnegative matrix entries, the
-off-diagonal inverse identities used above show that \(T\) is a
-weighted permutation operator.
+off-diagonal inverse identities used above show that \(T\) is monomial
+with positive weights.
 Equality of the scalar lower endpoints forces
-\(-\sqrt\alpha c_i+b_i=-\sqrt\alpha\).
-The product criterion \eqref{eq:restricted-gamma-scale-product}
+\(-\sqrt{r_\Gamma}c_i+b_i=-\sqrt{r_\Gamma}\).
+The product criterion \eqref{eq:gamma-scale-product-equivalence}
 then proves necessity and sufficiency.
 \end{proof}
 
-\subsection{An exact replacement for projected-energy equivalence}
-\label{sec:restricted-projections}
+\subsection{An exact finite-marginal equivalence criterion}
+\label{sec:finite-marginal-equivalence-criterion}
 
 For reference, there is also a purely measure-theoretic fallback when one
 does not want to use the operator classification.
-For densities satisfying \eqref{eq:restricted-sobolev},
+For densities satisfying \eqref{eq:zero-set-row-assumptions},
 \cref{thm:linear-equivalence-group} gives the sharper linear answer.
 The following finite-marginal criterion applies without Sobolev assumptions
 and without any dichotomy.
 
-\begin{proposition}[Two-sided finite-marginal likelihood ratio tails]
-\label{prop:restricted-projected-criterion}
+\begin{proposition}[Finite-marginal tails characterize equivalence]
+\label{prop:two-sided-finite-marginal-ratio-tails}
 Let \(\mu,\nu\) be any probability measures on \(\R^\N\), and let
 \(\mu_n,\nu_n\) be their first \(n\) marginals.
 Choose densities \(p_n,q_n\) with respect to any common dominating
 measure \(m_n\).
 For \(M>1\), define
 \[
- D_n(M)=
+ \Tail_n(M)=
  \int_{\{q_n>Mp_n\}}q_n\,dm_n+
  \int_{\{p_n>Mq_n\}}p_n\,dm_n.
 \]
@@ -724,8 +733,8 @@ Then
 \begin{equation}
  \mu\sim\nu
  \quad\Longleftrightarrow\quad
- \lim_{M\to\infty}\sup_nD_n(M)=0.
- \label{eq:restricted-ui-criterion}
+ \lim_{M\to\infty}\sup_n\Tail_n(M)=0.
+ \label{eq:two-sided-finite-marginal-ui}
 \end{equation}
 Equivalently, every finite pair is equivalent and its forward and
 reverse likelihood-ratio martingales are uniformly integrable in their
@@ -735,21 +744,23 @@ Without any finite-marginal equivalence assumption,
  \Aff(\mu_n,\nu_n)\downarrow\Aff(\mu,\nu),\qquad
  \sup_n[-2\log\Aff(\mu_n,\nu_n)]<\infty
      \quad\Longleftrightarrow\quad \mu\not\perp\nu.
- \label{eq:restricted-energy-only-overlap}
+ \label{eq:finite-marginal-energy-overlap}
 \end{equation}
 \end{proposition}
 \begin{proof}
-If the limit in \eqref{eq:restricted-ui-criterion} is zero, a set
+If the limit in \eqref{eq:two-sided-finite-marginal-ui} is zero, a set
 where \(p_n=0<q_n\) must have zero \(\nu_n\)-mass for every \(n\);
 the reverse statement follows from the second integral.
 Hence \(\mu_n\sim\nu_n\).
-Writing \(\ell_n(x)=q_n(\pi_n x)/p_n(\pi_n x)\), the two terms in \(D_n(M)\) are exactly
+Writing \(\ell_n(x)=q_n(\pi_n x)/p_n(\pi_n x)\), the two terms in
+\(\Tail_n(M)\) are exactly
 \[
  \E_\mu[\ell_n\mathbf1_{\{\ell_n>M\}}],
  \qquad
  \E_\nu[\ell_n^{-1}\mathbf1_{\{\ell_n^{-1}>M\}}].
 \]
-They are the uniform-integrability tests for the two mean-one
+They are the two terms in \(\Tail_n(M)\), hence the
+uniform-integrability tests for the two mean-one
 likelihood-ratio martingales.
 Each \(L^1\) limit has mass one, and cylinder tests identify the
 corresponding absolutely continuous measure.
@@ -772,7 +783,7 @@ Martingale convergence and bounded convergence imply
 \]
 Conditional Cauchy--Schwarz gives monotonicity.
 Global affinity is zero exactly for mutually singular measures,
-which proves \eqref{eq:restricted-energy-only-overlap}.
+which proves \eqref{eq:finite-marginal-energy-overlap}.
 \end{proof}
 
 For a density \(f\) and \(T\in\GL(H)\), each finite output
@@ -781,12 +792,12 @@ of an invertible input minor as in
 \cref{lem:finite-marginal-likelihood-ratios}.
 That density may now vanish on a different set from
 \(\prod_{i\leq n}f(x_i)\).
-Thus \eqref{eq:restricted-ui-criterion} is an exact criterion for
-arbitrary mixing even in this case.
-Under \eqref{eq:restricted-sobolev},
+Thus \eqref{eq:two-sided-finite-marginal-ui} is an exact criterion for
+bounded invertible linear mixing even in this case.
+Under \eqref{eq:zero-set-row-assumptions},
 \cref{thm:linear-equivalence-group} identifies the linear equivalence
-group by a Hilbert--Schmidt condition and scalar row conditions for the
+group by a Hilbert--Schmidt condition and forward and inverse zero-set row conditions for the
 operator and its inverse.  This includes unbounded densities with gaps.
 For bounded and one-sided laws,
-\cref{thm:restricted-support-rigidity} further reduces the group to
+\cref{thm:bounded-and-half-line-classification} further reduces the group to
 explicit classes of coordinate permutations, without Sobolev assumptions.

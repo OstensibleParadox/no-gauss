@@ -1,0 +1,61 @@
+ZERO-SET ROW CONDITION AND LINEAR EQUIVALENCE: CONSISTENCY REVIEW
+
+Reviewed source
+sections/07-zero-set-row-condition-and-linear-equivalence.tex
+
+Scope
+The coordinate law is centered with variance one.  The density-zero
+operator theorem assumes a non-Gaussian density f whose zero extension
+satisfies sqrt(f) in W^{1,2}(R) and x(sqrt(f))' in L2(R); it does not assume
+that f is positive almost everywhere.  The scale condition is omitted only
+in the stated orthogonal case.  The bounded-support and half-line
+classification is a separate result and does not require a density or
+Fisher information.
+
+Canonical definitions and macro-expansion checks
+- U means exactly {x:f(x)>0}; it is not the closed support of the law.
+- The zero-set row condition means that every indicated row series lands in
+  U almost surely.  The forward condition concerns T; the inverse condition
+  concerns T^{-1}.  Expanding the term at every occurrence gives the
+  displayed row probabilities in the theorem.
+- P is the exact linear stabilizer of the finite-variance coordinate law:
+  coordinate permutations with precisely those signs that preserve rho.
+  It is distinct from P^{+/-}, the full signed-permutation group used for
+  symmetric stable coordinates.
+- Phi_T is the measurable row-series realization constructed in Section 4,
+  and nu_T=(Phi_T)_#mu throughout.
+- G_rho={T in GL(H):nu_T is equivalent to mu}.  Gamma is reserved for a
+  countable operator group in the measurable-realization argument.
+- Tail_n(M) is the sum of the forward and reverse finite-marginal
+  likelihood-ratio tails above M.  It is not the projected Hellinger energy.
+
+Logical dependency check
+1. Hilbert--Schmidt proximity gives finite-coordinate approximants whose
+   image laws converge in Hellinger distance, hence in total variation.
+2. On U^N each approximant is absolutely continuous relative to mu.  Total
+   variation convergence transfers this restricted absolute continuity to
+   nu_T.
+3. The complement of U^N carries the singular part, so the forward
+   zero-set row condition is exactly the remaining obstruction to
+   nu_T << mu once Hilbert--Schmidt proximity is known.
+4. Applying the same statement to T^{-1}, together with the compatible
+   measurable inverse, gives equivalence and the two-sided criterion.
+5. For bounded and half-line supports, conditional expectations turn the
+   boundary restriction into row constraints that force monomial, then
+   permutation, operators as stated.
+6. The block examples separate factorwise absolute continuity from
+   accumulation of projected Hellinger energy; they do not weaken the
+   zero-set row condition.
+
+Notation boundary
+The operator diag extracts the diagonal part of a matrix.  Diagonal matrices
+constructed from a sequence are described in words, so this notation has a
+single expansion.  Gamma shape and scale are
+r_Gamma and theta_Gamma, avoiding the stable exponent alpha.  The exact
+finite-marginal criterion uses ell_n for the density ratio and Tail_n(M) for
+its two-sided uniform-integrability tail.
+
+Verification status
+This is a source-level consistency review, not a proof certificate.  The
+repository checks separately validate section/file continuity, labels and
+references, stale-token exclusions, and compilation.

@@ -3,8 +3,8 @@
 
 This section rules out the only way a non-Gaussian law could imitate the
 Gaussian rotation symmetry at first order.
-If every infinitesimal two-coordinate rotation were invisible to bounded
-Fourier statistics, the coordinate law would have to be Gaussian.
+If every infinitesimal two-coordinate rotation had zero rotational Fourier
+defect, the coordinate law would have to be Gaussian.
 This is the identification input later used by the dimension-free
 coercivity argument.
 The product of centered complex exponentials defining this defect is bounded.
@@ -49,7 +49,7 @@ no tail assumption.
 \subsection{Gaussian characterization by a global linear ODE}
 \label{sec:fourier-ode}
 
-The following lemma is the point at which the Fourier statistic becomes a
+The following lemma is the point at which the rotational Fourier defect becomes a
 rigidity tool.
 Later arguments use its contrapositive: if the coordinate law is not
 Gaussian, then some rotational direction has a nonzero first-order response.
@@ -75,6 +75,12 @@ Moreover,
  \Law(X)\text{ is a centered Gaussian, possibly degenerate}.
  \label{eq:fourier-gaussian-characterization}
 \end{equation}
+Equivalently, all pairs of values of the weighted Fourier jet
+\[
+ u\longmapsto\bigl(u\phi(u),\phi'(u)\bigr)
+\]
+are linearly dependent if and only if \(\Law(X)\) is a centered Gaussian,
+possibly degenerate.
 \end{lemma}
 \begin{proof}
 The first moment implies $\phi\in C^1(\R)$.
@@ -182,7 +188,7 @@ second-moment and Sobolev hypotheses.
 \label{sec:variance-and-affine-normalization}
 
 Equation \eqref{eq:centered-exponential-product-variance} is the variance
-estimate behind the finite-frequency tests used below.
+estimate behind the finite real Fourier sums used below.
 Averaging \(N\) independent pairs gives standard error at most \(N^{-1/2}\)
 under the reference product.
 The rough bound \(16/N\) remains available under an arbitrary
@@ -220,12 +226,12 @@ So the phase is not, by itself, a complete measure of skewness.
 
 For the concrete comparison $Y\sim\operatorname{Gamma}(2,1)$,
 $m=2$, $\sigma=\sqrt2$, and $(\xi,\eta)=(1,2)$, the expression in brackets in
-\eqref{eq:centering-phase} equals $4/27$, so the standardized law has
+\eqref{eq:centering-phase} equals $4/27$, so the law centered with variance one has
 \[
  R(1,2)=\frac4{27}e^{-3i\sqrt2}.
 \]
 At this particular pair, the entire phase of the rotational Fourier defect is
 therefore the centering phase, namely $-3\sqrt2$ modulo $2\pi$.
-The variance-one Laplace law has rotational Fourier defect $R(1,2)=-4/27$.
+The Laplace law centered with variance one has rotational Fourier defect $R(1,2)=-4/27$.
 Their moduli agree at these frequencies, while their principal phases
 are approximately $116.915^\circ$ and $180^\circ$, respectively.
