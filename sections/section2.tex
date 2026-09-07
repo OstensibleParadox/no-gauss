@@ -42,8 +42,10 @@ no tail assumption.
 \label{sec:fourier-ode}
 
 The next lemma makes the rotational Fourier defect a logarithm-free rigidity
-tool, valid even when \(\phi\) has zeros.  Contrapositively, every
-non-Gaussian law has a nonzero rotational response.
+tool, valid even when \(\phi\) has zeros.  It is an infinitesimal version of
+the Gaussian rigidity behind independence characterizations
+\cite{kac1939characterization,kagan1973characterization}:
+every non-Gaussian law has a nonzero rotational response.
 
 \begin{lemma}[Gaussian characterization by the rotational Fourier defect]
 \label{lem:fourier-ode}
@@ -184,6 +186,9 @@ boundary.
 The matrix Fisher operator separates diagonal scale, symmetric off-diagonal,
 and skew-symmetric rotational directions.  Its rotational eigenvalue is
 \(J-1\), which vanishes exactly in the Gaussian case.
+The general interpretation of Fisher information as a metric on density
+families is developed in~\cite{amari2000methods}; here the matrix decomposition
+specifies the cost of each mixing direction.
 
 Let $f$ be a probability density and write $g=\sqrt f$.
 In this subsection we assume
@@ -307,6 +312,14 @@ orthogonal factor has Fisher eigenvalue \(J-1\), which is positive precisely
 off the Gaussian law.  The full matrix Fisher operator decomposition above packages
 these two mechanisms without requiring a nonlinear separation of \(B\) and
 \(O\) at every step.
+
+The square-root formulation is the one used in quadratic-mean
+differentiability~\cite[Section~7.2]{vandervaart1998asymptotic}.
+Logarithmic derivatives and the relation between differentiation of measures
+and quasi-invariance are treated in
+\cite{bogachev1997differentiable,bell1985quasi}.
+For the present linear transformations, the half-density action below gives
+a path bound whose constant does not grow with the number of coordinates.
 
 For $A\in\GL(n,\R)$ define a unitary operator on
 $L^2(\R^n,dx)$ by

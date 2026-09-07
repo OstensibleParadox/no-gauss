@@ -4,6 +4,14 @@
 The finite-variance criterion does not extend unchanged to symmetric stable
 products: both the coefficient domain and the mixing cost become
 \(\alpha\)-dependent.
+For product-preserving affine transformations of independent stable
+coordinates, equivalence and singularity criteria were obtained
+by Marques and Cambanis~\cite{marques1991dichotomies}.
+For Cauchy products, Lie and Sullivan characterize equivalence under
+coordinatewise dilations~\cite{lie2018cauchy}, and Okamura allows both
+location and scale parameters to vary~\cite{okamura2020cauchy}.
+The column cost below addresses the dependence
+created by off-diagonal mixing.
 Fix \(0<\alpha<2\), let \(\rho_\alpha\) be the standard symmetric
 \(\alpha\)-stable law, and put
 \begin{equation}
@@ -16,10 +24,15 @@ Fix \(0<\alpha<2\), let \(\rho_\alpha\) be the standard symmetric
 \end{equation}
 Let \((X_j)_{j\geq1}\) be independent with common law \(\rho_\alpha\), and
 write \(\mathbf X=(X_j)_{j\geq1}\).
+We use the symmetric, unit-scale characteristic-function convention;
+stable parameterizations and their location conventions are described
+in~\cite{nolan2020univariate}.
 Its density \(f_\alpha\) is smooth and strictly positive, and its location
 and scale Fisher information are finite, although its second moment is
 infinite~\cite{bobkov2014stable}.
-Indeed, \(f_\alpha(x)\asymp(1+|x|)^{-1-\alpha}\) and its location score is
+Indeed, the density and derivative asymptotics
+in~\cite{zolotarev1986stable} give
+\(f_\alpha(x)\asymp(1+|x|)^{-1-\alpha}\) and its location score is
 \(O((1+|x|)^{-1})\) in the tails, so both the location score and its product
 with \(x\) are square integrable against \(f_\alpha\).
 For \(\alpha\le1\), the normalization in
@@ -27,7 +40,8 @@ For \(\alpha\le1\), the normalization in
 not a finite mean.
 
 A stable row series \(\sum_ja_jX_j\) converges almost surely precisely when
-\(a\in\ell^\alpha\).
+\(a\in\ell^\alpha\); see the stable-series theory
+in~\cite{samorodnitsky1994stable}.
 For a real matrix \(T\) with \(\ell^\alpha\) rows, write
 \(\Phi_{\alpha,T}\) for the associated row-series map and
 \(\nu_{\alpha,T}=(\Phi_{\alpha,T})_\#\mu_\alpha\).
@@ -165,6 +179,8 @@ Put \(\beta=\alpha/2\), and let \(V_i\) be independent positive
 \(\beta\)-stable variables with
 \(\E e^{-tV_i}=e^{-t^\beta}\), and write
 \(X_i=\sqrt{2V_i}Z_i\) with independent standard Gaussians \(Z_i\).
+This is the positive-stable subordination representation
+\cite{sato1999levy,samorodnitsky1994stable}.
 Conditioning on \(V=\diag(V_i)\), Hellinger data processing and the Gaussian
 affinity formula bound the left side of
 \eqref{eq:stable-finite-dimensional-upper-bound} by a constant times

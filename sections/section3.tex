@@ -11,7 +11,9 @@ applying the local estimate from \cref{prop:local-fisher-hellinger}.
 \label{sec:measurable-realization}
 
 Only \(\E X=0\) and \(\E X^2=1\) are needed here.  Each row series exists as
-an \(L^2\) equivalence class, but such classes cannot be composed pointwise:
+an \(L^2\) equivalence class.  The distinction between an operator on
+\(\ell^2\) and its measurable realization on \(\R^\N\) is already central
+to~\cite{shimomura1977linear}.  Such equivalence classes cannot be composed pointwise:
 separately chosen versions for different operators or orbit laws may fail on
 incompatible null sets.  We therefore select deterministic subsequences for
 every row in a fixed countable operator group, so that operator multiplication
@@ -108,6 +110,18 @@ the usual almost-sure row sums.
 Quasi-invariance under \(\ell^2\)-translations eliminates the intermediate
 case: every bounded invertible orbit is either equivalent to \(\mu\) or
 singular to it.
+The translation input belongs to the Shepp-space problem of identifying
+all shifts that preserve a product measure class
+\cite{shepp1965translate}.  Beyond scalar translations, this question
+extends to infinite products of commutative Lie groups and to
+coordinatewise group actions~\cite{hora1991quasi,sadasue2008quasi}.
+Within the translation problem, finer questions concern quasi-invariance
+in all \(\ell^q\) directions, \(1\le q<2\)
+\cite{arutyunyan2015spaces}, and the linearity and sequence-space
+description of the Shepp space~\cite{honda2015approximations}.
+Here its \(\ell^2\) quasi-invariance is combined with translation ergodicity;
+the following proof specializes the equivalent--singular mechanism
+of~\cite{okazaki1985dichotomy} to each bounded invertible orbit.
 
 \begin{lemma}[Dichotomy for every bounded invertible orbit]
 \label{lem:orbit-dichotomy}
@@ -170,6 +184,16 @@ limiting affinity; the orbit dichotomy is the additional input that upgrades
 positive limiting affinity from mere overlap to equivalence.  This is why
 bounded projected Hellinger energy is an exact diagnostic in the present orbit
 problem.
+For background on likelihood ratios and Hellinger comparison,
+see~\cite{lecam1986asymptotic}; the role of Lebesgue decomposition in
+equivalence and singularity criteria is discussed
+in~\cite{mandrekar2018lebesgue}.
+
+The convolution argument below establishes finite-dimensional absolute
+continuity.  Global equivalence after an independent symmetric additive
+perturbation is a distinct problem studied in~\cite{kitada1989absolute},
+under a second-derivative integrability condition on the coordinate density.
+For the dependent image law here, the global step uses translation ergodicity.
 
 \begin{lemma}[Projected Hellinger energy and finite-marginal likelihood ratios]
 \label{lem:finite-marginal-likelihood-ratios}
@@ -256,6 +280,9 @@ both uniform-integrability assertions.
 Because initial segments are cofinal among finite coordinate sets, data
 processing also shows that the criterion is independent of the coordinate
 enumeration.
+Here data processing is the contraction of Hellinger divergence under
+measurable projections, a special case of the divergence inequalities
+in~\cite{liese2006divergences}.
 
 \subsection{Sufficiency of Hilbert--Schmidt perturbations}
 \label{sec:sufficiency}

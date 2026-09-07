@@ -44,7 +44,8 @@ and scale Fisher information but no moment above order two; in particular,
 cusps are allowed.
 
 Put \(H=\ell^2(\N;\R)\), let \((e_i)_{i\ge1}\) be its coordinate basis, and
-write \(\mathcal S_2(H)\) for the Hilbert--Schmidt ideal.  Define
+write \(\mathcal S_2(H)\) for the Hilbert--Schmidt ideal, with the standard
+operator-ideal conventions of~\cite{simon2005trace}.  Define
 \begin{equation}
  \begin{aligned}
  \mathcal P=\{Q:{}&(Qx)_i=\varepsilon_i x_{\pi(i)},\quad
@@ -127,20 +128,48 @@ Thus scale Fisher information is not needed for orthogonal mixing.
 \subsection{Relation to earlier criteria}
 \label{sec:history}
 
-Kakutani reduced equivalence of infinite products to summability of
-one-coordinate Hellinger losses~\cite{kakutani1948equivalence}; Euclidean and
-Lie-group perturbations retain this tensor structure and recover Fisher
-information as the local metric
-\cite{steele1986fisher,marques1992quasi}.  Gaussian linear mixing is governed
-instead by the Cameron--Martin and Feldman--H\'ajek theories
-\cite{cameron1944transformations,feldman1958equivalence,hajek1958property,
-shepp1966radon,ramer1974nonlinear,bogachev1998gaussian}.  There the full
-orthogonal group preserves the standard product law.  For a non-Gaussian
-i.i.d. product, exact independence reduces this group to \(\mathcal P\), and
-\cref{thm:measure-equivalence} determines the entire bounded invertible
-measure-class orbit around that discrete stabilizer.  This is distinct from
-the existence theory for non-Gaussian quasi-invariant measures on linear
-spaces~\cite{feldman1961examples,takahashi1975quasi}.
+Kakutani's theorem reduces equivalence of products with equivalent factors
+to summability of one-coordinate Hellinger losses
+\cite{kakutani1948equivalence}.  For translations, Shepp relates this
+summability to the regularity of the square-root density
+\cite{shepp1965translate}.  Euclidean and Lie-group perturbations likewise
+retain the product structure and identify Fisher information as the local
+metric~\cite{steele1986fisher,marques1992quasi}.  These criteria supply the
+translation and coordinatewise inputs to our proof; general output rows
+require estimates that also detect the dependence created by mixing.
+
+In the Gaussian setting, the Cameron--Martin theorem describes admissible
+translations~\cite{cameron1944transformations}, while the
+Feldman--H\'ajek theory and Gaussian likelihood formulas describe equivalence
+under linear transformations
+\cite{feldman1958equivalence,hajek1958property,shepp1966radon,bogachev1998gaussian}.
+Ramer treats nonlinear transformations of Gaussian measures
+\cite{ramer1974nonlinear}.  For the standard Gaussian product, the full
+orthogonal group consists of exact symmetries.  The non-Gaussian result
+identifies a different stabilizer and measures the distance to that
+stabilizer, rather than only the covariance defect.
+
+Linear admissibility beyond Gaussian measures was studied by
+Shimomura~\cite{shimomura1977linear}.  His Theorem~3.4 shows that
+\(I-S^2\) is compact for a self-adjoint admissible operator \(S\), under
+\(\ell^2\)-continuity, \(\ell^2\)-translation quasi-invariance, and
+\(\ell^2\)-ergodicity assumptions; his examples
+also show that those assumptions alone do not yield a universal
+Hilbert--Schmidt criterion.  In the i.i.d. setting with
+\eqref{eq:main-assumptions}, \cref{thm:measure-equivalence} gives the precise
+Hilbert--Schmidt condition modulo \(\mathcal P\) for every bounded invertible
+operator.  The existence of non-Gaussian quasi-invariant measures on linear
+spaces~\cite{feldman1961examples,takahashi1975quasi} addresses a different
+question from this classification for a fixed product law.
+
+The discrete stabilizer is related to the classical characterization of
+Gaussian laws by independence of linear forms
+\cite{kac1939characterization,darmois1953analyse,skitovich1954linear,kagan1973characterization}
+and to finite-dimensional identifiability in independent component
+analysis~\cite{comon1994independent}.  These results concern exact independence.
+Here the measure-class problem permits dependent output coordinates:
+the additional conclusion is square summability of the deviation from an
+allowed coordinate permutation, detected by the actual output marginals.
 
 \subsection{Two boundary regimes}
 \label{sec:boundary-regimes}
