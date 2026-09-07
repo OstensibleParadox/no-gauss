@@ -1,17 +1,20 @@
-SOURCE AND NOTATION REVIEW: ENTRY POINT AND EIGHT-SECTION MANUSCRIPT
+SOURCE AND NOTATION REVIEW: ENTRY POINT AND FIVE-SECTION MANUSCRIPT
 
 Scope
-This deterministic snapshot covers sections/main.tex followed by the eight
-section files that it includes, in this order:
+This deterministic snapshot covers sections/main.tex, the five top-level
+section files that it includes, and their recursively included fragments:
 entry. main.tex (title, abstract, and document setup)
-01. introduction-and-main-results
-02. rotational-fourier-defect-and-gaussian-characterization
-03. finite-dimensional-hellinger-coercivity
-04. measurable-realization-and-dichotomy
-05. finite-variance-equivalence-and-global-rigidity
-06. symmetric-stable-products-and-anisotropic-geometry
-07. zero-set-row-condition-and-linear-equivalence
-08. scope-of-the-finite-variance-hypotheses
+01. 01-introduction-and-main-results.tex
+02. 02-rotational-fourier-defect-and-hellinger-coercivity.tex
+    -> parts/rotational-fourier-detection.tex (owned by Section 2)
+    -> parts/finite-dimensional-hellinger-geometry.tex (owned by Section 2)
+03. 03-finite-variance-equivalence-and-global-rigidity.tex
+    -> parts/measurable-realization-and-measure-class-dichotomy.tex (owned by Section 3)
+    -> parts/finite-variance-classification.tex (owned by Section 3)
+04. 04-symmetric-stable-products-and-anisotropic-geometry.tex
+05. 05-zero-set-row-condition-and-support-geometry.tex
+    -> parts/zero-set-and-support-classification.tex (owned by Section 5)
+    -> parts/finite-variance-hypothesis-roles.tex (owned by Section 5)
 
 Method
 The companion TSV inventories 66 exported notation or terminology
@@ -50,15 +53,18 @@ audit/notation-review.tsv and audit/source-review.txt.  Any source hash change
 invalidates the prior snapshot.
 
 Snapshot time (UTC)
-2026-09-07T02:01:34.367468+00:00
+2026-09-07T02:35:01.066886+00:00
 
 SHA-256 source fingerprints
-sections/main.tex  e9dd83bc778c45e462b6a97a6d4ecf30a009e52da2b277cb764e39ca247b9c10
-sections/01-introduction-and-main-results.tex  066ceb307dbc1573e0ce017db43ff3358a7ab197d3183d8c75f5476ca31c7497
-sections/02-rotational-fourier-defect-and-gaussian-characterization.tex  e1e6b7dd3874a91f5b7bed10db74d8e6927e64b823db3db7600f594c54befde4
-sections/03-finite-dimensional-hellinger-coercivity.tex  4fde1c1ca42626f07ac2126a18801db9cf434cc9756bd0ae0c1b871f70aff5c6
-sections/04-measurable-realization-and-dichotomy.tex  e49f534d708ee03d96a3b3e162f66465eb62a6387a651354acc897cf22ad2067
-sections/05-finite-variance-equivalence-and-global-rigidity.tex  6f506ee9c1981be01a914139c9d90a0887c5f24271677332c93104a2807d53e6
-sections/06-symmetric-stable-products-and-anisotropic-geometry.tex  2f83bb7c33807965efadb65a99aa5dd738e694a4ad0a3e33fa804433dfddf7e4
-sections/07-zero-set-row-condition-and-linear-equivalence.tex  8a034453238af43f39d6fff991c40dc0c84cc4e55f38eb69110abd6e2f39426b
-sections/08-scope-of-the-finite-variance-hypotheses.tex  2c1e0ef66a2998c2cdc5ec4e8c8c2877bbd1459e9c19b42ddb872cf773af43bb
+sections/main.tex  b8263766e7a94eb5ab78b0e5f538f93eb4e8fd0d4fca2883dfc6c19da8986c16
+sections/01-introduction-and-main-results.tex  ecf65b2e0c87ccc559534011fbfe34dcf3af189f6140b864407a15e69b8a4a88
+sections/02-rotational-fourier-defect-and-hellinger-coercivity.tex  3b6009f8439f839cd9d8d60145c1fda543789ed55b1bb806f06a7c4e29dd7677
+sections/parts/rotational-fourier-detection.tex  e7821acc76e9ed55c9cd79b3b7446ee9898d5b5a35692b40d0653d827ed4784e
+sections/parts/finite-dimensional-hellinger-geometry.tex  43b855313d3d0924fd20a81487f142c70aef8beea34ec5cd4a1fe48668a397e4
+sections/03-finite-variance-equivalence-and-global-rigidity.tex  fecb30e27f69f38df28dd9d60a90fc8c9a37751e3ca25659b14569255117c604
+sections/parts/measurable-realization-and-measure-class-dichotomy.tex  c0d69e3e0c7149a26991044f519a9c139cb404362de25b0e79350bc0fe702638
+sections/parts/finite-variance-classification.tex  7bdb961e1aa1067a0f16e0e29376060f7abc1e83649d95ee6814ff92a2e12fcb
+sections/04-symmetric-stable-products-and-anisotropic-geometry.tex  c5787987404d7c6624e36ebb6927b0dc0ba013dec34e7eb404e521277fe38ff9
+sections/05-zero-set-row-condition-and-support-geometry.tex  66f52669bc6a3b6c23b1b065683e9d2300e8f389934e6d6ec75823cdd472e4ae
+sections/parts/zero-set-and-support-classification.tex  ea2c69dfb4e32936713d0bf9e3143cf576b056b61f89c296f3248c680316e59a
+sections/parts/finite-variance-hypothesis-roles.tex  80e8b72cfac76d6601f53e22e4cb58a460b798513e2c5ae35e25e36df438cd0f

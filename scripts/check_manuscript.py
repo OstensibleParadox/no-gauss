@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Run fast, deterministic source checks without invoking TeX.
 
-The script checks the manuscript's public interface: the eight included
-section files, headings and labels, cross-references, canonical notation
+The script checks the manuscript's public interface: the five included
+top-level section files and their nested source fragments, headings and
+labels, cross-references, canonical notation
 spellings, and globally declared notation macros.  Proof-local dummy
 variables are outside the notation-burden check; ``audit_notation.py``
 records that distinction in more detail.
@@ -20,13 +21,10 @@ MAIN = SECTIONS / "main.tex"
 
 EXPECTED_INPUTS = (
     "01-introduction-and-main-results",
-    "02-rotational-fourier-defect-and-gaussian-characterization",
-    "03-finite-dimensional-hellinger-coercivity",
-    "04-measurable-realization-and-dichotomy",
-    "05-finite-variance-equivalence-and-global-rigidity",
-    "06-symmetric-stable-products-and-anisotropic-geometry",
-    "07-zero-set-row-condition-and-linear-equivalence",
-    "08-scope-of-the-finite-variance-hypotheses",
+    "02-rotational-fourier-defect-and-hellinger-coercivity",
+    "03-finite-variance-equivalence-and-global-rigidity",
+    "04-symmetric-stable-products-and-anisotropic-geometry",
+    "05-zero-set-row-condition-and-support-geometry",
 )
 
 RESULT_PREFIX = {
@@ -164,7 +162,7 @@ def main() -> int:
 
     if tuple(inputs) != EXPECTED_INPUTS:
         errors.append(
-            "Section inputs do not match the canonical eight-file sequence:\n  "
+            "Section inputs do not match the canonical five-file sequence:\n  "
             + "\n  ".join(EXPECTED_INPUTS)
         )
     if len(inputs) != len(set(inputs)):
@@ -174,17 +172,43 @@ def main() -> int:
         errors.append("Section filenames are not consecutively numbered in input order")
 
     paths = [SECTIONS / f"{name}.tex" for name in inputs]
-    expected_tex = {MAIN, *paths}
-    actual_tex = set(SECTIONS.glob("*.tex"))
-    if actual_tex != expected_tex:
-        missing = sorted(path.name for path in expected_tex - actual_tex)
-        extra = sorted(path.name for path in actual_tex - expected_tex)
+    expected_top_level = {MAIN, *paths}
+    actual_top_level = set(SECTIONS.glob("*.tex"))
+    if actual_top_level != expected_top_level:
+        missing = sorted(path.name for path in expected_top_level - actual_top_level)
+        extra = sorted(path.name for path in actual_top_level - expected_top_level)
         if missing:
             errors.append("Missing TeX source(s): " + ", ".join(missing))
         if extra:
             errors.append("Unincluded TeX source(s): " + ", ".join(extra))
 
     texts: list[tuple[Path, str]] = [(MAIN, entry)]
+    seen_sources = {MAIN, *paths}
+
+    def collect_nested_inputs(parent: Path, source: str) -> None:
+        for input_name in re.findall(r"\\input\{([^}]+)\}", source):
+            child = SECTIONS / (input_name if input_name.endswith(".tex") else f"{input_name}.tex")
+            try:
+                child.resolve().relative_to(SECTIONS.resolve())
+            except ValueError:
+                errors.append(f"{parent.name}: nested input escapes sections/: {input_name}")
+                continue
+            if child in seen_sources:
+                errors.append(f"Duplicate or cyclic nested input: {child.relative_to(SECTIONS)}")
+                continue
+            seen_sources.add(child)
+            if not child.exists():
+                errors.append(f"Missing nested TeX source: {child.relative_to(SECTIONS)}")
+                continue
+            child_source = uncomment(child.read_text())
+            if re.search(r"\\section\{", child_source):
+                errors.append(
+                    f"{child.relative_to(SECTIONS)}: nested fragments may not define a top-level section"
+                )
+            check_balancing(child, child_source, errors)
+            texts.append((child, child_source))
+            collect_nested_inputs(child, child_source)
+
     for path in paths:
         if not path.exists():
             continue
@@ -209,6 +233,16 @@ def main() -> int:
                 )
         check_balancing(path, source, errors)
         texts.append((path, source))
+        collect_nested_inputs(path, source)
+
+    actual_sources = set(SECTIONS.rglob("*.tex"))
+    if actual_sources != seen_sources:
+        missing = sorted(str(path.relative_to(SECTIONS)) for path in seen_sources - actual_sources)
+        extra = sorted(str(path.relative_to(SECTIONS)) for path in actual_sources - seen_sources)
+        if missing:
+            errors.append("Missing TeX source(s): " + ", ".join(missing))
+        if extra:
+            errors.append("Unincluded TeX source(s): " + ", ".join(extra))
 
     check_balancing(MAIN, entry, errors)
     combined = "\n".join(source for _, source in texts)

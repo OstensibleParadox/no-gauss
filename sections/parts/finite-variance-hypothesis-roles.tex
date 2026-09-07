@@ -1,0 +1,46 @@
+\subsection{What the Finite-Variance Hypotheses Control}
+\label{sec:finite-variance-hypothesis-roles}
+
+It remains to isolate the roles of the analytic hypotheses within the
+positive-density regime.
+
+The a.e.-positive-density theorem includes the centered, variance-one Laplace
+density despite its cusp, as well as the normalized density proportional to
+\(e^{-x^4}\); symmetry is never used.
+
+For examples allowing both asymmetry and heavy tails, take a density
+proportional to
+\begin{equation}
+ (1+y^2)^{-(\tau+1)/2}
+                           e^{\vartheta\arctan y},
+ \qquad \tau>2,\quad \vartheta\in\R,
+ \label{eq:asymmetric-heavy-tail-example}
+\end{equation}
+and center and rescale to variance one.
+Its location score before centering and rescaling is
+\[
+ \frac{(\tau+1)y-\vartheta}{1+y^2}.
+\]
+The score and its product with \(y\) are bounded, so centering and rescaling
+give an everywhere-positive example satisfying \eqref{eq:main-assumptions}.
+For \(2<\tau\le4\) its fourth moment is infinite, and for
+\(\vartheta\ne0\) its two tails have unequal leading constants.  Thus the
+theorem assumes neither evenness nor a fourth moment; \(\vartheta=0\) recovers
+a rescaled Student \(t\) family.
+
+The centered Gamma example has a half-line zero set: its rotational Fourier
+defect detects local rotations, while the support theorem leaves only
+coordinate permutations for homogeneous linear equivalence.
+\Cref{cor:affine-gamma-classification} treats the distinct affine problem, in
+which support-preserving scales can remain equivalent.
+
+Support controls null-set admissibility.  The second moment instead makes
+every \(\ell^2\) row a convergent random series, supplies uniform integrability
+of squared linear forms, and enables the Gaussian-summand extraction in
+\cref{lem:unit-row-rigidity}.  Hence the first-moment ODE result has strictly
+broader moment scope than \cref{thm:measure-equivalence}.
+
+Under \eqref{eq:main-assumptions}, the Hellinger paths give \(L^1\) likelihood
+convergence and uniform integrability.  The finite Fourier witnesses use only
+their dimension-free \(L^2(\mu_n)\) and generator bounds; tail symmetry avoids
+a separate mixed-law variance estimate.

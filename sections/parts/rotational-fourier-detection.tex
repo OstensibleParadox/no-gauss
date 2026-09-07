@@ -1,22 +1,3 @@
-\section{Rotational Fourier Defect and Gaussian Characterization}
-\label{sec:rotational-fourier-defect-and-gaussian-characterization}
-
-This section rules out the only way a non-Gaussian law could imitate the
-Gaussian rotation symmetry at first order.
-If every infinitesimal two-coordinate rotation had zero rotational Fourier
-defect, the coordinate law would have to be Gaussian.
-This is the identification input later used by the dimension-free
-coercivity argument.
-The product of centered complex exponentials defining this defect is bounded.
-Its definition uses no logarithm of the characteristic function and remains
-valid when the characteristic function has zeros.
-The conclusion belongs to the same broad lineage as the Kac--Bernstein
-theorem and the classical characterization theory of independent linear
-forms \cite{kac1939characterization,kagan1973characterization}.
-Its hypothesis is different.
-The rotational Fourier defect vanishes at every frequency pair.
-This leads directly to a global linear ODE.
-
 \subsection{A product of centered complex exponentials}
 \label{sec:product-of-centered-exponentials}
 
@@ -49,13 +30,9 @@ no tail assumption.
 \subsection{Gaussian characterization by a global linear ODE}
 \label{sec:fourier-ode}
 
-The following lemma is the point at which the rotational Fourier defect becomes a
-rigidity tool.
-Later arguments use its contrapositive: if the coordinate law is not
-Gaussian, then some rotational direction has a nonzero first-order response.
-The formulation stays at the level of characteristic functions, so it avoids
-choosing a branch of \(\log\phi\) and remains valid even when \(\phi\) has
-zeros.
+The next lemma makes the rotational Fourier defect a logarithm-free rigidity
+tool, valid even when \(\phi\) has zeros.  Contrapositively, every
+non-Gaussian law has a nonzero rotational response.
 
 \begin{lemma}[Gaussian characterization by the rotational Fourier defect]
 \label{lem:fourier-ode}
@@ -116,13 +93,11 @@ If $\sigma=0$, we get the point mass at zero.
 Substitution proves the converse.
 \end{proof}
 
-\subsection{The determinant representation and frequency integrals}
+\subsection{The determinant representation and finite detection}
 \label{sec:fourier-determinant}
 
-This reformulation is included because the finite-dimensional proof needs a
-finite set of test frequencies, not merely an abstract nonvanishing defect.
-The determinant viewpoint identifies the rank-two obstruction used to build
-the dual moments in \cref{sec:fourier-dual-moments}.
+The determinant form supplies the finite frequency pair used to construct the
+dual moments in \cref{sec:fourier-dual-moments}.
 
 Consider the curve
 \[
@@ -137,34 +112,13 @@ described as the weighted Fourier jet.  Its values satisfy
  =-R(\xi,\eta).
  \label{eq:fourier-wedge}
 \end{equation}
-Thus the rotational Fourier defect is the negative determinant of two values
-of this curve.
-In the Gaussian case \(\phi'(u)=-\sigma^2u\phi(u)\).
-So the curve lies in the fixed line spanned by \((1,-\sigma^2)\).
-Conversely, vanishing of every such determinant forces precisely the ODE
-used above.
 The weighting by \(u\) is essential: for a nondegenerate Gaussian law, the
 unweighted curve \(u\mapsto(\phi(u),\phi'(u))\) is not contained in a fixed
 line.
 
-For a non-Gaussian law, some two distinct frequencies have nonzero
-defect.
-By continuity, a compact neighborhood of this pair already detects the law.
-Thus a compact frequency set may be fixed after the coordinate law is chosen.
-This set is independent of the ambient dimension.
-The diagonal \(\xi=\eta\) always has zero defect and cannot serve this
-purpose.
-One may also integrate the squared defect over all frequencies:
-\begin{equation}
- \iint|R(\xi,\eta)|^2w(\xi,\eta)\,d\xi\,d\eta,
- \qquad
- w>0\ \text{a.e.},\quad
- \iint(1+\xi^2+\eta^2)w(\xi,\eta)\,d\xi\,d\eta<\infty.
- \label{eq:fourier-defect-energy}
-\end{equation}
-Indeed, \(|R(\xi,\eta)|\le\E|X|(|\xi|+|\eta|)\).
-Hence this integral is finite and is zero exactly for centered Gaussian laws.
-Integrability of $w$ alone need not make the integral finite.
+For a non-Gaussian law, continuity supplies distinct frequencies and a compact
+detecting neighborhood, independent of the ambient dimension; the diagonal
+\(\xi=\eta\) never detects the law.
 
 The same product of centered complex exponentials gives a local Hellinger
 lower bound for one rotation.
@@ -187,14 +141,9 @@ second-moment and Sobolev hypotheses.
 \subsection{Dimension-free variance and affine normalization}
 \label{sec:variance-and-affine-normalization}
 
-Equation \eqref{eq:centered-exponential-product-variance} is the variance
-estimate behind the finite real Fourier sums used below.
-Averaging \(N\) independent pairs gives standard error at most \(N^{-1/2}\)
-under the reference product.
-The rough bound \(16/N\) remains available under an arbitrary
-comparison distribution.
-In particular, the product of centered complex exponentials does not require
-a fourth moment, symmetry, or a density.
+The dimension-free variance bounds needed below are already contained in
+\eqref{eq:centered-exponential-product-variance}; we record only how \(R\)
+changes under affine normalization.
 
 \paragraph{Centering, scaling, and phase.}
 Let $Y$ have mean \(m\) and characteristic function \(\phi_Y\), and put
@@ -210,19 +159,11 @@ of $X$ satisfies
  \end{aligned}
  \label{eq:centering-phase}
 \end{equation}
-The expression in brackets is the derivative at zero of the expectation of
-the product of centered complex exponentials after rotating two independent
-copies of $Y$.
-Its last term comes from differentiating the marginal terms.
-Thus centering rotates this mean-corrected expression by
-\(-(m/\sigma)(\xi+\eta)\).
-Scaling also changes the frequencies.
-At fixed corresponding frequencies its modulus is unchanged.
-Omitting the marginal correction would invalidate this phase identity.
-For a centered symmetric law the defect is real.
-At a particular frequency pair, an asymmetric law can still have a real or
-zero defect.
-So the phase is not, by itself, a complete measure of skewness.
+The bracketed term is the mean-corrected rotational response for two copies of
+\(Y\).  Centering contributes the displayed phase, scaling changes the
+frequencies, and the modulus at corresponding frequencies is unchanged.  For
+a centered symmetric law the defect is real, but its phase at a single pair is
+not a complete measure of skewness.
 
 For the concrete comparison $Y\sim\operatorname{Gamma}(2,1)$,
 $m=2$, $\sigma=\sqrt2$, and $(\xi,\eta)=(1,2)$, the expression in brackets in
@@ -230,8 +171,5 @@ $m=2$, $\sigma=\sqrt2$, and $(\xi,\eta)=(1,2)$, the expression in brackets in
 \[
  R(1,2)=\frac4{27}e^{-3i\sqrt2}.
 \]
-At this particular pair, the entire phase of the rotational Fourier defect is
-therefore the centering phase, namely $-3\sqrt2$ modulo $2\pi$.
-The Laplace law centered with variance one has rotational Fourier defect $R(1,2)=-4/27$.
-Their moduli agree at these frequencies, while their principal phases
-are approximately $116.915^\circ$ and $180^\circ$, respectively.
+Thus the defect can remain explicit even for an asymmetric law with a support
+boundary.

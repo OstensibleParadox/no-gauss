@@ -6,7 +6,8 @@ PAPER_DIR := sections
 PDF := $(MAIN).pdf
 BUILD_DIR := $(CURDIR)/build
 
-SOURCES := $(wildcard $(PAPER_DIR)/*.tex) $(PAPER_DIR)/references.bib
+SOURCES := $(wildcard $(PAPER_DIR)/*.tex) \
+	$(wildcard $(PAPER_DIR)/parts/*.tex) $(PAPER_DIR)/references.bib
 
 LATEXMK ?= latexmk
 LATEXMK_FLAGS := -pdf -interaction=nonstopmode -halt-on-error \

@@ -1,24 +1,9 @@
-\section{Finite-Dimensional Hellinger Coercivity}
-\label{sec:finite-dimensional-hellinger-coercivity}
-
-We now convert the rotational Fourier defect into a matrix norm bound.
-The argument has two layers.
-The matrix Fisher operator identifies the infinitesimal geometry.
-Finite real Fourier sums provide coordinate functions whose dual moments
-give dimension-free bounds.
-The resulting local estimate is then globalized modulo the discrete
-stabilizer in
-\cref{thm:global-coercivity}.
-
 \subsection{The matrix Fisher operator}
 \label{sec:fisher-operator}
 
-The matrix Fisher operator supplies the infinitesimal metric that all later
-Hellinger bounds linearize around.
-Its eigenspaces separate diagonal scale directions, symmetric off-diagonal
-covariance directions, and skew-symmetric rotational directions.
-The rotational eigenvalue is \(J-1\), so Gaussianity is exactly the case in
-which rotations lose their local cost.
+The matrix Fisher operator separates diagonal scale, symmetric off-diagonal,
+and skew-symmetric rotational directions.  Its rotational eigenvalue is
+\(J-1\), which vanishes exactly in the Gaussian case.
 
 Let $f$ be a probability density and write $g=\sqrt f$.
 In this subsection we assume
@@ -216,20 +201,10 @@ $\|A_t^{-1}\|_{\mathrm{op}}\le(1-r)^{-1}$.
 \subsection{Finite real Fourier sums with dual moments}
 \label{sec:fourier-dual-moments}
 
-We now assume that $f$ is non-Gaussian in addition to
-\eqref{eq:fisher-regularity}.
-We use finite real Fourier sums.
-These are finite real linear combinations of $1$, $\cos(\xi x)$ and
-$\sin(\xi x)$ with real frequencies $\xi$.
-Their frequencies may depend on $f$.
-Once chosen, their finite set is independent of the matrix dimension.
-
-The matrix Fisher operator gives the correct quadratic form, but the lower bound
-must be witnessed by bounded coordinate functions whose variance does not
-grow with the dimension.
-The next lemma builds such witnesses from finitely many Fourier modes.
-The rotational Fourier defect from \cref{lem:fourier-ode} is used exactly
-to make the off-diagonal moment map rank two.
+Assume in addition that \(f\) is non-Gaussian.  The next lemma turns the
+rank-two obstruction from \cref{lem:fourier-ode} into bounded dual witnesses:
+finite real combinations of \(1,\cos(\xi x),\sin(\xi x)\), at frequencies
+depending on \(f\) but not on the matrix dimension.
 
 \begin{lemma}[Finite real Fourier sums with dual moments]
 \label{lem:fourier-dual-moments}
@@ -575,24 +550,16 @@ the upper bound follows from
 \cref{lem:finite-hellinger-upper}.
 \end{proof}
 
-The preceding pairing is a half-density pairing:
-$\int H_A\sqrt{d\mu_n\,d((\exp A)_\#\mu_n)}-
-\int H_A\,d\mu_n$.
-It provides the uniform local certificate used below.
-The tail-symmetry argument in \cref{sec:necessity} is what lets this local
-certificate be applied to arbitrary output marginals without requiring a
-separate variance bound for \(H_A\) under every mixed output law.
+The half-density pairing supplies the uniform local certificate; tail symmetry
+in \cref{sec:necessity} applies it to arbitrary output marginals without a
+separate mixed-law variance bound for \(H_A\).
 
 \subsection{Uniform coercivity modulo the exact linear stabilizer}
 \label{sec:global-coercivity}
 
-The local estimate is the only part of this section needed for the
-infinite-dimensional classification.
-We state the global finite-dimensional form here because it is the natural
-finite-dimensional conclusion, but its proof is postponed until after the
-main theorem.
-The reason is that the global separation argument uses the
-infinite-dimensional classification as a compactness principle.
+The following global form is proved in \cref{sec:globalization-proof}, after
+the infinite-dimensional classification supplies the compactness input; it is
+not used in that classification.
 
 \begin{theorem}[Dimension-free global Hellinger coercivity]
 \label{thm:global-coercivity}
@@ -613,13 +580,3 @@ values lie in \([a,b]\),
  \label{eq:global-coercivity}
 \end{equation}
 \end{theorem}
-
-The local regime of \eqref{eq:global-coercivity} is exactly
-\cref{prop:local-fisher-hellinger}, after right multiplication by a member of
-\(\mathcal P_n\).  The uniform separation away from that local chart is a
-global statement.  Its proof, given in
-\cref{sec:globalization-proof}, uses the infinite-dimensional equivalence
-theorem as a compactness device: a hypothetical sequence of distant
-near-invariances is assembled into one block-diagonal equivalence, which the
-Hilbert--Schmidt classification rules out.  The global estimate is therefore
-a consequence of the main theorem and is not used in its proof.

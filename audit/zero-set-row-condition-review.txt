@@ -1,7 +1,7 @@
-ZERO-SET ROW CONDITION AND LINEAR EQUIVALENCE: CONSISTENCY REVIEW
+ZERO-SET ROW CONDITION AND SUPPORT GEOMETRY: CONSISTENCY REVIEW
 
 Reviewed source
-sections/07-zero-set-row-condition-and-linear-equivalence.tex
+sections/parts/zero-set-and-support-classification.tex
 
 Scope
 The coordinate law is centered with variance one.  The density-zero
@@ -22,7 +22,7 @@ Canonical definitions and macro-expansion checks
   coordinate permutations with precisely those signs that preserve rho.
   It is distinct from P^{+/-}, the full signed-permutation group used for
   symmetric stable coordinates.
-- Phi_T is the measurable row-series realization constructed in Section 4,
+- Phi_T is the measurable row-series realization constructed in Section 3,
   and nu_T=(Phi_T)_#mu throughout.
 - G_rho={T in GL(H):nu_T is equivalent to mu}.  Gamma is reserved for a
   countable operator group in the measurable-realization argument.

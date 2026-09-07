@@ -26,13 +26,10 @@ SECTIONS = ROOT / "sections"
 MAIN = SECTIONS / "main.tex"
 EXPECTED_INPUTS = (
     "01-introduction-and-main-results",
-    "02-rotational-fourier-defect-and-gaussian-characterization",
-    "03-finite-dimensional-hellinger-coercivity",
-    "04-measurable-realization-and-dichotomy",
-    "05-finite-variance-equivalence-and-global-rigidity",
-    "06-symmetric-stable-products-and-anisotropic-geometry",
-    "07-zero-set-row-condition-and-linear-equivalence",
-    "08-scope-of-the-finite-variance-hypotheses",
+    "02-rotational-fourier-defect-and-hellinger-coercivity",
+    "03-finite-variance-equivalence-and-global-rigidity",
+    "04-symmetric-stable-products-and-anisotropic-geometry",
+    "05-zero-set-row-condition-and-support-geometry",
 )
 
 RESULT_RE = re.compile(
@@ -187,8 +184,8 @@ EXPORTED: tuple[InventoryItem, ...] = (
     exported("U_A", r"U_(?:[AB]|\{(?:[AB]|\\exp))", "unitary half-density action induced by A"),
     exported(r"\Omega_n", r"\\Omega_[nmN](?![A-Za-z])", "product square-root density"),
     exported("G_A", r"G_[AB](?![A-Za-z])", "generator of the half-density action"),
-    exported("finite Fourier functions", r"(?<![A-Za-z\\])[pqr](?![A-Za-z_])", "the three finite real Fourier sums with displayed dual moments", sections={3}),
-    exported("H_A", r"H_[AB](?![A-Za-z])", "quadratic function built from the three finite Fourier sums", sections={3}),
+    exported("finite Fourier functions", r"(?<![A-Za-z\\])[pqr](?![A-Za-z_])", "the three finite real Fourier sums with displayed dual moments", sections={2}),
+    exported("H_A", r"H_[AB](?![A-Za-z])", "quadratic function built from the three finite Fourier sums", sections={2}),
     exported(r"\mathcal P_n", r"\\mathcal P_[nmN](?![A-Za-z^])", "finite-dimensional rho-admissible signed-permutation group"),
     exported("d_n", r"(?<![A-Za-z\\])d_[nmN](?![A-Za-z])", "Frobenius distance to the finite rho-admissible group"),
     exported(r"\ell_{T,n}", r"\\ell_\{T,[nmN]\}|\\ell_\{T_[nmN]\}", "finite-marginal likelihood ratio on the common product space"),
@@ -204,12 +201,12 @@ EXPORTED: tuple[InventoryItem, ...] = (
     exported(r"\mathcal P^{\pm}", r"\\mathcal P\^\{\\pm\}", "full signed-permutation group"),
     exported(r"\mathcal P_n^{\pm}", r"\\mathcal P_[nmN]\^\{\\pm\}", "finite-dimensional full signed-permutation group", carriers=(r"\\mathfrak e_\{\\alpha,[nmN]\}",)),
     exported(r"\mathfrak e_{\alpha,n}", r"\\mathfrak e_\{\\alpha,[nmN]\}", "finite-dimensional stable mixing cost minimized over signed permutations"),
-    exported(r"\mathcal G_\rho", r"\\mathcal G_\\rho", "linear equivalence group {T:nu_T is equivalent to mu}", sections={7}),
-    exported(r"\mathcal U", r"\\mathcal U(?![A-Za-z])", "positivity set {x:f(x)>0}", sections={7}),
-    exported(r"\rho^-", r"\\rho\^-", "law of -X", sections={7}),
-    exported(r"\Tail_n", r"\\Tail_[nmN](?![A-Za-z])", "sum of forward and reverse finite-marginal ratio tails", sections={7}),
-    exported("r_k", r"(?<![A-Za-z\\])r_k(?![A-Za-z])", "block affinity Aff(lambda_k,eta_k)", sections={7}),
-    exported("a_k,b_k", r"(?<![A-Za-z\\])[ab]_k", "the two common-support masses in the block criterion", sections={7}, notes="The scoped pattern recognizes compact TeX products such as \\prod_ka_k and a_kb_k while excluding suffixes of longer names."),
+    exported(r"\mathcal G_\rho", r"\\mathcal G_\\rho", "linear equivalence group {T:nu_T is equivalent to mu}", sections={5}),
+    exported(r"\mathcal U", r"\\mathcal U(?![A-Za-z])", "positivity set {x:f(x)>0}", sections={5}),
+    exported(r"\rho^-", r"\\rho\^-", "law of -X", sections={5}),
+    exported(r"\Tail_n", r"\\Tail_[nmN](?![A-Za-z])", "sum of forward and reverse finite-marginal ratio tails", sections={5}),
+    exported("r_k", r"(?<![A-Za-z\\])r_k(?![A-Za-z])", "block affinity Aff(lambda_k,eta_k)", sections={5}),
+    exported("a_k,b_k", r"(?<![A-Za-z\\])[ab]_k", "the two common-support masses in the block criterion", sections={5}, notes="The scoped pattern recognizes compact TeX products such as \\prod_ka_k and a_kb_k while excluding suffixes of longer names."),
 )
 
 TERMINOLOGY: tuple[InventoryItem, ...] = (
@@ -235,9 +232,9 @@ TERMINOLOGY: tuple[InventoryItem, ...] = (
 
 PROOF_LOCAL: tuple[InventoryItem, ...] = (
     local("C_0,C_1", r"C_[01](?![A-Za-z])", "constants local to the displayed estimate"),
-    local(r"C_\lambda", r"C_\\lambda", "second-moment domination constant for a locally fixed law", sections={4}),
-    local(r"\Gamma", r"\\Gamma(?![A-Za-z_])", "countable operator group in the realization proof", sections={4}),
-    local("L_a and its Borel representative", r"(?:\\widehat )?L_a", "row sum and selected Borel version", sections={4}),
+    local(r"C_\lambda", r"C_\\lambda", "second-moment domination constant for a locally fixed law", sections={3}),
+    local(r"\Gamma", r"\\Gamma(?![A-Za-z_])", "countable operator group in the realization proof", sections={3}),
+    local("L_a and its Borel representative", r"(?:\\widehat )?L_a", "row sum and selected Borel version", sections={3}),
     local("local cutoff/perturbation symbols", r"(?:r_0|\\Theta_u|\\mathcal M_u|N_\{\\mathrm\{open\}\})", "binders confined to their construction"),
 )
 
@@ -376,31 +373,92 @@ def contained(start: int, end: int, spans: list[tuple[int, int]]) -> bool:
 
 
 def load_sources() -> tuple[list[dict], list[str]]:
+    """Load the five public sections and every recursively included fragment.
+
+    A fragment inherits its owning top-level section number.  This preserves
+    the meaning of section-scoped inventory rules after related material is
+    grouped behind a wrapper file.
+    """
     errors: list[str] = []
     entry = strip_comments(MAIN.read_text())
     inputs = re.findall(r"\\input\{([^}]+)\}", entry)
     if tuple(inputs) != EXPECTED_INPUTS:
-        errors.append("main.tex does not contain the canonical eight-section input sequence")
+        errors.append("main.tex does not contain the canonical five-section input sequence")
     section_files = [SECTIONS / f"{name}.tex" for name in inputs]
-    if len(section_files) != 8 or any(not path.exists() for path in section_files):
-        errors.append("notation audit requires all eight included section files")
+    if len(section_files) != len(EXPECTED_INPUTS) or any(
+        not path.exists() for path in section_files
+    ):
+        errors.append("notation audit requires all five included section files")
 
     data: list[dict] = []
-    for index, path in enumerate([MAIN, *section_files]):
-        if not path.exists():
-            continue
-        raw = path.read_bytes()
+    seen: set[Path] = set()
+
+    def append_source(path: Path, index: int, *, role: str, depth: int) -> None:
+        resolved = path.resolve()
+        try:
+            resolved.relative_to(SECTIONS.resolve())
+        except ValueError:
+            errors.append(f"included source escapes sections/: {path}")
+            return
+        if resolved in seen:
+            errors.append(
+                f"duplicate or cyclic included source: {resolved.relative_to(SECTIONS.resolve())}"
+            )
+            return
+        seen.add(resolved)
+        if not resolved.exists():
+            errors.append(
+                f"missing included source: {resolved.relative_to(SECTIONS.resolve())}"
+            )
+            return
+
+        raw = resolved.read_bytes()
         source = strip_comments(raw.decode())
         data.append(
             {
                 "index": index,
-                "path": path,
+                "path": resolved,
                 "source": source,
                 "math": math_mask(source),
-                "results": [(match.start(), match.end()) for match in RESULT_RE.finditer(source)],
+                "results": [
+                    (match.start(), match.end()) for match in RESULT_RE.finditer(source)
+                ],
                 "sha256": hashlib.sha256(raw).hexdigest(),
+                "role": role,
+                "depth": depth,
             }
         )
+        for input_name in re.findall(r"\\input\{([^}]+)\}", source):
+            child = SECTIONS / (
+                input_name if input_name.endswith(".tex") else f"{input_name}.tex"
+            )
+            append_source(child, index, role="fragment", depth=depth + 1)
+
+    raw = MAIN.read_bytes()
+    data.append(
+        {
+            "index": 0,
+            "path": MAIN.resolve(),
+            "source": entry,
+            "math": math_mask(entry),
+            "results": [(match.start(), match.end()) for match in RESULT_RE.finditer(entry)],
+            "sha256": hashlib.sha256(raw).hexdigest(),
+            "role": "entry",
+            "depth": 0,
+        }
+    )
+    seen.add(MAIN.resolve())
+    for index, path in enumerate(section_files, 1):
+        append_source(path, index, role="section", depth=0)
+
+    actual = {path.resolve() for path in SECTIONS.rglob("*.tex")}
+    if actual != seen:
+        missing = sorted(str(path.relative_to(SECTIONS.resolve())) for path in seen - actual)
+        extra = sorted(str(path.relative_to(SECTIONS.resolve())) for path in actual - seen)
+        if missing:
+            errors.append("missing TeX source(s): " + ", ".join(missing))
+        if extra:
+            errors.append("unincluded TeX source(s): " + ", ".join(extra))
     return data, errors
 
 
@@ -583,21 +641,30 @@ def render_review(data: list[dict], rows: list[list[object]], failures: list[str
     hashes = "\n".join(
         f"{datum['path'].relative_to(ROOT)}  {datum['sha256']}" for datum in data
     )
-    sections = "\n".join(
-        "entry. main.tex (title, abstract, and document setup)"
-        if datum["index"] == 0
-        else f"{datum['index']:02}. {datum['path'].stem[3:]}"
-        for datum in data
-    )
+    source_graph: list[str] = []
+    for datum in data:
+        if datum["role"] == "entry":
+            source_graph.append("entry. main.tex (title, abstract, and document setup)")
+        elif datum["role"] == "section":
+            source_graph.append(
+                f"{datum['index']:02}. {datum['path'].relative_to(SECTIONS)}"
+            )
+        else:
+            indent = "    " * datum["depth"]
+            source_graph.append(
+                f"{indent}-> {datum['path'].relative_to(SECTIONS)} "
+                f"(owned by Section {datum['index']})"
+            )
+    sections = "\n".join(source_graph)
     failure_text = "\n".join(f"- {failure}" for failure in failures) or "- None."
     exported_count = sum(1 for row in rows if row[2] == "exported")
     local_count = sum(1 for row in rows if row[2] == "proof-local")
     forbidden_count = sum(1 for row in rows if row[2] == "forbidden")
-    return f"""SOURCE AND NOTATION REVIEW: ENTRY POINT AND EIGHT-SECTION MANUSCRIPT
+    return f"""SOURCE AND NOTATION REVIEW: ENTRY POINT AND FIVE-SECTION MANUSCRIPT
 
 Scope
-This deterministic snapshot covers sections/main.tex followed by the eight
-section files that it includes, in this order:
+This deterministic snapshot covers sections/main.tex, the five top-level
+section files that it includes, and their recursively included fragments:
 {sections}
 
 Method
@@ -695,12 +762,12 @@ def main() -> int:
         write_outputs(rows, review)
         print(
             f"Wrote {len(rows)} inventory rows for the entry point and "
-            f"{len(data) - 1} sections."
+            f"{len(EXPECTED_INPUTS)} sections."
         )
     else:
         print(
             f"Checked {len(rows)} inventory rows for the entry point and "
-            f"{len(data) - 1} sections without writing files."
+            f"{len(EXPECTED_INPUTS)} sections without writing files."
         )
 
     if failures:

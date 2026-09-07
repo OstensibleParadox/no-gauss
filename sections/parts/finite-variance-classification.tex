@@ -1,21 +1,8 @@
-\section{Finite-Variance Equivalence and Global Rigidity}
-\label{sec:finite-variance-equivalence-and-global-rigidity}
-
-We now prove the measure-class classification.
-Sufficiency constructs a convergent infinite-dimensional likelihood ratio from
-finite-coordinate Hilbert--Schmidt approximants.
-Necessity proves that any non-Hilbert--Schmidt tail deviation leaves a
-Hellinger trace that cannot be hidden by bounded invertible linear mixing.
-The global finite-dimensional coercivity theorem is proved at the end,
-after the classification supplies the required compactness principle.
-
 \subsection{Sufficiency of Hilbert--Schmidt perturbations}
 \label{sec:sufficiency}
 
-We first prove the constructive direction of the classification.
-A Hilbert--Schmidt perturbation can be approximated by finite-coordinate
-changes whose Hellinger increments are summable.
-The proposition turns this finite-dimensional Cauchy property into an actual
+Finite-coordinate Hilbert--Schmidt approximants are Cauchy in Hellinger
+distance, and the proposition identifies their limit as an
 infinite-dimensional likelihood ratio.
 
 \begin{proposition}[Hilbert--Schmidt sufficiency and likelihood-ratio convergence]
@@ -207,12 +194,9 @@ proves equivalence and the asserted convergence.
 \subsection{Necessity of Hilbert--Schmidt perturbations}
 \label{sec:necessity}
 
-The finite-dimensional lower bound must also apply to perturbations whose
-rows are not finitely supported.
-The next lemma transfers local coercivity from coordinate blocks to genuine
-Hilbert--Schmidt operators by approximation and likelihood-ratio convergence.
-It is the quantitative tool used later to turn many small tail mismatches
-into a contradiction.
+Approximation and likelihood-ratio convergence transfer local coercivity from
+coordinate blocks to Hilbert--Schmidt operators, allowing many small tail
+mismatches to be combined into a contradiction.
 
 \begin{lemma}[The local bound for Hilbert--Schmidt operators]
 \label{lem:local-hs-coercivity}
@@ -768,18 +752,10 @@ omitted in this case.
 \subsection{Exact identification of the linear stabilizer}
 \label{sec:exact-stabilizer}
 
-The equivalence theorem needs the Sobolev assumptions.
-It constructs and controls likelihood ratios.
-Exact invariance is more rigid.
-It requires only the second moment.
+Unlike measure-class equivalence, exact invariance requires only the second
+moment.
 
-\begin{proposition}[Exact linear stabilizer under a second-moment hypothesis]
-\label{prop:exact-linear-stabilizer}
-For an i.i.d. product whose non-Gaussian coordinate law is centered with
-variance one, the exact linear stabilizer is $\mathcal P$.
-This assertion requires neither a density nor Fisher information.
-\end{proposition}
-\begin{proof}
+\begin{proof}[Proof of \cref{cor:moment-only-stabilizer}]
 Every member of $\mathcal P$ preserves the product law.
 Conversely, if $\nu_T=\mu$, covariance gives $TT^*=I$.
 Since $T$ is boundedly invertible, it is orthogonal.  Each of its unit
@@ -792,15 +768,8 @@ Thus $T\in\mathcal P$.
 \subsection{Two-sided uniform integrability and completion of the proof}
 \label{sec:likelihood-convergence}
 
-There are two likelihood-ratio limits in the argument.
-The finite-coordinate approximants in \cref{prop:hilbert-schmidt-sufficiency} converge in
-\(L^1(\mu)\).
-Their square roots converge in \(L^2(\mu)\).
-Independently, once equivalence is known, the finite-marginal likelihood ratios and
-their reciprocals are the two conditional-expectation martingales in
-\eqref{eq:forward-likelihood-ui}--\eqref{eq:reverse-likelihood-ui}.
-This gives uniform integrability in both directions.
-It also rules out loss of mass at the projective limit.
+The finite-coordinate limits and the two finite-marginal
+conditional-expectation martingales now combine to complete the proof.
 
 \begin{proof}[Proof of \cref{thm:measure-equivalence} and \cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}]
 Necessity follows from \cref{lem:hilbert-schmidt-necessity}.  If
@@ -811,27 +780,15 @@ $\nu_{TQ^{-1}}\sim\mu$.  Since $Q_\#\mu=\mu$, this is
 $\nu_T\sim\mu$.  The same proposition gives the finite-coordinate
 likelihood-ratio and square-root limits stated in
 \cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}.
-The exact linear stabilizer is identified in \cref{prop:exact-linear-stabilizer}.
+The exact linear stabilizer is identified in
+\cref{cor:moment-only-stabilizer}.
 Finally, \cref{lem:orbit-dichotomy,lem:finite-marginal-likelihood-ratios}
 give the finite-marginal affinity characterization and the singular
 alternative in \cref{thm:measure-equivalence}, and both
 uniform-integrability statements in
 \cref{prop:finite-coordinate-approximants-recover-likelihood-ratio}.
 \end{proof}
-\begin{theorem}[Complete orthogonal criterion with only location Fisher information]
-\label{thm:orthogonal-equivalence}
-Let $f>0$ almost everywhere be a non-Gaussian density centered with
-variance one, and assume only $\sqrt f\in W^{1,2}(\R)$ in addition
-to its second moment.  For every orthogonal $U$ on $\ell^2$,
-\[
- \nu_U\sim\mu
- \quad\Longleftrightarrow\quad
- U-Q\in\mathcal S_2
- \quad\text{for some }Q\in\mathcal P.
-\]
-If this condition fails, $\nu_U\perp\mu$.
-\end{theorem}
-\begin{proof}
+\begin{proof}[Proof of \cref{cor:orthogonal-equivalence}]
 Necessity is \cref{lem:hilbert-schmidt-necessity}.  For sufficiency, write
 $UQ^{-1}=I+(U-Q)Q^{-1}$.  This is orthogonal and differs from the
 identity by a Hilbert--Schmidt operator.  Apply
@@ -843,14 +800,9 @@ $Q_\#\mu=\mu$.  The alternative follows from
 \subsection{Globalization of finite-dimensional coercivity}
 \label{sec:globalization-proof}
 
-We now prove the global finite-dimensional statement announced in
-\cref{sec:global-coercivity}.
-This final argument is deliberately placed after the main theorem.
-It uses the infinite-dimensional classification to rule out a sequence of
-finite-dimensional almost-symmetries that stay a fixed distance from the
-finite-dimensional exact linear stabilizer.
-In this way the Hilbert--Schmidt theorem supplies the compactness missing
-from a purely finite-dimensional proof.
+The infinite-dimensional classification supplies the compactness needed to
+rule out finite-dimensional almost-symmetries that stay a fixed distance from
+the exact linear stabilizer.
 
 \begin{proof}[Proof of \cref{thm:global-coercivity}]
 Fix \(0<a\le b<\infty\).  We first prove uniform separation away from

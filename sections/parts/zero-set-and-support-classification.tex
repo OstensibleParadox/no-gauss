@@ -1,34 +1,8 @@
-\section{Zero-Set Row Condition and Linear Equivalence}
-\label{sec:zero-set-row-condition-and-linear-equivalence}
-
-The positivity assumption in the main theorem has one precise job: it
-removes a separate zero-set obstruction from the finite-marginal likelihood
-ratios.
-Once the density has zeros, the Hilbert--Schmidt condition remains the right
-metric accumulation condition, but it is no longer the whole story.
-The missing datum is the zero-set row condition.
-Each row of the operator, and for equivalence each row of the inverse, must
-land in the set where the one-dimensional density is positive almost surely.
-
-This section gives the zero-set row-condition replacement first.
-Arbitrary zero sets lead to an exact zero-set row condition; bounded
-coordinate laws force signed permutations with only the scalar reflection
-freedom allowed by the one-dimensional measure class; centered half-line laws
-force ordinary permutations.
-We then give examples showing why the a.e.-positive-density classification
-does not extend unchanged and how boundary behavior changes the summability
-threshold.
-The hypotheses are stated separately for each result;
-\eqref{eq:main-assumptions} is not a standing assumption.
-
 \subsection{The metric input when the density has zeros}
 \label{sec:metric-input-with-density-zeros}
 
-The zero-set row-condition theorem still uses the same Fourier/Fisher mechanism for
-the metric part of the classification.
-The logarithm-free Fourier characterization in \cref{lem:fourier-ode}, and
-its one-rotation Hellinger lower bound, already require no density.
-For the stronger matrix estimates, the appropriate regularity condition is
+The Fourier/Fisher mechanism still supplies the metric part of the
+classification; for its matrix estimates the appropriate regularity is
 \begin{equation}
  \begin{gathered}
  f\geq0,\quad \int f=1,\quad
@@ -47,7 +21,8 @@ square root has jumps at the boundary.
 \label{prop:local-coercivity-with-density-zeros}
 Under \eqref{eq:zero-set-row-assumptions}, the matrix Fisher operator decomposition,
 finite-dimensional Hellinger path bound, and dimension-free local
-Frobenius coercivity in \cref{sec:finite-dimensional-hellinger-coercivity} remain valid.
+Frobenius coercivity in
+\cref{sec:rotational-fourier-defect-and-hellinger-coercivity} remain valid.
 Write \(\mu=\rho^{\otimes\N},\quad\rho(dx)=f(x)\,dx\).
 There are constants \(c,C,\delta>0\), with \(\delta<1\), such that
 \begin{equation}
@@ -137,14 +112,9 @@ and include every positive Gamma or Beta shape.
 \subsection{The linear equivalence group for arbitrary zero sets of the density}
 \label{sec:linear-equivalence-group}
 
-The first replacement theorem is the main zero-set row-condition form of the
-classification.
-The Hilbert--Schmidt alternative remains the metric part of the answer.
-The additional zero-set row condition is purely about null sets: no output coordinate may place
-positive probability in the zero set of the original density, and mutual
-equivalence requires the same condition after applying the inverse operator.
-The condition concerns the actual zero set of the density, rather than its
-closed support.
+Hilbert--Schmidt proximity remains the metric condition.  The zero-set row
+condition adds the exact null-set requirement for \(T\) and \(T^{-1}\), using
+the positivity set of the density rather than its closed support.
 
 \begin{theorem}[The linear equivalence group with density zeros]
 \label{thm:linear-equivalence-group}
@@ -249,44 +219,19 @@ the finite-coordinate orthogonal approximants from
 only location Fisher information.
 \end{proof}
 
-Thus density zeros do not introduce an additional global likelihood-ratio
-limit beyond the operator criterion.
-They introduce the zero-set row condition.
-Every nonzero row sum has an absolutely continuous scalar law: condition
-on all but one input with a nonzero coefficient.  Thus the zero-set row conditions
-are unchanged if $f$ is modified on a Lebesgue-null set.
-If $f>0$ almost everywhere, all these conditions are automatic and
-\eqref{eq:linear-equivalence-group} reduces to
-\cref{thm:measure-equivalence}.
-For a density with gaps, the rows of $T$ and $T^{-1}$ must avoid those
-gaps almost surely.  The contraction in
-\cref{sec:zero-set-row-condition-counterexample} below satisfies the forward
-zero-set row condition but fails the inverse one, which is exactly why it gives
-strict absolute continuity rather than equivalence.
+Every nonzero row sum has an absolutely continuous scalar law, so the
+condition is unchanged by modifying \(f\) on a null set.  It is automatic when
+\(f>0\) almost everywhere, while the contraction in
+\cref{sec:zero-set-row-condition-counterexample} satisfies only the forward
+condition and therefore gives strict absolute continuity rather than
+equivalence.
 
 \subsection{Boundary behavior of the density and summability criteria}
 \label{sec:boundary-behavior-and-summability}
 
-The zero-set row condition and the projected Hellinger energy measure different
-phenomena.  The former decides whether the image law is absolutely
-continuous in either direction; Hellinger loss decides whether overlap
-accumulates to zero.
-The two block-rotation examples below separate these effects.
-
-\begin{center}
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{p{0.28\textwidth} p{0.27\textwidth} p{0.32\textwidth}}
-\toprule
-\textbf{Boundary type} & \textbf{One-block loss} & \textbf{What it controls}\\
-\midrule
-Hard boundary, uniform square & linear in \(|\theta|\) & accumulated
-Hellinger loss; absolute continuity still fails for every nonzero
-boundary-crossing block\\
-Smooth vanishing boundary & quadratic in \(\theta\) & the Fourier/Fisher
-metric threshold; the zero-set row condition remains separate\\
-\bottomrule
-\end{tabular}
-\end{center}
+The zero-set row condition governs absolute continuity, whereas projected
+Hellinger energy governs accumulated overlap.  Hard and smoothly vanishing
+boundaries separate these effects.
 
 Let \(\rho\) be uniform on \([-\sqrt3,\sqrt3]\), let
 \(\mu_2=\rho^{\otimes2}\), and consider \(T=\bigoplus_kO_{\theta_k}\).
@@ -358,13 +303,9 @@ Throughout this subsection \(X\) is centered with variance one.
 The operator action is the measurable row-series realization of
 \cref{lem:measurable-row-series-realization}.
 
-For bounded and one-sided supports, the zero-set row condition has much stronger
-consequences than it first suggests.
-Conditional expectations of finite row sums see the boundary of the support.
-This turns the boundary restriction into an \(\ell^1\)-type row constraint, and
-the inverse relations then force the operator to be monomial.
-The classification below therefore needs no density and no Fisher
-information.
+For bounded and one-sided supports, conditional expectations turn the support
+boundary into an \(\ell^1\)-type row constraint, and the inverse relations
+force a monomial operator.  No density or Fisher information is needed.
 
 \begin{theorem}[Linear equivalence for bounded and half-line coordinate laws]
 \label{thm:bounded-and-half-line-classification}
@@ -481,7 +422,6 @@ converse.
 Reflection proves the upper-bounded case.
 \end{proof}
 
-This is the main bounded-support and half-line payoff.
 For \(Y\sim\operatorname{Gamma}(r_\Gamma,\theta_\Gamma)\), where
 \(r_\Gamma>0\) is the shape and \(\theta_\Gamma>0\) is the scale, put
 \[
@@ -509,10 +449,8 @@ Fourier/Fisher estimates.
 \subsection{Why the zero-set row condition is indispensable}
 \label{sec:zero-set-row-condition-counterexample}
 
-The zero-set row condition is not a cosmetic addition to the
-Hilbert--Schmidt criterion.
-It separates positive Hellinger overlap from genuine two-sided absolute
-continuity even for a rank-one perturbation.
+Even a rank-one perturbation separates positive Hellinger overlap from
+two-sided absolute continuity.
 
 Let \(f\) be the rescaling to variance one of
 \(C(1-x^2)^2\mathbf 1_{\{|x|<1\}}\), and write its support as
@@ -544,11 +482,8 @@ The failure occurs with finite location and scale Fisher information.
 \subsection{Exact block criteria without equivalence of the factors}
 \label{sec:block-products-without-factor-equivalence}
 
-For reference, the boundary examples above use the following product
-criterion.
-It separates absolute continuity within each pair of factors from
-accumulation of Hellinger loss, and is not part of the linear i.i.d.
-classification itself.
+The boundary examples use a block-product criterion that separates local
+absolute continuity from accumulated Hellinger loss.
 
 \begin{theorem}[Block products without equivalence of the factors]
 \label{thm:block-kakutani}
@@ -710,12 +645,10 @@ then proves necessity and sufficiency.
 \subsection{An exact finite-marginal equivalence criterion}
 \label{sec:finite-marginal-equivalence-criterion}
 
-For reference, there is also a purely measure-theoretic fallback when one
-does not want to use the operator classification.
-For densities satisfying \eqref{eq:zero-set-row-assumptions},
-\cref{thm:linear-equivalence-group} gives the sharper linear answer.
-The following finite-marginal criterion applies without Sobolev assumptions
-and without any dichotomy.
+The following finite-marginal criterion isolates the measure-theoretic content
+without Sobolev assumptions or a dichotomy; under
+\eqref{eq:zero-set-row-assumptions}, \cref{thm:linear-equivalence-group}
+specializes it to bounded invertible linear mixing.
 
 \begin{proposition}[Finite-marginal tails characterize equivalence]
 \label{prop:two-sided-finite-marginal-ratio-tails}
@@ -786,18 +719,9 @@ Global affinity is zero exactly for mutually singular measures,
 which proves \eqref{eq:finite-marginal-energy-overlap}.
 \end{proof}
 
-For a density \(f\) and \(T\in\GL(H)\), each finite output
-marginal still has a Lebesgue density: condition on the complement
-of an invertible input minor as in
-\cref{lem:finite-marginal-likelihood-ratios}.
-That density may now vanish on a different set from
-\(\prod_{i\leq n}f(x_i)\).
-Thus \eqref{eq:two-sided-finite-marginal-ui} is an exact criterion for
-bounded invertible linear mixing even in this case.
-Under \eqref{eq:zero-set-row-assumptions},
-\cref{thm:linear-equivalence-group} identifies the linear equivalence
-group by a Hilbert--Schmidt condition and forward and inverse zero-set row conditions for the
-operator and its inverse.  This includes unbounded densities with gaps.
-For bounded and one-sided laws,
-\cref{thm:bounded-and-half-line-classification} further reduces the group to
-explicit classes of coordinate permutations, without Sobolev assumptions.
+For bounded invertible linear mixing, finite output marginals still have
+Lebesgue densities, though their zero sets may differ from those of the product
+density.  Thus \eqref{eq:two-sided-finite-marginal-ui} remains exact;
+\cref{thm:linear-equivalence-group,thm:bounded-and-half-line-classification}
+turn it into explicit operator classifications in the regular zero-set and
+support-boundary regimes.
