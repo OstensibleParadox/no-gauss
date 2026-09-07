@@ -1,122 +1,35 @@
-\section{Introduction and Main Results}
+\section{Introduction}
 \label{sec:introduction-and-main-results}
 
-\subsection{The question and answer}
-\label{sec:question-answer}
+Let \(\rho\) be a non-Gaussian probability law and
+\(\mu=\rho^{\otimes\N}\).  We ask which bounded invertible operators on
+\(\ell^2\) preserve the measure class of \(\mu\) when their rows act on the
+coordinate sequence.  Kakutani's theorem answers the corresponding question
+for coordinatewise transformations, but general linear mixing destroys the
+independence on which its product criterion relies.  Fixed finite output
+marginals do not resolve the problem: they may all have positive densities
+even when the full image law is singular.
 
-Fix one non-Gaussian coordinate law \(\rho\) and the i.i.d. product
-\(\mu=\rho^{\otimes\N}\).
-For which bounded invertible linear maps \(T\) on \(\ell^2\) is the
-induced image law equivalent to \(\mu\)?
-Kakutani's product criterion answers coordinatewise perturbations, but it
-does not survive bounded invertible linear mixing: the transformed coordinates cease to be
-independent and the Hellinger affinity no longer tensorizes.
-The obstruction is not visible from any fixed finite window, since every
-fixed finite output marginal can have an a.e.-positive density even when
-the full image law is singular.
-Under the finite-variance and Fisher hypotheses of the main theorem, the
-continuous Gaussian symmetry collapses to the allowed signed coordinate
-permutations, and the surviving continuous thickness is exactly
-Hilbert--Schmidt.
-Equivalently, the projected Hellinger energies of the finite output
-marginals are bounded exactly on that equivalence branch.
-This conclusion is not a consequence of the a.e.-positive-density assumption alone.
-For standard symmetric \(\alpha\)-stable coordinates with
-\(0<\alpha<2\), the density is everywhere positive but the exact criterion
-is governed by an anisotropic mixing cost: diagonal errors are square summable and
-the off-diagonal input-column norms are \(\alpha\)-summable.
-When a finite-variance density satisfies the Sobolev assumptions but has
-zeros, the Hilbert--Schmidt condition must be supplemented by the zero-set
-row condition: the rows of both \(T\) and \(T^{-1}\) must avoid the zero set of the
-one-dimensional density.
+For finite-variance coordinate laws satisfying the regularity assumptions
+below, the answer has the same operator-ideal form as the
+Feldman--H\'ajek criterion, but with a discrete non-Gaussian stabilizer.  The
+image law is equivalent to \(\mu\) precisely when the mixing operator is a
+Hilbert--Schmidt perturbation of an allowed signed coordinate permutation.
+We also show that this operator condition is detected exactly by the
+Hellinger energies of the actual finite output marginals.
 
-\subsection{Historical context: from Kakutani to bounded invertible linear mixing}
-\label{sec:history}
+This classification has two sharp boundaries.  Infinite variance changes the
+metric cost: for symmetric stable products, off-diagonal columns accumulate
+with exponent \(\alpha\), not quadratically.  Zeros of a finite-variance
+density create a different obstruction: Hilbert--Schmidt proximity still
+controls accumulated Hellinger loss, but equivalence additionally requires
+the rows of the operator and its inverse to avoid the zero set.  Thus tail
+geometry and support geometry enter the classification in distinct ways.
 
-Kakutani's theorem turns equivalence of infinite products into a scalar
-summability problem.
-The test is the product of one-coordinate Hellinger affinities, positive
-exactly on the equivalence branch and zero exactly on the singular
-branch~\cite{kakutani1948equivalence}.
-Sharp criteria for sequences of Euclidean and, more generally, Lie-group
-perturbations retain this product structure and identify Fisher information
-as the local Hellinger metric
-\cite{steele1986fisher,marques1992quasi}.
-
-The Gaussian law conceals the obstruction created by bounded invertible
-linear mixing.
-For the standard Gaussian product, every orthogonal operator on \(\ell^2\)
-has a measurable row-series realization and preserves the product law.
-Translation and linear measure-class changes are governed by the
-Cameron--Martin and Feldman--H\'ajek theories, with explicit Gaussian
-density criteria developed by Shepp and nonlinear extensions by Ramer
-\cite{cameron1944transformations,feldman1958equivalence,hajek1958property,
-shepp1966radon,ramer1974nonlinear,bogachev1998gaussian}.
-A non-Gaussian product behaves differently: exact independence rigidifies
-the orthogonal group to coordinate permutations and to those coordinate
-signs already preserving the one-dimensional law.
-Non-Gaussian quasi-invariant measures on Hilbert and linear topological
-spaces have long been known
-\cite{feldman1961examples,takahashi1975quasi}; the problem here is the
-complete measure-class classification for bounded invertible linear mixing of one fixed
-i.i.d. product law.
-
-\subsection{The phase transition: continuous Gaussian symmetry and discrete rigidity}
-\label{sec:phase-transition}
-
-Let \(X\) have a centered probability law \(\rho\) with finite first moment
-and characteristic function \(\phi(u)=\E e^{iuX}\).
-The rotational Fourier defect used below has a specific job: it turns the
-dependence created by a small non-Gaussian rotation into a bounded
-observable whose strength does not deteriorate with the ambient dimension.
-Define the rotational Fourier defect by
-\begin{equation}
- R(\xi,\eta)=\eta\phi'(\xi)\phi(\eta)-\xi\phi(\xi)\phi'(\eta).
- \label{eq:fourier-defect}
-\end{equation}
-It is the first variation of the expectation of a product of centered
-complex exponentials under a planar rotation.  Its determinant representation
-uses the weighted Fourier jet, the explicit curve
-\begin{equation}
- u\longmapsto\bigl(u\phi(u),\phi'(u)\bigr)\in\mathbb C^2.
- \label{eq:weighted-fourier-jet}
-\end{equation}
-Up to sign, \(R(\xi,\eta)\) is the determinant of the two vectors
-on this curve at \(\xi\) and \(\eta\).
-Hence zero rotational Fourier defect means that the curve lies in one fixed complex line
-through the origin.
-The resulting global linear ODE has only Gaussian characteristic functions
-as solutions.
-
-Under the finite-second-moment and Sobolev assumptions below, a finite set
-of frequencies detects every infinitesimal matrix direction for a
-non-Gaussian coordinate law.
-The corresponding Hellinger orbit is uniformly coercive in Frobenius norm
-near the exact linear stabilizer, independently of dimension.
-In that finite-variance regime, the surviving continuous thickness is
-exactly Hilbert--Schmidt: equivalence holds precisely for
-Hilbert--Schmidt perturbations of coordinate permutations whose signs
-preserve \(\rho\).  The symmetric \(\alpha\)-stable regime has the same exact
-linear stabilizer but a different, anisotropic accumulation law, as shown in
-\cref{sec:symmetric-stable-products-and-anisotropic-geometry}.
-
-\subsection{Main theorem: equivalence, projected Hellinger energy, and the exact linear stabilizer}
+\subsection{The finite-variance classification}
 \label{sec:main-results}
 
-The main finite-variance theorem has a simple nontechnical content.
-For coordinate laws satisfying \eqref{eq:main-assumptions}, bounded invertible linear mixing
-preserves the product measure class exactly when it differs by
-Hilbert--Schmidt size from the exact linear stabilizer.
-The projected Hellinger energies defined below are not heuristic proxies for
-this condition; their boundedness is an equivalent diagnostic.
-An everywhere-positive density alone does not imply this Hilbert--Schmidt criterion: the
-standard symmetric \(\alpha\)-stable laws have everywhere positive
-densities, but their infinite-variance classification requires the stronger
-anisotropic mixing cost in \eqref{eq:stable-mixing-cost}.
-
-We now state the assumptions used for the theorem on bounded invertible linear mixing.
-Suppose \(\rho(dx)=f(x)\,dx\), put \(g=\sqrt f\), and
-assume
+Suppose \(\rho(dx)=f(x)\,dx\), put \(g=\sqrt f\), and assume
 \begin{equation}
  \begin{gathered}
  f>0\quad\text{Lebesgue-almost everywhere},\qquad
@@ -126,39 +39,30 @@ assume
  \end{gathered}
  \label{eq:main-assumptions}
 \end{equation}
-All derivatives are weak derivatives.
-Cusps are allowed.
-No moment of order greater than two is assumed.
-The two Sobolev conditions are finite location and scale Fisher information.
+Derivatives are weak derivatives.  These hypotheses impose finite location
+and scale Fisher information but no moment above order two; in particular,
+cusps are allowed.
 
-Put \(H=\ell^2(\N;\R)\) and
-\(\mu=\rho^{\otimes\N}\) on the product Borel space \(\R^{\N}\),
-and \(\mu_n=\rho^{\otimes n}\).  The
-space \(H\) indexes coefficients.  Write \(\mathcal B(H)\) for its
-bounded linear operators, \(\GL(H)\) for the invertible members, and
-\((e_i)_{i\ge1}\) for the standard coordinate basis.
-A sample from \(\mu\) is not asserted to belong to \(H\).
-Define
+Put \(H=\ell^2(\N;\R)\), let \((e_i)_{i\ge1}\) be its coordinate basis, and
+write \(\mathcal S_2(H)\) for the Hilbert--Schmidt ideal.  Define
 \begin{equation}
  \begin{aligned}
  \mathcal P=\{Q:{}&(Qx)_i=\varepsilon_i x_{\pi(i)},\quad
        \pi\text{ a permutation of }\N,\\
-       &\varepsilon_i\in\{-1,1\},\quad\Law(\varepsilon_iX)=\rho
-       \text{ for every }i\}.
+       &\varepsilon_i\in\{-1,1\},\quad
+       \Law(\varepsilon_iX)=\rho\text{ for every }i\}.
  \end{aligned}
  \label{eq:allowed-permutations}
 \end{equation}
-Write \(\mathcal P^{\pm}\) for the full signed-permutation group.
-Thus \(\mathcal P=\mathcal P^{\pm}\) when \(\rho\) is symmetric, whereas
-\(\mathcal P\) is the ordinary permutation group when \(\rho\) is not
-symmetric.
-This definition also applies when \(\rho\) has no density.
-For a bounded linear operator \(T\) on \(H\), let \(\Phi_T\) be the
-measurable row-series realization
-constructed in \cref{lem:measurable-row-series-realization}.
-Write \(\nu_T=(\Phi_T)_\#\mu\).
+Thus \(\mathcal P\) is the full signed-permutation group when \(\rho\) is
+symmetric and the ordinary permutation group otherwise.  For
+\(T\in\mathcal B(H)\), let \(\Phi_T\) be the measurable row-series
+realization constructed in
+\cref{lem:measurable-row-series-realization}, and set
+\(\nu_T=(\Phi_T)_\#\mu\).  A sample from \(\mu\) is not assumed to lie in
+\(H\).
 
-For probability measures \(\lambda,\nu\), set
+For probability measures \(\lambda,\nu\), write
 \begin{equation}
  \Aff(\lambda,\nu)
  =\int\sqrt{\frac{d\lambda}{dm}\frac{d\nu}{dm}}\,dm,
@@ -166,24 +70,18 @@ For probability measures \(\lambda,\nu\), set
  h(\lambda,\nu)^2=2-2\Aff(\lambda,\nu),
  \label{eq:affinity-convention}
 \end{equation}
-where \(m\) dominates both measures.  We use the same notation for
-densities and their probability measures.  Let \(P_n:H\to H\) be the
-orthogonal projection onto the first \(n\) coordinate vectors, and let
-\(\pi_n:\R^{\N}\to\R^n\) extract the first \(n\) coordinates.
-Write \(\mathcal S_2(H)\) for the Hilbert--Schmidt ideal.  Define the
-projected Hellinger energy by
+where \(m\) dominates both measures.  Let \(\mu_n=\rho^{\otimes n}\), let
+\(\pi_n\) extract the first \(n\) coordinates, and define
 \begin{equation}
  E_n(T)=-2\log\Aff\bigl(\mu_n,(\pi_n)_\#\nu_T\bigr).
  \label{eq:projected-hellinger-energy}
 \end{equation}
-These are actual output marginals, not laws obtained from principal matrix
-corners.  Thus \(E_n\) keeps the finite evidence produced by the actual
-output rows and asks whether that evidence remains uniformly bounded
-as the window grows.
+These energies use the true output rows of \(T\), rather than principal matrix
+corners.
 
-\begin{theorem}[Complete criterion for bounded invertible linear mixing]
+\begin{theorem}[Bounded invertible linear mixing]
 \label{thm:measure-equivalence}
-Under \eqref{eq:main-assumptions}, for every \(T\in\GL(H)\),
+Under \eqref{eq:main-assumptions}, every \(T\in\GL(H)\) satisfies
 \begin{equation}
  \boxed{\begin{aligned}
  \nu_T\sim\mu
@@ -194,240 +92,121 @@ Under \eqref{eq:main-assumptions}, for every \(T\in\GL(H)\),
  \label{eq:measure-equivalence}
 \end{equation}
 If these conditions fail, then \(\nu_T\perp\mu\) and
-\(E_n(T)\uparrow\infty\).  The exact linear stabilizer in \(\GL(H)\)
-is \(\mathcal P\): \(\nu_T=\mu\) if and only if \(T\in\mathcal P\).
+\(E_n(T)\uparrow\infty\).  Moreover, \(\nu_T=\mu\) if and only if
+\(T\in\mathcal P\).
 \end{theorem}
 
-\begin{proposition}[Finite-coordinate approximants recover the likelihood ratio]
-\label{prop:finite-coordinate-approximants-recover-likelihood-ratio}
-Under the assumptions of \cref{thm:measure-equivalence}, suppose
-\(\nu_T\sim\mu\).
-For any admissible \(Q\), put \(K=TQ^{-1}-I\) and
-\(T_n=I+P_nKP_n\).  Then \(T_n\) is eventually invertible and
-\begin{equation}
- \frac{d\nu_{T_n}}{d\mu}\longrightarrow\frac{d\nu_{TQ^{-1}}}{d\mu}
-       \quad\text{in }L^1(\mu),
- \qquad
- \sqrt{\frac{d\nu_{T_n}}{d\mu}}
-       \longrightarrow
- \sqrt{\frac{d\nu_{TQ^{-1}}}{d\mu}}
-       \quad\text{in }L^2(\mu).
- \label{eq:likelihood-convergence}
-\end{equation}
-Since \(\nu_Q=\mu\), the limiting law is also \(\nu_T\).
-Moreover, the finite-marginal likelihood ratios and their reciprocals are
-uniformly integrable in their respective reference measures.
-\end{proposition}
+The theorem identifies both the exact symmetry group and the full
+measure-class neighborhood around it.  The projected-energy equivalence is
+not a finite-dimensional surrogate: bounded energy first detects a nonzero
+absolutely continuous component, and an orbit dichotomy upgrades that overlap
+to equivalence.
 
-The three assertions in \cref{thm:measure-equivalence} are connected by
-mechanisms of different difficulty.  Hilbert--Schmidt sufficiency is an
-approximation problem: finite-coordinate half-densities must converge, and
-inverse approximants must prevent the limit from losing two-sided absolute
-continuity.  Necessity is the hard direction.  Absolute continuity first gives
-only qualitative matching of remote output rows with allowed signed
-coordinates; the argument in \cref{lem:hilbert-schmidt-necessity} swaps remote
-coordinates to upgrade that matching to a square-summable error.  Finally,
-\cref{lem:orbit-dichotomy,lem:finite-marginal-likelihood-ratios} turns a
-positive limit of the finite-marginal affinities into full equivalence.  The
-dichotomy is essential here, since positive affinity by itself detects only a
-nonzero absolutely continuous component.
-
-The rotational Fourier defect is the calibration mechanism behind the
-quantitative step, not an additional scalar condition on \(T\).  Through the
-test functions built from the finite real Fourier sums of
-\cref{lem:fourier-dual-moments}, it turns the Hellinger half-density
-displacement into a quadratic Frobenius pairing, yielding a linear Frobenius
-lower bound while keeping the one-dimensional Gaussian characterization
-separate from the operator-valued criterion.  The next two corollaries record
-what remains true under weaker assumptions for the exact linear stabilizer and
-for orthogonal transformations.
+Two consequences separate the algebraic and analytic parts of the result.
 
 \begin{corollary}[Moment-only stabilizer]
 \label{cor:moment-only-stabilizer}
-If \(\rho\) is non-Gaussian and centered with variance one,
-then the exact linear stabilizer of
-\(\mu=\rho^{\otimes\N}\) is \(\mathcal P\).  No density
-or Fisher information assumption is needed.
+If \(\rho\) is non-Gaussian, centered, and has variance one, then the exact
+linear stabilizer of \(\rho^{\otimes\N}\) is \(\mathcal P\).  No density or
+Fisher information assumption is needed.
 \end{corollary}
 
-\begin{corollary}[Equivalence under orthogonal transformations]
+\begin{corollary}[Orthogonal transformations]
 \label{cor:orthogonal-equivalence}
 If \(f>0\) almost everywhere, \(\sqrt f\in W^{1,2}(\R)\), and \(f\) is
-non-Gaussian and centered with variance one, then every orthogonal \(U\) obeys
+non-Gaussian, centered, and has variance one, then every orthogonal \(U\)
+satisfies
 \[
  \nu_U\sim\mu
  \quad\Longleftrightarrow\quad
- U-Q\in\mathcal S_2\quad\text{for some }Q\in\mathcal P.
+ U-Q\in\mathcal S_2(H)\quad\text{for some }Q\in\mathcal P.
 \]
-Thus scale Fisher information enters our proof for bounded invertible linear
-mixing but not for the orthogonal subproblem.
+Thus scale Fisher information is not needed for orthogonal mixing.
 \end{corollary}
 
-\subsection{Proof architecture and genuine bottlenecks}
+\subsection{Relation to earlier criteria}
+\label{sec:history}
+
+Kakutani reduced equivalence of infinite products to summability of
+one-coordinate Hellinger losses~\cite{kakutani1948equivalence}; Euclidean and
+Lie-group perturbations retain this tensor structure and recover Fisher
+information as the local metric
+\cite{steele1986fisher,marques1992quasi}.  Gaussian linear mixing is governed
+instead by the Cameron--Martin and Feldman--H\'ajek theories
+\cite{cameron1944transformations,feldman1958equivalence,hajek1958property,
+shepp1966radon,ramer1974nonlinear,bogachev1998gaussian}.  There the full
+orthogonal group preserves the standard product law.  For a non-Gaussian
+i.i.d. product, exact independence reduces this group to \(\mathcal P\), and
+\cref{thm:measure-equivalence} determines the entire bounded invertible
+measure-class orbit around that discrete stabilizer.  This is distinct from
+the existence theory for non-Gaussian quasi-invariant measures on linear
+spaces~\cite{feldman1961examples,takahashi1975quasi}.
+
+\subsection{Two boundary regimes}
+\label{sec:boundary-regimes}
+
+The finite-second-moment hypothesis determines the quadratic accumulation
+law.  For the standard symmetric \(\alpha\)-stable product,
+\(0<\alpha<2\), \cref{thm:complete-criterion-symmetric-stable-coordinates}
+shows, within the compatible stable row-series class, that equivalence holds
+precisely when an allowed signed permutation reduces the operator to a matrix
+\(M=(m_{ij})\) satisfying
+\[
+ \sum_i|m_{ii}-1|^2
+ +\sum_j\left(\sum_{i\ne j}|m_{ij}|^2\right)^{\alpha/2}<\infty.
+\]
+The first term is quadratic, whereas the second is an
+\(\ell^\alpha(\ell^2)\) column cost.  Hence an everywhere-positive density
+and finite Fisher information do not by themselves make Hilbert--Schmidt
+proximity sufficient.
+
+When a finite-variance density may vanish, the same Fourier/Fisher argument
+still gives Hilbert--Schmidt necessity.  The exact extension in
+\cref{thm:linear-equivalence-group} adds the condition that every row sum of
+both \(T\) and \(T^{-1}\) lies almost surely in \(\{f>0\}\).  For bounded or
+one-sided coordinate laws, support geometry is stronger still:
+\cref{thm:bounded-and-half-line-classification} reduces the equivalence group
+to explicit signed-permutation or permutation classes without density or
+Fisher assumptions.
+
+\subsection{Proof strategy and organization}
 \label{sec:proof-architecture}
 
-Across the paper, five transitions carry the main conceptual burden; proof
-length is not a reliable guide to their difficulty.
+The finite-variance proof has three main steps.  First, non-Gaussianity is
+encoded by the rotational Fourier defect
+\[
+ R(\xi,\eta)=\eta\phi'(\xi)\phi(\eta)
+              -\xi\phi(\xi)\phi'(\eta),
+ \qquad \phi(u)=\E e^{iuX}.
+\]
+The determinant of the two weighted Fourier jets
+\((\xi\phi(\xi),\phi'(\xi))\) and
+\((\eta\phi(\eta),\phi'(\eta))\) vanishes at every pair only for a Gaussian
+law.  A finite set of frequencies then yields bounded tests for all matrix
+directions.  Combined with the matrix Fisher operator, these tests give local
+Hellinger coercivity in Frobenius norm with constants independent of the
+dimension.
 
-\emph{From non-Gaussianity to dimension-free tests.}
-It is not enough to know that the characteristic function differs from a
-Gaussian one.  The later tail argument needs a fixed finite collection of
-bounded one-coordinate Fourier functions from which a test for every matrix
-direction can be assembled, with constants independent of the matrix
-dimension.  Taking a logarithm of the characteristic function would also lose
-control at its zeros.  The determinant in \eqref{eq:fourier-wedge} avoids that
-division and produces the off-diagonal tests; a separate small-frequency test
-using the second moment handles diagonal scale directions.
-\Cref{lem:fourier-generator-bound} then keeps the error of these test functions
-uniform in dimension.  This is the delicate step: a termwise count loses a
-dimension factor, while a H\"older bound on the whole products would require
-fourth moments that are not assumed.
+Second, the operator action must be realized on \(\R^{\N}\), since a product
+sample need not belong to \(\ell^2\).  A common measurable carrier makes row
+series composable and allows inverse maps and likelihood cocycles to be used
+without incompatible null sets.  Translation ergodicity gives the
+equivalent--singular dichotomy and identifies bounded projected energy with
+equivalence.
 
-\emph{From finite matrices to an infinite-dimensional action.}
-A product sample almost surely need not belong to \(\ell^2\), so formal matrix
-composition does not justify composition of row series.  The measurable
-realization in \cref{lem:measurable-row-series-realization} puts every operator
-in the relevant fixed countable group on one common measurable carrier.  There
-is a second one-sided trap: an \(L^2\) limit of square-root likelihoods first proves only
-\(\nu_T\ll\mu\).  Applying the same construction to the inverse and then using
-the common measurable carrier supplies the reverse absolute continuity.
-
-\emph{From row rigidity to Hilbert--Schmidt summability.}
-Absolute continuity makes the remote one-coordinate output marginals converge
-to \(\rho\); compactness of the covariance defect normalizes their coefficient
-rows, and \cref{lem:unit-row-rigidity} then matches each row with an allowed
-signed coordinate.  This is only an \(o(1)\) statement and does not sum the row errors.
-The decisive step in \cref{lem:hilbert-schmidt-necessity} packages a finite
-amount of any hypothetical nonsummable error into a small conjugated
-perturbation by swapping carefully chosen tail coordinates.  Local coercivity
-sees that perturbation, whereas absolute continuity makes the same remote swap
-asymptotically invisible.  Their contradiction is what upgrades qualitative
-matching to a Hilbert--Schmidt conclusion.
-
-\emph{Why the stable branch needs a different mechanism.}
-For \(0<\alpha<2\), the covariance argument is unavailable, and
-fixed-dimensional quadratic Fisher geometry does not capture the uniform
-column accumulation law.  A Fourier transform of Hellinger
-half-densities first transfers equivalence to an auxiliary finite-variance
-product and recovers only Hilbert--Schmidt proximity.  A separate bounded
-statistic gates on rare source events occurring with probability comparable to
-the \(\alpha\)-th power of the corresponding column norm.  This second step, not a formal
-replacement of the exponent \(2\) by \(\alpha\), produces the off-diagonal
-column cost in \eqref{eq:stable-mixing-cost}.
-
-\emph{Why zeros of the density are not another metric correction.}
-Hellinger convergence controls overlap, but it cannot by itself decide either
-direction of absolute continuity.  When \(f\) vanishes, the missing information
-is whether each row sum lands in \(\{f>0\}\).  The forward and inverse zero-set
-row conditions record those two directions separately; the rank-one example
-in \cref{sec:zero-set-row-condition-counterexample}, together with the same
-construction applied to its inverse, shows that neither can be recovered from
-Hilbert--Schmidt proximity or bounded projected energy.
-
-\subsection{Result map}
-\label{sec:result-map}
-
-The classification separates metric accumulation from the zero-set row
-condition.
-The following map records the strongest conclusion in each regime and the
-reason that conclusion matters.
-
-\begin{center}
-\renewcommand{\arraystretch}{1.22}
-\begin{tabular}{
-  >{\raggedright\arraybackslash}p{0.24\textwidth}
-  >{\raggedright\arraybackslash}p{0.31\textwidth}
-  >{\raggedright\arraybackslash}p{0.34\textwidth}}
-\toprule
-\textbf{Condition} & \textbf{Strongest conclusion} & \textbf{Value}\\
-\midrule
-Finite-variance assumptions \eqref{eq:main-assumptions}; bounded invertible
-linear mixing
-&
-\(\nu_T\sim\mu\Longleftrightarrow
-\exists Q\in\mathcal P:\ TQ^{-1}-I\in\mathcal S_2
-\Longleftrightarrow \sup_nE_n(T)<\infty\)
-&
-A complete and checkable measure-class boundary for bounded invertible linear mixing.\\
-Non-Gaussian a.e.-positive density centered with variance one and with finite
-location Fisher information; orthogonal mixing
-&
-The same Hilbert--Schmidt criterion, assuming only location Fisher
-information.
-&
-The important rotation regime needs weaker regularity.\\
-Standard symmetric \(\alpha\)-stable coordinates, \(0<\alpha<2\);
-compatible stable row-series realization
-&
-Equivalence holds exactly when, after an allowed signed permutation, the
-diagonal deviations are square summable and the off-diagonal input-column
-norms are \(\alpha\)-summable; equivalently, the stable projected Hellinger
-energies stay bounded.
-&
-Diagonal errors have quadratic cost, while off-diagonal input columns have
-\(\ell^\alpha(\ell^2)\) cost; Hilbert--Schmidt proximity alone is not
-sufficient.\\
-Finite-variance Sobolev assumptions
-\eqref{eq:zero-set-row-assumptions}; density
-with zeros
-&
-Hilbert--Schmidt proximity plus the forward and inverse zero-set row
-conditions.
-&
-Positive affinity is separated from true two-sided absolute continuity.\\
-Half-line or bounded support
-&
-The equivalence group collapses to explicit permutation or
-signed-permutation classes.
-&
-Support boundaries can eliminate every bounded invertible linear mixing
-beyond signed coordinate permutations.\\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{Organization and notation}
-\label{sec:organization}
+Third, absolute continuity initially gives only asymptotic matching of remote
+rows with allowed signed coordinates.  If the squared matching errors were
+not summable, tail-coordinate swaps would package a fixed amount of error into
+a small Hilbert--Schmidt perturbation.  Local coercivity detects this
+perturbation, while absolute continuity makes the same remote swap
+asymptotically invisible.  The contradiction proves Hilbert--Schmidt
+necessity.
 
 \Cref{sec:rotational-fourier-defect-and-hellinger-coercivity} develops the
-Fourier detector, the matrix Fisher geometry, and the dimension-free
-Hellinger bounds.
-\Cref{sec:finite-variance-equivalence-and-global-rigidity} constructs the
-measurable row action and proves the finite-variance classification, including
-the exact linear stabilizer and global coercivity.
-\Cref{sec:symmetric-stable-products-and-anisotropic-geometry} classifies
-standard symmetric \(\alpha\)-stable products and identifies their
-anisotropic mixing cost, with diagonal-square and off-diagonal-column terms.
-\Cref{sec:zero-set-row-condition-and-support-geometry} gives the exact
-extension for densities with zeros, proves the bounded-support and half-line
-classifications, and separates the roles of the finite-variance hypotheses.
-
-We write \(A^*\) for the adjoint, including the transpose of a real
-matrix, and \(\|\cdot\|_{\mathrm{op}}\) for the operator norm.
-The Frobenius inner product is
-\(\langle A,B\rangle_F=\operatorname{tr}(A^*B)\), with norm \(\|A\|_F\).
-The law \(\rho\) remains fixed unless a different law is explicitly specified.
-
-\begin{center}
-\renewcommand{\arraystretch}{1.18}
-\begin{tabular}{>{$}l<{$} p{0.69\textwidth}}
-\toprule
-\text{Symbol} & \text{Meaning}\\
-\midrule
-\rho,\ \mu,\ \mu_n & coordinate law and its infinite and \(n\)-coordinate products\\
-\phi & characteristic function \(u\mapsto\E e^{iuX}\)\\
-R & rotational Fourier defect in \eqref{eq:fourier-defect}\\
-\Aff,\ h & Hellinger affinity and Hellinger distance\\
-P_n,\ \pi_n & orthogonal projection on \(H\) and coordinate extraction on \(\R^{\N}\)\\
-E_n(T) & projected Hellinger energy in \eqref{eq:projected-hellinger-energy}\\
-\mathcal S_2 & Hilbert--Schmidt ideal;
-\(\|\cdot\|_{\mathcal S_2}=\|\cdot\|_F\) in finite dimensions\\
-\mathcal P,\ \mathcal P^{\pm} & coordinate permutations with signs preserving
-\(\rho\), and the full signed-permutation group\\
-\Phi_T,\nu_T & measurable row-series realization and its pushforward of \(\mu\)\\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The notation for the symmetric stable branch is introduced at its first use
-in \cref{sec:symmetric-stable-products-and-anisotropic-geometry}.
+dimension-free Fourier and Hellinger geometry, and
+\cref{sec:finite-variance-equivalence-and-global-rigidity} proves the
+finite-variance classification.  The stable and zero-set/support regimes are
+treated in
+\cref{sec:symmetric-stable-products-and-anisotropic-geometry,sec:zero-set-row-condition-and-support-geometry}.
+We use \(A^*\) for the adjoint, \(P_n\) for coordinate projection on \(H\),
+and \(\|\cdot\|_F\) for the Frobenius norm.

@@ -1,20 +1,13 @@
-\section{Rotational Fourier Defect and Hellinger Coercivity}
+\section{Dimension-Free Hellinger Geometry}
 \label{sec:rotational-fourier-defect-and-hellinger-coercivity}
 
-Non-Gaussianity is first detected by a bounded, logarithm-free rotational
-Fourier defect: if it vanishes at every frequency pair, a global linear ODE
-forces the coordinate law to be Gaussian
-\cite{kac1939characterization,kagan1973characterization}.  That
-one-dimensional rigidity step is short.  The harder task is to turn one
-nonzero defect into fixed bounded coordinate functions for the off-diagonal
-directions, add a separate bounded function for the diagonal scale directions,
-and keep the resulting estimates independent of the dimension.  The matrix
-Fisher operator identifies the infinitesimal geometry; the coordinate
-functions assemble into direction-dependent test functions; and an explicit
-index-contraction estimate controls their motion along a Hellinger path.
-Together these steps yield local Frobenius coercivity.  We
-also state the global form modulo the exact linear stabilizer; its proof follows
-the infinite-dimensional classification.
+The rotational Fourier defect distinguishes every non-Gaussian coordinate law
+without dividing by its characteristic function.  Fixed Fourier frequencies
+then produce bounded tests for all matrix directions, and the matrix Fisher
+operator identifies their infinitesimal cost.  The goal of this section is the
+dimension-free local estimate in
+\cref{prop:local-fisher-hellinger}; the global estimate is derived from the
+classification in \cref{sec:globalization-proof}.
 
 \input{parts/rotational-fourier-detection}
 \input{parts/finite-dimensional-hellinger-geometry}

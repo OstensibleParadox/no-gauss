@@ -1,18 +1,11 @@
-\section{Finite-Variance Equivalence and Global Rigidity}
+\section{The Finite-Variance Classification}
 \label{sec:finite-variance-equivalence-and-global-rigidity}
 
-Two losses of information drive this section.  First, the product sample space
-is \(\R^{\N}\), not \(\ell^2\): row sums defined only up to separate null sets
-cannot simply be composed.  We construct a common measurable carrier before
-using inverse maps, tail symmetries, or likelihood cocycles.  Second, convergence
-of individual remote rows gives no summability.  The necessity proof combines
-qualitative row rigidity with carefully chosen tail-coordinate swaps that turn
-any nonsummable error into a locally visible but asymptotically invisible
-Hellinger perturbation.
-Hilbert--Schmidt sufficiency, the orbit dichotomy, and the finite-marginal
-criterion complete the classification.  The classification then supplies the
-direct-sum compactness argument needed for global finite-dimensional
-coercivity.
+We first realize row series on a common measurable carrier and prove the
+equivalent--singular orbit dichotomy.  Hilbert--Schmidt sufficiency follows by
+finite-coordinate approximation.  For necessity, qualitative tail rigidity is
+upgraded to square summability by conjugating remote coordinate swaps and
+applying the local estimate from \cref{prop:local-fisher-hellinger}.
 
 \input{parts/measurable-realization-and-measure-class-dichotomy}
 \input{parts/finite-variance-classification}
