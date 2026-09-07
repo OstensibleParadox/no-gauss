@@ -104,24 +104,18 @@ $\mathcal U=\{x\in\R:f(x)>0\}$. For every $T\in\GL(H)$,
 \begin{equation}
  \nu_T\ll\mu
  \quad\Longleftrightarrow\quad
- \begin{cases}
- T-Q\in\mathcal S_2(H)\text{ for some }Q\in\mathcal P,\\
- \displaystyle
- \mu\!\left\{x:\sum_jT_{ij}x_j\notin\mathcal U\right\}=0
-       \text{ for every }i.
- \end{cases}
+ T\in\mathcal P+\mathcal S_2(H)
+ \quad\text{and}\quad\nu_T(\mathcal U^{\N})=1.
  \label{eq:absolute-continuity-operator-criterion}
 \end{equation}
 Consequently,
 \[
+ \begin{aligned}
  \{T\in\GL(H):\nu_T\sim\mu\}
- =\left\{T\in\GL(H):
- \begin{array}{l}
- T-Q\in\mathcal S_2(H)\text{ for some }Q\in\mathcal P,\\
- \displaystyle\mu\!\left\{x:\sum_jT_{ij}x_j\notin\mathcal U\right\}=0,\\
- \displaystyle\mu\!\left\{x:\sum_j(T^{-1})_{ij}x_j\notin\mathcal U\right\}=0
-       \quad\text{for every }i
- \end{array}\right\}.
+ &=\bigl\{T\in\GL(H)\cap(\mathcal P+\mathcal S_2(H)):\\
+ &\qquad\nu_T(\mathcal U^{\N})
+       =\nu_{T^{-1}}(\mathcal U^{\N})=1\bigr\}.
+ \end{aligned}
 \]
 It is a subgroup of $\GL(H)$.  For orthogonal members the criterion holds with
 $T^{-1}=T^*$ and without $xg'\in L^2$.
@@ -337,8 +331,8 @@ preceding inverse-matrix argument makes \(T\) an ordinary permutation.  Such
 permutations preserve \(\mu\); reflection handles the upper-bounded case.
 \end{proof}
 
-If \(Y\) has a Gamma law with shape \(r_\Gamma>0\) and arbitrary positive scale,
-its standardization has endpoints \(-\sqrt{r_\Gamma}\) and \(+\infty\); hence only coordinate
+If \(Y\) has a Gamma law with shape \(r>0\) and arbitrary positive scale,
+its standardization has endpoints \(-\sqrt{r}\) and \(+\infty\); hence only coordinate
 permutations are allowed for every positive shape and scale.  For compact
 support, signs are governed by \(\rho\) versus \(\rho^-\): if
 \(\rho^-\sim\rho\) but \(\rho^-\ne\rho\), only finitely many negative signs are
@@ -392,12 +386,12 @@ The half-line classification concerns linear maps of centered coordinates.
 A dilation about the endpoint of a Gamma support is an affine map after
 centering. Its compensating translation keeps the endpoint fixed, allowing
 the familiar family of scale changes to reappear.
-For the uncentered shape-\(r_\Gamma\), scale-one Gamma law, direct integration
+For the uncentered shape-\(r\), scale-one Gamma law, direct integration
 gives
 \[
   \int_0^\infty\sqrt{f(y)c^{-1}f(y/c)}\,dy
- =\left(\frac{2\sqrt c}{1+c}\right)^{r_\Gamma}
- =\cosh\!\left(\frac{\log c}{2}\right)^{-r_\Gamma}.
+ =\left(\frac{2\sqrt c}{1+c}\right)^{r}
+ =\cosh\!\left(\frac{\log c}{2}\right)^{-r}.
 \]
 Since \(\log\cosh(u/2)\sim u^2/8\), Kakutani gives
 \begin{equation}
@@ -408,14 +402,14 @@ Since \(\log\cosh(u/2)\sim u^2/8\), Kakutani gives
  \label{eq:gamma-scale-product-equivalence}
 \end{equation}
 Equivalently, \(\sum_k(c_k-1)^2<\infty\).  For
-\(X=(Y-r_\Gamma)/\sqrt{r_\Gamma}\), the dilation \(Y\mapsto cY\) becomes
+\(X=(Y-r)/\sqrt{r}\), the dilation \(Y\mapsto cY\) becomes
 \[
- X\longmapsto cX+\sqrt{r_\Gamma}(c-1),
+ X\longmapsto cX+\sqrt{r}(c-1),
 \]
 rather than the homogeneous map \(X\mapsto cX\).
 
 \begin{corollary}[Coordinatewise affine equivalence for Gamma products]
-Let \(\mu\) be the product of the shape-\(r_\Gamma\) Gamma law centered with
+Let \(\mu\) be the product of the shape-\(r\) Gamma law centered with
 variance one.
 For \(T\in\GL(H)\) and \(b\in\ell^2\), the law of
 \(\Phi_T(x)+b\) under \(\mu\) is equivalent to \(\mu\) if and only if
@@ -423,7 +417,7 @@ there are a coordinate
 permutation \(\pi\) and numbers \(c_i>0\) such that
 \[
  (Tx)_i=c_ix_{\pi(i)},\qquad
- b_i=\sqrt{r_\Gamma}(c_i-1),\qquad
+ b_i=\sqrt{r}(c_i-1),\qquad
  \sum_i(\log c_i)^2<\infty.
 \]
 \end{corollary}
@@ -438,7 +432,7 @@ because \(\ell^2\) translations preserve the bound
 unbounded lower tail that no fixed shift can remove.  The inverse identities
 then make \(T\) monomial with positive weights \(c_i\).  Equality of the
 scalar lower endpoints forces
-\(-\sqrt{r_\Gamma}c_i+b_i=-\sqrt{r_\Gamma}\).
+\(-\sqrt{r}c_i+b_i=-\sqrt{r}\).
 Equation \eqref{eq:gamma-scale-product-equivalence} completes both directions.
 \end{proof}
 

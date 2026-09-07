@@ -48,9 +48,8 @@ such rows, let \(\Phi_{\alpha,T}\) be its row-series map and
 \emph{compatible} if some matrix \(S\), also with \(\ell^\alpha\) rows, has
 measurable row-series maps satisfying
 \[
- \Phi_{\alpha,S}\circ\Phi_{\alpha,T}=I,
- \qquad
- \Phi_{\alpha,T}\circ\Phi_{\alpha,S}=I
+ \Phi_{\alpha,S}\circ\Phi_{\alpha,T}
+ =\Phi_{\alpha,T}\circ\Phi_{\alpha,S}=I
 \]
 on a common full-measure carrier for the corresponding orbit laws.
 
@@ -116,7 +115,7 @@ Put \(g_\alpha=\sqrt{f_\alpha}\) and define
 Finite positive location Fisher information and decay of translations in
 \(L^2\) give
 \begin{equation}
- 1-a_\alpha(u)\asymp_\alpha\min\{u^2,1\}.
+ 1-a_\alpha(u)\asymp_\alpha(1\wedge u^2).
  \label{eq:stable-translation-affinity}
 \end{equation}
 Kakutani's theorem therefore identifies \(\ell^2\) as the translation space
@@ -162,7 +161,7 @@ and averaging over the scales produces the column exponent \(\alpha\).
 The resulting estimate is
 \begin{equation}
  h^2(A_\#\mu_{\alpha,n},\mu_{\alpha,n})
- \le C_\alpha\min\{\mathfrak e_\alpha(A),1\}
+ \le C_\alpha(1\wedge\mathfrak e_\alpha(A))
  \label{eq:stable-finite-dimensional-upper-bound}
 \end{equation}
 for every invertible real \(n\times n\) matrix \(A\), with a constant
@@ -175,7 +174,7 @@ Conditioning on \(V=\diag(V_i)\), Hellinger data processing and the Gaussian
 affinity formula bound the left side of
 \eqref{eq:stable-finite-dimensional-upper-bound} by a constant times
 \[
- \E\min\{\|V^{-1/2}(A-I)V^{1/2}\|_F^2,1\}.
+ \E\bigl[1\wedge\|V^{-1/2}(A-I)V^{1/2}\|_F^2\bigr].
 \]
 For \(c_j^2=\sum_{i\ne j}|a_{ij}|^2\), source column \(j\) contributes
 \(W_j=V_j\sum_{i\ne j}|a_{ij}|^2/V_i\).  The positive-stable tail and
@@ -263,64 +262,64 @@ estimate in \cite{bobkov2014stable}.  If \(f_{3r}\) is the density of
 Thus finite variance and location Fisher information give finite scale Fisher
 information after one further convolution.
 Set \(k=6r\) and
-\(\mu_{\alpha,k}^\sharp=((\rho_\alpha^\sharp)^{*k})^{\otimes\N}\).
+\(\mu^\sharp=((\rho_\alpha^\sharp)^{*k})^{\otimes\N}\).
 After rescaling to variance one, \((\rho_\alpha^\sharp)^{*k}\) has an a.e.-positive density
 satisfying \eqref{eq:main-assumptions}; it is non-Gaussian because its
 characteristic function \(a_\alpha^k\) has a polynomial lower bound.
 
-Let \(f_{\alpha,T,n}\) be the density of the first \(n\) output marginal and put
+Let \(p_n\) be the density of the first \(n\) output marginal and put
 \[
- \ell_{\alpha,T,n}=\frac{f_{\alpha,T,n}}{f_\alpha^{\otimes n}},
+ \ell_n=\frac{p_n}{f_\alpha^{\otimes n}},
  \qquad
- \ell_{\alpha,T}=\frac{d\nu_{\alpha,T}}{d\mu_\alpha}.
+ \ell=\frac{d\nu_{\alpha,T}}{d\mu_\alpha}.
 \]
-Here \(\ell_{\alpha,T,n}\) is lifted to the product space and
-\(\sqrt{f_{\alpha,T,n}}
-  =g_\alpha^{\otimes n}\sqrt{\ell_{\alpha,T,n}}\).
+Here \(\ell_n\) is lifted to the product space and
+\(\sqrt{p_n}
+  =g_\alpha^{\otimes n}\sqrt{\ell_n}\).
 Equivalence gives
-\(\sqrt{\ell_{\alpha,T,n}}\to\sqrt{\ell_{\alpha,T}}\)
+\(\sqrt{\ell_n}\to\sqrt{\ell}\)
 in \(L^2(\mu_\alpha)\).
 
 We must also transfer the change of measure to the auxiliary product.
 Fourier transformation preserves the \(L^2\) convergence of square roots,
 and taking squared moduli converts it to total-variation convergence of
 probability laws. To obtain the convolution power just constructed, take
-\(k\) tensor copies of \(\sqrt{f_{\alpha,T,n}}\), Fourier
+\(k\) tensor copies of \(\sqrt{p_n}\), Fourier
 transform, square the modulus, and add the \(k\) frequencies at each site.
-Let \(\Xi_{\alpha,T,n}\) be the product of the resulting law on \(\R^n\)
+Let \(\Xi_n\) be the product of the resulting law on \(\R^n\)
 with \(((\rho_\alpha^\sharp)^{*k})^{\otimes\{i>n\}}\).
 The first factor has a Lebesgue density and the tail density is positive
 almost everywhere; hence
-\(\Xi_{\alpha,T,n}\ll\mu_{\alpha,k}^\sharp\).
+\(\Xi_n\ll\mu^\sharp\).
 
-For \(m>n\), pad \(\sqrt{f_{\alpha,T,n}}\) by \(m-n\) factors of
+For \(m>n\), pad \(\sqrt{p_n}\) by \(m-n\) factors of
 \(g_\alpha\).  Unitarity, contraction under pushforward, and
 \(\||u|^2-|v|^2\|_1\le2\|u-v\|_2\) give
 \[
- \|\Xi_{\alpha,T,m}-\Xi_{\alpha,T,n}\|_{\mathrm{TV}}
- \le2\|(\sqrt{\ell_{\alpha,T,m}})^{\otimes k}
-           -(\sqrt{\ell_{\alpha,T,n}})^{\otimes k}\|_{L^2(\mu_\alpha^{\otimes k})}
- \le2k\|\sqrt{\ell_{\alpha,T,m}}
-           -\sqrt{\ell_{\alpha,T,n}}\|_{L^2(\mu_\alpha)}.
+ \|\Xi_m-\Xi_n\|_{\mathrm{TV}}
+ \le2\|(\sqrt{\ell_m})^{\otimes k}
+           -(\sqrt{\ell_n})^{\otimes k}\|_{L^2(\mu_\alpha^{\otimes k})}
+ \le2k\|\sqrt{\ell_m}
+           -\sqrt{\ell_n}\|_{L^2(\mu_\alpha)}.
 \]
-Hence \(\Xi_{\alpha,T,n}\) converges in total variation to a probability
-\(\Xi_{\alpha,T}\ll\mu_{\alpha,k}^\sharp\).
+Hence \(\Xi_n\) converges in total variation to a probability
+\(\Xi\ll\mu^\sharp\).
 
-Let \(\nu_{\alpha,T}^{[n]}=\ell_{\alpha,T,n}\mu_\alpha\).  For every finitely
+Let \(\nu^{[n]}=\ell_n\mu_\alpha\).  For every finitely
 supported \(z\), Fourier autocorrelation and square-root convergence give
 \begin{align*}
- \widehat\Xi_{\alpha,T}(z)
- &=\lim_n\Aff\bigl(\nu_{\alpha,T}^{[n]},
-             (x\mapsto x+z)_\#\nu_{\alpha,T}^{[n]}\bigr)^k\\
+ \widehat\Xi(z)
+ &=\lim_n\Aff\bigl(\nu^{[n]},
+             (x\mapsto x+z)_\#\nu^{[n]}\bigr)^k\\
  &=\Aff\bigl(\nu_{\alpha,T},
         (x\mapsto x+z)_\#\nu_{\alpha,T}\bigr)^k\\
  &=\prod_i a_\alpha((T^{-1}z)_i)^k.
 \end{align*}
 The last expression is the characteristic function of
-\((\Phi_{(T^{-1})^*})_\#\mu_{\alpha,k}^\sharp\); agreement for finitely supported \(z\)
+\((\Phi_{(T^{-1})^*})_\#\mu^\sharp\); agreement for finitely supported \(z\)
 identifies all finite marginals.  Hence
 \begin{equation}
- (\Phi_{(T^{-1})^*})_\#\mu_{\alpha,k}^\sharp\ll\mu_{\alpha,k}^\sharp.
+ (\Phi_{(T^{-1})^*})_\#\mu^\sharp\ll\mu^\sharp.
 \end{equation}
 The dichotomy and classification in \cref{thm:measure-equivalence} upgrade
 this to equivalence and give
@@ -372,7 +371,7 @@ gives a tail of order
 \(t^{-\alpha}\sum_j\|v_j\|_2^\alpha\).  Integration yields a modulus
 \(\tau_\alpha(s)\downarrow0\) such that
 \begin{equation}
- \E\min\left\{\left\|\sum_jv_jX_j\right\|_2,1\right\}
+ \E\left[1\wedge\left\|\sum_jv_jX_j\right\|_2\right]
  \le\tau_\alpha\left(\sum_j\|v_j\|_2^\alpha\right).
  \label{eq:stable-hilbert-random-sum-truncation}
 \end{equation}
@@ -411,8 +410,8 @@ Put
 \]
 and define the bounded test
 \[
- \Psi_B(x)=\max\left\{-1,\min\left\{
- \sum_{j:c_j\ne0}w(c_jx_j)\chi(\Theta_j(x)),1\right\}\right\}.
+ \Psi_B(x)=(-1)\vee\left[1\wedge
+ \sum_{j:c_j\ne0}w(c_jx_j)\chi(\Theta_j(x))\right].
 \]
 For all sufficiently small \(c_j\), stable tail asymptotics give
 \begin{equation}
@@ -430,7 +429,7 @@ hence
 Set \(\mathbf Y=(I+B)\mathbf X\) and fix \(0<\delta<1/4\).  By
 \eqref{eq:stable-row-scale-bound},
 \[
- \mathbb P\{\exists i:\ |c_i(B\mathbf X)_i|>\delta\}
+ \mathbb P\{\max_i|c_i(B\mathbf X)_i|>\delta\}
  \le C_\alpha\delta^{-\alpha}\sum_i c_i^\alpha\omega_i(B)
  \le C_\alpha\delta^{-\alpha}F^2.
 \]
@@ -629,13 +628,13 @@ terms of \(\mathfrak e_\alpha\). For a finite matrix \(A\), put
 \]
 
 \begin{proposition}[Anisotropic stable Hellinger coercivity]
-Let \(A\in\GL(n,\R)\).  If all singular values of \(A\) lie in a fixed interval
+Let \(A\in\GL_n(\R)\).  If all singular values of \(A\) lie in a fixed interval
 \([a,b]\subset(0,\infty)\), then there are positive constants depending only
 on \(\alpha,a,b\), and not on the dimension, such that
 \begin{equation}
- c_{\alpha,a,b}\min\{\mathfrak e_{\alpha,n}(A),1\}
+ c(1\wedge\mathfrak e_{\alpha,n}(A))
  \le h^2(A_\#\mu_{\alpha,n},\mu_{\alpha,n})
- \le C_{\alpha,a,b}\min\{\mathfrak e_{\alpha,n}(A),1\}.
+ \le C(1\wedge\mathfrak e_{\alpha,n}(A)).
 \end{equation}
 \end{proposition}
 
@@ -659,34 +658,33 @@ singular values of
 compares the two distances up to a factor depending on \(a,b\).  Hence
 \begin{equation}
  h^2(A_\#\mu_{\alpha,n},\mu_{\alpha,n})
- \ge c_{\alpha,a,b}
-     \min\left\{\min_{Q\in\mathcal P_n}\|A-Q\|_F^2,1\right\}.
+ \ge c(1\wedge d_n(A)^2).
  \label{eq:stable-quadratic-lower-bound}
 \end{equation}
 
 Near a signed permutation, remove that permutation and write
 \[
- d_{\mathrm{diag}}=\sum_i|a_{ii}-1|^2,
+ d=\sum_i|a_{ii}-1|^2,
  \qquad
  F=\sum_j\left(\sum_{i\ne j}|a_{ij}|^2\right)^{\alpha/2}.
 \]
-For \(d_{\mathrm{diag}}+F\) small, the identity is the nearest signed
+For \(d+F\) small, the identity is the nearest signed
 permutation, so \eqref{eq:stable-quadratic-lower-bound} controls
-\(d_{\mathrm{diag}}\).  With \(D=\diag A\) and \(D^{-1}A=I+B\),
+\(d\).  With \(D=\diag A\) and \(D^{-1}A=I+B\),
 \(\diag B=0\) and \(F_\alpha(B)\asymp_\alpha F\).
 The off-diagonal column lower bound and the diagonal scale upper bound give
 \[
  h(A_\#\mu_{\alpha,n},\mu_{\alpha,n})
- \ge c_\alpha\sqrt F-C_\alpha\sqrt{d_{\mathrm{diag}}}.
+ \ge c_\alpha\sqrt F-C_\alpha\sqrt{d}.
 \]
 Choose \(\eta\le(c_\alpha/(2C_\alpha))^2\).  Then
-\(d_{\mathrm{diag}}\le\eta F\) implies
-\(C_\alpha\sqrt{d_{\mathrm{diag}}}\le(c_\alpha/2)\sqrt F\).  When
-$d_{\mathrm{diag}}\ge\eta F$, use
+\(d\le\eta F\) implies
+\(C_\alpha\sqrt{d}\le(c_\alpha/2)\sqrt F\).  When
+$d\ge\eta F$, use
 \eqref{eq:stable-quadratic-lower-bound}.  This proves the local lower bound.
 
 If the global lower bound failed, there would be \(\varepsilon>0\), dimensions
-\(n_k\), and matrices \(A_k\in\GL(n_k,\R)\), with singular values in \([a,b]\),
+\(n_k\), and matrices \(A_k\in\GL_{n_k}(\R)\), with singular values in \([a,b]\),
 such that \(\mathfrak e_{\alpha,n_k}(A_k)\ge\varepsilon\) and, after passing to
 a subsequence,
 \[

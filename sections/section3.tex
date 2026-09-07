@@ -133,7 +133,7 @@ $c,C,\delta>0$ such that
 \begin{equation}
  c\|V-I\|_F\le h(V_\#\mu_n,\mu_n)
                    \le C\|V-I\|_F
- \quad(V\in O(n),\ \|V-I\|_F\le\delta).
+ \quad(V\in\mathrm O(n),\ \|V-I\|_F\le\delta).
  \label{eq:orthogonal-local-hellinger}
 \end{equation}
 \end{proposition}
@@ -279,9 +279,7 @@ Let $a^{(n)}\in\ell^2$ satisfy $\|a^{(n)}\|_2=1$.  If
 \]
 then
 \begin{equation}
- \inf_{\substack{j\geq1,\ \varsigma\in\{-1,1\}\\
-                  \Law(\varsigma X)=\rho}}
-       \|a^{(n)}-\varsigma e_j\|_2\longrightarrow0.
+ \inf_{Q\in\mathcal P}\|a^{(n)}-Qe_1\|_2\longrightarrow0.
  \label{eq:unit-row-qualitative}
 \end{equation}
 \end{lemma}
@@ -306,7 +304,7 @@ Letting first $n\to\infty$ and then $m\to\infty$ gives
  \label{eq:unit-row-gaussian-summand}
 \end{equation}
 Thus the limit is $\sum_j a_jX_j$ plus an independent
-$N(0,1-\tau_a)$ variable.
+$\mathcal N(0,1-\tau_a)$ variable.
 
 The limiting law is \(\rho\). If every surviving coefficient is smaller
 than one, substituting this representation into itself repeatedly makes
@@ -336,7 +334,7 @@ The substitution is legitimate in $L^2$ at every finite depth.  Applying
  \leq t^2\tau_a^k\omega_\rho(|t|m_a^k)\longrightarrow0.
 \]
 This contradicts non-Gaussianity.  Hence some
-$a_j=\varsigma\in\{-1,1\}$.  All other coefficients and the Gaussian
+$a_j=\varsigma\in\{\pm1\}$.  All other coefficients and the Gaussian
 summand vanish, and the limiting identity gives $\Law(\varsigma X)=\rho$.
 
 If \eqref{eq:unit-row-qualitative} failed, a subsequence would stay a fixed
@@ -374,7 +372,7 @@ convergence theorem gives $\|\ell-\ell_N\|_1\to0$.  Every
 $S\in\mathcal T_N$ preserves $\mu$ and satisfies
 $\ell_N\circ S^{-1}=\ell_N$.  Thus
 \[
- h(\nu,S_\#\nu)^2
+ h^2(\nu,S_\#\nu)
  \leq\|\ell-\ell\circ S^{-1}\|_{L^1(\mu)}
  \leq2\|\ell-\ell_N\|_{L^1(\mu)},
 \]
@@ -454,8 +452,7 @@ depends only on tail coordinates, so independence gives
 \]
 Letting first $N\to\infty$ and then $L\to\infty$, uniformly in $a$, gives
 \[
- \sup_{\substack{\|a\|_2=1,\ a\text{ finitely supported}\\
-                  \operatorname{supp}a\subset\{N+1,N+2,\ldots\}}}
+ \sup_{\substack{a\in c_{00},\ \|a\|_2=1\\ P_Na=0}}
  \left|\langle(TT^*-I)a,a\rangle\right|\longrightarrow0.
 \]
 Since $TT^*-I$ is self-adjoint, density of finite vectors in the tail
@@ -515,13 +512,13 @@ Since $\iota(i)$ leaves every finite set, compactness of $T^*T-I$ gives
 Together with $\langle T\widehat e_i,e_i\rangle
 =\langle\widehat e_i,T^*e_i\rangle\to1$, this yields
 \begin{equation}
- \operatorname{err}_i:=\|T^*e_i-\widehat e_i\|_2^2
+ r_i:=\|T^*e_i-\widehat e_i\|_2^2
        +\|T\widehat e_i-e_i\|_2^2\longrightarrow0.
 \end{equation}
 
 We have matched both the row and its corresponding column; together their
 errors will control the discrepancy between the exchanges. We claim that
-$\sum_{i>N_0}\operatorname{err}_i<\infty$. Choose the local
+$\sum_{i>N_0}r_i<\infty$. Choose the local
 constants in \cref{lem:local-hs-coercivity} so that
 \begin{equation}
  h(\mu,\nu_W)\geq c_{\mathrm{HS}}\|W-I\|_{\mathcal S_2}
@@ -531,14 +528,14 @@ constants in \cref{lem:local-hs-coercivity} so that
 \end{equation}
 Suppose the claim fails, and choose $\delta>0$ so that
 $3\|T^{-1}\|_{\mathrm{op}}\delta<\delta_{\mathrm{HS}}$.
-In an arbitrarily remote tail where $\operatorname{err}_i\le\delta^2$, choose
+In an arbitrarily remote tail where $r_i\le\delta^2$, choose
 a finite set $E$ satisfying
 \begin{equation}
- \delta^2\leq\sum_{i\in E}\operatorname{err}_i\leq2\delta^2.
+ \delta^2\leq\sum_{i\in E}r_i\leq2\delta^2.
  \label{eq:active-tail-error}
 \end{equation}
 Pair each $i\in E$ with a distinct later index $k_i$ such that, for
-$G=\{k_i:i\in E\}$, the sum $\sum_{k\in G}\operatorname{err}_k$ is
+$G=\{k_i:i\in E\}$, the sum $\sum_{k\in G}r_k$ is
 arbitrarily small.
 
 Let $S$ exchange each output pair $(e_i,e_{k_i})$, and let $P$ exchange
@@ -577,7 +574,7 @@ gives
  \leq\sum_{k\in G}
        \bigl(\|T^*e_k-\widehat e_k\|_2^2
                     +\|T\widehat e_k-e_k\|_2^2\bigr)
- =\sum_{k\in G}\operatorname{err}_k.
+ =\sum_{k\in G}r_k.
 \end{equation}
 
 Using the decompositions $E\oplus(E\cup G)^c\oplus G$ on the output and the
@@ -615,8 +612,8 @@ Therefore,
  \end{aligned}
  \label{eq:swap-block-energy}
 \end{equation}
-As $\sum_{k\in G}\operatorname{err}_k\to0$, the first displayed error tends
-to $\sum_{i\in E}\operatorname{err}_i$, while
+As $\sum_{k\in G}r_k\to0$, the first displayed error tends
+to $\sum_{i\in E}r_i$, while
 \[
  \|(ST-TP)-(ST_0-T_0P)\|_{\mathcal S_2}
  \leq2\|T-T_0\|_{\mathcal S_2}\longrightarrow0.
@@ -637,7 +634,7 @@ $h(\mu,\nu_W)\geq c_{\mathrm{HS}}\delta/(2\|T\|_{\mathrm{op}})$.
 But $S$ is supported in the chosen remote tail, so
 \cref{lem:tail-symmetry-uniform} and \eqref{eq:swap-hellinger-identity} make
 this quantity tend to zero as the tail recedes.  This contradiction proves
-$\sum_{i>N_0}\operatorname{err}_i<\infty$.
+$\sum_{i>N_0}r_i<\infty$.
 
 It remains to complete the tail matching to a permutation of all coordinates.
 The number of unused inputs must equal the number of unmatched outputs;
@@ -651,7 +648,7 @@ The summability just proved implies
  &=\sum_{i\leq N_0}\|T^*e_i\|_2^2
                       +\sum_{i>N_0}\|T^*e_i-\widehat e_i\|_2^2\\
  &\leq\sum_{i\leq N_0}\|T^*e_i\|_2^2
-       +\sum_{i>N_0}\operatorname{err}_i<\infty.
+       +\sum_{i>N_0}r_i<\infty.
  \end{aligned}
  \]
 Thus $Q_0$ is a compact perturbation of the invertible operator $T$, hence
@@ -722,12 +719,12 @@ identity); the event is therefore a tail event, so Kolmogorov's zero--one law
 applies.  Pullback by \(\Phi_T\) proves the same assertion for \(\nu_T\),
 because translation by \(qTe_j\) pulls back to translation by \(qe_j\).
 
-Write \(\nu_T=(\nu_T)_{\mathrm{ac}}+(\nu_T)_{\mathrm{s}}\) for its Lebesgue decomposition relative to
+Write \(\nu_T=\nu_T^{\mathrm{ac}}+\nu_T^{\mathrm{s}}\) for its Lebesgue decomposition relative to
 \(\mu\).  Choose a Borel \(\mu\)-null set \(N_0\) supporting
-\((\nu_T)_{\mathrm{s}}\), and let \(N=\bigcup_{a\in\mathcal A}(N_0+a)\).
+\(\nu_T^{\mathrm{s}}\), and let \(N=\bigcup_{a\in\mathcal A}(N_0+a)\).
 Quasi-invariance of \(\mu\) makes \(N\) a \(\mu\)-null set;
-it is exactly \(\mathcal A\)-invariant and still supports \((\nu_T)_{\mathrm{s}}\).
-Thus \(\nu_T(N)=(\nu_T)_{\mathrm{s}}(\R^{\N})\in\{0,1\}\) by ergodicity.  Mass one gives
+it is exactly \(\mathcal A\)-invariant and still supports \(\nu_T^{\mathrm{s}}\).
+Thus \(\nu_T(N)=\nu_T^{\mathrm{s}}(\R^{\N})\in\{0,1\}\) by ergodicity.  Mass one gives
 singularity.  If the mass is zero, write \(\nu_T=\ell_T\mu\).
 Quasi-invariance makes \(\{\ell_T>0\}\) invariant modulo \(\mu\); it has
 positive measure and hence, by ergodicity, full measure.  Thus
@@ -842,21 +839,17 @@ symmetries. This contradiction gives uniform separation in every dimension.
 Fix \(0<a\le b<\infty\).  We first prove uniform separation away from
 the exact linear stabilizer: for every \(\varepsilon>0\),
 \begin{equation}
- \inf\left\{
- h(\mu_n,A_\#\mu_n)^2:
- \begin{array}{l}
- n\ge1,\ A\in\GL(n,\R),\\[-2pt]
- s_{\min}(A)\ge a,\ s_{\max}(A)\le b,\\[-2pt]
- d_n(A)\ge\varepsilon
- \end{array}\right\}>0.
+ \inf_{\substack{n\ge1,\ A\in\GL_n(\R)\\
+                 a^2I\le A^*A\le b^2I,\ d_n(A)\ge\varepsilon}}
+ h^2(\mu_n,A_\#\mu_n)>0.
  \label{eq:uniform-separation}
 \end{equation}
-If this fails, choose matrices \(A_k\in\GL(n_k,\R)\) in the displayed class
+If this fails, choose matrices \(A_k\in\GL_{n_k}(\R)\) in the displayed class
 whose Hellinger distances tend to zero.  Since
 \[
  -2\log\Aff(\mu_{n_k},(A_k)_\#\mu_{n_k})
  =-2\log\left(1-\tfrac12
- h(\mu_{n_k},(A_k)_\#\mu_{n_k})^2\right),
+ h^2(\mu_{n_k},(A_k)_\#\mu_{n_k})\right),
  \]
 we may pass to a subsequence for which the sum of these block energies is
 finite.

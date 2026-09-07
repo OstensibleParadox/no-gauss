@@ -48,12 +48,10 @@ Put \(H=\ell^2(\N;\R)\), let \((e_i)_{i\ge1}\) be its coordinate basis, and
 write \(\mathcal S_2(H)\) for the Hilbert--Schmidt ideal~\cite{simon2005trace}.
 Define
 \begin{equation}
- \begin{aligned}
- \mathcal P=\{Q:{}&(Qx)_i=\varepsilon_i x_{\pi(i)},\quad
-       \pi\text{ a permutation of }\N,\\
-       &\varepsilon_i\in\{-1,1\},\quad
-       \Law(\varepsilon_iX)=\rho\text{ for every }i\}.
- \end{aligned}
+ \mathcal P=\bigl\{Q:(Qx)_i=\varepsilon_i x_{\pi(i)},\,
+       \pi\in\operatorname{Sym}(\N),\,
+       \varepsilon_i\in\{\pm1\},\,
+       \varepsilon_iX\sim\rho\ (i\in\N)\bigr\}.
 \end{equation}
 Permutations always preserve the product law; reflections do so precisely
 when \(\rho\) is symmetric. These are the symmetries collected in
@@ -69,7 +67,7 @@ distance:
  \Aff(\lambda,\nu)
  =\int\sqrt{\frac{d\lambda}{dm}\frac{d\nu}{dm}}\,dm,
  \qquad
- h(\lambda,\nu)^2=2-2\Aff(\lambda,\nu).
+ h^2(\lambda,\nu)=2-2\Aff(\lambda,\nu).
 \end{equation}
 Here \(m\) dominates both measures. With \(\mu_n=\rho^{\otimes n}\) and
 \(\pi_n\) the projection onto the first \(n\) coordinates, the corresponding
@@ -85,12 +83,12 @@ Every input coordinate may contribute to these \(n\) outputs. Increasing
 \label{thm:measure-equivalence}
 Under \eqref{eq:main-assumptions}, every \(T\in\GL(H)\) satisfies
 \begin{equation}
- \boxed{\begin{aligned}
+ \boxed{
  \nu_T\sim\mu
- &\quad\Longleftrightarrow\quad
- \exists Q\in\mathcal P:\ TQ^{-1}-I\in\mathcal S_2(H)\\
- &\quad\Longleftrightarrow\quad \sup_nE_n(T)<\infty.
- \end{aligned}}
+ \quad\Longleftrightarrow\quad
+ T\in\mathcal P+\mathcal S_2(H)
+ \quad\Longleftrightarrow\quad \sup_nE_n(T)<\infty.
+ }
 \end{equation}
 If these conditions fail, then \(\nu_T\perp\mu\) and
 \(E_n(T)\uparrow\infty\).  Moreover, \(\nu_T=\mu\) if and only if
