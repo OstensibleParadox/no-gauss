@@ -1,8 +1,9 @@
-SOURCE AND NOTATION REVIEW: EIGHT-SECTION MANUSCRIPT
+SOURCE AND NOTATION REVIEW: ENTRY POINT AND EIGHT-SECTION MANUSCRIPT
 
 Scope
-This deterministic snapshot covers the eight TeX files included by
-sections/main.tex, in this order:
+This deterministic snapshot covers sections/main.tex followed by the eight
+section files that it includes, in this order:
+entry. main.tex (title, abstract, and document setup)
 01. introduction-and-main-results
 02. rotational-fourier-defect-and-gaussian-characterization
 03. finite-dimensional-hellinger-coercivity
@@ -13,9 +14,9 @@ sections/main.tex, in this order:
 08. scope-of-the-finite-variance-hypotheses
 
 Method
-The companion TSV inventories 53 exported notation or terminology
+The companion TSV inventories 66 exported notation or terminology
 families, 5 representative proof-local binder families, and
-15 superseded spellings.  Mathematical notation is counted only
+15 forbidden spellings.  Mathematical notation is counted only
 inside TeX math delimiters and displayed math environments; terminology is
 counted in uncommented source.  A location inside a theorem, proposition,
 lemma, or corollary is a direct result occurrence.  A defining equation cited
@@ -27,15 +28,17 @@ An exported item passes only if it has at least three lexical uses and occurs in
 a formal result directly, through a cited defining equation, or through an
 explicitly configured definition carrier.  Proof-local binders are counted but
 are not promoted to manuscript terminology and therefore do not face the
-exported threshold.  A removed spelling must have zero occurrences.
+exported threshold.  Every exported row also maps to a completed exact-phrase
+Google Scholar record in the collision ledger.  A forbidden spelling must have
+zero occurrences.
 
 Limitations
 This is a lexical source audit, not a TeX parser or theorem prover.  It cannot
 establish that an informal paraphrase is mathematically equivalent to a
 definition, and it cannot discover every possible semantic collision.  The
 ``expansion`` and ``decision`` columns make the human-review commitments
-inspectable.  Scholar collision results belong to the separate collision log;
-this script neither performs nor claims those searches.
+inspectable.  This script validates the recorded exact phrase, URL, evidence,
+timestamp, and completion status; it does not itself perform Scholar searches.
 
 Current threshold failures
 - None.
@@ -47,12 +50,13 @@ audit/notation-review.tsv and audit/source-review.txt.  Any source hash change
 invalidates the prior snapshot.
 
 Snapshot time (UTC)
-2026-09-07T01:37:20.309622+00:00
+2026-09-07T02:01:34.367468+00:00
 
 SHA-256 source fingerprints
-sections/01-introduction-and-main-results.tex  2f7603b91f64d63c84fad3070d137519e0d88ff82421b6305c4e54e7da8b4b73
+sections/main.tex  e9dd83bc778c45e462b6a97a6d4ecf30a009e52da2b277cb764e39ca247b9c10
+sections/01-introduction-and-main-results.tex  066ceb307dbc1573e0ce017db43ff3358a7ab197d3183d8c75f5476ca31c7497
 sections/02-rotational-fourier-defect-and-gaussian-characterization.tex  e1e6b7dd3874a91f5b7bed10db74d8e6927e64b823db3db7600f594c54befde4
-sections/03-finite-dimensional-hellinger-coercivity.tex  2e57d83c577a80cda92c27d6e3cd222b09186c76032e5a1c4f1efedb8a8ac365
+sections/03-finite-dimensional-hellinger-coercivity.tex  4fde1c1ca42626f07ac2126a18801db9cf434cc9756bd0ae0c1b871f70aff5c6
 sections/04-measurable-realization-and-dichotomy.tex  e49f534d708ee03d96a3b3e162f66465eb62a6387a651354acc897cf22ad2067
 sections/05-finite-variance-equivalence-and-global-rigidity.tex  6f506ee9c1981be01a914139c9d90a0887c5f24271677332c93104a2807d53e6
 sections/06-symmetric-stable-products-and-anisotropic-geometry.tex  2f83bb7c33807965efadb65a99aa5dd738e694a4ad0a3e33fa804433dfddf7e4

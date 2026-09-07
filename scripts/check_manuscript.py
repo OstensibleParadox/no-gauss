@@ -45,18 +45,18 @@ REF_RE = re.compile(
     r"(?:\[[^]]*\])?\{(?P<keys>[^}]*)\}"
 )
 
-# A stale spelling here means that a superseded interface has leaked back
+# A stale spelling here means that a noncanonical interface has leaked back
 # into the paper.  Patterns are applied only to live, uncommented TeX.
 FORBIDDEN = {
     "historical restricted label/name": r"(?i)(?:restricted[-_:]|\\(?:label|[cC]ref|[eE]qref)\{[^}]*restricted)",
     "historical draft label": r"\\(?:label|[cC]ref|[eE]qref)\{[^}]*(?::(?:ng-|intro-)|(?:candidate|endpoint|closure))",
-    "superseded section filename": (
+    "noncanonical section filename": (
         r"(?:05-proof-of-the-measure-equivalence-theorem|"
         r"06-density-zeros-and-the-linear-equivalence-group|"
         r"07-scope-and-sharpness-of-the-hypotheses|"
         r"07-support-compatibility-and-linear-equivalence)"
     ),
-    "superseded section title": (
+    "noncanonical section title": (
         r"\\section\{(?:Proof of the Measure Equivalence Theorem|"
         r"Density Zeros and the Linear Equivalence Group|"
         r"Scope and Sharpness of the Hypotheses|"

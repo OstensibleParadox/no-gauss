@@ -1,8 +1,9 @@
 TERMINOLOGY AND GOOGLE SCHOLAR COLLISION REVIEW
 Snapshot: 2026-09-06
-Scope: the current eight-section manuscript
+Scope: the current entry point and eight-section manuscript
 
 Included source sequence
+entry. main.tex (title, abstract, and document setup)
 1. 01-introduction-and-main-results.tex
 2. 02-rotational-fourier-defect-and-gaussian-characterization.tex
 3. 03-finite-dimensional-hellinger-coercivity.tex
@@ -27,7 +28,8 @@ Canonical language and macro-expansion checks
 - "projected Hellinger energy" expands to
   E_n(T)=-2 log Aff(mu_n,(pi_n)_#nu_T).
 - "exact linear stabilizer" expands to {T:nu_T=mu}; its identified subgroup is
-  P in the finite-variance branch and P^{+-} in the symmetric stable branch.
+  \mathcal P in the finite-variance branch and \mathcal P^{\pm} in the symmetric
+  stable branch.
 - "rotational Fourier defect" expands to
   R(xi,eta)=eta phi'(xi)phi(eta)-xi phi(xi)phi'(eta).
 - "matrix Fisher operator" expands to the score-covariance operator I defined
@@ -46,32 +48,37 @@ alpha-stable probability laws and their row series. Convergence is described as
 convergent.
 "Likelihood ratio" is the open compound noun, while attributive compounds use
 "likelihood-ratio", as in likelihood-ratio martingale and likelihood-ratio
-convergence. Every unit-variance normalization is stated as "centered with
-variance one."
+convergence. The canonical name for the normalized property is "centered with
+variance one"; phrases such as "rescaled to variance one" describe the distinct
+operation that produces that normalization.
 
 Burden-threshold review
-Whitespace-normalized visible-text counts are:
+Whitespace-normalized visible-text counts for every exported terminology family
+are listed below. Nested phrases may overlap, as recorded by the explicit regex
+for each row in audit/notation-review.tsv.
+  rotational Fourier defect                   20
   weighted Fourier jet                         6
-  compatible stable row-series realization    5
-  anisotropic stable Hellinger coercivity      3
-  anisotropic mixing cost                      7
-  column cost                                  6
-  projected Hellinger energy                  10
-  exact linear stabilizer                     14
-  rotational Fourier defect                   19
   matrix Fisher operator                       9
-  bounded invertible linear mixing            12
-  centered with variance one                  10
-  zero-set row condition                      21
-  finite-marginal likelihood ratio             5
+  measurable row-series realization            8
+  projected Hellinger energy                  10
+  finite-marginal likelihood ratios            6
+  likelihood ratio                            22
+  Hellinger coercivity                          8
+  exact linear stabilizer                     17
+  bounded invertible linear mixing            16
+  centered with variance one                  13
+  a.e.-positive density                        5
+  compatible stable row-series realization    7
+  anisotropic mixing cost                      8
+  column cost                                  7
+  anisotropic stable Hellinger coercivity      4
+  zero-set row condition                      25
+  linear equivalence group                     4
 
-The weighted Fourier jet occurs in the formal Gaussian-characterization lemma
-in Section 2. The compatible stable row-series realization occurs in the
-formal stable criterion in Section 6. Anisotropic stable Hellinger coercivity
-titles and occurs in a formal proposition there. The anisotropic mixing cost
-and column cost are explicitly identified inside that theorem statement.
-Projected Hellinger energy, the exact linear stabilizer, the rotational Fourier
-defect, and the matrix Fisher operator also occur in formal statements.
+Every row meets the three-use threshold and occurs in a formal result directly,
+through a cited defining equation, or through an explicitly recorded
+definition carrier. The exact locations and carriers are recorded in
+audit/notation-review.tsv.
 
 Single-use proof steps are stated as direct descriptions rather than inventoried
 as reusable terminology. Standard mathematical vocabulary such as Hellinger
@@ -87,10 +94,12 @@ contains only notation already defined. All stable-family symbols are first
 introduced with their definitions in Section 6.
 
 Google Scholar collision evidence
-audit/terminology-collisions.tsv contains only terms or standard vocabulary
-still applicable to the current manuscript. Rows with successful observations
+audit/terminology-collisions.tsv contains terms, standard vocabulary, and
+notation-expansion query phrases still applicable to the current manuscript.
+The latter need not occur verbatim: they expose a symbol's defined meaning to
+an exact-phrase collision check. Rows with successful observations
 retain the inspected Google Scholar evidence and timestamps recorded on
-2026-09-06 and 2026-09-07. All 72 rows have a completed exact quoted query;
+2026-09-06 and 2026-09-07. All 73 rows have a completed exact quoted query;
 none has a pending or access-error status. A status of no_exact_articles records
 only what the displayed result page showed at that observation; it is not a
 novelty or priority claim. Context statuses distinguish standard mathematical

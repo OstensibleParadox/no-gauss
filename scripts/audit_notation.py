@@ -18,6 +18,7 @@ import hashlib
 from pathlib import Path
 import re
 import sys
+from urllib.parse import parse_qs, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -115,11 +116,11 @@ def local(
     )
 
 
-def removed(name: str, pattern: str, reason: str, *, flags: int = 0) -> InventoryItem:
+def forbidden(name: str, pattern: str, reason: str, *, flags: int = 0) -> InventoryItem:
     return InventoryItem(
         name,
-        "removed",
-        "removed",
+        "forbidden",
+        "forbidden",
         pattern,
         reason,
         None,
@@ -127,7 +128,7 @@ def removed(name: str, pattern: str, reason: str, *, flags: int = 0) -> Inventor
         flags,
         (),
         "zero occurrences required",
-        "A match indicates that a superseded name has returned.",
+        "A match indicates that a noncanonical spelling has returned.",
     )
 
 
@@ -208,7 +209,7 @@ EXPORTED: tuple[InventoryItem, ...] = (
     exported(r"\rho^-", r"\\rho\^-", "law of -X", sections={7}),
     exported(r"\Tail_n", r"\\Tail_[nmN](?![A-Za-z])", "sum of forward and reverse finite-marginal ratio tails", sections={7}),
     exported("r_k", r"(?<![A-Za-z\\])r_k(?![A-Za-z])", "block affinity Aff(lambda_k,eta_k)", sections={7}),
-    exported("a_k,b_k", r"[ab]_k", "the two common-support masses in the block criterion", sections={7}, notes="The broad scoped pattern also recognizes compact TeX products such as \\prod_ka_k and a_kb_k."),
+    exported("a_k,b_k", r"(?<![A-Za-z\\])[ab]_k", "the two common-support masses in the block criterion", sections={7}, notes="The scoped pattern recognizes compact TeX products such as \\prod_ka_k and a_kb_k while excluding suffixes of longer names."),
 )
 
 TERMINOLOGY: tuple[InventoryItem, ...] = (
@@ -240,25 +241,25 @@ PROOF_LOCAL: tuple[InventoryItem, ...] = (
     local("local cutoff/perturbation symbols", r"(?:r_0|\\Theta_u|\\mathcal M_u|N_\{\\mathrm\{open\}\})", "binders confined to their construction"),
 )
 
-REMOVED: tuple[InventoryItem, ...] = (
-    removed(r"R_\mu", r"R_\\mu", "the coordinate law is fixed; use R"),
-    removed(r"\Gamma_\mu", r"\\Gamma_\\mu", "the explicit weighted Fourier jet replaces this alias"),
-    removed(r"\mathcal R_w", r"\\mathcal R_w", "display the one-off integral instead"),
-    removed(r"\Sigma_f or \mathcal P_f", r"\\(?:Sigma|mathcal P)_f", "use the canonical rho-admissible group mathcal P"),
-    removed(r"d_{n,f}", r"d_\{n,f\}", "the fixed-law suffix is redundant"),
-    removed("Z_T", r"Z_T", "use the likelihood-ratio family ell_T"),
-    removed(r"\Phi_T^{(\alpha)} or \nu_T^{(\alpha)}", r"\\(?:Phi|nu)_T\^\{\(\\alpha\)\}", "use alpha as the first subscript"),
-    removed(r"\widehat\rho_\alpha", r"\\widehat\{?\\rho\}?_\\alpha", "display the characteristic function directly"),
-    removed(r"\mathcal C_\alpha", r"\\mathcal C_\\alpha", "expand the stable column condition"),
-    removed(r"\mathcal E_{\alpha,n}", r"\\mathcal E_\{?\\alpha,n\}?", "use mathfrak e_{alpha,n}"),
-    removed("inverse-adjoint shorthand", r"(?:T|A)\^\{-(?:\\ast|\*)\}", "write ((T^{-1})^*) or ((A^{-1})^*)"),
-    removed("left signed-permutation normalization", r"Q\^\{-1\}T", "use the paper's canonical right normalization TQ^{-1}"),
-    removed("D_n(M) ratio-tail alias", r"D_n\(M\)", "use Tail_n(M), reserving D for diagonal objects"),
-    removed("historical restricted names", r"(?i)restricted[-_:]", "use theorem-specific semantic names"),
-    removed("proof-process terminology", r"(?i)(?:fractional column necessity|global signed-permutation match|rare-source (?:estimate|construction)|tail sign symmetry|sign-cut argument|uniform receiver)", "describe the mathematical step rather than naming proof chronology"),
+FORBIDDEN: tuple[InventoryItem, ...] = (
+    forbidden(r"R_\mu", r"R_\\mu", "the coordinate law is fixed; use R"),
+    forbidden(r"\Gamma_\mu", r"\\Gamma_\\mu", "the explicit weighted Fourier jet replaces this alias"),
+    forbidden(r"\mathcal R_w", r"\\mathcal R_w", "display the one-off integral instead"),
+    forbidden(r"\Sigma_f or \mathcal P_f", r"\\(?:Sigma|mathcal P)_f", "use the canonical rho-admissible group mathcal P"),
+    forbidden(r"d_{n,f}", r"d_\{n,f\}", "the fixed-law suffix is redundant"),
+    forbidden("Z_T", r"Z_T", "use the likelihood-ratio family ell_T"),
+    forbidden(r"\Phi_T^{(\alpha)} or \nu_T^{(\alpha)}", r"\\(?:Phi|nu)_T\^\{\(\\alpha\)\}", "use alpha as the first subscript"),
+    forbidden(r"\widehat\rho_\alpha", r"\\widehat\{?\\rho\}?_\\alpha", "display the characteristic function directly"),
+    forbidden(r"\mathcal C_\alpha", r"\\mathcal C_\\alpha", "expand the stable column condition"),
+    forbidden(r"\mathcal E_{\alpha,n}", r"\\mathcal E_\{?\\alpha,n\}?", "use mathfrak e_{alpha,n}"),
+    forbidden("inverse-adjoint shorthand", r"(?:T|A)\^\{-(?:\\ast|\*)\}", "write ((T^{-1})^*) or ((A^{-1})^*)"),
+    forbidden("left signed-permutation normalization", r"Q\^\{-1\}T", "use the paper's canonical right normalization TQ^{-1}"),
+    forbidden("D_n(M) ratio-tail alias", r"D_n\(M\)", "use Tail_n(M), reserving D for diagonal objects"),
+    forbidden("historical restricted names", r"(?i)restricted[-_:]", "use theorem-specific semantic names"),
+    forbidden("proof-process terminology", r"(?i)(?:fractional column necessity|global signed-permutation match|rare-source (?:estimate|construction)|tail sign symmetry|sign-cut argument|uniform receiver)", "describe the mathematical step rather than naming proof chronology"),
 )
 
-INVENTORY = EXPORTED + TERMINOLOGY + PROOF_LOCAL + REMOVED
+INVENTORY = EXPORTED + TERMINOLOGY + PROOF_LOCAL + FORBIDDEN
 
 # Each exported manuscript interface item is assigned to the exact English
 # phrase used for its Google Scholar collision check.  Several symbols may
@@ -380,12 +381,12 @@ def load_sources() -> tuple[list[dict], list[str]]:
     inputs = re.findall(r"\\input\{([^}]+)\}", entry)
     if tuple(inputs) != EXPECTED_INPUTS:
         errors.append("main.tex does not contain the canonical eight-section input sequence")
-    files = [SECTIONS / f"{name}.tex" for name in inputs]
-    if len(files) != 8 or any(not path.exists() for path in files):
+    section_files = [SECTIONS / f"{name}.tex" for name in inputs]
+    if len(section_files) != 8 or any(not path.exists() for path in section_files):
         errors.append("notation audit requires all eight included section files")
 
     data: list[dict] = []
-    for index, path in enumerate(files, 1):
+    for index, path in enumerate([MAIN, *section_files]):
         if not path.exists():
             continue
         raw = path.read_bytes()
@@ -401,6 +402,62 @@ def load_sources() -> tuple[list[dict], list[str]]:
             }
         )
     return data, errors
+
+
+def load_collision_statuses() -> tuple[dict[str, str], list[str]]:
+    """Load and validate the exact-phrase Google Scholar audit ledger."""
+    path = ROOT / "audit" / "terminology-collisions.tsv"
+    errors: list[str] = []
+    statuses: dict[str, str] = {}
+    if not path.exists():
+        return statuses, ["missing audit/terminology-collisions.tsv"]
+
+    with path.open(newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        required = {
+            "phrase",
+            "exact_quoted_query",
+            "scholar_url",
+            "observed_utc",
+            "source_evidence",
+            "status",
+        }
+        missing = required.difference(reader.fieldnames or ())
+        if missing:
+            return statuses, [
+                "collision ledger is missing column(s): " + ", ".join(sorted(missing))
+            ]
+
+        for line, row in enumerate(reader, 2):
+            phrase_ = (row.get("phrase") or "").strip()
+            status = (row.get("status") or "").strip()
+            exact_query = (row.get("exact_quoted_query") or "").strip()
+            scholar_url = (row.get("scholar_url") or "").strip()
+            observed = (row.get("observed_utc") or "").strip()
+            evidence = (row.get("source_evidence") or "").strip()
+            if not phrase_:
+                errors.append(f"collision ledger line {line} has an empty phrase")
+                continue
+            if phrase_ in statuses:
+                errors.append(f"collision ledger has duplicate phrase: {phrase_}")
+                continue
+            if exact_query != f'"{phrase_}"':
+                errors.append(f"{phrase_}: exact quoted query does not equal the phrase")
+            parsed_url = urlparse(scholar_url)
+            query_phrase = parse_qs(parsed_url.query).get("q", [""])[0]
+            if (
+                parsed_url.scheme != "https"
+                or parsed_url.netloc != "scholar.google.com"
+                or parsed_url.path != "/scholar"
+                or query_phrase != f'"{phrase_}"'
+            ):
+                errors.append(f"{phrase_}: Scholar URL is not the exact quoted query")
+            if not observed or not evidence:
+                errors.append(f"{phrase_}: observation timestamp or source evidence is empty")
+            if status not in ACCEPTED_COLLISION_STATUSES:
+                errors.append(f"{phrase_}: incomplete collision status {status!r}")
+            statuses[phrase_] = status
+    return statuses, errors
 
 
 def referenced_equations(data: list[dict]) -> set[tuple[Path, int, int]]:
@@ -447,7 +504,9 @@ def count_pattern(
     return matches, direct, via_equation
 
 
-def audit(data: list[dict]) -> tuple[list[list[object]], list[str]]:
+def audit(
+    data: list[dict], collision_statuses: dict[str, str]
+) -> tuple[list[list[object]], list[str]]:
     referenced = referenced_equations(data)
     rows: list[list[object]] = []
     failures: list[str] = []
@@ -461,10 +520,10 @@ def audit(data: list[dict]) -> tuple[list[list[object]], list[str]]:
             carrier_locations.extend(carrier_equations)
 
         result_occurrences = list(dict.fromkeys(direct + via_equation + carrier_locations))
-        if item.scope == "removed":
-            status = "PASS: absent" if not matches else "FAIL: superseded name is present"
+        if item.scope == "forbidden":
+            status = "PASS: absent" if not matches else "FAIL: forbidden spelling is present"
             if matches:
-                failures.append(f"{item.name}: superseded name occurs at {matches[0]}")
+                failures.append(f"{item.name}: forbidden spelling occurs at {matches[0]}")
         elif item.scope == "proof-local":
             status = "SCOPED: proof-local binder; exported threshold does not apply"
         elif item.scope == "descriptive":
@@ -477,6 +536,23 @@ def audit(data: list[dict]) -> tuple[list[list[object]], list[str]]:
             failures.append(f"{item.name}: no formal-result occurrence after definition expansion")
         else:
             status = "PASS: load-bearing"
+
+        scholar_phrase = ""
+        scholar_status = ""
+        if item.scope == "exported":
+            scholar_phrase = SCHOLAR_QUERY_BY_ITEM.get(item.name, "")
+            if not scholar_phrase:
+                failures.append(f"{item.name}: no exact-phrase Scholar mapping is configured")
+            else:
+                scholar_status = collision_statuses.get(scholar_phrase, "")
+                if not scholar_status:
+                    failures.append(
+                        f"{item.name}: Scholar phrase {scholar_phrase!r} is absent from the collision ledger"
+                    )
+                elif scholar_status not in ACCEPTED_COLLISION_STATUSES:
+                    failures.append(
+                        f"{item.name}: Scholar phrase {scholar_phrase!r} has incomplete status {scholar_status!r}"
+                    )
 
         allowed = "all" if item.sections is None else ",".join(f"{n:02}" for n in sorted(item.sections))
         rows.append(
@@ -495,6 +571,8 @@ def audit(data: list[dict]) -> tuple[list[list[object]], list[str]]:
                 item.decision,
                 item.notes,
                 "; ".join(dict.fromkeys(result_occurrences)),
+                scholar_phrase,
+                scholar_status,
                 allowed,
             ]
         )
@@ -506,23 +584,26 @@ def render_review(data: list[dict], rows: list[list[object]], failures: list[str
         f"{datum['path'].relative_to(ROOT)}  {datum['sha256']}" for datum in data
     )
     sections = "\n".join(
-        f"{datum['index']:02}. {datum['path'].stem[3:]}" for datum in data
+        "entry. main.tex (title, abstract, and document setup)"
+        if datum["index"] == 0
+        else f"{datum['index']:02}. {datum['path'].stem[3:]}"
+        for datum in data
     )
     failure_text = "\n".join(f"- {failure}" for failure in failures) or "- None."
     exported_count = sum(1 for row in rows if row[2] == "exported")
     local_count = sum(1 for row in rows if row[2] == "proof-local")
-    removed_count = sum(1 for row in rows if row[2] == "removed")
-    return f"""SOURCE AND NOTATION REVIEW: EIGHT-SECTION MANUSCRIPT
+    forbidden_count = sum(1 for row in rows if row[2] == "forbidden")
+    return f"""SOURCE AND NOTATION REVIEW: ENTRY POINT AND EIGHT-SECTION MANUSCRIPT
 
 Scope
-This deterministic snapshot covers the eight TeX files included by
-sections/main.tex, in this order:
+This deterministic snapshot covers sections/main.tex followed by the eight
+section files that it includes, in this order:
 {sections}
 
 Method
 The companion TSV inventories {exported_count} exported notation or terminology
 families, {local_count} representative proof-local binder families, and
-{removed_count} superseded spellings.  Mathematical notation is counted only
+{forbidden_count} forbidden spellings.  Mathematical notation is counted only
 inside TeX math delimiters and displayed math environments; terminology is
 counted in uncommented source.  A location inside a theorem, proposition,
 lemma, or corollary is a direct result occurrence.  A defining equation cited
@@ -534,15 +615,17 @@ An exported item passes only if it has at least three lexical uses and occurs in
 a formal result directly, through a cited defining equation, or through an
 explicitly configured definition carrier.  Proof-local binders are counted but
 are not promoted to manuscript terminology and therefore do not face the
-exported threshold.  A removed spelling must have zero occurrences.
+exported threshold.  Every exported row also maps to a completed exact-phrase
+Google Scholar record in the collision ledger.  A forbidden spelling must have
+zero occurrences.
 
 Limitations
 This is a lexical source audit, not a TeX parser or theorem prover.  It cannot
 establish that an informal paraphrase is mathematically equivalent to a
 definition, and it cannot discover every possible semantic collision.  The
 ``expansion`` and ``decision`` columns make the human-review commitments
-inspectable.  Scholar collision results belong to the separate collision log;
-this script neither performs nor claims those searches.
+inspectable.  This script validates the recorded exact phrase, URL, evidence,
+timestamp, and completion status; it does not itself perform Scholar searches.
 
 Current threshold failures
 {failure_text}
@@ -582,6 +665,8 @@ def write_outputs(rows: list[list[object]], review: str) -> None:
                 "decision",
                 "limits_or_notes",
                 "result_locations_after_expansion",
+                "scholar_exact_phrase",
+                "scholar_collision_status",
                 "counted_sections",
             ]
         )
@@ -602,20 +687,31 @@ def main() -> int:
             print(f"ERROR: {error}")
         return 2
 
-    rows, failures = audit(data)
+    collision_statuses, collision_errors = load_collision_statuses()
+    rows, failures = audit(data, collision_statuses)
+    failures.extend(collision_errors)
     review = render_review(data, rows, failures)
     if not args.check:
         write_outputs(rows, review)
-        print(f"Wrote {len(rows)} inventory rows for {len(data)} sections.")
+        print(
+            f"Wrote {len(rows)} inventory rows for the entry point and "
+            f"{len(data) - 1} sections."
+        )
     else:
-        print(f"Checked {len(rows)} inventory rows for {len(data)} sections without writing files.")
+        print(
+            f"Checked {len(rows)} inventory rows for the entry point and "
+            f"{len(data) - 1} sections without writing files."
+        )
 
     if failures:
         for failure in failures:
             print(f"ERROR: {failure}")
         print(f"FAIL: {len(failures)} notation/terminology burden violation(s).")
         return 1
-    print("PASS: every exported item meets the threshold and every superseded spelling is absent.")
+    print(
+        "PASS: every exported item meets the threshold, every Scholar mapping is "
+        "complete, and every forbidden spelling is absent."
+    )
     return 0
 
 
