@@ -4,8 +4,8 @@
 \subsection{The question and answer}
 \label{sec:question-answer}
 
-Fix one centered non-Gaussian coordinate law \(\rho\) and the i.i.d.
-product \(\mu=\rho^{\otimes\N}\).
+Fix one non-Gaussian coordinate law \(\rho\) and the i.i.d. product
+\(\mu=\rho^{\otimes\N}\).
 For which bounded invertible linear maps \(T\) on \(\ell^2\) is the
 row-series image law \(\nu_T\) equivalent to \(\mu\)?
 Kakutani's product criterion answers coordinatewise perturbations, but it
@@ -14,15 +14,22 @@ independent and the Hellinger affinity no longer tensorizes.
 The obstruction is not visible from any fixed finite window, since every
 fixed finite output marginal can have a strictly positive density even when
 the full transformed law is singular.
-The answer is that the continuous Gaussian symmetry collapses to the
-discrete stabilizer \(\mathcal P\), and the only continuous thickness left
-around it is Hilbert--Schmidt.
+Under the finite-variance and Fisher hypotheses of the main theorem, the
+continuous Gaussian symmetry collapses to the discrete stabilizer
+\(\mathcal P\), and the surviving continuous thickness is exactly
+Hilbert--Schmidt.
 Equivalently, the projected Hellinger energies \(E_n(T)\), which retain the
-whole directed family of output marginals, are bounded exactly on the
+whole directed family of output marginals, are bounded exactly on that
 equivalence branch.
-When the density has zeros, this metric condition must be supplemented by a
-support gate: the rows of both \(T\) and \(T^{-1}\) must avoid the zero set
-of the one-dimensional density.
+This conclusion is not a consequence of density positivity alone.
+For standard symmetric \(\alpha\)-stable coordinates with
+\(0<\alpha<2\), the density is everywhere positive but the exact criterion
+has a stronger anisotropic cost: diagonal errors are square summable and
+the off-diagonal input-column norms are \(\alpha\)-summable.
+When a finite-variance density satisfies the Sobolev assumptions but has
+zeros, the Hilbert--Schmidt condition must be supplemented by a support
+gate: the rows of both \(T\) and \(T^{-1}\) must avoid the zero set of the
+one-dimensional density.
 
 \subsection{Historical context: from Kakutani to dense linear mixing}
 \label{sec:history}
@@ -81,24 +88,31 @@ through the origin.
 The resulting global linear ODE has only Gaussian characteristic functions
 as solutions.
 
-Under the moment and Sobolev assumptions below, a finite set of frequencies
-detects every infinitesimal matrix direction for a non-Gaussian coordinate law.
+Under the finite-second-moment and Sobolev assumptions below, a finite set
+of frequencies detects every infinitesimal matrix direction for a
+non-Gaussian coordinate law.
 The corresponding Hellinger orbit is uniformly coercive in Frobenius norm
 near the exact linear stabilizer, independently of dimension.
-In infinite dimensions the surviving continuous thickness is exactly
-Hilbert--Schmidt: equivalence holds precisely for Hilbert--Schmidt
-perturbations of coordinate permutations whose signs preserve \(\rho\).
-This is the non-Gaussian phase transition studied below.
+In that finite-variance regime, the surviving continuous thickness is
+exactly Hilbert--Schmidt: equivalence holds precisely for
+Hilbert--Schmidt perturbations of coordinate permutations whose signs
+preserve \(\rho\).  The symmetric stable regime has the same discrete
+stabilizer but a different, anisotropic accumulation law, as shown in
+\cref{sec:scope-and-sharpness-of-the-hypotheses}.
 
 \subsection{Main theorem: equivalence, energy, and the stabilizer}
 \label{sec:main-results}
 
-The main theorem has a simple nontechnical content.
-For positive densities, dense mixing preserves the product measure class
-exactly when it differs by Hilbert--Schmidt size from an exact coordinate
-symmetry.
+The main finite-variance theorem has a simple nontechnical content.
+For coordinate laws satisfying \eqref{eq:main-assumptions}, dense mixing
+preserves the product measure class exactly when it differs by
+Hilbert--Schmidt size from an exact coordinate symmetry.
 The finite-marginal energy \(E_n(T)\) is not a heuristic proxy for this
 condition; it is an equivalent diagnostic.
+Positivity alone does not imply this Hilbert--Schmidt criterion: the
+standard symmetric \(\alpha\)-stable laws have everywhere positive
+densities, but their infinite-variance classification requires the stronger
+anisotropic cost in \eqref{eq:stable-mixing-cost}.
 
 We now state the assumptions used for the full arbitrary-mixing theorem.
 Suppose \(\rho(dx)=f(x)\,dx\), put \(g=\sqrt f\), and
@@ -252,20 +266,37 @@ reason that conclusion matters.
 \toprule
 \textbf{Condition} & \textbf{Strongest conclusion} & \textbf{Value}\\
 \midrule
-Positive density, arbitrary bounded invertible mixing
+Finite-variance assumptions \eqref{eq:main-assumptions}, arbitrary bounded
+invertible mixing
 &
 \(\nu_T\sim\mu\Longleftrightarrow
 \exists Q\in\mathcal P:\ TQ^{-1}-I\in\mathcal S_2
 \Longleftrightarrow \sup_nE_n(T)<\infty\)
 &
 A complete and checkable measure-class boundary for dense mixing.\\
-Positive density, orthogonal mixing
+Centered, variance-one, non-Gaussian positive density with finite location
+Fisher information; orthogonal mixing
 &
 The same Hilbert--Schmidt criterion, assuming only location Fisher
 information.
 &
 The important rotation regime needs weaker regularity.\\
-Density with zeros
+Standard symmetric \(\alpha\)-stable coordinates, \(0<\alpha<2\);
+compatible row action and inverse
+&
+\(\nu_T^{(\alpha)}\sim\mu_\alpha\Longleftrightarrow
+\begin{gathered}
+T|_H\in\GL(H),\\
+\mathfrak e_\alpha(Q^{-1}T)<\infty
+\text{ for some }Q\in\mathcal P
+\end{gathered}
+\Longleftrightarrow\sup_nE_{\alpha,n}(T)<\infty\).
+&
+Diagonal errors have quadratic cost, while off-diagonal input columns have
+\(\ell^\alpha(\ell^2)\) cost; Hilbert--Schmidt proximity alone is not
+sufficient.\\
+Finite-variance Sobolev assumptions \eqref{eq:restricted-sobolev}; density
+with zeros
 &
 Hilbert--Schmidt proximity plus row-wise avoidance of the zero set by
 \(T\) and \(T^{-1}\).
@@ -281,13 +312,16 @@ Support boundaries can eliminate nontrivial dense mixing altogether.\\
 \end{tabular}
 \end{center}
 
-The first row is the main theorem.
+The first row is the finite-variance main theorem.
 The second isolates the common situation in which the operator is already
 orthogonal, so the scale score never enters.
-The third is the support-aware replacement for positivity; it says exactly
+The third is the infinite-variance stable classification: its columnwise
+cost records the heavy-tailed source coordinate shared by all receiving
+rows.
+The fourth is the support-aware replacement for positivity; it says exactly
 what null-set obstruction must be checked in addition to Hilbert--Schmidt
 size.
-The fourth shows that in one-sided and bounded geometries the support gate
+The fifth shows that in one-sided and bounded geometries the support gate
 can be so rigid that the continuous Hilbert--Schmidt neighborhood
 disappears.
 
@@ -310,7 +344,10 @@ support-aware replacement for density positivity, including the row
 zero-set criterion, boundary contrasts, and the bounded-support and
 half-line classifications.
 \Cref{sec:scope-and-sharpness-of-the-hypotheses} then separates the remaining
-regularity assumptions and examples from the support geometry.
+finite-variance assumptions and examples from the support geometry, and
+treats standard symmetric \(\alpha\)-stable coordinates, where an
+anisotropic diagonal-square/off-diagonal-column cost replaces the
+Hilbert--Schmidt criterion.
 
 We write \(A^*\) for the adjoint, including the transpose of a real
 matrix, and \(\|\cdot\|_{\mathrm{op}}\) for the operator norm.
@@ -333,6 +370,9 @@ E_n(T) & projected Hellinger energy in \eqref{eq:projected-hellinger-energy}\\
 \mathcal S_2 & Hilbert--Schmidt ideal; \(\|\cdot\|_{\mathcal S_2}=\|\cdot\|_F\) in finite dimensions\\
 \mathcal P & coordinate permutations with signs preserving \(\rho\)\\
 \Phi_T,\nu_T & measurable row-series action and its pushforward of \(\mu\)\\
+\rho_\alpha,\ \mu_\alpha & standard symmetric \(\alpha\)-stable coordinate law and its product\\
+\mathfrak e_\alpha & stable diagonal-square and off-diagonal-column mixing cost\\
+\Phi_T^{(\alpha)},\ \nu_T^{(\alpha)},\ E_{\alpha,n} & stable row action, image law, and projected Hellinger energy\\
 \bottomrule
 \end{tabular}
 \end{center}
