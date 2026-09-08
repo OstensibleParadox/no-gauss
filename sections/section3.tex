@@ -117,7 +117,7 @@ for skew-symmetric \(A\),
 \begin{equation}
  \E S_A^2=(J-1)\|A\|_F^2.
 \end{equation}
-Only \(x_j\partial_i\Omega_n\) with \(i\ne j\) occur in the generator formula,
+Only \(x_j\partial_ig^{\otimes n}\) with \(i\ne j\) occur in the generator formula,
 which follows by radial cutoff and mollification commuting with the orthogonal
 one-parameter group.
 
@@ -289,7 +289,7 @@ by decreasing absolute value; this preserves the law of the
 sum and gives $|a_j^{(n)}|\le j^{-1/2}$.  From any subsequence, extract a
 further one with $a_j^{(n)}\to a_j$ for every $j$.  Fatou gives
 \[
- \tau_a:=\sum_j a_j^2\leq1.
+ \|a\|_2^2=\sum_j a_j^2\leq1.
 \]
 For fixed $m,t$, \cref{lem:characteristic-product-tail} replaces the tail
 characteristic function by
@@ -300,49 +300,49 @@ characteristic function by
 with error at most $t^2\omega_\rho(|t|/\sqrt{m+1})$, uniformly in $n$.
 Letting first $n\to\infty$ and then $m\to\infty$ gives
 \begin{equation}
- e^{-(1-\tau_a)t^2/2}\prod_j\phi(a_jt).
+ e^{-(1-\|a\|_2^2)t^2/2}\prod_j\phi(a_jt).
  \label{eq:unit-row-gaussian-summand}
 \end{equation}
 Thus the limit is $\sum_j a_jX_j$ plus an independent
-$\mathcal N(0,1-\tau_a)$ variable.
+$\mathcal N(0,1-\|a\|_2^2)$ variable.
 
 The limiting law is \(\rho\). If every surviving coefficient is smaller
 than one, substituting this representation into itself repeatedly makes
 all coefficients small. The resulting law must then be Gaussian.
 To see this, suppose that no $|a_j|$ is one. If all $a_j$ vanish,
 \eqref{eq:unit-row-gaussian-summand} already makes $X$ Gaussian.
-Otherwise $m_a:=\max_j|a_j|$ exists and lies in $(0,1)$.  For
+Otherwise $\|a\|_\infty=\max_j|a_j|$ exists and lies in $(0,1)$.  For
 $\mathbf j=(j_1,\ldots,j_k)\in\N^k$, set
 $b_{\mathbf j}:=a_{j_1}\cdots a_{j_k}$.
 Iterating the characteristic-function identity
 \eqref{eq:unit-row-gaussian-summand} $k$ times gives
 \begin{equation}
- \phi(t)=e^{-(1-\tau_a^k)t^2/2}
+ \phi(t)=e^{-(1-\|a\|_2^{2k})t^2/2}
        \prod_{\mathbf j\in\N^k}\phi(tb_{\mathbf j}),
  \label{eq:smoothing-iteration}
 \end{equation}
 where
 \[
- \sum_{\mathbf j} b_{\mathbf j}^2=\tau_a^k,
- \qquad \sup_{\mathbf j}|b_{\mathbf j}|\leq m_a^k.
+ \sum_{\mathbf j} b_{\mathbf j}^2=\|a\|_2^{2k},
+ \qquad \sup_{\mathbf j}|b_{\mathbf j}|\leq \|a\|_\infty^k.
 \]
 The substitution is legitimate in $L^2$ at every finite depth.  Applying
 \cref{lem:characteristic-product-tail} to
 \eqref{eq:smoothing-iteration} yields
 \[
  |\phi(t)-e^{-t^2/2}|
- \leq t^2\tau_a^k\omega_\rho(|t|m_a^k)\longrightarrow0.
+ \leq t^2\|a\|_2^{2k}\omega_\rho(|t|\|a\|_\infty^k)\longrightarrow0.
 \]
 This contradicts non-Gaussianity.  Hence some
-$a_j=\varsigma\in\{\pm1\}$.  All other coefficients and the Gaussian
-summand vanish, and the limiting identity gives $\Law(\varsigma X)=\rho$.
+$a_j=\varepsilon\in\{\pm1\}$.  All other coefficients and the Gaussian
+summand vanish, and the limiting identity gives $\Law(\varepsilon X)=\rho$.
 
 If \eqref{eq:unit-row-qualitative} failed, a subsequence would stay a fixed
 distance from every allowed signed unit vector.  The preceding extraction
-produces an allowed $\varsigma e_j$ with
+produces an allowed $\varepsilon e_j$ with
 \[
- \|a^{(n)}-\varsigma e_j\|_2^2
-       =2-2\varsigma a_j^{(n)}\longrightarrow0.
+ \|a^{(n)}-\varepsilon e_j\|_2^2
+       =2-2\varepsilon a_j^{(n)}\longrightarrow0.
 \]
 Undoing the permutations is a contradiction.
 \end{proof}
@@ -441,13 +441,13 @@ Write $\nu=\nu_T$, $\ell=d\nu/d\mu$, and
 $\ell_N=\E_\mu[\ell\mid\sigma(x_1,\ldots,x_N)]$.
 For a finitely supported unit vector $a$ supported on coordinates greater than
 $N$, put
-$F_a(x)=(\sum_i a_ix_i)^2$.  Under $\mu$, these are squares from
+$\widehat L_a(x)^2=(\sum_i a_ix_i)^2$.  Under $\mu$, these are squares from
 \eqref{eq:uniform-linear-square-family}; under $\nu$, they are the squares of
 $Y_{T^*a}$ under $\mu$.  Since $\|T^*a\|_2\leq\|T\|_{\mathrm{op}}$, they are
-uniformly integrable under both laws.  The bounded statistic $F_a\wedge L$
+uniformly integrable under both laws.  The bounded statistic $\widehat L_a^2\wedge L$
 depends only on tail coordinates, so independence gives
 \[
- \left|\E_\nu(F_a\wedge L)-\E_\mu(F_a\wedge L)\right|
+ \left|\E_\nu(\widehat L_a^2\wedge L)-\E_\mu(\widehat L_a^2\wedge L)\right|
  \leq L\|\ell-\ell_N\|_1.
 \]
 Letting first $N\to\infty$ and then $L\to\infty$, uniformly in $a$, gives
@@ -492,15 +492,15 @@ By \cref{lem:compact-covariance-rigidity}, $\|T^*e_i\|_2\to1$, and by
 \cref{lem:tail-symmetry-uniform}, the law of the corresponding row sum tends
 to $\rho$.  Normalization changes that sum by $o_{L^2}(1)$, so
 \cref{lem:unit-row-rigidity} gives indices $\iota(i)$ and $\rho$-preserving
-signs $\varsigma_i$ such that
+signs $\varepsilon_i$ such that
 \begin{equation}
- \widehat e_i:=\varsigma_i e_{\iota(i)},\qquad
+ \widehat e_i:=\varepsilon_i e_{\iota(i)},\qquad
  \|T^*e_i-\widehat e_i\|_2^2\longrightarrow0.
  \label{eq:qualitative-tail-matching}
  \end{equation}
 The indices $\iota(i)$ are eventually distinct: if
 $\iota(i)=\iota(j)$, then
-$\varsigma_iT^*e_i-\varsigma_jT^*e_j$ has arbitrarily small norm
+$\varepsilon_iT^*e_i-\varepsilon_jT^*e_j$ has arbitrarily small norm
 by \eqref{eq:qualitative-tail-matching}, whereas bounded
 invertibility gives the lower bound $\sqrt2/\|T^{-1}\|_{\mathrm{op}}$.
 Fix $N_0$ so that $\iota$ is injective on $i>N_0$.
@@ -521,7 +521,7 @@ errors will control the discrepancy between the exchanges. We claim that
 $\sum_{i>N_0}r_i<\infty$. Choose the local
 constants in \cref{lem:local-hs-coercivity} so that
 \begin{equation}
- h(\mu,\nu_W)\geq c_{\mathrm{HS}}\|W-I\|_{\mathcal S_2}
+ h(\mu,\nu_W)\geq c\|W-I\|_{\mathcal S_2}
  \quad\text{when }W\in\GL(H),\quad
  \|W-I\|_{\mathcal S_2}\leq\delta_{\mathrm{HS}}.
  \label{eq:local-lower-used}
@@ -630,7 +630,7 @@ It follows from \eqref{eq:swap-relative-norm} that
  \leq3\|T^{-1}\|_{\mathrm{op}}\delta<\delta_{\mathrm{HS}}.
 \]
 By \eqref{eq:local-lower-used},
-$h(\mu,\nu_W)\geq c_{\mathrm{HS}}\delta/(2\|T\|_{\mathrm{op}})$.
+$h(\mu,\nu_W)\geq c\delta/(2\|T\|_{\mathrm{op}})$.
 But $S$ is supported in the chosen remote tail, so
 \cref{lem:tail-symmetry-uniform} and \eqref{eq:swap-hellinger-identity} make
 this quantity tend to zero as the tail recedes.  This contradiction proves
@@ -863,15 +863,15 @@ $\mu_{n_k}$, and the energy summability gives
 Kakutani's theorem \cite{kakutani1948equivalence} gives \(\nu_A\sim\mu\),
 so \cref{thm:measure-equivalence} supplies \(Q\in\mathcal P\) with
 \begin{equation}
- D:=A-Q\in\mathcal S_2(H).
+ A-Q\in\mathcal S_2(H).
 \end{equation}
 
 Let \(\Pi_k\) be the orthogonal projection onto the \(k\)-th output block.
 The orthogonality of these blocks gives
 \[
- \sum_k\|\Pi_kD\|_{\mathcal S_2}^2=\|D\|_{\mathcal S_2}^2<\infty,
+ \sum_k\|\Pi_k(A-Q)\|_{\mathcal S_2}^2=\|A-Q\|_{\mathcal S_2}^2<\infty,
  \qquad\text{hence}\qquad
- \|\Pi_kD\|_{\mathcal S_2}\longrightarrow0.
+ \|\Pi_k(A-Q)\|_{\mathcal S_2}\longrightarrow0.
  \]
 If $e_i$ belongs to the $k$th output block but $Q^*e_i$ lies outside the
 corresponding input block, then the two vectors have disjoint supports and
@@ -880,19 +880,19 @@ corresponding input block, then the two vectors have disjoint supports and
  =\|A_k^*e_i\|_2^2+1\ge a^2+1.
  \end{equation}
 For large $k$ this contradicts
-$\|\Pi_kD\|_{\mathcal S_2}^2<a^2+1$.  Thus $Q^*$ preserves every sufficiently
+$\|\Pi_k(A-Q)\|_{\mathcal S_2}^2<a^2+1$.  Thus $Q^*$ preserves every sufficiently
 large block; its restriction is a bijection and defines
 $Q_k\in\mathcal P_{n_k}$.  Hence
 \[
  d_{n_k}(A_k)
  \le\|A_k-Q_k\|_F
- =\|\Pi_kD\|_{\mathcal S_2}\longrightarrow0,
+ =\|\Pi_k(A-Q)\|_{\mathcal S_2}\longrightarrow0,
 \]
 contrary to $d_{n_k}(A_k)\ge\varepsilon$.  This proves
 \eqref{eq:uniform-separation}.
 
-Let $c_{\mathrm{loc}},C_{\mathrm{loc}},\delta_{\mathrm{loc}}$ be the local
-constants, with $0<\delta_{\mathrm{loc}}<1$.  Choose a minimizer
+Let $c,C_{\mathrm{loc}},\delta$ be the local
+constants, with $0<\delta<1$.  Choose a minimizer
 $Q_n\in\mathcal P_n$ for $d_n(T)$.  Since
 \((Q_n)_\#\mu_n=\mu_n\),
 \[
@@ -901,11 +901,11 @@ $Q_n\in\mathcal P_n$ for $d_n(T)$.  Since
  \qquad
  \|TQ_n^{-1}-I\|_F=d_n(T).
 \]
-For \(d_n(T)\le\delta_{\mathrm{loc}}\), the local theorem gives both bounds.
-For \(d_n(T)>\delta_{\mathrm{loc}}\),
+For \(d_n(T)\le\delta\), the local theorem gives both bounds.
+For \(d_n(T)>\delta\),
 \eqref{eq:uniform-separation} gives the lower bound and \(h^2\le2\) the upper
 bound.  Taking the smaller
 lower constant and
-\(C=\max\{C_{\mathrm{loc}}^2,2\delta_{\mathrm{loc}}^{-2}\}\) proves
+\(C=\max\{C_{\mathrm{loc}}^2,2\delta^{-2}\}\) proves
 \eqref{eq:global-coercivity}.
 \end{proof}

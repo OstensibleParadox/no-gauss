@@ -133,10 +133,10 @@ Here \(f',xf'\in L^1\), so cutoff integration by parts against \(1\) and \(x\)
 gives the two identities in \eqref{eq:score-moments}.
 
 For independent copies $X_1,\ldots,X_n$ of $X$, write
-$\mathbf X_n=(X_1,\ldots,X_n)\sim\mu_n$.  For
+$(X_1,\ldots,X_n)\sim\mu_n$.  For
 $A\in M_n(\R)$, define the score of the pushforward by $I+tA$ at $t=0$ by
 \begin{equation}
- S_A(\mathbf X_n)=\sum_{i,j=1}^n A_{ij}
+ S_A(X_1,\ldots,X_n)=\sum_{i,j=1}^n A_{ij}
        \bigl(s(X_i)X_j-\delta_{ij}\bigr)
        =\sum_i A_{ii}d(X_i)+\sum_{i\ne j}A_{ij}s(X_i)X_j.
 \end{equation}
@@ -217,17 +217,17 @@ $L^2(\R^n,dx)$ by
 \[
  (U_Av)(y)=|\det A|^{-1/2}v(A^{-1}y),
  \qquad
- \Omega_n(x)=\prod_{i=1}^n g(x_i).
+ g^{\otimes n}(x)=\prod_{i=1}^n g(x_i).
 \]
-Thus $U_A\Omega_n$ is the square root of the Lebesgue density of
+Thus $U_Ag^{\otimes n}$ is the square root of the Lebesgue density of
 $A_\#\mu_n$.  For invertible $A,B$,
 \[
- h(A_\#\mu_n,B_\#\mu_n)=\|U_A\Omega_n-U_B\Omega_n\|_2.
+ h(A_\#\mu_n,B_\#\mu_n)=\|U_Ag^{\otimes n}-U_Bg^{\otimes n}\|_2.
 \]
 For a fixed real matrix $A$, the generator of $U_{\exp(tA)}$ is
 \begin{equation}
  G_Av=-\tfrac12\operatorname{tr}(A)v-(Ax)\cdot\nabla v,
- \qquad G_A\Omega_n=\tfrac12S_A\Omega_n.
+ \qquad G_Ag^{\otimes n}=\tfrac12S_Ag^{\otimes n}.
  \label{eq:half-density-generator}
 \end{equation}
 These identities hold in \(L^2\): the diagonal terms use \(xg'\in L^2\), the
@@ -237,13 +237,13 @@ mollification gives convergence in the required weighted Sobolev graph norm.
 \begin{lemma}[A dimension-free Hellinger path bound]
 \label{lem:finite-hellinger-upper}
 If $A_t$, $0\le t\le1$, is a continuously differentiable path in
-$\GL_n(\R)$, then $t\mapsto U_{A_t}\Omega_n$ is continuously
+$\GL_n(\R)$, then $t\mapsto U_{A_t}g^{\otimes n}$ is continuously
 differentiable in $L^2$ and
 \begin{equation}
  \begin{aligned}
- \frac d{dt}U_{A_t}\Omega_n
- &=U_{A_t}G_{A_t^{-1}\dot A_t}\Omega_n,\\
- \left\|\frac d{dt}U_{A_t}\Omega_n\right\|_2
+ \frac d{dt}U_{A_t}g^{\otimes n}
+ &=U_{A_t}G_{A_t^{-1}\dot A_t}g^{\otimes n},\\
+ \left\|\frac d{dt}U_{A_t}g^{\otimes n}\right\|_2
  &=\frac12\sqrt{\left\langle A_t^{-1}\dot A_t,
                   \mathcal I(A_t^{-1}\dot A_t)\right\rangle_F}.
  \end{aligned}
@@ -300,17 +300,17 @@ There exist centered finite real Fourier sums $p,q,r$ such that
 The entries in the table denote expectations of the products.
 For
 \begin{equation}
- H_A(\mathbf X_n):=\sum_i A_{ii}r(X_i)
+ H_A(X_1,\ldots,X_n):=\sum_i A_{ii}r(X_i)
               +\sum_{i\ne j}A_{ij}p(X_i)q(X_j),
  \label{eq:fourier-functions}
 \end{equation}
 one has, for all real matrices $A,B$ of the same size,
 \begin{equation}
  \E[H_AS_B]=\langle A,B\rangle_F,
- \qquad \|H_A\|_{L^2(\mu_n)}\le C_{\mathrm{dual}}\|A\|_F,
+ \qquad \|H_A\|_{L^2(\mu_n)}\le C\|A\|_F,
  \label{eq:matched-fourier-pairing}
 \end{equation}
-where $C_{\mathrm{dual}}$ is independent of $n$.
+where $C$ is independent of $n$.
 \end{lemma}
 
 \begin{proof}
@@ -371,22 +371,22 @@ uniform in the dimension.
 \label{lem:fourier-generator-bound}
 Let $p,q,r$ be any fixed centered bounded continuously differentiable
 functions with bounded derivatives.  Define $H_A$ by
-\eqref{eq:fourier-functions}.  There is a constant $C_{\mathrm{gen}}$,
+\eqref{eq:fourier-functions}.  There is a constant $C$,
 depending on these functions and on $J,\kappa$, such that
 \begin{equation}
- \|G_B(H_A\Omega_n)\|_{L^2(dx)}
- \le C_{\mathrm{gen}}\|A\|_F\|B\|_F
+ \|G_B(H_Ag^{\otimes n})\|_{L^2(dx)}
+ \le C\|A\|_F\|B\|_F
  \qquad(A,B\in M_n(\R),\ n\ge1).
 \end{equation}
 \end{lemma}
 
 \begin{proof}
 For fixed \(n\), boundedness of \(H_A\) and its first derivatives, together
-with \(\E X^2=1\) and the weighted Sobolev regularity of \(\Omega_n\), puts
-\(H_A\Omega_n\) in the domain of \(G_B\).  The product rule gives
+with \(\E X^2=1\) and the weighted Sobolev regularity of \(g^{\otimes n}\), puts
+\(H_Ag^{\otimes n}\) in the domain of \(G_B\).  The product rule gives
 \begin{equation}
- G_B(H_A\Omega_n)
- =\left\{\tfrac12H_AS_B-(Bx)\cdot\nabla H_A\right\}\Omega_n.
+ G_B(H_Ag^{\otimes n})
+ =\left\{\tfrac12H_AS_B-(Bx)\cdot\nabla H_A\right\}g^{\otimes n}.
  \label{eq:coordinate-function-generator-product}
 \end{equation}
 
@@ -409,9 +409,9 @@ For a vector \(a\) and a zero-diagonal matrix \(M\), abbreviate
  Q_M(u,v)=\sum_{i\ne j}M_{ij}u(X_i)v(X_j).
 \]
 Then \(H_AS_B\) is obtained by multiplying
-\(D_{\mathbf a}(r)+Q_{A_0}(p,q)\) and
-\(D_{\mathbf b}(d)+Q_{B_0}(s,x)\), where
-$\mathbf a=(A_{ii})_i$, $\mathbf b=(B_{ii})_i$,
+\(D_{a}(r)+Q_{A_0}(p,q)\) and
+\(D_{b}(d)+Q_{B_0}(s,x)\), where
+$a=(A_{ii})_i$, $b=(B_{ii})_i$,
 $A_0=A-\diag A$, and
 $B_0=B-\diag B$.
 Every local product on a shared coordinate is a bounded function times one of
@@ -452,7 +452,7 @@ For \((Bx)\cdot\nabla H_A\), the derivative of the diagonal part is
  \sum_{i,k}A_{ii}B_{ik}r'(X_i)X_k.
 \]
 After centering \(r'\) and \(xr'\), its coefficient arrays are
-\((\diag A)B\), \(B^*\mathbf a-(a_i b_i)_i\), and a
+\((\diag A)B\), \(B^*a-(a_i b_i)_i\), and a
 diagonal contraction; their norms are at most
 \(2\|A\|_F\|B\|_F\).
 
@@ -469,7 +469,7 @@ three-index bound
  \le\|M\|_F\|B\|_F,
 \]
 and its mean gives \(M^*B-M^*\diag B\).  The classes \(k=i\) and \(k=j\)
-give \((B_{ii}M_{ij})\), \(M^*\mathbf b\), \((M_{ij}B_{ij})_{ij}\), and their
+give \((B_{ii}M_{ij})\), \(M^*b\), \((M_{ij}B_{ij})_{ij}\), and their
 row, column, and scalar contractions.  The same Frobenius estimates control
 each array, while boundedness of \(p',q\) and \(\E X^2=1\) puts every local
 factor in \(L^2\).  Applying the same argument to \(F(M^*,B;q',p)\) and then
@@ -505,25 +505,25 @@ coordinate frequencies from \cref{lem:fourier-dual-moments}.
 Fix the finite real Fourier sums from \cref{lem:fourier-dual-moments}.
 In exponential coordinates, unitarity and the group derivative give
 \begin{align*}
- \langle H_A\Omega_n,(U_{\exp A}-I)\Omega_n\rangle
+ \langle H_Ag^{\otimes n},(U_{\exp A}-I)g^{\otimes n}\rangle
  &=\int_0^1
- \langle U_{\exp(-tA)}(H_A\Omega_n),G_A\Omega_n\rangle\,dt.
+ \langle U_{\exp(-tA)}(H_Ag^{\otimes n}),G_Ag^{\otimes n}\rangle\,dt.
 \end{align*}
-The value obtained by replacing $U_{\exp(-tA)}(H_A\Omega_n)$ with
-$H_A\Omega_n$ is $\frac12\E H_AS_A=\frac12\|A\|_F^2$.  Moreover,
+The value obtained by replacing $U_{\exp(-tA)}(H_Ag^{\otimes n})$ with
+$H_Ag^{\otimes n}$ is $\frac12\E H_AS_A=\frac12\|A\|_F^2$.  Moreover,
 $\|(U_{\exp(-tA)}-I)v\|_2\le t\|G_Av\|_2$ on the generator domain.
 Therefore \cref{lem:fourier-generator-bound} and
 \eqref{eq:fisher-ellipticity} yield
 \[
- \left|\langle H_A\Omega_n,(U_{\exp A}-I)\Omega_n\rangle
+ \left|\langle H_Ag^{\otimes n},(U_{\exp A}-I)g^{\otimes n}\rangle
                        -\tfrac12\|A\|_F^2\right|
- \le\frac{C_{\mathrm{gen}}\sqrt{C_f}}4\|A\|_F^3.
+ \le\frac{C\sqrt{C_f}}4\|A\|_F^3.
 \]
 For sufficiently small $\|A\|_F$, Cauchy--Schwarz and
 \eqref{eq:matched-fourier-pairing} thus give
 \[
  h((\exp A)_\#\mu_n,\mu_n)
- \ge\frac{1}{4C_{\mathrm{dual}}}\|A\|_F.
+ \ge\frac{1}{4C}\|A\|_F.
 \]
 For \(\|B\|_{\mathrm{op}}<1/2\), \(A=\log(I+B)\) is real and
 \(\|A-B\|_F\le C\|B\|_{\mathrm{op}}\|B\|_F\).  Hence \(\|A\|_F\) and

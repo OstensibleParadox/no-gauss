@@ -176,7 +176,7 @@ square. A small rotation removes thin triangles from its support. With
 uniform density, their mass is proportional to the angle; with a density
 vanishing smoothly at the boundary, their effect can be smaller. Start
 with \(\rho\) uniform on \([-\sqrt3,\sqrt3]\), let
-\(\mu_{\mathrm u,2}=\rho^{\otimes2}\), and consider
+\(\mu_2=\rho^{\otimes2}\), and consider
 \(T=\bigoplus_kO_{\theta_k}\).
 Write
 \(\delta_k=\min_{m\in\mathbb Z}|\theta_k-m\pi/2|\in[0,\pi/4]\).
@@ -185,10 +185,10 @@ of a square and its rotation.
 Removing the four corner triangles gives, for \(0<\delta\leq\pi/4\),
 \[
  \begin{aligned}
- \Aff(\mu_{\mathrm u,2},(O_\delta)_\#\mu_{\mathrm u,2})
+ \Aff(\mu_2,(O_\delta)_\#\mu_2)
  &=1-\frac{(\cos\delta+\sin\delta-1)^2}
                 {2\sin\delta\cos\delta},\\
- 1-\Aff(\mu_{\mathrm u,2},(O_\delta)_\#\mu_{\mathrm u,2})
+ 1-\Aff(\mu_2,(O_\delta)_\#\mu_2)
  &=\frac{\delta}{2}+O(\delta^2).
  \end{aligned}
 \]
@@ -199,7 +199,7 @@ the affinity of finitely many pairs the product of their affinities.
 Passing to the limit by \eqref{eq:general-marginal-affinity-limit} gives
 \[
  \Aff(\mu,\nu_T)
- =\prod_k\Aff(\mu_{\mathrm u,2},(O_{\delta_k})_\#\mu_{\mathrm u,2}).
+ =\prod_k\Aff(\mu_2,(O_{\delta_k})_\#\mu_2).
 \]
 The expansion above makes this product positive exactly when
 \(\sum_k\delta_k<\infty\). Thus
@@ -218,11 +218,11 @@ and neither is absolutely continuous with respect to the other.
 
 To see the effect of a smoother boundary, let \(f\) be the variance-one rescaling of
 \((1-x^2)^r\mathbf1_{\{|x|<1\}}\), \(r>1\), put
-\(\mu_{f,2}=(f(x)\,dx)^{\otimes2}\), and set
+\(\mu_2=(f(x)\,dx)^{\otimes2}\), and set
 \(J=4\|(\sqrt f)'\|_2^2>1\).
 The skew-generator formula gives
 \begin{equation}
- 1-\Aff(\mu_{f,2},(O_\theta)_\#\mu_{f,2})
+ 1-\Aff(\mu_2,(O_\theta)_\#\mu_2)
        =\frac{J-1}{4}\theta^2+o(\theta^2).
  \label{eq:positive-density-rotation-affinity}
 \end{equation}
